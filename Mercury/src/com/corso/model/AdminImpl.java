@@ -78,9 +78,19 @@ public class AdminImpl implements AdminUtility {
 	}
 
 	@Override
-	public String newCat() {
-
-		return null;
+	public boolean newCat(String Cat) {
+		Connection c = Dao.getConnection();
+		boolean result=false;
+		try {
+			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_NEW_CAT);
+			pst.setString(1, Cat);
+			ResultSet rs=pst.executeQuery();
+			if(rs.next()==true) {result=true;}
+		 }catch (SQLException a) {
+			a.printStackTrace();
+		}
+		
+		return result;
 	}
 
 	@Override
