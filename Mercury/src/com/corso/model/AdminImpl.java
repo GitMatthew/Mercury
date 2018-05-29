@@ -51,7 +51,7 @@ public class AdminImpl implements AdminUtility {
 
 			while (rst.next()) {
 				e = new Evento();
-				
+
 				e.setNome_evento(rst.getString("nome_evento"));
 				e.setDescrizione(rst.getString("descrizione"));
 				e.setData_inizio(rst.getDate("data_inizio"));
@@ -80,16 +80,18 @@ public class AdminImpl implements AdminUtility {
 	@Override
 	public boolean newCat(String Cat) {
 		Connection c = Dao.getConnection();
-		boolean result=false;
+		boolean result = false;
 		try {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_NEW_CAT);
 			pst.setString(1, Cat);
-			ResultSet rs=pst.executeQuery();
-			if(rs.next()==true) {result=true;}
-		 }catch (SQLException a) {
+			ResultSet rs = pst.executeQuery();
+			if (rs.next() == true) {
+				result = true;
+			}
+		} catch (SQLException a) {
 			a.printStackTrace();
 		}
-		
+
 		return result;
 	}
 
