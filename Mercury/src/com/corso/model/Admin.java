@@ -2,10 +2,11 @@ package com.corso.model;
 
 public class Admin 
 {
-
+	
+	private int id_admin;
 	private String psw;
 	private String user;
-	private String status;
+	
 	public String getPsw() {
 		return psw;
 	}
@@ -18,12 +19,11 @@ public class Admin
 	public void setUser(String user) {
 		this.user = user;
 	}
-	public String getStatus() {
-		return status;
+	public int getId_admin() {
+		return id_admin;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setId_admin(int id_admin) {
+		this.id_admin = id_admin;
 	}
-	
-	
+
 }
