@@ -9,7 +9,7 @@ public interface AdminUtility {
 	public static String SET_EVENT_STATUS = "UPDATE eventi SET id_status=? WHERE id_evento=?";
 	public static String SET_NEW_CAT = "";
 	public static String MODIFY_CAT = "";
-	public static String GET_EVENTS_BY_STATUS = "";
+	public static String GET_EVENTS_PENDING = "SELECT nome_evento,descrizione,data_inizio,data_fine FROM eventi WHERE id_status=1";
 
 	public boolean login(String user, String psw);
 
