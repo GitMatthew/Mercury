@@ -10,17 +10,9 @@
 
 <h1>GESTISCI ACCOUNT</h1>
 
-    <form action="enteHome.jsp">
-    <button  name="EnteHome">CREA NUOVO EVENTO</button>
-    </form>
-    
-    <form action="gestisciEventi.jsp">
-    <button  name="GestisciEventi">GESTISCI EVENTO</button>
-    </form>
-    
-    <form action="accountEnte.jsp">
-    <button  name="GestisciAccount">GESTISCI ACCOUNT</button>
-    </form>   
+   <button onclick="window.location.href='enteHome.jsp'">CREA NUOVO EVENTO</button>   
+    <button onclick="window.location.href='gestisciEventi.jsp'">GESTISCI EVENTO</button>   
+    <button onclick="window.location.href='accountEnte.jsp'">GESTISCI ACCOUNT</button> 
 
 
 </body>
