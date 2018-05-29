@@ -35,4 +35,16 @@ public class AdminImpl implements AdminUtility
 		return null;
 	}
 
+	@Override
+	public String newCat() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String modCat() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

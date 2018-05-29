@@ -9,4 +9,7 @@ public interface AdminUtility {
 	public void sendNotifica();
 	public ArrayList<Evento> getEventiAttesa();
 	public ArrayList<Ente> getEntiAttesa();
+	public String newCat();
+	public String modCat();
+	
 }
