@@ -23,7 +23,7 @@ public class AdminImpl implements AdminUtility {
 
 			ResultSet rs = pst.executeQuery();
 
-			if (rs.getInt("tot") > 0) {
+			if ((rs.getInt("tot"))!=0) {
 				result = true;
 			}
 		} catch (SQLException e) {

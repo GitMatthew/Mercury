@@ -54,7 +54,7 @@ public class ControllerAdmin extends HttpServlet {
 		String user=request.getParameter("user");
 		String psw=request.getParameter("psw");
 			
-		if(log.login (user , psw)) 
+		if((log.login (user , psw))==true) 
 		{
 			
 			HttpSession session = request.getSession();
