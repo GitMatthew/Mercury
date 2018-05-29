@@ -1,6 +1,11 @@
 package com.corso.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+import com.corso.connection.Dao;
 
 public class AdminImpl implements AdminUtility 
 {
@@ -37,12 +42,6 @@ public class AdminImpl implements AdminUtility
 	public String modCat() {
 
 		return null;
-	}
-
-	@Override
-	public void recuperaPsw() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
