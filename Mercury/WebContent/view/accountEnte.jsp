@@ -8,9 +8,9 @@
 </head>
 <body>
 
-<h1>ENTE HOME</h1>
+<h1>GESTISCI ACCOUNT</h1>
 
-     <form action="enteHome.jsp">
+    <form action="enteHome.jsp">
     <button  name="EnteHome">CREA NUOVO EVENTO</button>
     </form>
     
@@ -20,8 +20,8 @@
     
     <form action="accountEnte.jsp">
     <button  name="GestisciAccount">GESTISCI ACCOUNT</button>
-    </form>  
-   
+    </form>   
+
 
 </body>
 </html>
