@@ -11,7 +11,7 @@
 <h1 style="color:gray;text-align:center">Pagina di Login</h1>
 
 <div align=center>
-<form method="post" action="../loginAdmin">
+<form method="post" action="../ControllerAdmin">
 
 <table border="1">
 		<tr>
