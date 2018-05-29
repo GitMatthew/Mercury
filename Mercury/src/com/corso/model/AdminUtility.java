@@ -5,7 +5,7 @@ import java.util.*;
 public interface AdminUtility 
 {
 	
-	String SET_NEW_PSW="";
+	String RECOVER_PSW="";
 	String CHECK_PSW="";
 	String CHECK_EVENT_STATUS="";
 	String SET_EVENT_STATUS="";
@@ -14,7 +14,7 @@ public interface AdminUtility
 	
 	
 	public boolean login();
-	public void cambiaPsw();
+	public void recuperaPsw();
 	public void sendNotifica();
 	public ArrayList<Evento> getEventiAttesa();
 	public ArrayList<Ente> getEntiAttesa();
