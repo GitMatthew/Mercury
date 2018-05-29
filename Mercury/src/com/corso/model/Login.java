@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 import javax.servlet.ServletException;
 
-import com.corso.connection.DAO;
+import com.corso.connection.Dao;
 
 public class Login {
 	
@@ -18,7 +18,7 @@ public class Login {
 		
 		try {
 			
-			Connection conn=DAO.getConnection();
+			Connection conn=Dao.getConnection();
 			
 			PreparedStatement pst = conn.prepareStatement(password_ente);
 			
