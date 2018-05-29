@@ -12,12 +12,6 @@ public class AdminImpl implements AdminUtility
 	}
 
 	@Override
-	public void cambiaPsw() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void sendNotifica() {
 		// TODO Auto-generated method stub
 		
@@ -45,6 +39,12 @@ public class AdminImpl implements AdminUtility
 	public String modCat() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void recuperaPsw() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
