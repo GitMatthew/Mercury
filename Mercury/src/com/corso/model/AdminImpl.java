@@ -93,8 +93,7 @@ public class AdminImpl implements AdminUtility {
 		Connection c = Dao.getConnection();
 
 		try {
-			PreparedStatement pst = c.prepareStatement(AdminUtility.CHECK_PSW);
-
+			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_EVENT_STATUS);
 			pst.setInt(1, id_ev);
 			if (id_status == 2) {
 				pst.setInt(2, 2);
