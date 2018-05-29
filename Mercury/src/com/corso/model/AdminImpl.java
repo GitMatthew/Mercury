@@ -85,7 +85,7 @@ public class AdminImpl implements AdminUtility {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_NEW_CAT);
 			pst.setString(1, Cat);
 			ResultSet rs = pst.executeQuery();
-			if (rs.next() == true) {
+			if (rs.next()==true) {
 				result = true;
 			}
 		} catch (SQLException a) {
