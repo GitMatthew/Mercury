@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.corso.model.Login;
+import com.corso.model.EnteImpl;
 
 @WebServlet("/ControllerEnte")
 public class ControllerEnte extends HttpServlet {
@@ -25,14 +25,14 @@ public class ControllerEnte extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		RequestDispatcher disp=null;
-		Login log = new Login();
+		EnteImpl ei = new EnteImpl();
 		
 		String user=request.getParameter("user");
 		String psw=request.getParameter("psw");
 			
 		System.out.println(user + " " + psw); //Test
 		
-		if(log.verificaPsw (user , psw)) {
+		if(ei.verificaPsw (user , psw)) {
 			
 			System.out.println("ok 2 "); //Test
 			

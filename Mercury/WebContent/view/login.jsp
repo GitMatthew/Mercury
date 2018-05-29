@@ -10,8 +10,8 @@
 <h1>Esegui il login</h1>
 <form action="../ControllerEnte" method=post>
 
-Username <br/><input type="text"  name="Username"/><br/>
-Password <br/><input type="text"  name="Password"/><br/>
+Username <br/><input type="text"  name="user"/><br/>
+Password <br/><input type="text"  name="psw"/><br/>
 
 <input type="submit">
 </form>

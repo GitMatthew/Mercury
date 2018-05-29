@@ -10,9 +10,9 @@ import javax.servlet.ServletException;
 
 import com.corso.connection.Dao;
 
-public class Login {
+public class EnteImpl implements EnteUtility {
 	
-	String password_ente = "SELECT * FROM enti WHERE user_ente = ?" ;
+String password_ente = "SELECT * FROM enti WHERE user_ente = ?" ;
 	
 	public boolean verificaPsw (String user , String psw) {	
 		
@@ -30,14 +30,11 @@ public class Login {
 		} catch (SQLException e) {
 			
 		}
-		
-		
-		
-		
-		
-		
+			
 		
 		return true ;
 	}
+	
+	
 
 }
