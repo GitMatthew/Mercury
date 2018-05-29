@@ -85,7 +85,7 @@ public class AdminImpl implements AdminUtility {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_NEW_CAT);
 			pst.setString(1, Cat);
 			int rs = pst.executeUpdate();
-			if (rs>0) {
+			if (rs > 0) {
 				result = true;
 			}
 		} catch (SQLException a) {
@@ -96,9 +96,25 @@ public class AdminImpl implements AdminUtility {
 	}
 
 	@Override
-	public String modCat() {
+	public boolean modCat(String mcat, int id_categoria) {
+		Connection c = Dao.getConnection();
+		boolean result = false;
+		try {
+			PreparedStatement pst = c.prepareStatement(AdminUtility.MODIFY_CAT);
+			pst.setString(1, mcat);
+			pst.setInt(2, id_categoria);
 
-		return null;
+			int rs = pst.executeUpdate();
+
+			if (rs > 0) {
+				result = true;
+			}
+
+		} catch (SQLException a) {
+			a.printStackTrace();
+		}
+
+		return result;
 	}
 
 	@Override
