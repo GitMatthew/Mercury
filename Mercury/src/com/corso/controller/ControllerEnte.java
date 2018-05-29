@@ -38,14 +38,7 @@ public class ControllerEnte extends HttpServlet {
 		}
 		
 		disp.forward(request, response);
-		
-		
-		//kjhfij	
-	
-
-		
-		
-		
+				
 		
 //	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		// TODO Auto-generated method stub
