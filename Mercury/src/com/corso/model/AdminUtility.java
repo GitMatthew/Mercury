@@ -8,7 +8,7 @@ public interface AdminUtility {
 	public static String CHECK_EVENT_STATUS = "SELECT * FROM eventi WHERE id_status=1";
 	public static String SET_EVENT_STATUS = "UPDATE eventi SET id_status=? WHERE id_evento=?";
 	public static String SET_NEW_CAT = "INSERT categorie(nome_categoria) values (?)";
-	public static String MODIFY_CAT = "";
+	public static String MODIFY_CAT = "UPDATE categorie SET nome_categoria=? WHERE id_categoria=?";
 	public static String GET_EVENTS_PENDING = "SELECT nome_evento,descrizione,data_inizio,data_fine FROM eventi WHERE id_status=1";
 
 	public boolean login(String user, String psw);
@@ -21,7 +21,7 @@ public interface AdminUtility {
 
 	public boolean newCat(String Cat);
 
-	public String modCat();
+	public boolean modCat(String mcat, int id_categoria );
 
 	public void modEvento(int id_ev, int id_status);
 
