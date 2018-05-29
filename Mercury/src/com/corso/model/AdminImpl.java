@@ -15,23 +15,26 @@ public class AdminImpl implements AdminUtility {
 	public boolean login(String user, String psw) {
 		Connection c = Dao.getConnection();
 		PreparedStatement pst;
+		ResultSet rs;
 		boolean result = false;
+		int x=0;
 		try {
 			pst = c.prepareStatement(AdminUtility.CHECK_PSW);
-
 			pst.setString(1, user);
 			pst.setString(2, psw);
-
-			ResultSet rs = pst.executeQuery();
-			rs.first();
-			if ((rs.getInt("tot"))!=0) {
-				result = true;
-			}
+			rs = pst.executeQuery();
+			rs.next();
+			x=rs.getInt("tot");
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-		return result;
+		
+		if (x!=0) {
+			return true;
+		}else {
+		return false;
+		}
 	}
 
 	@Override
