@@ -6,7 +6,7 @@ public interface AdminUtility
 {
 
 	public static String CHECK_PSW="SELECT Count(amministratori.user) as tot from amministratori where user like ? and psw like ?";
-	public static String CHECK_EVENT_STATUS="";
+	public static String CHECK_EVENT_STATUS="SELECT * FROM eventi WHERE id_status=1";
 	public static String SET_EVENT_STATUS="";
 	public static String SET_NEW_CAT="";
 	public static String MODIFY_CAT="";
