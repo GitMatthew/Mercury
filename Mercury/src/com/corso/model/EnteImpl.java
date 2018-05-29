@@ -12,27 +12,35 @@ import com.corso.connection.Dao;
 
 public class EnteImpl implements EnteUtility {
 	
-String password_ente = "SELECT * FROM enti WHERE user_ente = ?" ;
+
 	
 	public boolean verificaPsw (String user , String psw) {	
 		
-		try {
+		String qry = "SELECT * FROM enti WHERE user_ente='"+user+"'";
+		Connection conn=Dao.getConnection();
+		Statement st = null ;
+		ResultSet rs = null ;
+		String pswOk = null;
+		
+		try {	
 			
-			Connection conn=Dao.getConnection();
-			
-			PreparedStatement pst = conn.prepareStatement(password_ente);
-			
-			pst.setString(0, "'" + user + "';");
-			
-			System.out.println("ok");
-					
+		    st = conn.createStatement();					
+			rs = st.executeQuery(qry);			
+			rs.next();			
+			pswOk = rs.getString("psw_ente");
 			
 		} catch (SQLException e) {
-			
-		}
-			
+			System.out.println("errore sql");		
+			e.printStackTrace();
+			return false ;		
+		}	
 		
-		return true ;
+		if(psw.equals(pswOk)) {
+			return true ;
+		} else {
+			return false ;
+		}
+	
 	}
 	
 	

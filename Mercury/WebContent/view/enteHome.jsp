@@ -8,5 +8,16 @@
 </head>
 <body>
 
+<h1>ENTE HOME</h1>
+
+<table border = 2 >
+    <tr>
+    <input type="button" name="Ente Home" id="enteHome">Test</input>
+    <input type="button" name="Gestisci Eventi" id="">
+    <input type="button" name="Gestisci Account" id="">
+    
+    </tr>
+</table>
+
 </body>
 </html>

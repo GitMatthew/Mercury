@@ -29,34 +29,20 @@ public class ControllerEnte extends HttpServlet {
 		
 		String user=request.getParameter("user");
 		String psw=request.getParameter("psw");
-			
-		System.out.println(user + " " + psw); //Test
 		
-		if(ei.verificaPsw (user , psw)) {
-			
+		if(ei.verificaPsw (user , psw)) {		
 			System.out.println("ok 2 "); //Test
-			
-		}
-		
-		
-		
-		
-		if (psw.equals("1234")) {
-			disp=request.getRequestDispatcher("/view/enteHome.jsp");
+			disp=request.getRequestDispatcher("/view/enteHome.jsp");		
 		} else {
 			disp=request.getRequestDispatcher("/view/login.jsp");
 		}
 		
-			disp.forward(request, response);
+		disp.forward(request, response);
+		
+		
 			
 	
-		
-		
-		
-		
-		
-		
-		
+
 		
 		
 		
