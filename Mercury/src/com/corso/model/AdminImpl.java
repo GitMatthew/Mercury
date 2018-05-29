@@ -14,9 +14,10 @@ public class AdminImpl implements AdminUtility {
 	@Override
 	public boolean login(String user, String psw) {
 		Connection c = Dao.getConnection();
+		PreparedStatement pst;
 		boolean result = false;
 		try {
-			PreparedStatement pst = c.prepareStatement(AdminUtility.CHECK_PSW);
+			pst = c.prepareStatement(AdminUtility.CHECK_PSW);
 
 			pst.setString(1, user);
 			pst.setString(2, psw);
