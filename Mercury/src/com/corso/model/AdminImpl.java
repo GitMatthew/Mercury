@@ -10,19 +10,9 @@ public class AdminImpl implements AdminUtility
 
 		return false;
 	}
-
+	
 	@Override
-<<<<<<< HEAD
-	public void cambiaPsw() {
-
-		
-	}
-
-	@Override
-=======
->>>>>>> branch 'master' of https://github.com/GitMatthew/Mercury.git
 	public void sendNotifica() {
-
 		
 	}
 
