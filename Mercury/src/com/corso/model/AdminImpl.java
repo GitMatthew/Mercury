@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import com.corso.connection.Dao;
 
 public class AdminImpl implements AdminUtility {
-
+//ciao mondo
 	@Override
 	public boolean login(String user, String psw) {
 		Connection c = Dao.getConnection();
