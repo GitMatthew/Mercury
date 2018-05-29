@@ -26,11 +26,22 @@
 		<td align=center><input type="submit"></td>
 		<td align=center><input type="reset"></td>
 		</tr>
-
-
 </table>
 </form>	
 </div>
+
+<div align=center>
+
+<a style="color:gray;text-align:center" ><%
+if (request.getAttribute("rst")!=null)
+	{
+	
+	out.print(request.getAttribute("rst"));
+	
+	}
+%></a>
+</div>
+
 
 </body>
 </html>
