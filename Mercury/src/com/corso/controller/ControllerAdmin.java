@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.corso.model.AdminImpl;
-import com.corso.model.Login;
+
 
 @WebServlet("/ControllerAdmin")
 public class ControllerAdmin extends HttpServlet {
