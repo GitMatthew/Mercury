@@ -23,7 +23,7 @@ public class AdminImpl implements AdminUtility {
 			pst.setString(2, psw);
 
 			ResultSet rs = pst.executeQuery();
-
+			rs.first();
 			if ((rs.getInt("tot"))!=0) {
 				result = true;
 			}
