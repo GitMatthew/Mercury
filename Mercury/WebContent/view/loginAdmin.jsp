@@ -31,14 +31,15 @@
 </div>
 
 <div align=center>
-<%
+
+<a style="color:gray;text-align:center" ><%
 if (request.getAttribute("rst")!=null)
 	{
 	
 	out.print(request.getAttribute("rst"));
 	
 	}
-%>
+%></a>
 </div>
 
 </body>
