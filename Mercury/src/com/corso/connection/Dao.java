@@ -28,7 +28,7 @@ public class Dao
 			initContext = new InitialContext();
 			
 			Context envContext = (Context) initContext.lookup("java:/comp/env");
-			ds = (DataSource) envContext.lookup("jdbc/mercury");
+			ds = (DataSource) envContext.lookup("jdbc/mercury03");
 			
 		}
 		catch (NamingException ex) {
