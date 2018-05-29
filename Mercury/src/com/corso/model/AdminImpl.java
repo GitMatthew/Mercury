@@ -85,7 +85,6 @@ public class AdminImpl implements AdminUtility {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_NEW_CAT);
 			pst.setString(1, Cat);
 			int rs = pst.executeUpdate();
-			//controllo che la query sia andata a buon fine
 			if (rs>0) {
 				result = true;
 			}
