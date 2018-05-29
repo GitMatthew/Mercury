@@ -54,20 +54,17 @@ public class ControllerAdmin extends HttpServlet {
 		String user=request.getParameter("user");
 		String psw=request.getParameter("psw");
 			
-		if(log.login (user , psw)) 
+		if((log.login (user,psw))==true) 
 		{
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			response.sendRedirect("view/adminHome.jsp");
-		
-			
 		}
 		else
 		{
 			RequestDispatcher disp=request.getRequestDispatcher("view/loginAdmin.jsp");
 			request.setAttribute("rst", "Username o Password Errati");
-			
 			disp.forward(request, response);	
 			
 		}
