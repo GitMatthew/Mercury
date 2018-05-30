@@ -41,17 +41,17 @@ public class ControllerAdmin extends HttpServlet {
 		response.setContentType("text/html");
 		
 		AdminImpl im=new AdminImpl();
-		
+		//metodo eventi del giorno
 		if(prm.equals("0"))
 		{
 			
-			ArrayList<Evento> a=im.getEventiAttesa();
+			//creazione array con eventi del giorno
 			
-			RequestDispatcher disp=request.getRequestDispatcher("view/adminHome.jsp");
+			//RequestDispatcher disp=request.getRequestDispatcher("view/adminHome.jsp");
 			
-			request.setAttribute("attesa", a);
+			//request.setAttribute("attesa", //array eventi del giorno);
 			
-			disp.forward(request, response);	
+			//disp.forward(request, response);	
 			
 		}
 		
