@@ -46,14 +46,14 @@
 {
 %>
 
-  <h3>Lista Eventi</h3>
+  <h3 Style="text-align:center">Lista Enti</h3>
   
   <table border="1" style="width:100%">
 
 	<tr>
 		<th>Evento</th>
 		<th>Descrizione</th>
-		<th>Data Inizio - Data Fine</th>
+		<th>Email</th>
 		<th>Gestisci</th>
 	</tr>
 	
@@ -61,7 +61,7 @@
 		<tr>
 			<td><c:out value="${j.nome_ente} - "></c:out></td>
 			<td><c:out value="${j.descrizione_ente}"></c:out></td>
-			<td><c:out value="${j.email_ente}"></c:out><c:out value="${j.data_fine}"></c:out></td>
+			<td><c:out value="${j.email_ente}"></c:out>
 			<td style="width:140px" align="center"><button style="width:65px" onclick="location.href='loginAdmin.jsp'">Approva</button><button style="width:65px">Rifiuta</button></td>
 			
 		
@@ -72,7 +72,7 @@
 }
 else
 { 
-	out.print("Nessun Evento in Attesa");
+	out.print("Nessun Ente in Attesa");
 }
 %>
 

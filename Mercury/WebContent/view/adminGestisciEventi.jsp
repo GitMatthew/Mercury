@@ -46,7 +46,7 @@
 {
 %>
 
-  <h3>Lista Eventi</h3>
+ <h3 Style="text-align:center">Lista Eventi</h3>
   
   <table border="1" style="width:100%">
 
@@ -72,7 +72,7 @@
 }
 else
 { 
-	out.print("Nessun Evento in Attesa");
+	out.print("Errore interrogazione DataBase");
 }
 %>
 

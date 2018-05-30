@@ -64,7 +64,13 @@ public class ControllerAdmin extends HttpServlet {
 			session.setAttribute("enti_attesa", a);
 			response.sendRedirect("view/entiInAttesa.jsp");
 		}	
-		
+		if(prm.equals("3"))
+		{
+			ArrayList<Ente> a=im.getAllEnts();
+			HttpSession session = request.getSession();
+			session.setAttribute("tutti_enti", a);
+			response.sendRedirect("view/gestisciEnti.jsp");
+		}	
 		
 		
 		if(prm.equals("mod_stat"))
