@@ -22,7 +22,7 @@
 		<td><input type="password" name="psw"></td>
 		<td><h3>Inserisci Password</h3></td>
 		</tr>
-		<tr>
+		<tr> 
 		<td align=center><input type="submit"></td>
 		<td align=center><input type="reset"></td>
 		</tr>

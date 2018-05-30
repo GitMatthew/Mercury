@@ -150,20 +150,21 @@ public class AdminImpl implements AdminUtility {
 	}
 
 	@Override
-	public void modEvento(int id_ev,int id_status) {
+
+	public void modEvento(int id_ev, int id_status) {
+
 		Connection c = Dao.getConnection();
 		ResultSet rs;
 		try {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_EVENT_STATUS);
 			pst.setInt(2, id_ev);
-			if (id_status==2) {
+			if (id_status == 2) {
 				pst.setInt(1, 2);
 			} else {
-				if (id_status==3) {
-
+				if (id_status == 3) {
 					pst.setInt(1, 3);
 				}
-			}
+			}		
 			rs = pst.executeQuery();
 
 		} catch (SQLException u) {
@@ -183,7 +184,7 @@ public class AdminImpl implements AdminUtility {
 
 			while (rst.next()) {
 				e = new Evento();
-				
+
 				e.setId_evento(rst.getInt("id_evento"));
 				e.setId_status(rst.getInt("id_status"));
 				e.setNome_evento(rst.getString("nome_evento"));
@@ -204,8 +205,8 @@ public class AdminImpl implements AdminUtility {
 		}
 
 		return evList;
-		
-		}
+
+	}
 
 	@Override
 	public ArrayList<Ente> getAllEnts() {
@@ -220,7 +221,7 @@ public class AdminImpl implements AdminUtility {
 
 			while (rst.next()) {
 				e = new Ente();
-				
+
 				e.setId_ente(rst.getInt("id_ente"));
 				e.setId_status(rst.getInt("id_status"));
 				e.setNome_ente(rst.getString("nome_ente"));

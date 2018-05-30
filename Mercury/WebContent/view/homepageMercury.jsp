@@ -29,9 +29,9 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <a
 		class="navbar-brand" href="#">Navbar</a>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-	
-	
-	
+
+
+
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active"><a class="nav-link" href="#">Home
 			</a></li>
@@ -59,22 +59,29 @@
 	<script>
 		function ricerca() {
 			var ric = "../ControllerHomepage?";
-			var x = "categoria="
-					+ document.getElementById("catSELEZIONATO").value;
+			var x = "categoria="+ document.getElementById("catSELEZIONATO").value;
 			ric = ric + x;
-
+			x = "&regione=" + document.getElementById("regSELEZIONATO").value;
+			ric = ric + x;
+			x = "&provincia=" + document.getElementById("proSELEZIONATO").value;
+			ric = ric + x;
+			x = "&comune=" + document.getElementById("comSELEZIONATO").value;
+			ric = ric + x;
+			x = "&dataInizio=" + document.getElementById("iniSELEZIONATO").value;
+			ric = ric + x;
+			x = "&dataFine=" + document.getElementById("finSELEZIONATO").value;  
+			ric = ric + x;
 			document.getElementById("linkGETricerca").href = ric;
-			document.getElementById("p04").innerHTML;
 		}
 	</script>
-	<p id="p04"></p>
+
 	<div class="row sfondoRicerca row-dark bg-dark sticky-top">
 		<a id="linkGETricerca" href=" data-toggle="collapse">
-			<button onclick="ricerca()">ricerca</button>
-		</a>
+			<button onclick="ricerca()"><img src="../images/search-icon.png"></button>
+		</a>  
 		<div class="col">
 			<a href="#catAPRI" data-toggle="collapse">
-				<button>Categoria</button>
+				Categoria
 			</a>
 			<div id="catAPRI" class="collapse">
 				<%
@@ -96,20 +103,22 @@
 				%>
 			</div>
 		</div>
+		
 		<div class="col">
-			<a href="#reg" data-toggle="collapse">
-				<button>Regione</button>
+			<a href="#catAPRI" data-toggle="collapse">
+				Regione
 			</a>
-			<div id="reg" class="collapse">
+			<div id="catAPRI" class="collapse">
 				<%
 					try {
 						x = conn.createStatement();
-						rs = x.executeQuery("select nome_regione from regioni order by nome_regione ASC");
+						rs = x.executeQuery("select nome_categoria from categorie order by nome_categoria ASC");
 
-						out.print("<select>");
+						out.print("<select id= 'catSELEZIONATO'>");
+						out.print("<option value='null'> null </option> ");
 						while (rs.next()) {
-							out.print("<option>");
-							out.print(rs.getString("nome_regione"));
+							out.print("<option value='" + rs.getString("nome_categoria") + "'>");
+							out.print(rs.getString("nome_categoria"));
 							out.print("</option>");
 						}
 						out.print("</select>");
@@ -119,20 +128,22 @@
 				%>
 			</div>
 		</div>
+		
 		<div class="col">
-			<a href="#prov" data-toggle="collapse">
-				<button>Provincia</button>
+			<a href="#catAPRI" data-toggle="collapse">
+				Provincia
 			</a>
-			<div id="prov" class="collapse">
+			<div id="catAPRI" class="collapse">
 				<%
 					try {
 						x = conn.createStatement();
-						rs = x.executeQuery("select nome_provincia from province order by nome_provincia ASC");
+						rs = x.executeQuery("select nome_categoria from categorie order by nome_categoria ASC");
 
-						out.print("<select>");
+						out.print("<select id= 'catSELEZIONATO'>");
+						out.print("<option value='null'> null </option> ");
 						while (rs.next()) {
-							out.print("<option>");
-							out.print(rs.getString("nome_provincia"));
+							out.print("<option value='" + rs.getString("nome_categoria") + "'>");
+							out.print(rs.getString("nome_categoria"));
 							out.print("</option>");
 						}
 						out.print("</select>");
@@ -142,20 +153,22 @@
 				%>
 			</div>
 		</div>
+		
 		<div class="col">
-			<a href="#com" data-toggle="collapse">
-				<button>Comune</button>
+			<a href="#catAPRI" data-toggle="collapse">
+				Comune
 			</a>
-			<div id="com" class="collapse">
+			<div id="catAPRI" class="collapse">
 				<%
 					try {
 						x = conn.createStatement();
-						rs = x.executeQuery("select nome_comune from comuni order by nome_comune ASC");
+						rs = x.executeQuery("select nome_categoria from categorie order by nome_categoria ASC");
 
-						out.print("<select>");
+						out.print("<select id= 'catSELEZIONATO'>");
+						out.print("<option value='null'> null </option> ");
 						while (rs.next()) {
-							out.print("<option>");
-							out.print(rs.getString("nome_comune"));
+							out.print("<option value='" + rs.getString("nome_categoria") + "'>");
+							out.print(rs.getString("nome_categoria"));
 							out.print("</option>");
 						}
 						out.print("</select>");
@@ -165,6 +178,10 @@
 				%>
 			</div>
 		</div>
+		
+		
+		
+		
 		<div class="col">
 			<input type="date" id="inizio" class="form-control"
 				onchange="myFunction()">
@@ -186,6 +203,10 @@
 			}
 		</script>
 	</div>
+	
+	
+	
+	
 	<div class="container" style="margin-top: 30px">
 		<div class="row">
 			<div class="col-sm-8">
