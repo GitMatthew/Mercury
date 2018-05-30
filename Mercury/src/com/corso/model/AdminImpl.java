@@ -187,11 +187,12 @@ public class AdminImpl implements AdminUtility {
 
 				e.setId_evento(rst.getInt("id_evento"));
 				e.setId_status(rst.getInt("id_status"));
+				e.setNome_status(rst.getString("nome_status"));
 				e.setNome_evento(rst.getString("nome_evento"));
 				e.setDescrizione(rst.getString("descrizione"));
 				e.setData_inizio(rst.getDate("data_inizio"));
 				e.setData_fine(rst.getDate("data_fine"));
-				e.setNome_status(rst.getString("nome_status"));
+				
 				evList.add(e);
 			}
 		} catch (SQLException a) {
@@ -224,9 +225,10 @@ public class AdminImpl implements AdminUtility {
 
 				e.setId_ente(rst.getInt("id_ente"));
 				e.setId_status(rst.getInt("id_status"));
+				e.setNome_status(rst.getString("nome_status"));
 				e.setNome_ente(rst.getString("nome_ente"));
 				e.setDescrizione_ente(rst.getString("descrizione_ente"));
-				e.setNome_status(rst.getString("nome_status"));
+				
 				enList.add(e);
 
 			}

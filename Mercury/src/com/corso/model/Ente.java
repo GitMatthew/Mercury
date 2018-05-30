@@ -12,7 +12,7 @@ public class Ente {
 	private String url_img_ente = "" ;
 	private String descrizione_ente = "" ;
 	private String url_sito_ente = "" ;
-	private String nome_status;
+	private String nome_status = "";
 	
 	public Ente () {}
 

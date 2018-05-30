@@ -53,6 +53,7 @@
 		<th>Evento</th>
 		<th>Descrizione</th>
 		<th>Data Inizio - Data Fine</th>
+		<th>Status</th>
 		<th>Gestisci</th>
 	</tr>
 	
