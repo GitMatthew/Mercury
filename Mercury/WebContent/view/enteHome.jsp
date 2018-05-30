@@ -196,8 +196,14 @@
     
     <br><br>
     
-    <label for=regione>Regione :</label> 
-     
+    
+    
+    
+    
+    
+    
+    
+    <label for=regione>Regione :</label>    
     <select> 
         <optgroup label ="Regione">         
              <c:forEach var="j" items="${requestScope.regioni}">	            				
@@ -205,6 +211,17 @@
 	         </c:forEach>  	           
         </optgroup>         
     </select> 
+    
+ <%@
+    Regione.options[Regione.selectedIndex].value ;    
+ %>
+    
+    
+    
+    
+    
+    
+    
     
     <label for=regione>Provincia :</label> 
     <select> 
@@ -215,8 +232,22 @@
         </optgroup>         
     </select>
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <label for=regione>Comune :</label> 
-
     <select> 
         <optgroup label ="Regione">         
              <c:forEach var="j" items="${requestScope.regioni}">	            				
@@ -224,6 +255,23 @@
 	         </c:forEach>  	           
         </optgroup>         
     </select>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     <br><br>
     
