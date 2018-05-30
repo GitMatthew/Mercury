@@ -4,7 +4,14 @@
 <% if(session.getAttribute("user")!=null)
 {
 	
-} %>
+} 
+else 
+{
+	RequestDispatcher disp=request.getRequestDispatcher("view/loginAdmin.jsp");
+	request.setAttribute("rst", "Per proseguire serve una sessione attiva. Effettua il Login");
+	disp.forward(request, response);
+}
+%>
 <html>
 <head>
   <title>Administrator Page</title>
@@ -40,6 +47,7 @@
   <h3>Basic Navbar Example</h3>
   <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
 </div>
-<% else  %>
+<%  
+%>
 </body>
 </html>
