@@ -62,8 +62,8 @@ public class ControllerAdmin extends HttpServlet {
 		
 		if(prm.equals("mod_stat"))
 		{
-			String x=request.getParameter("id_evento");
-			String y=request.getParameter("id_status");
+			int x=Integer.valueOf(request.getParameter("id_evento"));
+			int y=Integer.valueOf(request.getParameter("id_status"));
 			im.modEvento(x,y);
 			ArrayList<Evento> a=im.getEventiAttesa();
 			HttpSession session = request.getSession();
@@ -76,10 +76,6 @@ public class ControllerAdmin extends HttpServlet {
 	}
 
 
-	private int getParameter(String string) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
