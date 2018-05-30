@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% if(session.getAttribute("user")==null)
 {
-	RequestDispatcher disp=request.getRequestDispatcher("login.jsp"); 
+	RequestDispatcher disp=request.getRequestDispatcher("loginEnte.jsp"); 
 	request.setAttribute("messaggio", "Per proseguire serve una sessione attiva. Effettua il Login");
 	disp.forward(request, response);
 } 

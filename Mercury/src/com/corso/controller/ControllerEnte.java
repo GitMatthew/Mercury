@@ -50,7 +50,7 @@ public class ControllerEnte extends HttpServlet {
 			session.setAttribute("user" , 1);
 			
 		} else {
-			disp=request.getRequestDispatcher("/view/login.jsp");
+			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
 			request.setAttribute("messaggio", "User o Password Errati");
 		}
 		
@@ -105,7 +105,6 @@ public class ControllerEnte extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String pag = request.getParameter("pag");
-		System.out.println(pag);
 		
 		switch (pag) {
 		case "1":
