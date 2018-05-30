@@ -105,7 +105,6 @@ public class ControllerEnte extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String pag = request.getParameter("pag");
-		System.out.println(pag);
 		
 		switch (pag) {
 		case "1":
