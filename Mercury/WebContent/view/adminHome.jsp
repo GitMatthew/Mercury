@@ -29,14 +29,14 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Mercury</a>
+      <a class="navbar-brand" href="../ControllerHome?param=0">Mercury</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Eventi in Attesa</a></li>
-      <li><a href="#">Gestisci Eventi</a></li>
-      <li><a href="#">Enti in Attesa</a></li>
-      <li><a href="#">Gestisci Enti</a></li>
-      <li><a href="#">Gestisci Categorie</a></li>
+    <ul style="align:center" class="nav navbar-nav">
+      <li class="active"><a href="adminHome.jsp">Eventi in Attesa</a></li>
+      <li><a href="adminGestisciEventi.jsp">Gestisci Eventi</a></li>
+      <li><a href="entiInAttesa.jsp">Enti in Attesa</a></li>
+      <li><a href="gestisciEnti">Gestisci Enti</a></li>
+      <li><a href="adminGestisciCategorie.jsp">Gestisci Categorie</a></li>
     </ul>
   </div>
 </nav>
@@ -62,7 +62,7 @@
 			<td><c:out value="${j.nome_evento} - "></c:out></td>
 			<td><c:out value="${j.descrizione}"></c:out></td>
 			<td><c:out value="${j.data_inizio}"></c:out><c:out value="${j.data_fine}"></c:out></td>
-			<td style="width:100%"><button>Approva</button><button>Rifiuta</button></td>
+			<td style="width:140px" align="center"><button style="width:65px" onclick="location.href='loginAdmin.jsp'">Approva</button><button style="width:65px">Rifiuta</button></td>
 			
 			
 		</tr>
