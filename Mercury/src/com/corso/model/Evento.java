@@ -19,6 +19,7 @@ public class Evento
 	private int id_ente;
 	private String url_img_evento;
 	private String url_sito_evento;
+	private String nome_status;
 	
 	public Evento()
 	{
@@ -152,6 +153,14 @@ public class Evento
 	public void setNome_comune(String nome_comune)
 	{
 		this.nome_comune = nome_comune;
+	}
+
+	public String getNome_status() {
+		return nome_status;
+	}
+
+	public void setNome_status(String nome_status) {
+		this.nome_status = nome_status;
 	}
 	
 }
