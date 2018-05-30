@@ -164,7 +164,7 @@ public class AdminImpl implements AdminUtility {
 				if (id_status == 3) {
 					pst.setInt(1, 3);
 				}
-			}
+			}		
 			rs = pst.executeQuery();
 
 		} catch (SQLException u) {
