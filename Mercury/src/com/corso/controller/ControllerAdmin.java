@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.corso.model.AdminImpl;
+
 
 @WebServlet("/ControllerAdmin")
 public class ControllerAdmin extends HttpServlet {
@@ -44,7 +46,28 @@ public class ControllerAdmin extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		
+	
+		AdminImpl log = new AdminImpl();
+		
+		String user=request.getParameter("user");
+		String psw=request.getParameter("psw");
+			
+		if((log.login (user,psw))==true) 
+		{
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user);
+			response.sendRedirect("view/adminHome.jsp");
+		}
+		else
+		{
+			RequestDispatcher disp=request.getRequestDispatcher("view/loginAdmin.jsp");
+			request.setAttribute("rst", "Username o Password Errati");
+			disp.forward(request, response);	
+			
+		}
 	}
 
 }

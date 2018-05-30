@@ -2,21 +2,28 @@ package com.corso.model;
 
 import java.util.*;
 
-public interface AdminUtility 
-{
+public interface AdminUtility {
 
-	public static String CHECK_PSW="SELECT Count(amministratori.user) as tot from amministratori where user like ? and psw like ?";
-	public static String CHECK_EVENT_STATUS="SELECT * FROM eventi WHERE id_status=1";
-	public static String SET_EVENT_STATUS="";
-	public static String SET_NEW_CAT="";
-	public static String MODIFY_CAT="";
-	public static String GET_EVENTS_BY_STATUS="";
-	
-	public boolean login(String user,String psw);
+	public static String CHECK_PSW = "SELECT Count(user) as tot from amministratori where user like ? and psw like ?";
+	public static String CHECK_EVENT_STATUS = "SELECT * FROM eventi WHERE id_status=1";
+	public static String CHECK_ENTS_STATUS = "SELECT * FROM enti WHERE id_status=1";
+	public static String SET_EVENT_STATUS = "UPDATE eventi SET id_status=? WHERE id_evento=?";
+	public static String SET_NEW_CAT = "INSERT categorie(nome_categoria) values (?)";
+	public static String MODIFY_CAT = "UPDATE categorie SET nome_categoria=? WHERE id_categoria=?";
+	public static String GET_EVENTS_PENDING = "SELECT nome_evento,descrizione,data_inizio,data_fine FROM eventi WHERE id_status=1";
+
+	public boolean login(String user, String psw);
+
 	public void sendNotifica();
+
 	public ArrayList<Evento> getEventiAttesa();
+
 	public ArrayList<Ente> getEntiAttesa();
-	public String newCat();
-	public String modCat();
-	
+
+	public boolean newCat(String Cat);
+
+	public boolean modCat(String mcat, int id_categoria );
+
+	public void modEvento(int id_ev, int id_status);
+
 }
