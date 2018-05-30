@@ -29,9 +29,9 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <a
 		class="navbar-brand" href="#">Navbar</a>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-	
-	
-	
+
+
+
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active"><a class="nav-link" href="#">Home
 			</a></li>
@@ -59,22 +59,29 @@
 	<script>
 		function ricerca() {
 			var ric = "../ControllerHomepage?";
-			var x = "categoria="
-					+ document.getElementById("catSELEZIONATO").value;
+			var x = "categoria="+ document.getElementById("catSELEZIONATO").value;
 			ric = ric + x;
-
+			x = "&regione=" + document.getElementById("regSELEZIONATO").value;
+			ric = ric + x;
+			x = "&provincia=" + document.getElementById("proSELEZIONATO").value;
+			ric = ric + x;
+			x = "&comune=" + document.getElementById("comSELEZIONATO").value;
+			ric = ric + x;
+			x = "&dataInizio=" + document.getElementById("iniSELEZIONATO").value;
+			ric = ric + x;
+			x = "&dataFine=" + document.getElementById("finSELEZIONATO").value;
+			ric = ric + x;
 			document.getElementById("linkGETricerca").href = ric;
-			document.getElementById("p04").innerHTML;
 		}
 	</script>
-	<p id="p04"></p>
+
 	<div class="row sfondoRicerca row-dark bg-dark sticky-top">
 		<a id="linkGETricerca" href=" data-toggle="collapse">
-			<button onclick="ricerca()">ricerca</button>
+			<button onclick="ricerca()"><img src="../images/search-icon.png"></button>
 		</a>
 		<div class="col">
 			<a href="#catAPRI" data-toggle="collapse">
-				<button>Categoria</button>
+				Categoria
 			</a>
 			<div id="catAPRI" class="collapse">
 				<%
@@ -96,6 +103,83 @@
 				%>
 			</div>
 		</div>
+		
+		<div class="col">
+			<a href="#catAPRI" data-toggle="collapse">
+				Categoria
+			</a>
+			<div id="catAPRI" class="collapse">
+				<%
+					try {
+						x = conn.createStatement();
+						rs = x.executeQuery("select nome_categoria from categorie order by nome_categoria ASC");
+
+						out.print("<select id= 'catSELEZIONATO'>");
+						out.print("<option value='null'> null </option> ");
+						while (rs.next()) {
+							out.print("<option value='" + rs.getString("nome_categoria") + "'>");
+							out.print(rs.getString("nome_categoria"));
+							out.print("</option>");
+						}
+						out.print("</select>");
+					} catch (Exception e) {
+						out.println("wrong entry" + e);
+					}
+				%>
+			</div>
+		</div>
+		
+		<div class="col">
+			<a href="#catAPRI" data-toggle="collapse">
+				Categoria
+			</a>
+			<div id="catAPRI" class="collapse">
+				<%
+					try {
+						x = conn.createStatement();
+						rs = x.executeQuery("select nome_categoria from categorie order by nome_categoria ASC");
+
+						out.print("<select id= 'catSELEZIONATO'>");
+						out.print("<option value='null'> null </option> ");
+						while (rs.next()) {
+							out.print("<option value='" + rs.getString("nome_categoria") + "'>");
+							out.print(rs.getString("nome_categoria"));
+							out.print("</option>");
+						}
+						out.print("</select>");
+					} catch (Exception e) {
+						out.println("wrong entry" + e);
+					}
+				%>
+			</div>
+		</div>
+		
+		<div class="col">
+			<a href="#catAPRI" data-toggle="collapse">
+				Categoria
+			</a>
+			<div id="catAPRI" class="collapse">
+				<%
+					try {
+						x = conn.createStatement();
+						rs = x.executeQuery("select nome_categoria from categorie order by nome_categoria ASC");
+
+						out.print("<select id= 'catSELEZIONATO'>");
+						out.print("<option value='null'> null </option> ");
+						while (rs.next()) {
+							out.print("<option value='" + rs.getString("nome_categoria") + "'>");
+							out.print(rs.getString("nome_categoria"));
+							out.print("</option>");
+						}
+						out.print("</select>");
+					} catch (Exception e) {
+						out.println("wrong entry" + e);
+					}
+				%>
+			</div>
+		</div>
+		
+		
 		<div class="col">
 			<a href="#reg" data-toggle="collapse">
 				<button>Regione</button>
