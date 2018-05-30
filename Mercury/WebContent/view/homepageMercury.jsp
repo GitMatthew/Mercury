@@ -78,7 +78,7 @@
 	<div class="row sfondoRicerca row-dark bg-dark sticky-top">
 		<a id="linkGETricerca" href=" data-toggle="collapse">
 			<button onclick="ricerca()"><img src="../images/search-icon.png"></button>
-		</a>
+		</a>  
 		<div class="col">
 			<a href="#catAPRI" data-toggle="collapse">
 				Categoria
