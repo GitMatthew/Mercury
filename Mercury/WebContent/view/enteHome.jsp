@@ -13,10 +13,7 @@
     
     <button onclick="window.location.href='enteHome.jsp'">CREA NUOVO EVENTO</button>   
     <button onclick="window.location.href='gestisciEventi.jsp'">GESTISCI EVENTO</button>   
-    <button onclick="window.location.href='accountEnte.jsp'">GESTISCI ACCOUNT</button>
-    
-    
-   
+    <button onclick="window.location.href='accountEnte.jsp'">GESTISCI ACCOUNT</button>  
 
 </body>
 </html>
