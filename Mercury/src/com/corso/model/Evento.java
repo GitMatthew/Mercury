@@ -8,6 +8,8 @@ public class Evento
 	private int id_evento;
 	private String nome_evento = null;
 	private String descrizione = null;
+	private String nome_categoria = null;
+	private String nome_comune = null;
 	private Date data_inizio;
 	private Date data_fine;
 	private int id_status;
@@ -129,6 +131,26 @@ public class Evento
 	
 	public void setUrl_sito_evento(String url_sito_evento)
 	{
+	}
+	
+	public String getNome_categoria()
+	{
+		return nome_categoria;
+	}
+	
+	public void setNome_categoria(String nome_categoria)
+	{
+		this.nome_categoria = nome_categoria;
+	}
+
+	public String getNome_comune()
+	{
+		return nome_comune;
+	}
+
+	public void setNome_comune(String nome_comune)
+	{
+		this.nome_comune = nome_comune;
 	}
 	
 }
