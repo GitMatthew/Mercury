@@ -32,8 +32,8 @@
       <a class="navbar-brand" href="../ControllerHome?param=0">Mercury</a>
     </div>
     <ul style="align:center" class="nav navbar-nav">
-      <li class="active"><a href="adminHome.jsp">Eventi in Attesa</a></li>
-      <li><a href="adminGestisciEventi.jsp">Gestisci Eventi</a></li>
+      <li class="active"><a href="../ControllerAdmin?param=0">Eventi in Attesa</a></li>
+      <li><a href="../ControllerAdmin?param=1">Gestisci Eventi</a></li>
       <li><a href="entiInAttesa.jsp">Enti in Attesa</a></li>
       <li><a href="gestisciEnti.jsp">Gestisci Enti</a></li>
       <li><a href="adminGestisciCategorie.jsp">Gestisci Categorie</a></li>
@@ -42,7 +42,7 @@
 </nav>
   
 <div style="height:40%; width:80%"class="container">
-<% if (session.getAttribute("attesa")!=null)
+<% if (session.getAttribute("gestione_eventi")!=null)
 {
 %>
 
@@ -57,12 +57,12 @@
 		<th>Gestisci</th>
 	</tr>
 	
-	<c:forEach var="j" items="${sessionScope.attesa}">
+	<c:forEach var="j" items="${sessionScope.gestione_eventi}">
 		<tr>
 			<td><c:out value="${j.nome_evento} - "></c:out></td>
 			<td><c:out value="${j.descrizione}"></c:out></td>
 			<td><c:out value="${j.data_inizio}"></c:out><c:out value="${j.data_fine}"></c:out></td>
-			<td style="width:140px" align="center"><button style="width:65px" onclick="location.href='loginAdmin.jsp'">Approva</button><button style="width:65px">Rifiuta</button></td>
+			<td style="width:140px" align="center"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=2&id_evento=${j.id_evento}&id_status=${j.id_status}'">Approva</button><button style="width:65px" onclick="location.href='../ControllerAdmin?param=2&id_evento=${j.id_evento}&id_status=${j.id_status}'">Rifiuta</button></td>
 			
 		
 		</tr>

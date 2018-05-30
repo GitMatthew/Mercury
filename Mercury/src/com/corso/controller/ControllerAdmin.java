@@ -34,8 +34,6 @@ public class ControllerAdmin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
 		String prm=request.getParameter("param");
 		
 		response.setContentType("text/html");
@@ -44,16 +42,33 @@ public class ControllerAdmin extends HttpServlet {
 		
 		if(prm.equals("0"))
 		{
-		//ciao filli	
 			ArrayList<Evento> a=im.getEventiAttesa();
 			
-			RequestDispatcher disp=request.getRequestDispatcher("view/adminHome.jsp");
-			
-			request.setAttribute("attesa", a);
-			
-			disp.forward(request, response);	
+			HttpSession session = request.getSession();
+			session.setAttribute("attesa", a);
+			response.sendRedirect("view/adminHome.jsp");	
 			
 		}
+		if(prm.equals("1"))
+		{
+			ArrayList<Evento> a=im.getAllEvents();
+			HttpSession session = request.getSession();
+			session.setAttribute("gestione_eventi", a);
+			response.sendRedirect("view/adminGestisciEventi.jsp");
+		}	
+		
+		
+		
+		
+		if(prm.equals("mod_stat"))
+		{
+			
+			ArrayList<Evento> a=im.getEventiAttesa();
+			HttpSession session = request.getSession();
+			session.setAttribute("attesa", a);
+			response.sendRedirect("view/adminHome.jsp");	
+			
+		}	
 		
 		
 	}

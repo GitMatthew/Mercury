@@ -32,7 +32,7 @@
       <a class="navbar-brand" href="../ControllerHome?param=0">Mercury</a>
     </div>
     <ul style="align:center" class="nav navbar-nav">
-      <li class="active"><a href="adminHome.jsp">Eventi in Attesa</a></li>
+      <li class="active"><a href="../ControlerAdmin?param=0">Eventi in Attesa</a></li>
       <li><a href="adminGestisciEventi.jsp">Gestisci Eventi</a></li>
       <li><a href="entiInAttesa.jsp">Enti in Attesa</a></li>
       <li><a href="gestisciEnti.jsp">Gestisci Enti</a></li>

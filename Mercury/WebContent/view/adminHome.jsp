@@ -32,7 +32,7 @@
     </div>
     <ul style="align:center" class="nav navbar-nav">
       <li class="active"><a href="adminHome.jsp">Eventi in Attesa</a></li>
-      <li><a href="adminGestisciEventi.jsp">Gestisci Eventi</a></li>
+      <li><a href="../ControllerAdmin?param=1">Gestisci Eventi</a></li>
       <li><a href="entiInAttesa.jsp">Enti in Attesa</a></li>
       <li><a href="gestisciEnti.jsp">Gestisci Enti</a></li>
       <li><a href="adminGestisciCategorie.jsp">Gestisci Categorie</a></li>
@@ -61,7 +61,7 @@
 			<td><c:out value="${j.nome_evento} - "></c:out></td>
 			<td><c:out value="${j.descrizione}"></c:out></td>
 			<td><c:out value="${j.data_inizio}"></c:out><c:out value="${j.data_fine}"></c:out></td>
-			<td style="width:140px" align="center"><button style="width:65px" onclick="location.href='loginAdmin.jsp'">Approva</button><button style="width:65px">Rifiuta</button></td>
+			<td style="width:140px" align="center"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=2'">Approva</button><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=3'">Rifiuta</button></td>
 			
 			
 		</tr>
