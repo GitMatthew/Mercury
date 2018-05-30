@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.corso.model.AdminImpl;
+import com.corso.model.Categoria;
 import com.corso.model.Ente;
 import com.corso.model.Evento;
 
@@ -72,6 +73,13 @@ public class ControllerAdmin extends HttpServlet {
 			response.sendRedirect("view/gestisciEnti.jsp");
 		}	
 		
+		if(prm.equals("4"))
+		{
+			ArrayList<Categoria> a=im.getAllCat();
+			HttpSession session = request.getSession();
+			session.setAttribute("tutte_le_cat", a);
+			response.sendRedirect("view/adminGestisciCategorie.jsp");
+		}	
 		
 		if(prm.equals("mod_stat"))
 		{
@@ -83,7 +91,7 @@ public class ControllerAdmin extends HttpServlet {
 			session.setAttribute("attesa", a);
 			response.sendRedirect("view/adminHome.jsp");	
 			
-		}	
+		}	 
 		
 		
 	}
