@@ -8,7 +8,11 @@
 </head>
 <body>
 <h1>Esegui il login</h1>
-<form action="../ControllerEnte" method=post>
+
+<%= request.getAttribute("messaggio") %>
+<h1 value="messaggio"></h1>
+
+<form action="/Mercury_Mercury/ControllerEnte" method=post>
 
 Username <br/><input type="text"  name="user"/><br/>
 Password <br/><input type="text"  name="psw"/><br/>
