@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.corso.model.AdminImpl;
+import com.corso.model.Categoria;
+import com.corso.model.Ente;
 import com.corso.model.Evento;
 
 
@@ -56,28 +58,45 @@ public class ControllerAdmin extends HttpServlet {
 			session.setAttribute("gestione_eventi", a);
 			response.sendRedirect("view/adminGestisciEventi.jsp");
 		}	
+		if(prm.equals("2"))
+		{
+			ArrayList<Ente> a=im.getEntiAttesa();
+			HttpSession session = request.getSession();
+			session.setAttribute("enti_attesa", a);
+			response.sendRedirect("view/entiInAttesa.jsp");
+		}	
+		if(prm.equals("3"))
+		{
+			ArrayList<Ente> a=im.getAllEnts();
+			HttpSession session = request.getSession();
+			session.setAttribute("tutti_enti", a);
+			response.sendRedirect("view/gestisciEnti.jsp");
+		}	
 		
-		
-		
+		if(prm.equals("4"))
+		{
+			ArrayList<Categoria> a=im.getAllCat();
+			HttpSession session = request.getSession();
+			session.setAttribute("tutte_le_cat", a);
+			response.sendRedirect("view/adminGestisciCategorie.jsp");
+		}	
 		
 		if(prm.equals("mod_stat"))
 		{
 			HttpSession session = request.getSession();
-			int x=Integer.valueOf(request.getParameter("id_evento"));
-			int y=Integer.valueOf(request.getParameter("id_status"));
+			int x=Integer.parseInt(request.getParameter("id_evento"));
+			int y=Integer.parseInt(request.getParameter("id_status"));
 			im.modEvento(x,y);
 			ArrayList<Evento> a=im.getEventiAttesa();
 			session.setAttribute("attesa", a);
 			response.sendRedirect("view/adminHome.jsp");	
 			
-		}	
+		}	 
 		
 		
 	}
 
-//
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
 		

@@ -154,10 +154,9 @@ public class AdminImpl implements AdminUtility {
 	public void modEvento(int id_ev, int id_status) {
 
 		Connection c = Dao.getConnection();
-		ResultSet rs;
 		try {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_EVENT_STATUS);
-			pst.setInt(2, id_ev);
+			
 			if (id_status == 2) {
 				pst.setInt(1, 2);
 			} else {
@@ -165,7 +164,8 @@ public class AdminImpl implements AdminUtility {
 					pst.setInt(1, 3);
 				}
 			}
-			rs = pst.executeQuery();
+			pst.setInt(2, id_ev);		
+			pst.executeUpdate();
 
 		} catch (SQLException u) {
 			u.printStackTrace();
@@ -187,12 +187,13 @@ public class AdminImpl implements AdminUtility {
 
 				e.setId_evento(rst.getInt("id_evento"));
 				e.setId_status(rst.getInt("id_status"));
+				e.setNome_status(rst.getString("nome_status"));
 				e.setNome_evento(rst.getString("nome_evento"));
 				e.setDescrizione(rst.getString("descrizione"));
 				e.setData_inizio(rst.getDate("data_inizio"));
 				e.setData_fine(rst.getDate("data_fine"));
+				
 				evList.add(e);
-
 			}
 		} catch (SQLException a) {
 			a.printStackTrace();
@@ -224,8 +225,10 @@ public class AdminImpl implements AdminUtility {
 
 				e.setId_ente(rst.getInt("id_ente"));
 				e.setId_status(rst.getInt("id_status"));
+				e.setNome_status(rst.getString("nome_status"));
 				e.setNome_ente(rst.getString("nome_ente"));
 				e.setDescrizione_ente(rst.getString("descrizione_ente"));
+				
 				enList.add(e);
 
 			}
@@ -240,6 +243,37 @@ public class AdminImpl implements AdminUtility {
 		}
 
 		return enList;
+	}
+
+	@Override
+	public ArrayList<Categoria> getAllCat() {
+		ArrayList<Categoria> catList = new ArrayList<Categoria>();
+		Categoria e = null;
+
+		Connection conn = Dao.getConnection();
+
+		try {
+			Statement st = conn.createStatement();
+			ResultSet rst = st.executeQuery(AdminUtility.GET_ALL_CAT);
+
+			while (rst.next()) {
+				e = new Categoria();
+
+				e.setNome_categoria(rst.getString("nome_categoria"));
+				catList.add(e);
+
+			}
+		} catch (SQLException a) {
+			a.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException o) {
+				o.printStackTrace();
+			}
+		}
+
+		return catList;
 	}
 
 }

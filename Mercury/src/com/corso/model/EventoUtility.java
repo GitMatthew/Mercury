@@ -1,7 +1,7 @@
 package com.corso.model;
 
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 
 public interface EventoUtility
 {
