@@ -258,7 +258,7 @@ a.linkAPRIricerca:hover {
 						<th>categoria</th>
 						<th>descrizione</th>
 						<th>comune</th>
-						<th>dataInizio</th>
+						<th>dataInizio</th> 
 						<th>dataFine</th>
 					</tr>
 				</thead>
