@@ -29,6 +29,9 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <a
 		class="navbar-brand" href="#">Navbar</a>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active"><a class="nav-link" href="#">Home
 			</a></li>
@@ -47,133 +50,295 @@
 		<p>cerca tutti gli eventi italiani scegliendo la categoria che
 			preferisci, i luoghi che ami, o i giorni che ti stanno più comodi</p>
 	</div>
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 	<%
 		Connection conn = null;
 		conn = Dao.getConnection();
 		Statement x = null;
 		ResultSet rs = null;
-	%> <a class="navbar-brand" href="#">Logo</a>
-	<div class="btn-group">
-		<button type="button" class="btn btn-categorie dropdown-toggle "
-			data-toggle="dropdown">Categorie</button>
-		<div class="dropdown-menu">
-			<a class="dropdown-item" href="#">Link 1</a> <a class="dropdown-item"
-				href="#">Link 2</a>
-		</div>
-	</div>
-	<div class="btn-group">
-		<button type="button"
-			class="btn btn-regioni dropdown-toggle dropdown-toggle-split"
-			data-toggle="dropdown">Regioni</button>
-		<div class="dropdown-menu">
-			<%
-				try {
-					x = conn.createStatement();
-					rs = x.executeQuery("select nome_categoria from categorie");
-					
-					out.print("<select>");
-					while (rs.next()) {
-						out.print("<option>");
-						out.print(rs.getString("nome_categoria"));
-						out.print("</option>");
+	%>
+	<script>
+		function ricerca() {
+			var ric = "../ControllerHomepage?";
+			var x = "categoria="+ document.getElementById("catSELEZIONATO").value;
+			ric = ric + x;
+			x = "&regione=" + document.getElementById("regSELEZIONATO").value;
+			ric = ric + x;
+			x = "&provincia=" + document.getElementById("proSELEZIONATO").value;
+			ric = ric + x;
+			x = "&comune=" + document.getElementById("comSELEZIONATO").value;
+			ric = ric + x;
+			x = "&dataInizio=" + document.getElementById("iniSELEZIONATO").value;
+			ric = ric + x;
+			x = "&dataFine=" + document.getElementById("finSELEZIONATO").value;  
+			ric = ric + x;
+			document.getElementById("linkGETricerca").href = ric;
+		}
+	</script>
+
+	<div class="row sfondoRicerca row-dark bg-dark sticky-top">
+		<a id="linkGETricerca" href=" data-toggle="collapse">
+			<button onclick="ricerca()"><img src="../images/search-icon.png"></button>
+		</a>
+		<div class="col">
+			<a href="#catAPRI" data-toggle="collapse">
+				Categoria
+			</a>
+			<div id="catAPRI" class="collapse">
+				<%
+					try {
+						x = conn.createStatement();
+						rs = x.executeQuery("select nome_categoria from categorie order by nome_categoria ASC");
+
+						out.print("<select id= 'catSELEZIONATO'>");
+						out.print("<option value='null'> null </option> ");
+						while (rs.next()) {
+							out.print("<option value='" + rs.getString("nome_categoria") + "'>");
+							out.print(rs.getString("nome_categoria"));
+							out.print("</option>");
+						}
+						out.print("</select>");
+					} catch (Exception e) {
+						out.println("wrong entry" + e);
 					}
-					out.print("</select>");
-				}
-				catch (Exception e) {
-					out.println("wrong entry" + e);
-				}
-			%>
+				%>
+			</div>
 		</div>
+		
+		<div class="col">
+			<a href="#catAPRI" data-toggle="collapse">
+				Categoria
+			</a>
+			<div id="catAPRI" class="collapse">
+				<%
+					try {
+						x = conn.createStatement();
+						rs = x.executeQuery("select nome_categoria from categorie order by nome_categoria ASC");
+
+						out.print("<select id= 'catSELEZIONATO'>");
+						out.print("<option value='null'> null </option> ");
+						while (rs.next()) {
+							out.print("<option value='" + rs.getString("nome_categoria") + "'>");
+							out.print(rs.getString("nome_categoria"));
+							out.print("</option>");
+						}
+						out.print("</select>");
+					} catch (Exception e) {
+						out.println("wrong entry" + e);
+					}
+				%>
+			</div>
+		</div>
+		
+		<div class="col">
+			<a href="#catAPRI" data-toggle="collapse">
+				Categoria
+			</a>
+			<div id="catAPRI" class="collapse">
+				<%
+					try {
+						x = conn.createStatement();
+						rs = x.executeQuery("select nome_categoria from categorie order by nome_categoria ASC");
+
+						out.print("<select id= 'catSELEZIONATO'>");
+						out.print("<option value='null'> null </option> ");
+						while (rs.next()) {
+							out.print("<option value='" + rs.getString("nome_categoria") + "'>");
+							out.print(rs.getString("nome_categoria"));
+							out.print("</option>");
+						}
+						out.print("</select>");
+					} catch (Exception e) {
+						out.println("wrong entry" + e);
+					}
+				%>
+			</div>
+		</div>
+		
+		<div class="col">
+			<a href="#catAPRI" data-toggle="collapse">
+				Categoria
+			</a>
+			<div id="catAPRI" class="collapse">
+				<%
+					try {
+						x = conn.createStatement();
+						rs = x.executeQuery("select nome_categoria from categorie order by nome_categoria ASC");
+
+						out.print("<select id= 'catSELEZIONATO'>");
+						out.print("<option value='null'> null </option> ");
+						while (rs.next()) {
+							out.print("<option value='" + rs.getString("nome_categoria") + "'>");
+							out.print(rs.getString("nome_categoria"));
+							out.print("</option>");
+						}
+						out.print("</select>");
+					} catch (Exception e) {
+						out.println("wrong entry" + e);
+					}
+				%>
+			</div>
+		</div>
+		
+		
+		<div class="col">
+			<a href="#reg" data-toggle="collapse">
+				<button>Regione</button>
+			</a>
+			<div id="reg" class="collapse">
+				<%
+					try {
+						x = conn.createStatement();
+						rs = x.executeQuery("select nome_regione from regioni order by nome_regione ASC");
+
+						out.print("<select>");
+						while (rs.next()) {
+							out.print("<option>");
+							out.print(rs.getString("nome_regione"));
+							out.print("</option>");
+						}
+						out.print("</select>");
+					} catch (Exception e) {
+						out.println("wrong entry" + e);
+					}
+				%>
+			</div>
+		</div>
+		<div class="col">
+			<a href="#prov" data-toggle="collapse">
+				<button>Provincia</button>
+			</a>
+			<div id="prov" class="collapse">
+				<%
+					try {
+						x = conn.createStatement();
+						rs = x.executeQuery("select nome_provincia from province order by nome_provincia ASC");
+
+						out.print("<select>");
+						while (rs.next()) {
+							out.print("<option>");
+							out.print(rs.getString("nome_provincia"));
+							out.print("</option>");
+						}
+						out.print("</select>");
+					} catch (Exception e) {
+						out.println("wrong entry" + e);
+					}
+				%>
+			</div>
+		</div>
+		<div class="col">
+			<a href="#com" data-toggle="collapse">
+				<button>Comune</button>
+			</a>
+			<div id="com" class="collapse">
+				<%
+					try {
+						x = conn.createStatement();
+						rs = x.executeQuery("select nome_comune from comuni order by nome_comune ASC");
+
+						out.print("<select>");
+						while (rs.next()) {
+							out.print("<option>");
+							out.print(rs.getString("nome_comune"));
+							out.print("</option>");
+						}
+						out.print("</select>");
+					} catch (Exception e) {
+						out.println("wrong entry" + e);
+					}
+				%>
+			</div>
+		</div>
+		<div class="col">
+			<input type="date" id="inizio" class="form-control"
+				onchange="myFunction()">
+		</div>
+		<div class="col">
+			<input type="date" id="fine" onchange="dataEccessiva()"
+				class="form-control">
+		</div>
+		<script>
+			function dataEccessiva() {
+				var ini = document.getElementById("inizio").value;
+				var fin = document.getElementById("fine").value;
+
+				if (fin < ini) {
+					document.getElementById("fine").style.backgroundColor = "red";
+				} else {
+					document.getElementById("fine").style.backgroundColor = "white";
+				}
+			}
+		</script>
 	</div>
-	</nav>
-	<div class="container-fluid" style="margin-top: 80px">
-		<div class="card">
-			<div class="card-body">
-				<h4 class="card-title">Card title</h4>
-				<p class="card-text">Some example text. Some example text.</p>
-				<a href="#" class="card-link">Card link</a> <a href="#"
-					class="card-link">Another link</a>
+	<div class="container" style="margin-top: 30px">
+		<div class="row">
+			<div class="col-sm-8">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Card title</h4>
+						<p class="card-text">Some example text. Some example text.</p>
+						<a href="#" class="card-link">Card link</a> <a href="#"
+							class="card-link">Another link</a>
+					</div>
+				</div>
+				<br>
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Card title</h4>
+						<p class="card-text">Some example text. Some example text.</p>
+						<a href="#" class="card-link">Card link</a> <a href="#"
+							class="card-link">Another link</a>
+					</div>
+				</div>
+				<br>
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Card title</h4>
+						<p class="card-text">Some example text. Some example text.</p>
+						<a href="#" class="card-link">Card link</a> <a href="#"
+							class="card-link">Another link</a>
+					</div>
+				</div>
+				<br>
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Card title</h4>
+						<p class="card-text">Some example text. Some example text.</p>
+						<a href="#" class="card-link">Card link</a> <a href="#"
+							class="card-link">Another link</a>
+					</div>
+				</div>
+				<br>
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Card title</h4>
+						<p class="card-text">Some example text. Some example text.</p>
+						<a href="#" class="card-link">Card link</a> <a href="#"
+							class="card-link">Another link</a>
+					</div>
+				</div>
+				<hr class="d-sm-none">
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<h4 class="card-title">Card title</h4>
-				<p class="card-text">Some example text. Some example text.</p>
-				<a href="#" class="card-link">Card link</a> <a href="#"
-					class="card-link">Another link</a>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<h4 class="card-title">Card title</h4>
-				<p class="card-text">Some example text. Some example text.</p>
-				<a href="#" class="card-link">Card link</a> <a href="#"
-					class="card-link">Another link</a>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<h4 class="card-title">Card title</h4>
-				<p class="card-text">Some example text. Some example text.</p>
-				<a href="#" class="card-link">Card link</a> <a href="#"
-					class="card-link">Another liink</a>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<h4 class="card-title">Card title</h4>
-				<p class="card-text">Some example text. Some example text.</p>
-				<a href="#" class="card-link">Card link</a> <a href="#"
-					class="card-link">Another link</a>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<h4 class="card-title">Card title</h4>
-				<p class="card-text">Some example text. Some example text.</p>
-				<a href="#" class="card-link">Card link</a> <a href="#"
-					class="card-link">Another link</a>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<h4 class="card-title">Card title</h4>
-				<p class="card-text">Some example text. Some example text.</p>
-				<a href="#" class="card-link">Card link</a> <a href="#"
-					class="card-link">Another link</a>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<h4 class="card-title">Card title</h4>
-				<p class="card-text">Some example text. Some example text.</p>
-				<a href="#" class="card-link">Card link</a> <a href="#"
-					class="card-link">Another link</a>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<h4 class="card-title">Card title</h4>
-				<p class="card-text">Some example text. Some example text.</p>
-				<a href="#" class="card-link">Card link</a> <a href="#"
-					class="card-link">Another link</a>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<h4 class="card-title">Card title</h4>
-				<p class="card-text">Some example text. Some example text.</p>
-				<a href="#" class="card-link">Card link</a> <a href="#"
-					class="card-link">Another link</a>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body">
-				<h4 class="card-title">Card title</h4>
-				<p class="card-text">Some example text. Some example text.</p>
-				<a href="#" class="card-link">Card link</a> <a href="#"
-					class="card-link">Another link</a>
+			<div class="col-sm-4">
+				<div class="fakeimg">
+					<br>
+					<center>
+						<h5>Iscriviti alla NewsLetter</h5>
+					</center>
+				</div>
+				<br>
+				<div class="fakeimg">
+					<center>
+						<h3>Publicita</h3>
+					</center>
+				</div>
+				<br>
+				<div class="fakeimg">
+					<center>
+						<h3>Publicita</h3>
+					</center>
+				</div>
+				<br>
 			</div>
 		</div>
 	</div>

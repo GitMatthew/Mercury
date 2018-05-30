@@ -55,6 +55,7 @@ public class AdminImpl implements AdminUtility {
 			while (rst.next()) {
 				e = new Evento();
 
+				e.setId_evento(rst.getInt("id_evento"));
 				e.setNome_evento(rst.getString("nome_evento"));
 				e.setDescrizione(rst.getString("descrizione"));
 				e.setData_inizio(rst.getDate("data_inizio"));
@@ -149,17 +150,33 @@ public class AdminImpl implements AdminUtility {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public void modEvento(int id_ev, int id_status) {
+=======
+	public void modEvento(int id_ev,int id_status) {
+>>>>>>> branch 'master' of https://github.com/GitMatthew/Mercury.git
 		Connection c = Dao.getConnection();
 		ResultSet rs;
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/GitMatthew/Mercury.git
 		try {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_EVENT_STATUS);
 			pst.setInt(2, id_ev);
+<<<<<<< HEAD
 			if (id_status == 2) {
+=======
+			if (id_status==2) {
+>>>>>>> branch 'master' of https://github.com/GitMatthew/Mercury.git
 				pst.setInt(1, 2);
 			} else {
+<<<<<<< HEAD
 				if (id_status == 3) {
+=======
+				if (id_status==3) {
+
+>>>>>>> branch 'master' of https://github.com/GitMatthew/Mercury.git
 					pst.setInt(1, 3);
 				}
 			}

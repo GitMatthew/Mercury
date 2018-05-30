@@ -62,11 +62,14 @@ public class ControllerAdmin extends HttpServlet {
 		
 		if(prm.equals("mod_stat"))
 		{
+<<<<<<< HEAD
+=======
+			HttpSession session = request.getSession();
+>>>>>>> branch 'master' of https://github.com/GitMatthew/Mercury.git
 			int x=Integer.valueOf(request.getParameter("id_evento"));
 			int y=Integer.valueOf(request.getParameter("id_status"));
 			im.modEvento(x,y);
 			ArrayList<Evento> a=im.getEventiAttesa();
-			HttpSession session = request.getSession();
 			session.setAttribute("attesa", a);
 			response.sendRedirect("view/adminHome.jsp");	
 			
