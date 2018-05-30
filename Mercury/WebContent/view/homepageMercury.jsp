@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
 <title>Bootstrap 4 Website Example</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +28,6 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <a
 		class="navbar-brand" href="#">Navbar</a>
-
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active"><a class="nav-link" href="#">Home
@@ -49,9 +47,7 @@
 		<p>cerca tutti gli eventi italiani scegliendo la categoria che
 			preferisci, i luoghi che ami, o i giorni che ti stanno più comodi</p>
 	</div>
-
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-
 	<%
 		Connection conn = null;
 		conn = Dao.getConnection();
@@ -61,45 +57,37 @@
 	<div class="btn-group">
 		<button type="button" class="btn btn-categorie dropdown-toggle "
 			data-toggle="dropdown">Categorie</button>
-
 		<div class="dropdown-menu">
 			<a class="dropdown-item" href="#">Link 1</a> <a class="dropdown-item"
 				href="#">Link 2</a>
 		</div>
 	</div>
-
 	<div class="btn-group">
-
 		<button type="button"
 			class="btn btn-regioni dropdown-toggle dropdown-toggle-split"
 			data-toggle="dropdown">Regioni</button>
 		<div class="dropdown-menu">
 			<%
-				try
-				{
+				try {
 					x = conn.createStatement();
 					rs = x.executeQuery("select nome_categoria from categorie");
-
+					
 					out.print("<select>");
-					while (rs.next())
-					{
+					while (rs.next()) {
 						out.print("<option>");
 						out.print(rs.getString("nome_categoria"));
 						out.print("</option>");
 					}
 					out.print("</select>");
-				} catch (Exception e)
-				{
+				}
+				catch (Exception e) {
 					out.println("wrong entry" + e);
 				}
 			%>
 		</div>
 	</div>
-
 	</nav>
-
 	<div class="container-fluid" style="margin-top: 80px">
-
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">Card title</h4>
@@ -108,7 +96,6 @@
 					class="card-link">Another link</a>
 			</div>
 		</div>
-
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">Card title</h4>
@@ -117,7 +104,6 @@
 					class="card-link">Another link</a>
 			</div>
 		</div>
-
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">Card title</h4>
@@ -126,8 +112,6 @@
 					class="card-link">Another link</a>
 			</div>
 		</div>
-
-
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">Card title</h4>
@@ -136,8 +120,6 @@
 					class="card-link">Another liink</a>
 			</div>
 		</div>
-
-
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">Card title</h4>
@@ -146,7 +128,6 @@
 					class="card-link">Another link</a>
 			</div>
 		</div>
-
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">Card title</h4>
@@ -155,7 +136,6 @@
 					class="card-link">Another link</a>
 			</div>
 		</div>
-
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">Card title</h4>
@@ -164,7 +144,6 @@
 					class="card-link">Another link</a>
 			</div>
 		</div>
-
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">Card title</h4>
@@ -173,7 +152,6 @@
 					class="card-link">Another link</a>
 			</div>
 		</div>
-
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">Card title</h4>
@@ -182,7 +160,6 @@
 					class="card-link">Another link</a>
 			</div>
 		</div>
-
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">Card title</h4>
@@ -191,7 +168,6 @@
 					class="card-link">Another link</a>
 			</div>
 		</div>
-
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">Card title</h4>
@@ -201,13 +177,9 @@
 			</div>
 		</div>
 	</div>
-
-
 	<div class="jumbotron text-center" style="margin-bottom: 0">
 		<p>Footer</p>
 	</div>
 	</div>
 </body>
-
-
 </html>
