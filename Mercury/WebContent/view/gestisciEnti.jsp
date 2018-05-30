@@ -55,7 +55,7 @@
 	
 	<c:forEach var="j" items="${sessionScope.tutti_enti}">
 		<tr>
-			<td><c:out value="${j.nome_ente} - "></c:out></td>
+			<td><c:out value="${j.nome_ente}"></c:out></td>
 			<td><c:out value="${j.descrizione_ente}"></c:out></td>
 			<td style="width:205px" align="center"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=2'">Approva</button><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=3'">Rifiuta</button><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=4'">Blocca</button></td>
 			
