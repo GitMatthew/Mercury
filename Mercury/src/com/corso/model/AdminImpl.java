@@ -165,7 +165,7 @@ public class AdminImpl implements AdminUtility {
 				}
 			}
 			pst.setInt(2, id_ev);		
-			ResultSet rs = pst.executeQuery();
+			pst.executeUpdate();
 
 		} catch (SQLException u) {
 			u.printStackTrace();
