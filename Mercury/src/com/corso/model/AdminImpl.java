@@ -17,29 +17,29 @@ public class AdminImpl implements AdminUtility {
 		PreparedStatement pst;
 		ResultSet rs;
 		boolean result = false;
-		int x=0;
+		int x = 0;
 		try {
 			pst = c.prepareStatement(AdminUtility.CHECK_PSW);
 			pst.setString(1, user);
 			pst.setString(2, psw);
 			rs = pst.executeQuery();
 			rs.next();
-			x=rs.getInt("tot");
+			x = rs.getInt("tot");
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-		
-		if (x!=0) {
+
+		if (x != 0) {
 			return true;
-		}else {
-		return false;
+		} else {
+			return false;
 		}
 	}
 
 	@Override
 	public void sendNotifica() {
-		//in attesa dello sviluppo del sistema e-mail
+		// in attesa dello sviluppo del sistema e-mail
 	}
 
 	@Override
@@ -81,7 +81,7 @@ public class AdminImpl implements AdminUtility {
 		Ente e = null;
 
 		Connection conn = Dao.getConnection();
-		
+
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rst = st.executeQuery(AdminUtility.GET_ENTS_PENDING);
@@ -104,7 +104,7 @@ public class AdminImpl implements AdminUtility {
 				o.printStackTrace();
 			}
 		}
-		
+
 		return enList;
 	}
 
@@ -154,11 +154,14 @@ public class AdminImpl implements AdminUtility {
 
 		try {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_EVENT_STATUS);
-			pst.setInt(1, id_ev);
+			pst.setInt(2, id_ev);
 			if (id_status == 2) {
-				pst.setInt(2, 2);
+				pst.setInt(1, 2);
 			} else {
-				pst.setInt(2, 3);
+				if (id_status == 3) {
+
+					pst.setInt(1, 3);
+				}
 			}
 			ResultSet rs = pst.executeQuery();
 
