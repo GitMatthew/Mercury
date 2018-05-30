@@ -23,13 +23,10 @@
 
 
 
-
-	
-
 <center><nav style="display:inline-block" class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="../ControllerHome?param=0">Mercury</a>
+      <a class="navbar-brand" href="../ControllerHomepage?da=0">Mercury</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="adminHome.jsp">Eventi in Attesa</a></li>
@@ -46,7 +43,7 @@
 {
 %>
 
-  <h3>Lista Eventi</h3>
+ <h3 Style="text-align:center">Lista Eventi</h3>
   
   <table border="1" style="width:100%">
 
@@ -72,7 +69,7 @@
 }
 else
 { 
-	out.print("Nessun Evento in Attesa");
+	out.print("Errore interrogazione DataBase");
 }
 %>
 
