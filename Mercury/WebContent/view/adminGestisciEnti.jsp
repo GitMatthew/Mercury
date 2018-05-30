@@ -59,7 +59,10 @@
 			<td><c:out value="${j.nome_ente}"></c:out></td>
 			<td><c:out value="${j.descrizione_ente}"></c:out></td>
 			<td><c:out value="${j.nome_status}"></c:out></td>
-			<td style="width:205px" align="center"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_ente}&id_status=2'">Approva</button><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_ente}&id_status=3'">Rifiuta</button><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_ente}&id_status=4'">Blocca</button></td>
+			<td style="width:205px" align="center">
+			<c:if test="${j.id_status==3 || j.id_status==4 }"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_ente}&id_status=2'">Approva</button></c:if>
+			<c:if test="${j.id_status==2}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_ente}&id_status=3'">Rifiuta</button></c:if>
+			<c:if test="${j.id_status==2 || j.id_status==3}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_ente}&id_status=4'">Blocca</button></c:if></td>
 			
 		 
 		</tr>
