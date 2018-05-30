@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.corso.model.AdminImpl;
+import com.corso.model.Evento;
+
 
 
 @WebServlet("/ControllerAdmin")
@@ -32,17 +34,52 @@ public class ControllerAdmin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
 		String prm=request.getParameter("param");
 		
 		response.setContentType("text/html");
 		
 		AdminImpl im=new AdminImpl();
 		
+		if(prm.equals("0"))
+		{
+			ArrayList<Evento> a=im.getEventiAttesa();
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("attesa", a);
+			response.sendRedirect("view/adminHome.jsp");	
+			
+		}
+		if(prm.equals("1"))
+		{
+			ArrayList<Evento> a=im.getAllEvents();
+			HttpSession session = request.getSession();
+			session.setAttribute("gestione_eventi", a);
+			response.sendRedirect("view/adminGestisciEventi.jsp");
+		}	
+		
+		
+		
+		
+		if(prm.equals("mod_stat"))
+		{
+			HttpSession session = request.getSession();
+			int x=Integer.valueOf(request.getParameter("id_evento"));
+			int y=Integer.valueOf(request.getParameter("id_status"));
+			im.modEvento(x,y);
+			ArrayList<Evento> a=im.getEventiAttesa();
+			session.setAttribute("attesa", a);
+			response.sendRedirect("view/adminHome.jsp");	
+			
+		}	
+		
 		
 	}
 
+
+	private int getParameter(String string) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -59,6 +96,9 @@ public class ControllerAdmin extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
+			ArrayList<Evento> ev = new ArrayList<Evento>();
+			ev=log.getEventiAttesa();
+			session.setAttribute("attesa", ev);
 			response.sendRedirect("view/adminHome.jsp");
 		}
 		else
@@ -67,7 +107,7 @@ public class ControllerAdmin extends HttpServlet {
 			request.setAttribute("rst", "Username o Password Errati");
 			disp.forward(request, response);	
 			
-		}
+		} 
 	}
 
 }
