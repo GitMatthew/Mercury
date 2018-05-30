@@ -74,6 +74,9 @@ public class ControllerAdmin extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
+			ArrayList<Evento> ev = new ArrayList<Evento>();
+			ev=log.getEventiAttesa();
+			session.setAttribute("attesa", ev);
 			response.sendRedirect("view/adminHome.jsp");
 		}
 		else
