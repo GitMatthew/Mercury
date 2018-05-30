@@ -26,23 +26,23 @@
 
 	
 
-<nav class="navbar navbar-default">
+<center><nav style="display:inline-block" class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="../ControllerHome?param=0">Mercury</a>
     </div>
-    <ul style="align:center" class="nav navbar-nav">
-      <li class="active"><a href="../ControlerAdmin?param=0">Eventi in Attesa</a></li>
-      <li><a href="adminGestisciEventi.jsp">Gestisci Eventi</a></li>
-      <li><a href="entiInAttesa.jsp">Enti in Attesa</a></li>
-      <li><a href="gestisciEnti.jsp">Gestisci Enti</a></li>
-      <li><a href="adminGestisciCategorie.jsp">Gestisci Categorie</a></li>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="adminHome.jsp">Eventi in Attesa</a></li>
+      <li><a href="../ControllerAdmin?param=1">Gestisci Eventi</a></li>
+      <li><a href="../ControllerAdmin?param=2">Enti in Attesa</a></li>
+      <li><a href="../ControllerAdmin?param=3">Gestisci Enti</a></li>
+      <li><a href="../ControllerAdmin?param=4">Gestisci Categorie</a></li>
     </ul>
   </div>
-</nav>
+</nav></center>
   
 <div style="height:40%; width:80%"class="container">
-<% if (session.getAttribute("attesa")!=null)
+<% if (session.getAttribute("enti_attesa")!=null)
 {
 %>
 
@@ -57,7 +57,7 @@
 		<th>Gestisci</th>
 	</tr>
 	
-	<c:forEach var="j" items="${sessionScope.attesa}">
+	<c:forEach var="j" items="${sessionScope.enti_attesa}">
 		<tr>
 			<td><c:out value="${j.nome_evento} - "></c:out></td>
 			<td><c:out value="${j.descrizione}"></c:out></td>
