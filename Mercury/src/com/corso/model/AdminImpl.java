@@ -242,4 +242,35 @@ public class AdminImpl implements AdminUtility {
 		return enList;
 	}
 
+	@Override
+	public ArrayList<Categoria> getAllCat() {
+		ArrayList<Categoria> catList = new ArrayList<Categoria>();
+		Categoria e = null;
+
+		Connection conn = Dao.getConnection();
+
+		try {
+			Statement st = conn.createStatement();
+			ResultSet rst = st.executeQuery(AdminUtility.GET_ALL_ENTS);
+
+			while (rst.next()) {
+				e = new Categoria();
+
+				e.setNome_categoria(rst.getString("categoria"));
+				catList.add(e);
+
+			}
+		} catch (SQLException a) {
+			a.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException o) {
+				o.printStackTrace();
+			}
+		}
+
+		return catList;
+	}
+
 }
