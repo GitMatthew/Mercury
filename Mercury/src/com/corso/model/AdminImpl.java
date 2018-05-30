@@ -276,4 +276,25 @@ public class AdminImpl implements AdminUtility {
 		return catList;
 	}
 
+	@Override
+	public void modEnte(int id_ent, int id_status) {
+		Connection c = Dao.getConnection();
+		try {
+			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_ENTS_STATUS);
+			
+			if (id_status == 2) {
+				pst.setInt(1, 2);
+			} else {
+				if (id_status == 3) {
+					pst.setInt(1, 3);
+				}
+			}
+			pst.setInt(2, id_ent);		
+			pst.executeUpdate();
+
+		} catch (SQLException u) {
+			u.printStackTrace();
+		}
+	}
+
 }
