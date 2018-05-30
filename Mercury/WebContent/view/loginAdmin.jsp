@@ -26,7 +26,7 @@
 		<td align=center><input type="submit"></td>
 		<td align=center><input type="reset"></td>
 		</tr>
-</table>
+</table> 
 </form>	
 </div>
 
