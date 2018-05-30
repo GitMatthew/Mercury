@@ -151,7 +151,7 @@ public class AdminImpl implements AdminUtility {
 	@Override
 	public void modEvento(int id_ev, int id_status) {
 		Connection c = Dao.getConnection();
-
+		ResultSet rs;
 		try {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_EVENT_STATUS);
 			pst.setInt(2, id_ev);
@@ -163,7 +163,7 @@ public class AdminImpl implements AdminUtility {
 					pst.setInt(1, 3);
 				}
 			}
-			ResultSet rs = pst.executeQuery();
+			rs = pst.executeQuery();
 
 		} catch (SQLException u) {
 			u.printStackTrace();
