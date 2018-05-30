@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.corso.model.AdminImpl;
+import com.corso.model.Ente;
 import com.corso.model.Evento;
 
 
@@ -56,7 +57,13 @@ public class ControllerAdmin extends HttpServlet {
 			session.setAttribute("gestione_eventi", a);
 			response.sendRedirect("view/adminGestisciEventi.jsp");
 		}	
-		
+		if(prm.equals("2"))
+		{
+			ArrayList<Ente> a=im.getEntiAttesa();
+			HttpSession session = request.getSession();
+			session.setAttribute("enti_attesa", a);
+			response.sendRedirect("view/entiInAttesa.jsp");
+		}	
 		
 		
 		
@@ -75,9 +82,7 @@ public class ControllerAdmin extends HttpServlet {
 		
 	}
 
-//
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
 		

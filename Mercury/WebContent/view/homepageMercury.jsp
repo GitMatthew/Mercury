@@ -78,7 +78,7 @@
 	<div class="row sfondoRicerca row-dark bg-dark sticky-top">
 		<a id="linkGETricerca" href=" data-toggle="collapse">
 			<button onclick="ricerca()"><img src="../images/search-icon.png"></button>
-		</a>
+		</a>  
 		<div class="col">
 			<a href="#catAPRI" data-toggle="collapse">
 				Categoria
@@ -106,7 +106,7 @@
 		
 		<div class="col">
 			<a href="#catAPRI" data-toggle="collapse">
-				Categoria
+				Regione
 			</a>
 			<div id="catAPRI" class="collapse">
 				<%
@@ -131,7 +131,7 @@
 		
 		<div class="col">
 			<a href="#catAPRI" data-toggle="collapse">
-				Categoria
+				Provincia
 			</a>
 			<div id="catAPRI" class="collapse">
 				<%
@@ -156,7 +156,7 @@
 		
 		<div class="col">
 			<a href="#catAPRI" data-toggle="collapse">
-				Categoria
+				Comune
 			</a>
 			<div id="catAPRI" class="collapse">
 				<%
@@ -180,75 +180,8 @@
 		</div>
 		
 		
-		<div class="col">
-			<a href="#reg" data-toggle="collapse">
-				<button>Regione</button>
-			</a>
-			<div id="reg" class="collapse">
-				<%
-					try {
-						x = conn.createStatement();
-						rs = x.executeQuery("select nome_regione from regioni order by nome_regione ASC");
-
-						out.print("<select>");
-						while (rs.next()) {
-							out.print("<option>");
-							out.print(rs.getString("nome_regione"));
-							out.print("</option>");
-						}
-						out.print("</select>");
-					} catch (Exception e) {
-						out.println("wrong entry" + e);
-					}
-				%>
-			</div>
-		</div>
-		<div class="col">
-			<a href="#prov" data-toggle="collapse">
-				<button>Provincia</button>
-			</a>
-			<div id="prov" class="collapse">
-				<%
-					try {
-						x = conn.createStatement();
-						rs = x.executeQuery("select nome_provincia from province order by nome_provincia ASC");
-
-						out.print("<select>");
-						while (rs.next()) {
-							out.print("<option>");
-							out.print(rs.getString("nome_provincia"));
-							out.print("</option>");
-						}
-						out.print("</select>");
-					} catch (Exception e) {
-						out.println("wrong entry" + e);
-					}
-				%>
-			</div>
-		</div>
-		<div class="col">
-			<a href="#com" data-toggle="collapse">
-				<button>Comune</button>
-			</a>
-			<div id="com" class="collapse">
-				<%
-					try {
-						x = conn.createStatement();
-						rs = x.executeQuery("select nome_comune from comuni order by nome_comune ASC");
-
-						out.print("<select>");
-						while (rs.next()) {
-							out.print("<option>");
-							out.print(rs.getString("nome_comune"));
-							out.print("</option>");
-						}
-						out.print("</select>");
-					} catch (Exception e) {
-						out.println("wrong entry" + e);
-					}
-				%>
-			</div>
-		</div>
+		
+		
 		<div class="col">
 			<input type="date" id="inizio" class="form-control"
 				onchange="myFunction()">
@@ -270,6 +203,10 @@
 			}
 		</script>
 	</div>
+	
+	
+	
+	
 	<div class="container" style="margin-top: 30px">
 		<div class="row">
 			<div class="col-sm-8">
