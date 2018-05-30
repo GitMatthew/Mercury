@@ -69,7 +69,7 @@
 			ric = ric + x;
 			x = "&dataInizio=" + document.getElementById("iniSELEZIONATO").value;
 			ric = ric + x;
-			x = "&dataFine=" + document.getElementById("finSELEZIONATO").value;
+			x = "&dataFine=" + document.getElementById("finSELEZIONATO").value;  
 			ric = ric + x;
 			document.getElementById("linkGETricerca").href = ric;
 		}
