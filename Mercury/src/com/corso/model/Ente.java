@@ -12,7 +12,6 @@ public class Ente {
 	private String url_img_ente = "" ;
 	private String descrizione_ente = "" ;
 	private String url_sito_ente = "" ;
-	private String nome_status = "";
 	
 	public Ente () {}
 
@@ -94,14 +93,6 @@ public class Ente {
 
 	public void setUrl_sito_ente(String url_sito_ente) {
 		this.url_sito_ente = url_sito_ente;
-	}
-
-	public String getNome_status() {
-		return nome_status;
-	}
-
-	public void setNome_status(String nome_status) {
-		this.nome_status = nome_status;
 	}
 	
 	
