@@ -76,11 +76,6 @@ public class ControllerAdmin extends HttpServlet {
 	}
 
 
-	private int getParameter(String string) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
