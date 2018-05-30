@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% if(session.getAttribute("user")==null)
 {
 	RequestDispatcher disp=request.getRequestDispatcher("loginAdmin.jsp");
@@ -41,8 +42,26 @@
 </nav>
   
 <div class="container">
-  <h3>Basic Navbar Example</h3>
-  <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
+  <h3>Lista Eventi</h3>
+  
+  <table border="1">
+
+	<tr>
+		<td>Evento</td>
+		<!--- <td>Cognome Attore</td> --->
+	</tr>
+	
+	<c:forEach var="j" items="${requestScope.attesa}">
+		<tr>
+			<td><a href="ControllerAdmin?param=0&nome_evento=${j.nome_evento}&descrizione=${j.descrizione}&data_inizio=${j.data_inizio}&data_fine=${j.data_fine}"><c:out value="${j.nome_evento} - "></c:out><c:out value="${j.descrizione}"></c:out><c:out value="${j.data_inizio}"></c:out><c:out value="${j.data_fine}"></c:out></a></td>
+			<!--  <td><c:out value="${j.last_name}"></c:out></td>  -->
+			
+		
+			
+		</tr>
+	</c:forEach>
+</table>
+
 </div>
 <%  
 %>
