@@ -42,7 +42,7 @@
 </nav></center>
   
 <div style="height:40%; width:80%"class="container">
-<% if (session.getAttribute("attesa")!=null)
+<% if (session.getAttribute("tutte_le_cat")!=null)
 {
 %>
 
@@ -54,7 +54,7 @@
 			<th>Gestisci</th>
 		</tr>
 	
-	<c:forEach var="j" items="${sessionScope.attesa}">
+	<c:forEach var="j" items="${sessionScope.tutte_le_cat}">
 		<tr>
 			<td><c:out value="${j.nome_categoria} - "></c:out></td>
 			<td style="width:140px" align="center"><button style="width:65px" onclick="location.href='loginAdmin.jsp'">Modifica</button></td>
