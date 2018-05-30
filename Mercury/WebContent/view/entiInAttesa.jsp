@@ -59,9 +59,9 @@
 	
 	<c:forEach var="j" items="${sessionScope.enti_attesa}">
 		<tr>
-			<td><c:out value="${j.nome_evento} - "></c:out></td>
-			<td><c:out value="${j.descrizione}"></c:out></td>
-			<td><c:out value="${j.data_inizio}"></c:out><c:out value="${j.data_fine}"></c:out></td>
+			<td><c:out value="${j.nome_ente} - "></c:out></td>
+			<td><c:out value="${j.descrizione_ente}"></c:out></td>
+			<td><c:out value="${j.email_ente}"></c:out><c:out value="${j.data_fine}"></c:out></td>
 			<td style="width:140px" align="center"><button style="width:65px" onclick="location.href='loginAdmin.jsp'">Approva</button><button style="width:65px">Rifiuta</button></td>
 			
 		
