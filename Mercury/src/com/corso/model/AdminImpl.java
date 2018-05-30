@@ -55,6 +55,7 @@ public class AdminImpl implements AdminUtility {
 			while (rst.next()) {
 				e = new Evento();
 
+				e.setId_evento(rst.getInt("id_evento"));
 				e.setNome_evento(rst.getString("nome_evento"));
 				e.setDescrizione(rst.getString("descrizione"));
 				e.setData_inizio(rst.getDate("data_inizio"));
