@@ -26,7 +26,7 @@
 <center><nav style="display:inline-block" class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="../ControllerHome?param=0">Mercury</a>
+      <a class="navbar-brand" href="../ControllerHomepage?da=0">Mercury</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="adminHome.jsp">Eventi in Attesa</a></li>
