@@ -70,7 +70,7 @@ public class ControllerAdmin extends HttpServlet {
 			ArrayList<Ente> a=im.getAllEnts();
 			HttpSession session = request.getSession();
 			session.setAttribute("tutti_enti", a);
-			response.sendRedirect("view/gestisciEnti.jsp");
+			response.sendRedirect("view/adminGestisciEnti.jsp");
 		}	
 		
 		if(prm.equals("4"))

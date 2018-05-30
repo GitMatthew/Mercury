@@ -32,16 +32,16 @@
       <a class="navbar-brand" href="../ControllerHomepage?da=0">Mercury</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="adminHome.jsp">Eventi in Attesa</a></li>
+      <li><a href="adminHome.jsp">Eventi in Attesa</a></li>
       <li><a href="../ControllerAdmin?param=1">Gestisci Eventi</a></li>
       <li><a href="../ControllerAdmin?param=2">Enti in Attesa</a></li>
       <li><a href="../ControllerAdmin?param=3">Gestisci Enti</a></li>
-      <li><a href="../ControllerAdmin?param=4">Gestisci Categorie</a></li>
+      <li class="active"><a href="../ControllerAdmin?param=4">Gestisci Categorie</a></li>
     </ul>
   </div>
 </nav></center>
   
-<div style="height:40%; width:80%"class="container">
+<div style="height:40%; overflow: auto; width:80%"class="container">
 <% if (session.getAttribute("tutte_le_cat")!=null)
 {
 %>
