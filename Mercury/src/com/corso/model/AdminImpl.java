@@ -84,7 +84,7 @@ public class AdminImpl implements AdminUtility {
 		
 		try {
 			Statement st = conn.createStatement();
-			ResultSet rst = st.executeQuery(AdminUtility.GET_EVENTS_PENDING);
+			ResultSet rst = st.executeQuery(AdminUtility.GET_ENTS_PENDING);
 
 			while (rst.next()) {
 				e = new Ente();

@@ -11,6 +11,7 @@ public interface AdminUtility {
 	public static String SET_NEW_CAT = "INSERT categorie(nome_categoria) values (?)";
 	public static String MODIFY_CAT = "UPDATE categorie SET nome_categoria=? WHERE id_categoria=?";
 	public static String GET_EVENTS_PENDING = "SELECT nome_evento,descrizione,data_inizio,data_fine FROM eventi WHERE id_status=1";
+	public static String GET_ENTS_PENDING = "SELECT nome_ente,descrizione_ente,email_ente FROM enti WHERE id_status=1";
 
 	public boolean login(String user, String psw);
 
