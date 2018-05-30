@@ -20,10 +20,11 @@
 
 <h1>GESTISCI ACCOUNT</h1>
 
-   <button onclick="window.location.href='/Mercury_Mercury/view/enteHome.jsp'">CREA NUOVO EVENTO</button>   
-    <button onclick="window.location.href='/Mercury_Mercury/view/gestisciEventi.jsp'">GESTISCI EVENTO</button>   
-    <button onclick="window.location.href='/Mercury_Mercury/view/accountEnte.jsp'">GESTISCI ACCOUNT</button> 
-
+    <form action="/Mercury_Mercury/ControllerEnte" method=get>
+    <a href=/Mercury_Mercury/ControllerEnte?pag=1>CREA NUOVO EVENTO</a>   
+    <a href=/Mercury_Mercury/ControllerEnte?pag=2>GESTISCI EVENTO</a>   
+    <a href=/Mercury_Mercury/ControllerEnte?pag=3>GESTISCI ACCOUNT</a>   
+    </form>
 
 </body>
 </html>

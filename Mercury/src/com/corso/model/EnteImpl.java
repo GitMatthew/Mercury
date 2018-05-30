@@ -43,6 +43,30 @@ public class EnteImpl implements EnteUtility {
 	
 	}
 	
+	public int idEnte (String user) {
+		
+		String qry = "SELECT * FROM enti WHERE user_ente='"+user+"'";
+		Connection conn=Dao.getConnection();
+		Statement st = null ;
+		ResultSet rs = null ;
+		int id = 0;
+		
+		try {	
+			
+		    st = conn.createStatement();					
+			rs = st.executeQuery(qry);			
+			rs.next();			
+			id = rs.getInt("id_ente");
+			
+		} catch (SQLException e) {
+			System.out.println("errore sql");		
+			e.printStackTrace();	
+		}	
+		
+		return id ;
+	
+	}
+	
 	
 
 }
