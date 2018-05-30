@@ -41,29 +41,43 @@
   </div>
 </nav>
   
-<div class="container">
+<div style="height:40%; width:80%"class="container">
+<% if (session.getAttribute("attesa")!=null)
+{
+%>
+
   <h3>Lista Eventi</h3>
   
-  <table border="1">
+  <table border="1" style="width:100%">
 
 	<tr>
-		<td>Evento</td>
-		<!--- <td>Cognome Attore</td> --->
+		<th>Evento</th>
+		<th>Descrizione</th>
+		<th>Data Inizio - Data Fine</th>
+		<th>Gestisci</th>
 	</tr>
 	
-	<c:forEach var="j" items="${requestScope.attesa}">
+	<c:forEach var="j" items="${sessionScope.attesa}">
 		<tr>
-			<td><a href="ControllerAdmin?param=0&nome_evento=${j.nome_evento}&descrizione=${j.descrizione}&data_inizio=${j.data_inizio}&data_fine=${j.data_fine}"><c:out value="${j.nome_evento} - "></c:out><c:out value="${j.descrizione}"></c:out><c:out value="${j.data_inizio}"></c:out><c:out value="${j.data_fine}"></c:out></a></td>
-			<!--  <td><c:out value="${j.last_name}"></c:out></td>  -->
+			<td><c:out value="${j.nome_evento} - "></c:out></td>
+			<td><c:out value="${j.descrizione}"></c:out></td>
+			<td><c:out value="${j.data_inizio}"></c:out><c:out value="${j.data_fine}"></c:out></td>
+			<td style="width:100%"><button>Approva</button><button>Rifiuta</button></td>
 			
-		
 			
 		</tr>
 	</c:forEach>
 </table>
+<% 
+}
+else
+{ 
+	out.print("Nessun Evento in Attesa");
+}
+%>
+
 
 </div>
-<%  
-%>
+
 </body>
 </html>
