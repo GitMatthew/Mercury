@@ -170,4 +170,74 @@ public class AdminImpl implements AdminUtility {
 		}
 	}
 
+	@Override
+	public ArrayList<Evento> getAllEvents() {
+		ArrayList<Evento> evList = new ArrayList<Evento>();
+		Evento e = null;
+
+		Connection conn = Dao.getConnection();
+		try {
+			Statement st = conn.createStatement();
+			ResultSet rst = st.executeQuery(AdminUtility.GET_ALL_EVENTS);
+
+			while (rst.next()) {
+				e = new Evento();
+				
+				e.setId_evento(rst.getInt("id_evento"));
+				e.setId_status(rst.getInt("id_status"));
+				e.setNome_evento(rst.getString("nome_evento"));
+				e.setDescrizione(rst.getString("descrizione"));
+				e.setData_inizio(rst.getDate("data_inizio"));
+				e.setData_fine(rst.getDate("data_fine"));
+				evList.add(e);
+
+			}
+		} catch (SQLException a) {
+			a.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException o) {
+				o.printStackTrace();
+			}
+		}
+
+		return evList;
+		
+		}
+
+	@Override
+	public ArrayList<Ente> getAllEnts() {
+		ArrayList<Ente> enList = new ArrayList<Ente>();
+		Ente e = null;
+
+		Connection conn = Dao.getConnection();
+
+		try {
+			Statement st = conn.createStatement();
+			ResultSet rst = st.executeQuery(AdminUtility.GET_ALL_ENTS);
+
+			while (rst.next()) {
+				e = new Ente();
+				
+				e.setId_ente(rst.getInt("id_ente"));
+				e.setId_status(rst.getInt("id_status"));
+				e.setNome_ente(rst.getString("nome_ente"));
+				e.setDescrizione_ente(rst.getString("descrizione_ente"));
+				enList.add(e);
+
+			}
+		} catch (SQLException a) {
+			a.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException o) {
+				o.printStackTrace();
+			}
+		}
+
+		return enList;
+	}
+
 }
