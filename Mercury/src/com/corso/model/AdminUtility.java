@@ -28,7 +28,7 @@ public interface AdminUtility {
 
 	public boolean modCat(String mcat, int id_categoria );
 
-	public void modEvento(int id_ev, int id_status);
+	public void modEvento(String id_ev,String id_status);
 	
 	public ArrayList<Evento> getAllEvents();
 	
