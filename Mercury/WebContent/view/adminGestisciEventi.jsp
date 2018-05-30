@@ -23,9 +23,6 @@
 
 
 
-
-	
-
 <center><nav style="display:inline-block" class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">

@@ -21,9 +21,6 @@
 </head>
 <body>
 
-
-
-
 	
 
 <center><nav style="display:inline-block" class="navbar navbar-default">
