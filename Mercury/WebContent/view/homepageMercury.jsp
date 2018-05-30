@@ -283,7 +283,7 @@ a.linkAPRIricerca:hover {
 						<td >2018-09-09</td>
 						<td >2018-09-09</td>
 					</tr>
-				</tbody>
+				</tbody> 
 			</table>
 
 		</div>
