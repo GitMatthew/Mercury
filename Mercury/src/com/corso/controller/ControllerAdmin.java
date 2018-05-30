@@ -102,7 +102,6 @@ public class ControllerAdmin extends HttpServlet {
 			ArrayList<Categoria> a=im.getAllCat();
 			session.setAttribute("tutte_le_cat", a);
 			response.sendRedirect("view/adminGestisciCategorie.jsp");
-			
 		}	
 		
 		
