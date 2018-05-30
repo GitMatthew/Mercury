@@ -93,6 +93,18 @@ public class ControllerAdmin extends HttpServlet {
 			
 		}	 
 		
+		if(prm.equals("mod_stat_ente"))
+		{
+			HttpSession session = request.getSession();
+			int x=Integer.parseInt(request.getParameter("id_eente"));
+			int y=Integer.parseInt(request.getParameter("id_status"));
+			im.modEvento(x,y);
+			ArrayList<Evento> a=im.getEventiAttesa();
+			session.setAttribute("attesa", a);
+			response.sendRedirect("view/adminHome.jsp");	
+			
+		}	 
+		
 		if(prm.equals("mod_cat"))
 		{
 			HttpSession session = request.getSession();
@@ -100,6 +112,15 @@ public class ControllerAdmin extends HttpServlet {
 			int y= Integer.parseInt(request.getParameter("id_categoria"));
 			im.modCat(x,y);
 			ArrayList<Categoria> a=im.getAllCat();
+			session.setAttribute("tutte_le_cat", a);
+			response.sendRedirect("view/adminGestisciCategorie.jsp");
+		}	
+		
+		if(prm.equals("new_cat"))
+		{
+			String a= request.getParameter("new_cat");
+			im.newCat(a);
+			HttpSession session = request.getSession();
 			session.setAttribute("tutte_le_cat", a);
 			response.sendRedirect("view/adminGestisciCategorie.jsp");
 		}	
