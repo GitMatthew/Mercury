@@ -70,7 +70,7 @@ public class ControllerAdmin extends HttpServlet {
 			ArrayList<Ente> a=im.getAllEnts();
 			HttpSession session = request.getSession();
 			session.setAttribute("tutti_enti", a);
-			response.sendRedirect("view/gestisciEnti.jsp");
+			response.sendRedirect("view/adminGestisciEnti.jsp");
 		}	
 		
 		if(prm.equals("4"))
@@ -92,6 +92,38 @@ public class ControllerAdmin extends HttpServlet {
 			response.sendRedirect("view/adminHome.jsp");	
 			
 		}	 
+		
+		if(prm.equals("mod_stat_ente")) 
+		{
+			HttpSession session = request.getSession();
+			int x=Integer.parseInt(request.getParameter("id_ente"));
+			int y=Integer.parseInt(request.getParameter("id_status"));
+			im.modEnte(x,y);
+			ArrayList<Ente> a=im.getEntiAttesa();
+			session.setAttribute("enti_attesa", a);
+			response.sendRedirect("view/entiInAttesa.jsp");	
+			
+		}	 
+		
+		if(prm.equals("mod_cat"))
+		{
+			HttpSession session = request.getSession();
+			String x= request.getParameter("nome_categoria");
+			int y= Integer.parseInt(request.getParameter("id_categoria"));
+			im.modCat(x,y);
+			ArrayList<Categoria> a=im.getAllCat();
+			session.setAttribute("tutte_le_cat", a);
+			response.sendRedirect("view/adminGestisciCategorie.jsp");
+		}	
+		
+		if(prm.equals("new_cat"))
+		{
+			String a= request.getParameter("new_cat");
+			im.newCat(a);
+			HttpSession session = request.getSession();
+			session.setAttribute("tutte_le_cat", a);
+			response.sendRedirect("view/adminGestisciCategorie.jsp");
+		}	
 		
 		
 	}

@@ -187,12 +187,13 @@ public class AdminImpl implements AdminUtility {
 
 				e.setId_evento(rst.getInt("id_evento"));
 				e.setId_status(rst.getInt("id_status"));
+				e.setNome_status(rst.getString("nome_status"));
 				e.setNome_evento(rst.getString("nome_evento"));
 				e.setDescrizione(rst.getString("descrizione"));
 				e.setData_inizio(rst.getDate("data_inizio"));
 				e.setData_fine(rst.getDate("data_fine"));
+				
 				evList.add(e);
-
 			}
 		} catch (SQLException a) {
 			a.printStackTrace();
@@ -224,8 +225,10 @@ public class AdminImpl implements AdminUtility {
 
 				e.setId_ente(rst.getInt("id_ente"));
 				e.setId_status(rst.getInt("id_status"));
+				e.setNome_status(rst.getString("nome_status"));
 				e.setNome_ente(rst.getString("nome_ente"));
 				e.setDescrizione_ente(rst.getString("descrizione_ente"));
+				
 				enList.add(e);
 
 			}
@@ -271,6 +274,27 @@ public class AdminImpl implements AdminUtility {
 		}
 
 		return catList;
+	}
+ 
+	@Override
+	public void modEnte(int id_ent, int id_status) {
+		Connection c = Dao.getConnection();
+		try {
+			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_ENTS_STATUS);
+			
+			if (id_status == 2) {
+				pst.setInt(1, 2);
+			} else {
+				if (id_status == 3) {
+					pst.setInt(1, 3);
+				}
+			}
+			pst.setInt(2, id_ent);		
+			pst.executeUpdate();
+
+		} catch (SQLException u) {
+			u.printStackTrace();
+		}
 	}
 
 }

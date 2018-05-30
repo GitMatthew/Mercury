@@ -32,16 +32,16 @@
       <a class="navbar-brand" href="../ControllerHomepage?da=0">Mercury</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="adminHome.jsp">Eventi in Attesa</a></li>
+      <li><a href="adminHome.jsp">Eventi in Attesa</a></li>
       <li><a href="../ControllerAdmin?param=1">Gestisci Eventi</a></li>
       <li><a href="../ControllerAdmin?param=2">Enti in Attesa</a></li>
       <li><a href="../ControllerAdmin?param=3">Gestisci Enti</a></li>
-      <li><a href="../ControllerAdmin?param=4">Gestisci Categorie</a></li>
+      <li class="active"><a href="../ControllerAdmin?param=4">Gestisci Categorie</a></li>
     </ul>
   </div>
 </nav></center>
   
-<div style="height:40%; width:80%"class="container">
+<div style="height:40%; overflow: auto; width:80%"class="container">
 <% if (session.getAttribute("tutte_le_cat")!=null)
 {
 %>
@@ -56,11 +56,38 @@
 	
 	<c:forEach var="j" items="${sessionScope.tutte_le_cat}">
 		<tr>
-			<td><c:out value="${j.nome_categoria}"></c:out></td>
-			<td style="width:140px" align="center"><button style="width:65px" onclick="location.href='loginAdmin.jsp'">Modifica</button></td>
+			<td><center><c:out value="${j.nome_categoria}"></c:out></center></td>
+			<td style="width:140px" align="center"><button style="width:65px" id="${j.id_categoria}" onclick="myFunction()">Modifica</button></td>
 		</tr>
 	</c:forEach>
 	</table>
+	
+<div id="moDIV" style="display:none">
+<form action= >
+<table border="1" >
+		<tr>
+		<td><input type="text" name="cat"></td>
+		<td><h3>Modifica Categoria</h3></td>
+		</tr>
+		<tr> 
+		<td align=center><input type="submit"></td>
+		<td align=center><input type="reset"></td>
+		</tr>
+</table> 
+</form>
+</div>
+	
+<script>
+function myFunction() {
+    var x = document.getElementById("moDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
 <% 
 }
 else

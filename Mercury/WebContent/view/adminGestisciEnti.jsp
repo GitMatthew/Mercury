@@ -29,27 +29,28 @@
       <a class="navbar-brand" href="../ControllerHomepage?da=0">Mercury</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="adminHome.jsp">Eventi in Attesa</a></li>
+      <li><a href="adminHome.jsp">Eventi in Attesa</a></li>
       <li><a href="../ControllerAdmin?param=1">Gestisci Eventi</a></li>
       <li><a href="../ControllerAdmin?param=2">Enti in Attesa</a></li>
-      <li><a href="../ControllerAdmin?param=3">Gestisci Enti</a></li>
+      <li class="active"><a href="../ControllerAdmin?param=3">Gestisci Enti</a></li>
       <li><a href="../ControllerAdmin?param=4">Gestisci Categorie</a></li>
     </ul>
   </div>
 </nav></center>
   
-<div style="height:40%; width:80%"class="container">
+<div style="height:40%; overflow: auto; width:80%"class="container">
 <% if (session.getAttribute("tutti_enti")!=null)
 {
 %>
 
-  <h3 Style="text-align:center">Lista Eventi</h3>
+  <h3 Style="text-align:center">Lista Enti</h3>
   
   <table border="1" style="width:100%">
 
 	<tr>
 		<th>Evento</th>
 		<th>Descrizione</th>
+		<th>Status</th>
 		<th>Gestisci</th>
 	</tr>
 	
@@ -57,9 +58,13 @@
 		<tr>
 			<td><c:out value="${j.nome_ente}"></c:out></td>
 			<td><c:out value="${j.descrizione_ente}"></c:out></td>
-			<td style="width:205px" align="center"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=2'">Approva</button><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=3'">Rifiuta</button><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=4'">Blocca</button></td>
+			<td><c:out value="${j.nome_status}"></c:out></td>
+			<td style="width:205px" align="center">
+			<c:if test="${j.id_status==3 || j.id_status==4 }"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_ente=${j.id_ente}&id_status=2'">Approva</button></c:if>
+			<c:if test="${j.id_status==2}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_ente=${j.id_ente}&id_status=3'">Rifiuta</button></c:if>
+			<c:if test="${j.id_status==2 || j.id_status==3}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_ente=${j.id_ente}&id_status=4'">Blocca</button></c:if></td>
 			
-		 
+		  
 		</tr>
 	</c:forEach>
 </table>

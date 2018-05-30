@@ -29,8 +29,8 @@
       <a class="navbar-brand" href="../ControllerHomepage?da=0">Mercury</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="adminHome.jsp">Eventi in Attesa</a></li>
-      <li><a href="../ControllerAdmin?param=1">Gestisci Eventi</a></li>
+      <li><a href="adminHome.jsp">Eventi in Attesa</a></li>
+      <li class="active"><a href="../ControllerAdmin?param=1">Gestisci Eventi</a></li>
       <li><a href="../ControllerAdmin?param=2">Enti in Attesa</a></li>
       <li><a href="../ControllerAdmin?param=3">Gestisci Enti</a></li>
       <li><a href="../ControllerAdmin?param=4">Gestisci Categorie</a></li>
@@ -38,14 +38,14 @@
   </div>
 </nav></center>
   
-<div style="height:40%; width:80%"class="container">
+<div style="height:40%; overflow: auto; width:80%"class="container">
 <% if (session.getAttribute("gestione_eventi")!=null)
 {
 %>
 
  <h3 Style="text-align:center">Lista Eventi</h3>
   
-  <table border="1" style="width:100%">
+ <table border="1" style="width:100%">
 
 	<tr>
 		<th>Evento</th>
@@ -60,9 +60,11 @@
 			<td><c:out value="${j.nome_evento}"></c:out></td>
 			<td><c:out value="${j.descrizione}"></c:out></td>
 			<td><c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
-			<td style="width:140px" align="center"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=2'">Approva</button><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=3'">Rifiuta</button></td>
-			
-		
+			<td><c:out value="${j.nome_status}"></c:out></td>
+			<td style="width:140px" align="center">
+			<c:if test="${j.id_status==2}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=2'">Approva</button></c:if>
+			<c:if test="${j.id_status==3}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=3'">Rifiuta</button></c:if></td>
+			 
 		</tr>
 	</c:forEach>
 </table>

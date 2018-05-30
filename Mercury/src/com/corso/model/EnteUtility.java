@@ -12,6 +12,16 @@ public interface EnteUtility {
 	public ArrayList<Ente> getEnti(String qry) ;
 	
 	public void approvaEnte (int id_ente) ;
+	
+	//public ArrayList<Ente> getEnti(String qry) ;
+	
+	public boolean verificaPsw (String user , String psw);
+	
+	//public void approvaEnte (int id_ente) ;
+	//public void rifiutaEnte (int id_ente) ;
+	//public void bloccaEnte (int id_ente) ;
+	//public void sbloccaEnte (int id_ente) ;
+
 	public void rifiutaEnte (int id_ente) ;
 	public void bloccaEnte (int id_ente) ;
 	public void sbloccaEnte (int id_ente) ;
