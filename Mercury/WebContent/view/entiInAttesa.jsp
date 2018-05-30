@@ -35,7 +35,7 @@
       <li class="active"><a href="adminHome.jsp">Eventi in Attesa</a></li>
       <li><a href="adminGestisciEventi.jsp">Gestisci Eventi</a></li>
       <li><a href="entiInAttesa.jsp">Enti in Attesa</a></li>
-      <li><a href="gestisciEnti">Gestisci Enti</a></li>
+      <li><a href="gestisciEnti.jsp">Gestisci Enti</a></li>
       <li><a href="adminGestisciCategorie.jsp">Gestisci Categorie</a></li>
     </ul>
   </div>
