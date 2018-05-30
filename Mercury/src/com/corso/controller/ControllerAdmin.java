@@ -62,8 +62,8 @@ public class ControllerAdmin extends HttpServlet {
 		
 		if(prm.equals("mod_stat"))
 		{
-			int x=getParameter("id_evento");
-			int y=getParameter("id_status");
+			String x=request.getParameter("id_evento");
+			String y=request.getParameter("id_status");
 			im.modEvento(x,y);
 			ArrayList<Evento> a=im.getEventiAttesa();
 			HttpSession session = request.getSession();
