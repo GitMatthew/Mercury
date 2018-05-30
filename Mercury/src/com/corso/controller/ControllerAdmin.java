@@ -96,13 +96,12 @@ public class ControllerAdmin extends HttpServlet {
 		if(prm.equals("mod_cat"))
 		{
 			HttpSession session = request.getSession();
-			int x=Integer.parseInt(request.getParameter("id_evento"));
-			int y=Integer.parseInt(request.getParameter("id_status"));
-			im.modEvento(x,y);
-			ArrayList<Evento> a=im.getEventiAttesa();
-			session.setAttribute("attesa", a);
-			response.sendRedirect("view/adminHome.jsp");	
-			
+			String x= request.getParameter("nome_categoria");
+			int y= Integer.parseInt(request.getParameter("id_categoria"));
+			im.modCat(x,y);
+			ArrayList<Categoria> a=im.getAllCat();
+			session.setAttribute("tutte_le_cat", a);
+			response.sendRedirect("view/adminGestisciCategorie.jsp");
 		}	
 		
 		
