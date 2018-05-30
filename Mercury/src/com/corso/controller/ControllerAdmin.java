@@ -84,14 +84,14 @@ public class ControllerAdmin extends HttpServlet {
 		if(prm.equals("mod_stat"))
 		{
 			HttpSession session = request.getSession();
-			int x=Integer.parseInt(request.getParameter("id_evento"));
-			int y=Integer.parseInt(request.getParameter("id_status"));
+			int x=Integer.valueOf(request.getParameter("id_evento"));
+			int y=Integer.valueOf(request.getParameter("id_status"));
 			im.modEvento(x,y);
 			ArrayList<Evento> a=im.getEventiAttesa();
 			session.setAttribute("attesa", a);
 			response.sendRedirect("view/adminHome.jsp");	
 			
-		}	
+		}	 
 		
 		
 	}
