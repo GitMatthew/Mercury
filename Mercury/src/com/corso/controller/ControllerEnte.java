@@ -50,7 +50,7 @@ public class ControllerEnte extends HttpServlet {
 			session.setAttribute("user" , 1);
 			
 		} else {
-			disp=request.getRequestDispatcher("/view/login.jsp");
+			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
 			request.setAttribute("messaggio", "User o Password Errati");
 		}
 		
