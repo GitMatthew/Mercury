@@ -42,6 +42,7 @@ a.linkAPRIricerca:hover {
 .boxDestra {
 	width: 100%;
 	height: 300px;
+	padding:0px!important;
 }
 
 #box3, #box4, #box1, #box2 {
@@ -65,31 +66,41 @@ a.linkAPRIricerca:hover {
 #box4 {
 	background-image: url('../images/publi2.jpg');
 }
+
+.spaziaLato {padding: 0px 20px 0px 20px ;}
+
+.tabDATA {min-width:120px!important;}
+
+.noSpace {padding:0px!important;margin:0px!important;}
 </style>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <a
-		class="navbar-brand" href="../ControllerHomepage?da=0">LOGO </a>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace"  > <a
+		class="navbar-brand noSpace" href="../ControllerHomepage?da=0"><img class="noSpace" style="width:150px; height:60px;" src="../images/logo.jpg"> </a>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link"
-				href="../ControllerHomepage?da=0">Home</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-			<li class="nav-item"><a class="nav-link " href="#">Registrazione</a></li>
+			<li class="nav-item active spaziaLato"><a class="nav-link"
+				href="../ControllerHomepage?da=0">HOME</a></li>
+			<li class="nav-item spaziaLato"><a href="#entiAPRI" data-toggle="collapse" class="nav-link " >AREA ENTI</a></li>
+			<div id="entiAPRI" class="collapse">
+			  <ul class="navbar-nav mr-auto">
+			<li class="nav-item active spaziaLato"><a class="nav-link" href="loginEnte.jsp">LOGIN</a></li>
+			<li class="nav-item active spaziaLato"><a class="nav-link" href="registraEnte.jsp">REGISTRATI</a></li></ul>
+			</div>
 		</ul>
 	</div>
 	</nav>
 	<div class="jumbotron text-center"
-		style="margin: 0px; padding: 0px 30px 0px 30px; color: white; background-image: url('../images/bannerHome1.jpg'); background-repeat: no-repeat; background-position: center; background-size: cover;">
-		<h1 style="color: #f54b03; text-shadow: 0px 0px 5px #ffffff;"">MERCURY
+		style="margin: 0px; padding: 0px 30px 10px 30px; color: white; background-image: url('../images/sfondo3.jpg'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+		<h1 style="color: #f54b03;">MERCURY
 			EVENTS</h1>
 		<br>
-		<h3 style="color: #f54b03; text-shadow: 0px 0px 5px #ffffff;"">Gli
+		<h3 style="color: #f54b03;">Gli
 			eventi in Italia che aspettano solo il tuo click</h3>
 		<br>
 
-		<h2 style="color: #f54b03; text-shadow: 0px 0px 5px #ffffff;">
+		<h2 style="color: #f54b03;">
 			cerca tutti gli eventi italiani scegliendo la categoria che
 			preferisci, i luoghi che ami, <br> o i giorni che ti stanno più
 			comodi
@@ -248,8 +259,8 @@ a.linkAPRIricerca:hover {
 	<br>
 	<br>
 
-	<div align="center" class="row" style="max-width: 98%; padding: 20px;">
-		<div class="col-sm-9">
+	<div align="center" class="row" style="max-width:100%; padding: 20px;">
+		<div class="col-sm-10">
 			<table class="table table-dark table-hover">
 				<thead>
 					<tr>
@@ -258,8 +269,8 @@ a.linkAPRIricerca:hover {
 						<th>categoria</th>
 						<th>descrizione</th>
 						<th>comune</th>
-						<th>dataInizio</th> 
-						<th>dataFine</th>
+						<th  class="tabDATA">dataInizio</th> 
+						<th class="tabDATA" >dataFine</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -269,17 +280,18 @@ a.linkAPRIricerca:hover {
 						<td>musica</td>
 						<td>alla sagra della porchetta puoi mangiare ottime porzioni di porchetta con pochi euri </td>
 						<td>ariccia</td>
-						<td>2018-09-09</td>
-						<td>2018-09-09</td>
+						<td >2018-09-09</td>
+						<td >2018-09-09</td>
 					</tr>
 				</tbody>
 			</table>
 
 		</div>
 
-		<div class="col-sm-3">
+		<div class="col-sm-2">
 			<div id="box1" class="boxDestra">
-				<h2>iscriviti</h2>
+				<h2>iscriviti <br> alla </h2>
+				
 			</div>
 			<br> <br>
 			<div id="box2" class="boxDestra"></div>
