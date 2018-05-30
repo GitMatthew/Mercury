@@ -39,7 +39,7 @@ public class AdminImpl implements AdminUtility {
 
 	@Override
 	public void sendNotifica() {
-
+		//in attesa dello sviluppo del sistema e-mail
 	}
 
 	@Override
