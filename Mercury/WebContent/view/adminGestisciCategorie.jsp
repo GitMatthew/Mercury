@@ -63,7 +63,7 @@
 	</table>
 	
 <div id="moDIV" style="display:none">
-<form action=>
+<form action= >
 <table border="1" >
 		<tr>
 		<td><input type="text" name="cat"></td>
