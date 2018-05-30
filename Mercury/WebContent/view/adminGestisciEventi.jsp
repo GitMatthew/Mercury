@@ -38,14 +38,14 @@
   </div>
 </nav></center>
   
-<div style="height:40%; width:80%"class="container">
+<div style="height:40%; overflow: auto; width:80%"class="container">
 <% if (session.getAttribute("gestione_eventi")!=null)
 {
 %>
 
  <h3 Style="text-align:center">Lista Eventi</h3>
   
-  <table border="1" style="width:100%">
+ <table border="1" style="width:100%">
 
 	<tr>
 		<th>Evento</th>

@@ -41,7 +41,7 @@
   </div>
 </nav></center>
   
-<div style="height:40%; width:80%"class="container">
+<div style="height:40%; overflow: auto; width:80%"class="container">
 <% if (session.getAttribute("tutte_le_cat")!=null)
 {
 %>
