@@ -64,7 +64,7 @@
 			<td><c:out value="${j.data_inizio}"></c:out><c:out value="${j.data_fine}"></c:out></td>
 			<td style="width:140px" align="center"><button style="width:65px" onclick="location.href='loginAdmin.jsp'">Approva</button><button style="width:65px">Rifiuta</button></td>
 			
-			
+		
 		</tr>
 	</c:forEach>
 </table>
