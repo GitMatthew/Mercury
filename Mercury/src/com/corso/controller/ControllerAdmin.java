@@ -62,7 +62,7 @@ public class ControllerAdmin extends HttpServlet {
 		
 		if(prm.equals("mod_stat"))
 		{
-			
+		
 			ArrayList<Evento> a=im.getEventiAttesa();
 			HttpSession session = request.getSession();
 			session.setAttribute("attesa", a);
