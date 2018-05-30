@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import com.corso.model.Categoria;
 import com.corso.model.CategoriaImpl;
 import com.corso.model.EnteImpl;
+import com.corso.model.Regione;
+import com.corso.model.RegioneImpl;
 
 @WebServlet("/ControllerEnte")
 public class ControllerEnte extends HttpServlet {
@@ -69,8 +71,10 @@ public class ControllerEnte extends HttpServlet {
 		disp=request.getRequestDispatcher("/view/enteHome.jsp");
 		
 		ArrayList<Categoria> cat = CategoriaImpl.tutteLeCategorie();
+		ArrayList<Regione> reg = RegioneImpl.tutteLeRegioni();
 		
 		request.setAttribute("categorie", cat);
+		request.setAttribute("regioni", reg);
 		
 	}
 	

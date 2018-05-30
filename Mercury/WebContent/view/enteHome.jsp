@@ -196,6 +196,37 @@
     
     <br><br>
     
+    <label for=regione>Regione :</label> 
+     
+    <select> 
+        <optgroup label ="Regione">         
+             <c:forEach var="j" items="${requestScope.regioni}">	            				
+	              <option value="${j.id_regione}">${j.nome_regione}</option>	              
+	         </c:forEach>  	           
+        </optgroup>         
+    </select> 
+    
+    <label for=regione>Provincia :</label> 
+    <select> 
+        <optgroup label ="Regione">         
+             <c:forEach var="j" items="${requestScope.regioni}">	            				
+	              <option value="${j.id_regione}">${j.nome_regione}</option>	              
+	         </c:forEach>  	           
+        </optgroup>         
+    </select>
+    
+    <label for=regione>Comune :</label> 
+
+    <select> 
+        <optgroup label ="Regione">         
+             <c:forEach var="j" items="${requestScope.regioni}">	            				
+	              <option value="${j.id_regione}">${j.nome_regione}</option>	              
+	         </c:forEach>  	           
+        </optgroup>         
+    </select>
+    
+    <br><br>
+    
     <label for=descrizione>Descrizione Evento :</label> 
     <br>
     <input type="text" id="descrizione">
