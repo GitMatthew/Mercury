@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.corso.model.AdminImpl;
+import com.corso.model.Evento;
+
 
 
 @WebServlet("/ControllerAdmin")
@@ -39,6 +41,19 @@ public class ControllerAdmin extends HttpServlet {
 		response.setContentType("text/html");
 		
 		AdminImpl im=new AdminImpl();
+		
+		if(prm.equals("0"))
+		{
+			
+			ArrayList<Evento> a=im.getEventiAttesa();
+			
+			RequestDispatcher disp=request.getRequestDispatcher("view/adminHome.jsp");
+			
+			request.setAttribute("attesa", a);
+			
+			disp.forward(request, response);	
+			
+		}
 		
 		
 	}
