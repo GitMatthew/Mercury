@@ -44,7 +44,7 @@ public class ControllerAdmin extends HttpServlet {
 		
 		if(prm.equals("0"))
 		{
-			
+		//ciao filli	
 			ArrayList<Evento> a=im.getEventiAttesa();
 			
 			RequestDispatcher disp=request.getRequestDispatcher("view/adminHome.jsp");
