@@ -42,7 +42,6 @@ public class AdminImpl implements AdminUtility {
 
 	}
 
-	// da completare
 	@Override
 	public ArrayList<Evento> getEventiAttesa() {
 		ArrayList<Evento> evList = new ArrayList<Evento>();
@@ -78,7 +77,35 @@ public class AdminImpl implements AdminUtility {
 
 	@Override
 	public ArrayList<Ente> getEntiAttesa() {
-		return null;
+		ArrayList<Ente> enList = new ArrayList<Ente>();
+		Ente e = null;
+
+		Connection conn = Dao.getConnection();
+		
+		try {
+			Statement st = conn.createStatement();
+			ResultSet rst = st.executeQuery(AdminUtility.GET_EVENTS_PENDING);
+
+			while (rst.next()) {
+				e = new Ente();
+
+				e.setNome_ente(rst.getString("nome_ente"));
+				e.setDescrizione_ente(rst.getString("descrizione_ente"));
+				e.setEmail_ente(rst.getString("email_ente"));
+				enList.add(e);
+
+			}
+		} catch (SQLException a) {
+			a.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException o) {
+				o.printStackTrace();
+			}
+		}
+		
+		return enList;
 	}
 
 	@Override
