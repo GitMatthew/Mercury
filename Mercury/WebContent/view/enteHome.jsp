@@ -212,7 +212,7 @@
         </optgroup>         
     </select> 
     
- <%@
+<%@
     Regione.options[Regione.selectedIndex].value ;    
  %>
     
