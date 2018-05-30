@@ -251,12 +251,12 @@ public class AdminImpl implements AdminUtility {
 
 		try {
 			Statement st = conn.createStatement();
-			ResultSet rst = st.executeQuery(AdminUtility.GET_ALL_ENTS);
+			ResultSet rst = st.executeQuery(AdminUtility.GET_ALL_CAT);
 
 			while (rst.next()) {
 				e = new Categoria();
 
-				e.setNome_categoria(rst.getString("categoria"));
+				e.setNome_categoria(rst.getString("nome_categoria"));
 				catList.add(e);
 
 			}

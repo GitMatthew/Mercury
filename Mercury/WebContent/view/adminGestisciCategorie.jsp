@@ -56,7 +56,7 @@
 	
 	<c:forEach var="j" items="${sessionScope.tutte_le_cat}">
 		<tr>
-			<td><c:out value="${j.nome_categoria} - "></c:out></td>
+			<td><c:out value="${j.nome_categoria}"></c:out></td>
 			<td style="width:140px" align="center"><button style="width:65px" onclick="location.href='loginAdmin.jsp'">Modifica</button></td>
 		</tr>
 	</c:forEach>
