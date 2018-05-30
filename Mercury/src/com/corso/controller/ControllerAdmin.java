@@ -93,7 +93,7 @@ public class ControllerAdmin extends HttpServlet {
 			
 		}	 
 		
-		if(prm.equals("mod_stat_ente"))
+		if(prm.equals("mod_stat_ente")) 
 		{
 			HttpSession session = request.getSession();
 			int x=Integer.parseInt(request.getParameter("id_ente"));

@@ -275,7 +275,7 @@ public class AdminImpl implements AdminUtility {
 
 		return catList;
 	}
-
+ 
 	@Override
 	public void modEnte(int id_ent, int id_status) {
 		Connection c = Dao.getConnection();

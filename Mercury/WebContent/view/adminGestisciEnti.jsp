@@ -64,7 +64,7 @@
 			<c:if test="${j.id_status==2}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_ente=${j.id_ente}&id_status=3'">Rifiuta</button></c:if>
 			<c:if test="${j.id_status==2 || j.id_status==3}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_ente=${j.id_ente}&id_status=4'">Blocca</button></c:if></td>
 			
-		 
+		  
 		</tr>
 	</c:forEach>
 </table>
