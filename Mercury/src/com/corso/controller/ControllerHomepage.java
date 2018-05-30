@@ -31,13 +31,13 @@ public class ControllerHomepage extends HttpServlet
 			String reg = request.getParameter("regione");
 			String prov = request.getParameter("provincia");
 			String com = request.getParameter("comune");
-			String ini = request.getParameter("da");
-			String fin = request.getParameter("da");
+			String ini = request.getParameter("dataInizio");
+			String fin = request.getParameter("dataFine");
 			
 			if (da.equals("1")) {
 				EventoImpl ev = new EventoImpl();
 				ArrayList<Evento> RicEv = ev.ricerca(cat, reg, prov, com, ini, fin);
-				RequestDispatcher disp = request.getRequestDispatcher("view/testArr.jsp");
+				RequestDispatcher disp = request.getRequestDispatcher("view/homepageMercury.jsp");
 				request.setAttribute("risultatoRicerca", RicEv);
 				disp.forward(request, response);
 				
@@ -47,7 +47,7 @@ public class ControllerHomepage extends HttpServlet
 				EventoImpl ev = new EventoImpl();
 				ArrayList<Evento> RicEv = ev.primiEventi();
 				
-				RequestDispatcher disp = request.getRequestDispatcher("view/testArr.jsp");
+				RequestDispatcher disp = request.getRequestDispatcher("view/homepageMercury.jsp");
 				request.setAttribute("risultatoRicerca", RicEv);
 				disp.forward(request, response);
 			}
