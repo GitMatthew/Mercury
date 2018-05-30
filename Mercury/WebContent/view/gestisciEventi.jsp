@@ -26,7 +26,24 @@
     <a href=/Mercury_Mercury/ControllerEnte?pag=3>GESTISCI ACCOUNT</a>   
     </form>
     
-    
+    <table border="1">
+			
+			<tr>
+				<td><b>Evento</b></td>
+				<td><b>Stato</b></td>
+
+			</tr>
+			
+			<c:forEach var="j" items="${requestScope.eventi}">
+			
+				<tr>
+					<td><c:out value ="${j.nome_evento}"></c:out></td>
+					<td><c:out value ="${j.id_status}"></c:out></td>
+					 
+				</tr>
+			
+			</c:forEach>
+	</table>
 
 </body>
 </html>

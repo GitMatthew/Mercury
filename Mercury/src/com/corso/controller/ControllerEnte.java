@@ -83,6 +83,8 @@ public class ControllerEnte extends HttpServlet {
 		
 		disp=request.getRequestDispatcher("/view/gestisciEventi.jsp");
 		
+		//ArrayList<Evento> ev = EventoImpl.cercaEventiPerEnte(id_ente);		
+		//request.setAttribute("eventi", ev);
 		
 	}
     
@@ -90,6 +92,7 @@ public class ControllerEnte extends HttpServlet {
     public void callAccountEnte (int id) {
 		
 		disp=request.getRequestDispatcher("/view/accountEnte.jsp");
+		
 		
 		
 	}
