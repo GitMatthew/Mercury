@@ -2,17 +2,16 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <% 
-
-
 if(session.getAttribute("user")==null)
 {
 	HttpSession sessione= request.getSession();
 	sessione.setAttribute("rst", "Per proseguire serve una sessione attiva. Effettua il Login");
 	response.sendRedirect("loginAdmin.jsp");
 } 
-
 %>
+
 <html>
 <head>
   <title>Administrator Page</title>
@@ -58,14 +57,18 @@ if(session.getAttribute("user")==null)
 			<th>Nome Categoria</th>
 			<th>Gestisci</th>
 		</tr>
-	
+	 
 	<c:forEach var="j" items="${sessionScope.tutte_le_cat}">
 		<tr style="color:White">
 			<td><center><c:out value="${j.nome_categoria}"></c:out></center></td>
 			<td style="width:140px" align="center">
 			<c:if test="${j.nome_categoria != 'altro'}">
 				<button style="width:65px; color:Black" onclick="myFunction('${j.id_categoria}')">Modifica</button>
-				<button style="width:65px; color:Black" onclick="../ControllerAdmin?param=del_cat&id_cat=${j.id_categoria}">Elimina</button>
+
+				<button style="width:65px; color:Black" onclick="location.href:'../ControllerAdmin?param=del_cat&id_cat=${j.id_categoria}'">Elimina</button>
+
+				<button style="width:65px; color:Black" onclick="location.href='../ControllerAdmin?param=del_cat&id_cat=${j.id_categoria}'">Elimina</button>
+
 			</c:if></td>
 		</tr>
 
