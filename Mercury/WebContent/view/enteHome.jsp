@@ -28,29 +28,29 @@
     
     <hr>
     
+    <form action="/Mercury_Mercury/ControllerEnte" method=post >
     
-    
-    <label for=nomeEvento>Nome Evento</label> 
+    <label>Nome Evento</label> 
     <br>
-    <input type="text" id="nomeEvento">
+    <input type="text" name="nomeEvento">
     
     <br><br>
     
-    <label for=data>Periodo evento</label>
+    <label>Periodo evento</label>
     <br>
-    <label for=data>Dal :</label> 
+    <label>Dal :</label> 
     
-    <select>
+    <select name="giornoInizio">
     <optgroup label ="Giorno">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    <option value=5>5</option>
-    <option value=6>6</option>
-    <option value=7>7</option>
-    <option value=8>8</option>
-    <option value=9>9</option>
+    <option value=01>1</option>
+    <option value=02>2</option>
+    <option value=03>3</option>
+    <option value=04>4</option>
+    <option value=05>5</option>
+    <option value=06>6</option>
+    <option value=07>7</option>
+    <option value=08>8</option>
+    <option value=09>9</option>
     <option value=10>10</option>
     <option value=11>11</option>
     <option value=12>12</option>
@@ -76,24 +76,24 @@
     </optgroup>   
     </select>
        
-    <select>
+    <select name="meseInizio">
     <optgroup label ="Mese">
-    <option value=1>gennaio</option>
-    <option value=2>febbraio</option>
-    <option value=3>marzo</option>
-    <option value=4>aprile</option>
-    <option value=5>maggio</option>
-    <option value=6>giugno</option>
-    <option value=7>luglio</option>
-    <option value=8>agosto</option>
-    <option value=9>settembre</option>
+    <option value=01>gennaio</option>
+    <option value=02>febbraio</option>
+    <option value=03>marzo</option>
+    <option value=04>aprile</option>
+    <option value=05>maggio</option>
+    <option value=06>giugno</option>
+    <option value=07>luglio</option>
+    <option value=08>agosto</option>
+    <option value=09>settembre</option>
     <option value=10>ottobre</option>
     <option value=11>novembre</option>
     <option value=12>dicembre</option>
     </optgroup>   
     </select>
     
-    <select>
+    <select name="annoInizio">
     <optgroup label ="Anno">
     <option value=2018>2018</option>
     <option value=2019>2019</option>
@@ -107,19 +107,19 @@
     </optgroup>   
     </select>
     
-    <label for=data>al :</label>  
+    <label>al :</label>  
     
-    <select>
+    <select name="giornoFine">
     <optgroup label ="Giorno">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    <option value=5>5</option>
-    <option value=6>6</option>
-    <option value=7>7</option>
-    <option value=8>8</option>
-    <option value=9>9</option>
+    <option value=01>1</option>
+    <option value=02>2</option>
+    <option value=03>3</option>
+    <option value=04>4</option>
+    <option value=05>5</option>
+    <option value=06>6</option>
+    <option value=07>7</option>
+    <option value=08>8</option>
+    <option value=09>9</option>
     <option value=10>10</option>
     <option value=11>11</option>
     <option value=12>12</option>
@@ -145,24 +145,24 @@
     </optgroup>   
     </select>
        
-    <select>
+    <select name="meseFine">
     <optgroup label ="Mese">
-    <option value=1>gennaio</option>
-    <option value=2>febbraio</option>
-    <option value=3>marzo</option>
-    <option value=4>aprile</option>
-    <option value=5>maggio</option>
-    <option value=6>giugno</option>
-    <option value=7>luglio</option>
-    <option value=8>agosto</option>
-    <option value=9>settembre</option>
+    <option value=01>gennaio</option>
+    <option value=02>febbraio</option>
+    <option value=03>marzo</option>
+    <option value=04>aprile</option>
+    <option value=05>maggio</option>
+    <option value=06>giugno</option>
+    <option value=07>luglio</option>
+    <option value=08>agosto</option>
+    <option value=09>settembre</option>
     <option value=10>ottobre</option>
     <option value=11>novembre</option>
     <option value=12>dicembre</option>
     </optgroup>   
     </select>
     
-    <select>
+    <select name="annoFine">
     <optgroup label ="Anno">
     <option value=2018>2018</option>
     <option value=2019>2019</option>
@@ -178,15 +178,15 @@
     
     <br><br>
     
-    <label for=address>Indirizzo</label> 
+    <label>Indirizzo</label> 
     <br>
-    <input type="text" id="address">
+    <input type="text" name="indirizzo">
     
     <br><br>
       
-    <label for=categoria>Selezione tipologia di Evento</label> 
+    <label>Selezione tipologia di Evento</label> 
     <br> 
-    <select> 
+    <select name="id_categoria"> 
         <optgroup label ="Categoria">         
              <c:forEach var="j" items="${requestScope.categorie}">	            				
 	              <option value="${j.id_categoria}">${j.nome_categoria}</option>	              
@@ -196,9 +196,9 @@
     
     <br><br>
     
-    <label for=regione>Regione :</label> 
+    <label>Regione :</label> 
      
-    <select> 
+    <select name="id_regione"> 
         <optgroup label ="Regione">         
              <c:forEach var="j" items="${requestScope.regioni}">	            				
 	              <option value="${j.id_regione}">${j.nome_regione}</option>	              
@@ -206,8 +206,8 @@
         </optgroup>         
     </select> 
     
-    <label for=regione>Provincia :</label> 
-    <select> 
+    <label>Provincia :</label> 
+    <select name="id_provincia"> 
         <optgroup label ="Regione">         
              <c:forEach var="j" items="${requestScope.regioni}">	            				
 	              <option value="${j.id_regione}">${j.nome_regione}</option>	              
@@ -215,9 +215,9 @@
         </optgroup>         
     </select>
     
-    <label for=regione>Comune :</label> 
+    <label>Comune :</label> 
 
-    <select> 
+    <select name="id_comune"> 
         <optgroup label ="Regione">         
              <c:forEach var="j" items="${requestScope.regioni}">	            				
 	              <option value="${j.id_regione}">${j.nome_regione}</option>	              
@@ -227,11 +227,15 @@
     
     <br><br>
     
-    <label for=descrizione>Descrizione Evento :</label> 
+    <label>Descrizione Evento :</label> 
     <br>
-    <input type="text" id="descrizione">
+    <input type="text" name="descrizione">
     
+    <br><br>
     
+    <input type="submit">
+    
+    </form>
     
     
     
