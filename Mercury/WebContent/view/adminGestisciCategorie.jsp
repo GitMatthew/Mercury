@@ -66,8 +66,8 @@
 		<c:if test="${j.nome_categoria != 'altro'}">
 		<tr id="input${j.id_categoria}" style="display:none;">
 		<form action= >
-			<td style="width:475px;"align="center">Modifica Categoria<input type="text" name="cat"></td>
-			<td style="width:120px;"align="center"><input type="submit"><input type="reset"></td>
+			<td style="width:855x;"align="center">Modifica Categoria<input type="text" name="cat"></td>
+			<td style="width:140px;"align="center"><input type="submit"><input type="reset"></td>
 		</form>
 		</tr>
 		</c:if>
