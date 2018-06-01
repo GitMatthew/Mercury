@@ -144,7 +144,7 @@ public class ControllerAdmin extends HttpServlet {
 		if(prm.equals("new_cat"))
 		{
 			HttpSession session = request.getSession();
-			String ax= request.getParameter("new_cat");
+			String ax= request.getParameter("cat");
 			im.newCat(ax);
 			session = request.getSession();
 			ArrayList<Categoria> a=im.getAllCat();
