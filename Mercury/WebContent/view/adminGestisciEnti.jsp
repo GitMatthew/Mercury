@@ -4,9 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% if(session.getAttribute("user")==null)
 {
-	RequestDispatcher disp=request.getRequestDispatcher("loginAdmin.jsp");
-	request.setAttribute("rst", "Per proseguire serve una sessione attiva. Effettua il Login");
-	disp.forward(request, response);
+	HttpSession sessionError = request.getSession();
+	session.setAttribute("rst", "Per proseguire serve una sessione attiva. Effettua il Login");
+	response.sendRedirect("view/loginAdmin.jsp");
 } 
 
 %>
