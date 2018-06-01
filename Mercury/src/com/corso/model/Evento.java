@@ -21,7 +21,7 @@ public class Evento
 	private String url_sito_evento;
 	private String nome_status;
 	
-	public Evento()
+	public Evento() 
 	{
 		super();
 	}
