@@ -277,7 +277,7 @@ public class AdminImpl implements AdminUtility {
 	}
  
 	@Override
-	public void modEnte(int id_ent, int id_status) {
+	public void modEnte(int id_ente, int id_status) {
 		Connection c = Dao.getConnection();
 		try {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_ENTS_STATUS);
@@ -289,7 +289,7 @@ public class AdminImpl implements AdminUtility {
 					pst.setInt(1, 3);
 				}
 			}
-			pst.setInt(2, id_ent);		
+			pst.setInt(2, id_ente);		
 			pst.executeUpdate();
 
 		} catch (SQLException u) {
