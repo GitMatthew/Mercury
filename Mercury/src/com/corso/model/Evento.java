@@ -61,7 +61,7 @@ public class Evento
 		return data_inizio;
 	}
 	
-	public void setData_inizio(String data_inizio)
+	public void setData_inizio(Date data_inizio)
 	{
 		this.data_inizio = data_inizio;
 	}
@@ -71,7 +71,7 @@ public class Evento
 		return data_fine;
 	}
 	
-	public void setData_fine(String data_fine)
+	public void setData_fine(Date data_fine)
 	{
 		this.data_fine = data_fine;
 	}

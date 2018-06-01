@@ -183,6 +183,7 @@ public class AdminImpl implements AdminUtility {
 				e.setData_inizio(rst.getDate("data_inizio"));
 				e.setData_fine(rst.getDate("data_fine"));
 				
+				
 				evList.add(e);
 			}
 		} catch (SQLException a) {
