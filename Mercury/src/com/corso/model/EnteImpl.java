@@ -99,5 +99,77 @@ public class EnteImpl implements EnteUtility {
 	}
 	
 	
+	
+	
+	
+	
+
+	@Override
+	public boolean creaEvento(Evento e) {
+		Connection c = Dao.getConnection();
+		boolean result = false;
+		try {
+			String insertQry = "INSERT eventi (nome_evento , descrizione , data_inizio , data_fine , id_status ,"
+					          +"  id_comune , id_categoria , id_ente , url_img_evento , url_sito_evento) "
+					          +"values ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) ";
+			
+			PreparedStatement pst = c.prepareStatement(insertQry);
+			pst.setString(1, e.getNome_evento());     //nome_evento
+			pst.setString(2, e.getDescrizione());     //descrizione
+			pst.setString(3, ""+e.getData_inizio());  //data_inizio
+			pst.setString(4, ""+e.getData_fine());    //data_fine
+			pst.setString(5, ""+e.getId_status());    //id_status
+			pst.setString(6, ""+e.getId_comune());    //id_comune
+			pst.setString(7, ""+e.getId_categoria()); //id_categoria
+			pst.setString(8, ""+e.getId_ente());      //id_ente
+			pst.setString(9, e.getUrl_img_evento());  //url_img_evento
+			pst.setString(10, e.getUrl_sito_evento());//url_sito_evento
+			
+			int rs = pst.executeUpdate();
+			if (rs > 0) {
+				result = true;
+			}
+		} catch (SQLException a) {
+			a.printStackTrace();
+		}
+
+		return result;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

@@ -25,5 +25,7 @@ public interface EnteUtility {
 	public void rifiutaEnte (int id_ente) ;
 	public void bloccaEnte (int id_ente) ;
 	public void sbloccaEnte (int id_ente) ;
+	
+	public boolean creaEvento (Evento e) ;
 
 }

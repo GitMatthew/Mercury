@@ -1,7 +1,7 @@
 package com.corso.model;
 
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Evento
 {

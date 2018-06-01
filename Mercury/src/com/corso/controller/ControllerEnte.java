@@ -87,11 +87,19 @@ public class ControllerEnte extends HttpServlet {
 			nuovoEvento.setId_ente(this.id_ente);
 			nuovoEvento.setId_status(1);
 			
+			if(ei.creaEvento(nuovoEvento)) {
+				System.out.println("evento creato");
+			} else {
+				System.out.println("creazione fallita");
+			}
+			
 			
 			
 			
 	   //Gestisci Eventi
 	   } else if(session.getAttribute("from")=="enteGestisciEventi") {
+		   
+		   
 						
 			
 	   //Gestisci account				
