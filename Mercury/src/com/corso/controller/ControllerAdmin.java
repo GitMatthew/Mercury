@@ -154,7 +154,7 @@ public class ControllerAdmin extends HttpServlet {
 		if(prm.equals("del_cat"))
 		{
 			HttpSession session = request.getSession();
-			int y= Integer.parseInt(request.getParameter("id_cat"));
+			int y=Integer.parseInt(request.getParameter("id_cat"));
 			im.delCat(y);
 			ArrayList<Categoria> a=im.getAllCat();
 			session.setAttribute("tutte_le_cat", a);
