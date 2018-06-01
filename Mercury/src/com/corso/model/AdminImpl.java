@@ -284,7 +284,7 @@ public class AdminImpl implements AdminUtility {
 			
 			if (id_status == 2) {
 				pst.setInt(1, 2);
-			} else {
+			} else { 
 				if (id_status == 3) {
 					pst.setInt(1, 3);
 				}
