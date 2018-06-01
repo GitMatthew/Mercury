@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<h1>CREA UN NUOVO EVENTO</h1>
+<h1>CREA UN NUOVO EVENTO</h1> 
 
 <%= request.getAttribute("messaggio") %>
 <h1 value="messaggio"></h1>
