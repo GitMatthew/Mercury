@@ -143,9 +143,11 @@ public class ControllerAdmin extends HttpServlet {
 		
 		if(prm.equals("new_cat"))
 		{
-			String a= request.getParameter("new_cat");
-			im.newCat(a);
 			HttpSession session = request.getSession();
+			String ax= request.getParameter("cat");
+			im.newCat(ax);
+			session = request.getSession();
+			ArrayList<Categoria> a=im.getAllCat();
 			session.setAttribute("tutte_le_cat", a);
 			response.sendRedirect("view/adminGestisciCategorie.jsp");
 		}	
