@@ -285,4 +285,19 @@ public class AdminImpl implements AdminUtility {
 		}
 	}
 
+	@Override
+	public void delCat(int id_categoria) {
+		Connection c = Dao.getConnection();
+		try {
+			PreparedStatement pst = c.prepareStatement(AdminUtility.DELETE_CAT); 
+			pst.setInt(1, id_categoria);
+			pst.executeUpdate();
+			} 
+		catch (SQLException a) 
+		{
+			a.printStackTrace();
+		}
+		
+	}
+
 }

@@ -11,6 +11,7 @@ public interface AdminUtility {
 	public static String SET_ENTS_STATUS = "UPDATE enti SET id_status=? WHERE id_ente=?"; 
 	public static String SET_NEW_CAT = "INSERT categorie(nome_categoria) values (?)";
 	public static String MODIFY_CAT = "UPDATE categorie SET nome_categoria=? WHERE id_categoria=?";
+	public static String DELETE_CAT = "DELETE categorie.* FROM categorie WHERE id_categoria=?";
 	public static String GET_EVENTS_PENDING = "SELECT id_evento,nome_evento,descrizione,data_inizio,data_fine FROM eventi WHERE data_inizio >= now() and id_status=1 order by eventi.data_inizio";
 	public static String GET_ENTS_PENDING = "SELECT id_ente,nome_ente,descrizione_ente,email_ente FROM enti WHERE id_status=1";
 	public static String GET_ALL_EVENTS="SELECT id_evento,eventi.id_status,status.nome_status,nome_evento,descrizione,data_inizio,data_fine FROM eventi inner join status on eventi.id_status=status.id_status WHERE data_inizio >= now() and status.id_status=2 || status.id_status=3 order by eventi.data_inizio";
@@ -28,7 +29,9 @@ public interface AdminUtility {
 
 	public void newCat(String Cat);
 
-	public void modCat(String mcat, int id_categoria );
+	public void modCat(String mcat, int id_categoria ); 
+	
+	public void delCat(int id_categoria);
 
 	public void modEvento(int id_ev,int id_status);
 	

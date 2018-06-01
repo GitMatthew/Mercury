@@ -51,7 +51,7 @@ if(session.getAttribute("user")==null)
 
    <h3 Style="text-align:center; color:White">Lista Categorie</h3>
   	
-  	<button style="width:150px; color:Black; align:center" onclick="myFunction(0)">Aggiungi Nuova Categoria</button>
+  	<center><button style="width:250px; color:Black" onclick="myFunction(0)">Aggiungi Nuova Categoria</button></center>
   	
   	<table border="1" style="width:100%">
 		<tr style="color:White">
@@ -65,6 +65,7 @@ if(session.getAttribute("user")==null)
 			<td style="width:140px" align="center">
 			<c:if test="${j.nome_categoria != 'altro'}">
 				<button style="width:65px; color:Black" onclick="myFunction('${j.id_categoria}')">Modifica</button>
+				<button style="width:65px; color:Black" onclick="../ControllerAdmin?param=del_cat&id_cat=${j.id_categoria}">Elimina</button>
 			</c:if></td>
 		</tr>
 
@@ -78,7 +79,7 @@ if(session.getAttribute("user")==null)
 	</c:forEach>
 		</table>
 	<table border="none" align="center">
-		<tr id="input" style="display:none; width:100%; color:White" align="center" colspan="2">
+		<tr id="input" style="display:none; width:100%; color:White" align="center" colspan="2"> 
 		<td style="width:100%;">
 		<form action="../ControllerAdmin" method="get">
 			Modifica Categoria &nbsp;
