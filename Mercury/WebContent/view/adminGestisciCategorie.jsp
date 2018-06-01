@@ -102,6 +102,7 @@ function myFunction(t) {
     }
 	if(t!=0){
 	var o=document.getElementById("id_cat");
+	y.value="mod_cat";
 	o.value=t;
 	}else{
 		y.value="new_cat";
