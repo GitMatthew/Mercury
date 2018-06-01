@@ -54,9 +54,7 @@
 			<td><c:out value="${j.nome_ente}"></c:out></td>
 			<td><c:out value="${j.url_sito_evento}"></c:out></td>
 			<td><c:out value="${j.url_img_evento}"></c:out></td>
-			<td style="width:140px" align="center">
-			<c:if test="${j.id_status==2}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=2'">Approva</button></c:if>
-			<c:if test="${j.id_status==3}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=3'">Rifiuta</button></c:if></td>
+			
 			 
 		</tr>
 	</c:forEach>
