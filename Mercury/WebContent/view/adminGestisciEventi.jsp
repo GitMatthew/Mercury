@@ -72,7 +72,7 @@
 }
 else
 { 
-	out.print("Errore interrogazione DataBase");
+	out.print("Nessun Evento Trovato");
 }
 %>
 

@@ -57,15 +57,20 @@
 	<c:forEach var="j" items="${sessionScope.tutte_le_cat}">
 		<tr>
 			<td><center><c:out value="${j.nome_categoria}"></c:out></center></td>
-			<td style="width:140px" align="center"><button style="width:65px" id="${j.id_categoria}" onclick="myFunction('input${j.id_categoria}')">Modifica</button></td>
+			<td style="width:140px" align="center">
+			<c:if test="${j.nome_categoria != 'altro'}">
+				<button style="width:65px" id="${j.id_categoria}" onclick="myFunction('input${j.id_categoria}')">Modifica</button>
+			</c:if></td>
 		</tr>
+		
+		<c:if test="${j.nome_categoria != 'altro'}">
 		<tr id="input${j.id_categoria}" style="display:none;">
 		<form action= >
-			<td><h3>Modifica Categoria</h3><input type="text" name="cat"></td>
-			<td align=center><input type="submit"></td>
-			<td align=center><input type="reset"></td>
+			<td style="width:475px;"align="center">Modifica Categoria<input type="text" name="cat"></td>
+			<td style="width:120px;"align="center"><input type="submit"><input type="reset"></td>
 		</form>
 		</tr>
+		</c:if>
 	</c:forEach>
 	</table>
 
@@ -84,7 +89,7 @@ function myFunction(x) {
 }
 else
 { 
-	out.print("Nessun Evento in Attesa");
+	out.print("Nessuna Categoria Trovata");
 }
 %>
 
