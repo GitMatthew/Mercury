@@ -91,8 +91,6 @@ if(session.getAttribute("user")==null)
 		</tr>
 	</table>
 	
-	
-<!-- ciao filli -->
 <script>
 function myFunction(t) {
 	var x=document.getElementById("input");
