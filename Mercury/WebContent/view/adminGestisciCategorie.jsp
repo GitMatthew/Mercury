@@ -50,7 +50,9 @@ if(session.getAttribute("user")==null)
 %>
 
    <h3 Style="text-align:center; color:White">Lista Categorie</h3>
-  
+  	
+  	<button style="width:65px; color:Black" onclick="myFunction2()">Aggiungi Nuova Categoria</button>
+  	
   	<table border="1" style="width:100%">
 		<tr style="color:White">
 			<th>Nome Categoria</th>
@@ -100,6 +102,16 @@ function myFunction(t) {
         x.style.display = "none";
     }
 	var o=document.getElementById("id_cat");
+	o.value=t;
+}
+
+function myFunction2() {
+	var x=document.getElementById("input");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
 	o.value=t;
 }
 </script>
