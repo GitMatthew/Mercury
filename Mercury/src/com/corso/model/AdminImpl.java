@@ -275,7 +275,7 @@ public class AdminImpl implements AdminUtility {
 			case 2: pst.setInt(1, 2); break;
 			case 3: pst.setInt(1, 3); break;
 			case 4: pst.setInt(1, 4); break;
-			}
+			} 
 			
 			pst.setInt(2, id_ente);		
 			pst.executeUpdate();
