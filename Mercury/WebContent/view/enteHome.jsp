@@ -51,7 +51,7 @@
     
     <br><br>
     
-    <label>Indirizzo</label> 
+    <label>Location / Indirizzo</label> 
     <br>
     <input type="text" name="indirizzo">
     
