@@ -63,8 +63,7 @@
 			<c:if test="${j.id_status==3 || j.id_status==4 }"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_ente&id_ente=${j.id_ente}&id_status=2'">Approva</button></c:if>
 			<c:if test="${j.id_status==2}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_ente&id_ente=${j.id_ente}&id_status=3'">Rifiuta</button></c:if>
 			<c:if test="${j.id_status==2 || j.id_status==3}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_ente&id_ente=${j.id_ente}&id_status=4'">Blocca</button></c:if></td>
-			
-		  
+<!-- 		  ciao filli -->
 		</tr>
 	</c:forEach>
 </table>

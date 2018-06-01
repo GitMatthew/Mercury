@@ -57,29 +57,21 @@
 	<c:forEach var="j" items="${sessionScope.tutte_le_cat}">
 		<tr>
 			<td><center><c:out value="${j.nome_categoria}"></c:out></center></td>
-			<td style="width:140px" align="center"><button style="width:65px" id="${j.id_categoria}" onclick="myFunction()">Modifica</button></td>
+			<td style="width:140px" align="center"><button style="width:65px" id="${j.id_categoria}" onclick="myFunction('input${j.id_categoria}')">Modifica</button></td>
+		</tr>
+		<tr id="input${j.id_categoria}" style="display:none;">
+		<form action= >
+			<td><h3>Modifica Categoria</h3><input type="text" name="cat"></td>
+			<td align=center><input type="submit"></td>
+			<td align=center><input type="reset"></td>
+		</form>
 		</tr>
 	</c:forEach>
 	</table>
-	
-<div id="moDIV" style="display:none">
-<form action= >
-<table border="1" >
-		<tr>
-		<td><input type="text" name="cat"></td>
-		<td><h3>Modifica Categoria</h3></td>
-		</tr>
-		<tr> 
-		<td align=center><input type="submit"></td>
-		<td align=center><input type="reset"></td>
-		</tr>
-</table> 
-</form>
-</div>
-	
+
 <script>
-function myFunction() {
-    var x = document.getElementById("moDIV");
+function myFunction(x) {
+    var x = document.getElementById(x);
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {

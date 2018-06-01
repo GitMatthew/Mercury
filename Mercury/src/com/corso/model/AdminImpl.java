@@ -260,6 +260,7 @@ public class AdminImpl implements AdminUtility {
 			while (rst.next()) {
 				e = new Categoria();
 
+				e.setId_categoria(rst.getInt("id_categoria"));
 				e.setNome_categoria(rst.getString("nome_categoria"));
 				catList.add(e);
 
