@@ -90,6 +90,7 @@ public class AdminImpl implements AdminUtility {
 			while (rst.next()) {
 				e = new Ente();
 
+				e.setId_ente(rst.getInt("id_ente"));
 				e.setNome_ente(rst.getString("nome_ente"));
 				e.setDescrizione_ente(rst.getString("descrizione_ente"));
 				e.setEmail_ente(rst.getString("email_ente"));
