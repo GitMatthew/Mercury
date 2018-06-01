@@ -64,7 +64,8 @@
 			<td style="width:140px" align="center">
 			<c:if test="${j.id_status==3}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=2'">Approva</button></c:if>
 			<c:if test="${j.id_status==2}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=3'">Rifiuta</button></c:if></td>
-<!-- 			 ciao filli -->
+<!-- 	 ciao filli 	-->
+<!--	 ciao alessio 	-->
 		</tr>
 	</c:forEach>
 </table>
