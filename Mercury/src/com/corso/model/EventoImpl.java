@@ -36,7 +36,7 @@ public class EventoImpl implements EventoUtility
 			x = x + " and e.data_fine= '" + fin + "'";
 		}
 		
-		x = x + " ;";
+		x = x + " order by data_inizio asc;";
 		
 		ArrayList<Evento> atList = new ArrayList<Evento>();
 		Evento a = null;
@@ -47,7 +47,7 @@ public class EventoImpl implements EventoUtility
 			
 			while (rst.next()) {
 				a = new Evento();
-				// a.setUrl_img_evento(rst.getString("private String url_img_evento;"));
+				a.setUrl_img_evento(rst.getString("private String url_img_evento"));
 				a.setNome_evento(rst.getString("titolo"));
 				a.setNome_categoria(rst.getString("nome_categoria"));
 				a.setDescrizione(rst.getString("descrizione"));
@@ -86,7 +86,7 @@ public class EventoImpl implements EventoUtility
 			
 			while (rst.next()) {
 				a = new Evento();
-				a.setUrl_img_evento(rst.getString("private String url_img_evento;"));
+				a.setUrl_img_evento(rst.getString("private String url_img_evento"));
 				a.setNome_evento(rst.getString("titolo"));
 				a.setNome_categoria(rst.getString("nome_categoria"));
 				a.setDescrizione(rst.getString("descrizione"));

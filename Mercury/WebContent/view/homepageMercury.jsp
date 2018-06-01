@@ -115,8 +115,8 @@ a.linkAPRIricerca:hover {
 	%>
 	<script>
 		function ricerca() {
-			var ric = "../ControllerHomepage?da=1&";
-			ric = ric + "categoria=";
+			var ric = "../ControllerHomepage?da=1";
+			ric = ric + "&categoria=";
 			ric = ric + document.getElementById("catSELEZIONATO").value;
 			ric = ric + "&regione=";
 			ric = ric + document.getElementById("regSELEZIONATO").value;
