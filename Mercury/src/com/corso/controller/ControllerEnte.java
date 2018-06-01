@@ -166,7 +166,7 @@ public class ControllerEnte extends HttpServlet {
     public void callAccountEnte (int id) {
 		
 		disp=request.getRequestDispatcher("/view/accountEnte.jsp");
-		
+		 
 		session.setAttribute("pagina" , "accountEnte");
 		request.setAttribute("messaggio", "Da questa pagina puoi gestire il tuo Account");
 	}
