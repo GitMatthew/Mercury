@@ -119,9 +119,9 @@ public class ControllerEnte extends HttpServlet {
 	//Assega alla request i parametri per la pagina
     public void callGestisciEventi (int id) {
 		
-		disp=request.getRequestDispatcher("/view/EnteGestisciEventi.jsp");
+		disp=request.getRequestDispatcher("/view/enteGestisciEventi.jsp");
 		
-		session.setAttribute("pagina" , "gestisciEventi");
+		session.setAttribute("pagina" , "entegestisciEventi");
 	}
     
     //Assega alla request i parametri per la pagina
