@@ -29,7 +29,7 @@ public interface AdminUtility {
 
 	public void newCat(String Cat);
 
-	public void modCat(String mcat, int id_categoria );
+	public void modCat(String mcat, int id_categoria ); 
 	
 	public void delCat(int id_categoria);
 

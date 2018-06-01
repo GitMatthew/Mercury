@@ -79,7 +79,7 @@ if(session.getAttribute("user")==null)
 	</c:forEach>
 		</table>
 	<table border="none" align="center">
-		<tr id="input" style="display:none; width:100%; color:White" align="center" colspan="2">
+		<tr id="input" style="display:none; width:100%; color:White" align="center" colspan="2"> 
 		<td style="width:100%;">
 		<form action="../ControllerAdmin" method="get">
 			Modifica Categoria &nbsp;
