@@ -283,13 +283,12 @@ public class AdminImpl implements AdminUtility {
 		try {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_ENTS_STATUS);
 			
-			if (id_status == 2) {
-				pst.setInt(1, 2);
-			} else { 
-				if (id_status == 3) {
-					pst.setInt(1, 3);
-				}
+			switch(id_status) {
+			case 2: pst.setInt(1, 2); break;
+			case 3: pst.setInt(1, 3); break;
+			case 4: pst.setInt(1, 4); break;
 			}
+			
 			pst.setInt(2, id_ente);		
 			pst.executeUpdate();
 
