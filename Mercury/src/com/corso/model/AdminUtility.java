@@ -26,9 +26,9 @@ public interface AdminUtility {
 
 	public ArrayList<Ente> getEntiAttesa();
 
-	public boolean newCat(String Cat);
+	public void newCat(String Cat);
 
-	public boolean modCat(String mcat, int id_categoria );
+	public void modCat(String mcat, int id_categoria );
 
 	public void modEvento(int id_ev,int id_status);
 	

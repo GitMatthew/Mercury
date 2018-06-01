@@ -81,17 +81,25 @@ public class ControllerEnte extends HttpServlet {
 			nuovoEvento.setId_categoria(Integer.parseInt(request.getParameter("id_categoria")));
 			nuovoEvento.setDescrizione(descrizione);
 			nuovoEvento.setId_comune(Integer.parseInt(request.getParameter("id_comune")));
-			//nuovoEvento.setData_inizio(dataInizio); 
-			//nuovoEvento.setData_fine(dataFine);
+			nuovoEvento.setData_inizio(dataInizio); 
+			nuovoEvento.setData_fine(dataFine);
 			nuovoEvento.setUrl_sito_evento(request.getParameter("urlEvento"));
 			nuovoEvento.setId_ente(this.id_ente);
 			nuovoEvento.setId_status(1);
+			
+			if(ei.creaEvento(nuovoEvento)) {
+				System.out.println("evento creato");
+			} else {
+				System.out.println("creazione fallita");
+			}
 			
 			
 			
 			
 	   //Gestisci Eventi
 	   } else if(session.getAttribute("from")=="enteGestisciEventi") {
+		   
+		   
 						
 			
 	   //Gestisci account				

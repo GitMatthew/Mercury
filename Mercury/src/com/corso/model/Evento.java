@@ -1,7 +1,7 @@
 package com.corso.model;
 
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Evento
 {
@@ -56,22 +56,22 @@ public class Evento
 		this.descrizione = descrizione;
 	}
 	
-	public Date getData_inizio()
+	public String getData_inizio()
 	{
 		return data_inizio;
 	}
 	
-	public void setData_inizio(Date data_inizio)
+	public void setData_inizio(String data_inizio)
 	{
 		this.data_inizio = data_inizio;
 	}
 	
-	public Date getData_fine()
+	public String getData_fine()
 	{
 		return data_fine;
 	}
 	
-	public void setData_fine(Date data_fine)
+	public void setData_fine(String data_fine)
 	{
 		this.data_fine = data_fine;
 	}

@@ -133,8 +133,8 @@ public class ControllerAdmin extends HttpServlet {
 		if(prm.equals("mod_cat"))
 		{
 			HttpSession session = request.getSession();
-			String x= request.getParameter("nome_categoria");
-			int y= Integer.parseInt(request.getParameter("id_categoria"));
+			String x=request.getParameter("cat");
+			int y= Integer.parseInt(request.getParameter("id_cate"));
 			im.modCat(x,y);
 			ArrayList<Categoria> a=im.getAllCat();
 			session.setAttribute("tutte_le_cat", a);
