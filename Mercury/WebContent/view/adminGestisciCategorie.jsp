@@ -64,7 +64,7 @@
 		</tr>
 		
 		<c:if test="${j.nome_categoria != 'altro'}">
-		<tr id="input${j.id_categoria}" style="display:none; width:100%; color:White" align="center">
+		<tr id="input${j.id_categoria}" style="display:none; width:100%; color:White" align="center" colspan="2">
 		<td style="width:100%; border:none; colspan:2"><form action="ControllerAdmin?param=0" method="get">
 			Modifica Categoria &nbsp; <input style="color:Black" type="text" name="cat" /><input style="color:Black" type="submit"/><input style="color:Black" type="reset" />
 		</form></td> 
