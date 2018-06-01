@@ -30,7 +30,7 @@
 </form>	
 </div>
 
-<div align=center>
+<div align=center> 
 
 <a style="color:Red;text-align:center" ><%
 if (session.getAttribute("rst")!=null)

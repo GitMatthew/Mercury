@@ -165,7 +165,6 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			HttpSession session = request.getSession();
 			session.setAttribute("rst", "Username o Password Errati");
 			response.sendRedirect("view/loginAdmin.jsp");
-			
 		} 
 	}
 
