@@ -73,17 +73,18 @@ public class ControllerEnte extends HttpServlet {
 		} else if(session.getAttribute("from")=="enteHome") {
 			
 			Evento nuovoEvento = new Evento();
-								
-			String dataInizio=request.getParameter("annoInizio") + "-" + request.getParameter("meseInizio") + "-" + request.getParameter("giornoInizio");
-			String dataFine=request.getParameter("annoFine") + "-" + request.getParameter("meseFine") + "-" + request.getParameter("giornoFine");
-			String descrizione=request.getParameter("indirizzo") + " <br><br> " + request.getParameter("descrizione");		
+						
+			Date dataFine =Date.valueOf(request.getParameter("dataFine"));
+			Date dataInizio =Date.valueOf(request.getParameter("dataInizio"));
+			
+			String descrizione=request.getParameter("dataFine") + " <br><br> " + request.getParameter("descrizione");		
 								
 			nuovoEvento.setUrl_img_evento(request.getParameter("urlImg"));
 			nuovoEvento.setNome_evento(request.getParameter("nomeEvento"));
 			nuovoEvento.setId_categoria(Integer.parseInt(request.getParameter("id_categoria")));
 			nuovoEvento.setDescrizione(descrizione);
 			nuovoEvento.setId_comune(Integer.parseInt(request.getParameter("id_comune")));
-			nuovoEvento.setData_inizio(dataInizio); 
+			nuovoEvento.setData_inizio(dataInizio);  
 			nuovoEvento.setData_fine(dataFine);
 			nuovoEvento.setUrl_sito_evento(request.getParameter("urlEvento"));
 			nuovoEvento.setId_ente(this.id_ente);
