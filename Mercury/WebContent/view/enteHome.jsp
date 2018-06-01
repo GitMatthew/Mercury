@@ -233,6 +233,14 @@
     
     <br><br>
     
+    <label>link evento :</label> 
+    <input type="text" name="urlEvento">
+    
+    <label>link immagine evento :</label> 
+    <input type="text" name="urlImg">
+    
+    <br><br>
+    
     <input type="submit">
     
     </form>
