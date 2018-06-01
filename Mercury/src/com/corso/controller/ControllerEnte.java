@@ -77,7 +77,7 @@ public class ControllerEnte extends HttpServlet {
 			Date dataFine =Date.valueOf(request.getParameter("dataFine"));
 			Date dataInizio =Date.valueOf(request.getParameter("dataInizio"));
 			
-			String descrizione=request.getParameter("dataFine") + " <br><br> " + request.getParameter("descrizione");		
+			String descrizione=request.getParameter("indirizzo") + " <br><br> " + request.getParameter("descrizione");		
 								
 			nuovoEvento.setUrl_img_evento(request.getParameter("urlImg"));
 			nuovoEvento.setNome_evento(request.getParameter("nomeEvento"));
@@ -91,12 +91,14 @@ public class ControllerEnte extends HttpServlet {
 			nuovoEvento.setId_status(1);
 			
 			if(ei.creaEvento(nuovoEvento)) {
-				System.out.println("evento creato");
+				disp=request.getRequestDispatcher("/view/enteGestisciEventi.jsp");
+				request.setAttribute("messaggio", "COMPLIMENTI ! Il tuo Evento è stato creato ed è in attesa dell'approvazione di un Amministratore.");
 			} else {
-				System.out.println("creazione fallita");
+				disp=request.getRequestDispatcher("/view/enteHome.jsp");
+				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA !");
 			}
 			
-			
+			disp.forward(request, response);
 			
 			
 	   //Gestisci Eventi
@@ -136,6 +138,8 @@ public class ControllerEnte extends HttpServlet {
 		request.setAttribute("comuni", com);
 		session.setAttribute("from" , "enteHome");
 		
+		request.setAttribute("messaggio", "Benvenuto su Mercury , in questa pagina puoi creare i tuoi Eventi !");
+		
 	}
 	
 	//Assega alla request i parametri per la pagina
@@ -144,6 +148,7 @@ public class ControllerEnte extends HttpServlet {
 		disp=request.getRequestDispatcher("/view/enteGestisciEventi.jsp");
 		
 		session.setAttribute("pagina" , "enteGestisciEventi");
+		request.setAttribute("messaggio", "Benvenuto su Mercury , in questa pagina puoi visualizzare e gestire gli eventi che hai creato !");
 	}
     
     //Assega alla request i parametri per la pagina
@@ -152,6 +157,7 @@ public class ControllerEnte extends HttpServlet {
 		disp=request.getRequestDispatcher("/view/accountEnte.jsp");
 		
 		session.setAttribute("pagina" , "accountEnte");
+		request.setAttribute("messaggio", "Da questa pagina puoi gestire il tuo Account");
 	}
 	
 	
