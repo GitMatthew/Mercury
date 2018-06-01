@@ -48,7 +48,7 @@ public class Dao
 	{
 		Connection c = null;
 		if (ds == null) {
-			Dao = new Dao();
+			Dao = new Dao(); 
 		}
 		
 		try {
