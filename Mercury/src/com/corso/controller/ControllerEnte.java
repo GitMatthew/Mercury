@@ -73,9 +73,9 @@ public class ControllerEnte extends HttpServlet {
 		} else if(session.getAttribute("from")=="enteHome") {
 			
 			Evento nuovoEvento = new Evento();
-								
-			Date dataInizio= new Date(Integer.parseInt(request.getParameter("dataInizio")));;
-			Date dataFine=new Date(Integer.parseInt(request.getParameter("dataInizio")));
+						
+			Date dataFine =Date.valueOf(request.getParameter("dataFine"));
+			Date dataInizio =Date.valueOf(request.getParameter("dataInizio"));
 			
 			System.out.println(request.getParameter("dataInizio"));
 			
