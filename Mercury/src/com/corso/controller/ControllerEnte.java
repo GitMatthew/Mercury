@@ -83,7 +83,7 @@ public class ControllerEnte extends HttpServlet {
 			nuovoEvento.setId_categoria(Integer.parseInt(request.getParameter("id_categoria")));
 			nuovoEvento.setDescrizione(descrizione);
 			nuovoEvento.setId_comune(Integer.parseInt(request.getParameter("id_comune")));
-			nuovoEvento.setData_inizio(dataInizio); 
+			nuovoEvento.setData_inizio(dataInizio);  
 			nuovoEvento.setData_fine(dataFine);
 			nuovoEvento.setUrl_sito_evento(request.getParameter("urlEvento"));
 			nuovoEvento.setId_ente(this.id_ente);
