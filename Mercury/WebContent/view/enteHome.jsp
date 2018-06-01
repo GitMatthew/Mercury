@@ -208,7 +208,7 @@
     
     <label>Provincia :</label> 
     <select name="id_provincia"> 
-        <optgroup label ="Regione">         
+        <optgroup label ="Provincia">         
              <c:forEach var="j" items="${requestScope.regioni}">	            				
 	              <option value="${j.id_regione}">${j.nome_regione}</option>	              
 	         </c:forEach>  	           
@@ -218,8 +218,8 @@
     <label>Comune :</label> 
 
     <select name="id_comune"> 
-        <optgroup label ="Regione">         
-             <c:forEach var="j" items="${requestScope.regioni}">	            				
+        <optgroup label ="Comune">         
+             <c:forEach var="j" items="${requestScope.comuni}">	            				
 	              <option value="${j.id_regione}">${j.nome_regione}</option>	              
 	         </c:forEach>  	           
         </optgroup>         
