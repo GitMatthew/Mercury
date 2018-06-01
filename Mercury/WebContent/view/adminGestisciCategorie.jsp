@@ -89,7 +89,7 @@ function myFunction(x) {
 }
 else
 { 
-	out.print("Nessuna Categorai trovata");
+	out.print("Nessuna Categoria Trovata");
 }
 %>
 
