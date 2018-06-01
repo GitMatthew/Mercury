@@ -49,13 +49,13 @@
    <h3 Style="text-align:center; color:White">Lista Categorie</h3>
   
   	<table border="1" style="width:100%">
-		<tr>
+		<tr style="color:White">
 			<th>Nome Categoria</th>
 			<th>Gestisci</th>
 		</tr>
 	
 	<c:forEach var="j" items="${sessionScope.tutte_le_cat}">
-		<tr>
+		<tr style="color:White">
 			<td><center><c:out value="${j.nome_categoria}"></c:out></center></td>
 			<td style="width:140px" align="center">
 			<c:if test="${j.nome_categoria != 'altro'}">
@@ -64,10 +64,10 @@
 		</tr>
 		
 		<c:if test="${j.nome_categoria != 'altro'}">
-		<tr id="input${j.id_categoria}" style="display:none;">
+		<tr id="input${j.id_categoria}" style="display:none; color:White">
 		<form action="" >
-			<td style="width:856px;"align="center">Modifica Categoria &nbsp; <input type="text" name="cat"></td>
-			<td style="width:140px;"align="center"><input type="submit"><input type="reset"></td>
+			<td style="width:856px; color:Black"align="center">Modifica Categoria &nbsp; <input type="text" name="cat"></td>
+			<td style="width:140px; color:Black"align="center"><input type="submit"><input type="reset"></td>
 		</form>
 		</tr>
 		</c:if>

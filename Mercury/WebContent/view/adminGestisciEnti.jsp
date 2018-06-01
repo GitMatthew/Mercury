@@ -47,7 +47,7 @@
   
   <table border="1" style="width:100%">
 
-	<tr>
+	<tr style="color:White">
 		<th>Evento</th>
 		<th>Descrizione</th>
 		<th>Status</th>
@@ -55,14 +55,14 @@
 	</tr>
 	
 	<c:forEach var="j" items="${sessionScope.tutti_enti}">
-		<tr>
+		<tr style="color:White">
 			<td><c:out value="${j.nome_ente}"></c:out></td>
 			<td><c:out value="${j.descrizione_ente}"></c:out></td>
 			<td><c:out value="${j.nome_status}"></c:out></td>
 			<td style="width:205px" align="center">
-			<c:if test="${j.id_status==3 || j.id_status==4 }"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_ente&id_ente=${j.id_ente}&id_status=2'">Approva</button></c:if>
-			<c:if test="${j.id_status==2}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_ente&id_ente=${j.id_ente}&id_status=3'">Rifiuta</button></c:if>
-			<c:if test="${j.id_status==2 || j.id_status==3}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_ente&id_ente=${j.id_ente}&id_status=4'">Blocca</button></c:if></td>
+			<c:if test="${j.id_status==3 || j.id_status==4 }"><button style="width:65px; color:Black" onclick="location.href='../ControllerAdmin?param=mod_ente&id_ente=${j.id_ente}&id_status=2'">Approva</button></c:if>
+			<c:if test="${j.id_status==2}"><button style="width:65px; color:Black" onclick="location.href='../ControllerAdmin?param=mod_ente&id_ente=${j.id_ente}&id_status=3'">Rifiuta</button></c:if>
+			<c:if test="${j.id_status==2 || j.id_status==3}"><button style="width:65px; color:Black" onclick="location.href='../ControllerAdmin?param=mod_ente&id_ente=${j.id_ente}&id_status=4'">Blocca</button></c:if></td>
 		</tr>
 	</c:forEach>
 </table>
