@@ -100,7 +100,7 @@ public class ControllerAdmin extends HttpServlet {
 			int y=Integer.parseInt(request.getParameter("id_status"));
 			im.modEvento(x,y);
 			ArrayList<Evento> a=im.getEventiAttesa();
-			session.setAttribute("attesa", a);
+			session.setAttribute("gestione_eventi", a);
 			response.sendRedirect("view/adminGestisciEventi.jsp");	
 			
 		}
