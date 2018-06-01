@@ -50,7 +50,9 @@ if(session.getAttribute("user")==null)
 %>
 
    <h3 Style="text-align:center; color:White">Lista Categorie</h3>
-  
+  	
+  	<button style="width:150px; color:Black; align:center" onclick="myFunction(0)">Aggiungi Nuova Categoria</button>
+  	
   	<table border="1" style="width:100%">
 		<tr style="color:White">
 			<th>Nome Categoria</th>
@@ -66,6 +68,13 @@ if(session.getAttribute("user")==null)
 			</c:if></td>
 		</tr>
 
+		
+		<c:if test="${j.nome_categoria != 'altro'}">
+		<tr id="input${j.id_categoria}" style="display:none; width:100% ; color:White" align="center">
+		<td colspan="2" style="width:100%; border:none; colspan:2"><form action="ControllerAdmin?param=0" method="get">
+			Modifica Categoria &nbsp; <input style="color:Black" type="text" name="cat" /><input style="color:Black" type="submit"/><input style="color:Black" type="reset" />
+		</form></td></tr></c:if>
+
 	</c:forEach>
 		</table>
 	<table border="none" align="center">
@@ -74,24 +83,30 @@ if(session.getAttribute("user")==null)
 		<form action="../ControllerAdmin" method="get">
 			Modifica Categoria &nbsp;
 			<input type="hidden" value="" id="id_cat" name="id_cate"/>
-			<input type="hidden" value="mod_cat" name="param" />
+			<input type="hidden" value="mod_cat" id="action" name="param" />
 			<input style="color:Black" type="text" name="cat" />
 			<input style="color:Black" type="submit"/>
 			<input style="color:Black" type="reset" />
 		</form></td> 
 		</tr>
 	</table>
-<!-- ciao filli -->
+	
 <script>
 function myFunction(t) {
 	var x=document.getElementById("input");
+	var y=document.getElementById("action");
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {
         x.style.display = "none";
     }
+	if(t!=0){
 	var o=document.getElementById("id_cat");
+	y.value="mod_cat";
 	o.value=t;
+	}else{
+		y.value="new_cat";
+	}
 }
 </script>
 

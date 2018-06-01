@@ -16,7 +16,6 @@ public class AdminImpl implements AdminUtility {
 		Connection c = Dao.getConnection();
 		PreparedStatement pst;
 		ResultSet rs;
-		boolean result = false;
 		int x = 0;
 		try {
 			pst = c.prepareStatement(AdminUtility.CHECK_PSW);
@@ -113,11 +112,10 @@ public class AdminImpl implements AdminUtility {
 	@Override
 	public void newCat(String Cat) {
 		Connection c = Dao.getConnection();
-		boolean result = false;
 		try {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_NEW_CAT);
 			pst.setString(1, Cat);
-			int rs = pst.executeUpdate();
+			pst.executeUpdate();
 		} catch (SQLException a) {
 			a.printStackTrace();
 		}
@@ -127,13 +125,12 @@ public class AdminImpl implements AdminUtility {
 	@Override
 	public void modCat(String mcat, int id_categoria) {
 		Connection c = Dao.getConnection();
-		boolean result = false;
 		try {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.MODIFY_CAT);
 			pst.setString(1,mcat);
 			pst.setInt(2, id_categoria);
 
-			int rs = pst.executeUpdate();
+			pst.executeUpdate();
 		} catch (SQLException a) {
 			a.printStackTrace();
 		}
@@ -182,6 +179,7 @@ public class AdminImpl implements AdminUtility {
 				e.setDescrizione(rst.getString("descrizione"));
 				e.setData_inizio(rst.getDate("data_inizio"));
 				e.setData_fine(rst.getDate("data_fine"));
+				
 				
 				evList.add(e);
 			}
