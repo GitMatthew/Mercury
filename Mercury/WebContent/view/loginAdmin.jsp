@@ -6,9 +6,9 @@
 <meta charset="US-ASCII">
 <title>Login Administrator</title>
 </head>
-<body>
+<body Background=../images/adminLoginBg.jpg>
 
-<h1 style="color:gray;text-align:center">Pagina di Login</h1>
+<h1 style="color:gray;text-align:center">Effettua il Login</h1>
 
 <div align=center>
 <form method="post" action="../ControllerAdmin">
@@ -16,11 +16,11 @@
 <table border="1">
 		<tr>
 		<td><input type="text" name="user"></td>
-		<td><h3>Inserisci Username</h3></td>
+		<td><h3 style="color:White" >Inserisci Username</h3></td>
 		</tr>
 		<tr>
 		<td><input type="password" name="psw"></td>
-		<td><h3>Inserisci Password</h3></td>
+		<td><h3 style="color: White " >Inserisci Password</h3></td>
 		</tr>
 		<tr> 
 		<td align=center><input type="submit"></td>
@@ -30,14 +30,14 @@
 </form>	
 </div>
 
-<div align=center>
+<div align=center>  
 
-<a style="color:gray;text-align:center" ><%
-if (request.getAttribute("rst")!=null)
+<a style="color:Red;text-align:center" ><%
+if (session.getAttribute("rst")!=null)
 	{
 	
-	out.print(request.getAttribute("rst"));
-	
+	out.print(session.getAttribute("rst"));
+	session.invalidate();
 	}
 %></a>
 </div>
