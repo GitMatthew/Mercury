@@ -6,7 +6,7 @@
 {
 	HttpSession sessionError = request.getSession();
 	session.setAttribute("rst", "Per proseguire serve una sessione attiva. Effettua il Login");
-	response.sendRedirect("view/loginAdmin.jsp");
+	response.sendRedirect("loginAdmin.jsp");
 } 
 
 %>
