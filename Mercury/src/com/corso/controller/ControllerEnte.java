@@ -17,6 +17,8 @@ import javax.servlet.http.HttpSession;
 
 import com.corso.model.Categoria;
 import com.corso.model.CategoriaImpl;
+import com.corso.model.Comune;
+import com.corso.model.ComuneImpl;
 import com.corso.model.EnteImpl;
 import com.corso.model.Evento;
 import com.corso.model.Regione;
@@ -126,9 +128,11 @@ public class ControllerEnte extends HttpServlet {
 		
 		ArrayList<Categoria> cat = CategoriaImpl.tutteLeCategorie();
 		ArrayList<Regione> reg = RegioneImpl.tutteLeRegioni();
+		ArrayList<Comune> com = ComuneImpl.tuttiIComuni();
 		
 		request.setAttribute("categorie", cat);
 		request.setAttribute("regioni", reg);
+		request.setAttribute("comuni", com);
 		session.setAttribute("from" , "enteHome");
 		
 	}
