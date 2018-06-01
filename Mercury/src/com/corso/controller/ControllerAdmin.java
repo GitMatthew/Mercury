@@ -150,7 +150,7 @@ public class ControllerAdmin extends HttpServlet {
 			session.setAttribute("tutte_le_cat", a);
 			response.sendRedirect("view/adminGestisciCategorie.jsp");
 		}	
-		
+		 
 		if(prm.equals("del_cat"))
 		{
 			HttpSession session = request.getSession();

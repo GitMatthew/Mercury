@@ -58,7 +58,7 @@ if(session.getAttribute("user")==null)
 			<th>Nome Categoria</th>
 			<th>Gestisci</th>
 		</tr>
-	
+	 
 	<c:forEach var="j" items="${sessionScope.tutte_le_cat}">
 		<tr style="color:White">
 			<td><center><c:out value="${j.nome_categoria}"></c:out></center></td>
