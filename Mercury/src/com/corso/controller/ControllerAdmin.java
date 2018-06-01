@@ -162,9 +162,9 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		}
 		else
 		{
-			RequestDispatcher disp=request.getRequestDispatcher("view/loginAdmin.jsp");
-			request.setAttribute("rst", "Username o Password Errati");
-			disp.forward(request, response);	
+			HttpSession session = request.getSession();
+			session.setAttribute("rst", "Username o Password Errati");
+			response.sendRedirect("view/loginAdmin.jsp");
 			
 		} 
 	}
