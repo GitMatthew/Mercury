@@ -69,24 +69,16 @@ public class ControllerEnte extends HttpServlet {
 			String indirizzo=request.getParameter("indirizzo");
 			String descrizione=request.getParameter("descrizione");
 			String id_categoria=request.getParameter("id_categoria");
-			String id_regione=request.getParameter("id_regione");
+			String id_comune=request.getParameter("id_regione");
 			String dataInizio=request.getParameter("annoInizio") + "-" + request.getParameter("meseInizio") + "-" + request.getParameter("giornoInizio");
 			String dataFine=request.getParameter("annoFine") + "-" + request.getParameter("meseFine") + "-" + request.getParameter("giornoFine");
 			System.out.println(nomeEvento);
 			System.out.println(indirizzo);
 			System.out.println(descrizione);
 			System.out.println(id_categoria);
-			System.out.println(id_regione);
+			System.out.println(id_comune);
 			System.out.println(dataInizio);
-			System.out.println(dataFine);
-			
-			
-			
-			
-			
-			
-			
-			
+			System.out.println(dataFine);		
 			
 			
 	   //Gestisci Eventi
@@ -127,7 +119,7 @@ public class ControllerEnte extends HttpServlet {
 	//Assega alla request i parametri per la pagina
     public void callGestisciEventi (int id) {
 		
-		disp=request.getRequestDispatcher("/view/gestisciEventi.jsp");
+		disp=request.getRequestDispatcher("/view/EnteGestisciEventi.jsp");
 		
 		session.setAttribute("pagina" , "gestisciEventi");
 	}
