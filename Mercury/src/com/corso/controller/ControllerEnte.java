@@ -98,7 +98,7 @@ public class ControllerEnte extends HttpServlet {
 				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA !");
 			}
 			
-			
+			disp.forward(request, response);
 			
 			
 	   //Gestisci Eventi
