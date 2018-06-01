@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ page import="java.sql.*"%>
 <%@ page import="com.corso.connection.Dao"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -114,8 +115,8 @@ a.linkAPRIricerca:hover {
 	%>
 	<script>
 		function ricerca() {
-			var ric = "../ControllerHomepage?da=1&";
-			ric = ric + "categoria=";
+			var ric = "../ControllerHomepage?da=1";
+			ric = ric + "&categoria=";
 			ric = ric + document.getElementById("catSELEZIONATO").value;
 			ric = ric + "&regione=";
 			ric = ric + document.getElementById("regSELEZIONATO").value;
@@ -274,15 +275,17 @@ a.linkAPRIricerca:hover {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>i i i i</td>
-						<td>sagra della porchetta</td>
-						<td>musica</td>
-						<td>alla sagra della porchetta puoi mangiare ottime porzioni di porchetta con pochi euri </td>
-						<td>ariccia</td>
-						<td >2018-09-09</td>
-						<td >2018-09-09</td>
-					</tr>
+				
+			<c:forEach var="j" items="${requestScope.risultatoRicerca}">
+				<tr>
+					<td><c:out value="${j.nome_evento }"></c:out></td>
+					<td><c:out value="${j.descrizione }"></c:out></td>
+					<td><c:out value="${j.data_inizio }"></c:out></td>
+					<td><c:out value="${j.data_fine }"></c:out></td>
+					<td><c:out value="${j.nome_categoria }"></c:out></td>
+					<td><c:out value="${j.nome_comune}"></c:out></td>
+				</tr>
+				</c:forEach>
 				</tbody> 
 			</table>  
 
