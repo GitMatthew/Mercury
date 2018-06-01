@@ -17,4 +17,6 @@ public interface EventoUtility
 	public ArrayList<Evento> ricerca(String cat, String reg, String prov, String com, String inizio, String fine);
 	
 	public ArrayList<Evento> primiEventi();
+	
+	//public ArrayList<Evento> eventiEnte (int id_ente);
 }

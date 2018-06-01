@@ -21,6 +21,7 @@ import com.corso.model.Comune;
 import com.corso.model.ComuneImpl;
 import com.corso.model.EnteImpl;
 import com.corso.model.Evento;
+import com.corso.model.EventoImpl;
 import com.corso.model.Regione;
 import com.corso.model.RegioneImpl;
 
@@ -77,7 +78,7 @@ public class ControllerEnte extends HttpServlet {
 			Date dataFine =Date.valueOf(request.getParameter("dataFine"));
 			Date dataInizio =Date.valueOf(request.getParameter("dataInizio"));
 			
-			String descrizione=request.getParameter("indirizzo") + " <br><br> " + request.getParameter("descrizione");		
+			String descrizione=request.getParameter("indirizzo") + " ~ " + request.getParameter("descrizione");		
 								
 			nuovoEvento.setUrl_img_evento(request.getParameter("urlImg"));
 			nuovoEvento.setNome_evento(request.getParameter("nomeEvento"));
@@ -92,6 +93,7 @@ public class ControllerEnte extends HttpServlet {
 			
 			if(ei.creaEvento(nuovoEvento)) {
 				disp=request.getRequestDispatcher("/view/enteGestisciEventi.jsp");
+				callGestisciEventi(id_ente);
 				request.setAttribute("messaggio", "COMPLIMENTI ! Il tuo Evento è stato creato ed è in attesa dell'approvazione di un Amministratore.");
 			} else {
 				disp=request.getRequestDispatcher("/view/enteHome.jsp");
@@ -103,6 +105,8 @@ public class ControllerEnte extends HttpServlet {
 			
 	   //Gestisci Eventi
 	   } else if(session.getAttribute("from")=="enteGestisciEventi") {
+		   
+		   
 		   
 		   
 						
@@ -149,6 +153,13 @@ public class ControllerEnte extends HttpServlet {
 		
 		session.setAttribute("pagina" , "enteGestisciEventi");
 		request.setAttribute("messaggio", "Benvenuto su Mercury , in questa pagina puoi visualizzare e gestire gli eventi che hai creato !");
+		
+		ArrayList<Evento> evt = EventoImpl.eventiEnte(id_ente);
+		
+		System.out.println(evt);
+		
+		request.setAttribute("eventi", evt);
+		
 	}
     
     //Assega alla request i parametri per la pagina

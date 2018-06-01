@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.apache.xml.resolver.apps.resolver;
+
 import com.corso.connection.Dao;
 
 public class EventoImpl implements EventoUtility
@@ -110,5 +112,43 @@ public class EventoImpl implements EventoUtility
 		}
 		return atList;
 	}
-	
+
+	public static ArrayList<Evento> eventiEnte(int id_ente) {
+		
+		Connection conn=Dao.getConnection();
+		Statement st = null ;
+		ResultSet rs = null ;
+		ArrayList<Evento> evt = new ArrayList<Evento>() ;
+		String qry = "SELECT * FROM eventi WHERE id_ente = '"+id_ente+"'";	
+		try {	
+			
+		    st = conn.createStatement();					
+			rs = st.executeQuery(qry);
+			
+                while(rs.next()) {
+				
+                	Evento e = new Evento();
+				
+				e.setNome_evento(rs.getString("nome_evento"));
+				e.setDescrizione(rs.getString("descrizione"));
+				e.setData_inizio(rs.getDate("data_inizio"));
+				e.setData_fine(rs.getDate("data_fine"));
+				e.setId_status(rs.getInt("id_status"));
+				e.setId_comune(rs.getInt("id_comune"));
+				e.setId_categoria(rs.getInt("id_categoria"));
+				e.setId_ente(rs.getInt("id_ente"));
+				e.setUrl_img_evento(rs.getString("url_img_evento"));
+				e.setUrl_sito_evento(rs.getString("url_sito_evento"));
+				
+				
+				evt.add(e);				
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("errore sql");		
+			e.printStackTrace();	
+		}
+		
+		return evt;	
+	}
 }

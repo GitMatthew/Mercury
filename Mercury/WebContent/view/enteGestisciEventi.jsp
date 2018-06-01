@@ -34,9 +34,7 @@
  
  
  <div style="height:40%; overflow: auto; width:80%"class="container">
-	<% if (session.getAttribute("gestione_eventi")!=null)
-	{
-	%>   
+  
 	    <table border="1" style="width:100%">
 
 	<tr>
@@ -46,35 +44,20 @@
 		<th>Modifica</th>
 	</tr>
 	
-	<c:forEach var="j" items="${sessionScope.gestione_eventi}">
+	<c:forEach var="j" items="${requestScope.eventi}">
 		<tr>
 			<td><c:out value="${j.nome_evento}"></c:out></td>
 			<td><c:out value="${j.descrizione}"></c:out></td>
 			<td><c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
-			<td><c:out value="${j.nome_status}"></c:out></td>
-			<td><c:out value="${j.nome_categoria}"></c:out></td>
-			<td><c:out value="${j.nome_comune}"></c:out></td>
-			<td><c:out value="${j.nome_ente}"></c:out></td>
-			<td><c:out value="${j.url_sito_evento}"></c:out></td>
-			<td><c:out value="${j.url_img_evento}"></c:out></td>
-			<td style="width:140px" align="center">
-			<c:if test="${j.id_status==2}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=2'">Approva</button></c:if>
-			<c:if test="${j.id_status==3}"><button style="width:65px" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=3'">Rifiuta</button></c:if></td>
+			<td><c:out value="${j.id_status}"></c:out></td>
+			<td><c:out value="${j.id_categoria}"></c:out></td>
+			<td><c:out value="${j.id_comune}"></c:out></td>
+			<td><c:out value="${j.id_ente}"></c:out></td>
 			 
 		</tr>
 	</c:forEach>
 </table>
-<% 
-}
-else
-{ 
-	out.print("Errore interrogazione DataBase");
-}
-%>
-    
-    
-    
-      
+
     </form>
 
 </body>
