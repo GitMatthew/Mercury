@@ -11,8 +11,8 @@ public class Evento
 	private String descrizione = null;
 	private String nome_categoria = null;
 	private String nome_comune = null;
-	private String data_inizio;
-	private String data_fine;
+	private Date data_inizio;
+	private Date data_fine;
 	private int id_status;
 	private int id_comune;
 	private int id_categoria;
@@ -56,22 +56,22 @@ public class Evento
 		this.descrizione = descrizione;
 	}
 	
-	public String getData_inizio()
+	public Date getData_inizio()
 	{
 		return data_inizio;
 	}
 	
-	public void setData_inizio(String data_inizio)
+	public void setData_inizio(Date data_inizio)
 	{
 		this.data_inizio = data_inizio;
 	}
 	
-	public String getData_fine()
+	public Date getData_fine()
 	{
 		return data_fine;
 	}
 	
-	public void setData_fine(String data_fine)
+	public void setData_fine(Date data_fine)
 	{
 		this.data_fine = data_fine;
 	}

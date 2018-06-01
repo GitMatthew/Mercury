@@ -74,9 +74,12 @@ public class ControllerEnte extends HttpServlet {
 			
 			Evento nuovoEvento = new Evento();
 								
-			String dataInizio=request.getParameter("annoInizio") + "-" + request.getParameter("meseInizio") + "-" + request.getParameter("giornoInizio");
-			String dataFine=request.getParameter("annoFine") + "-" + request.getParameter("meseFine") + "-" + request.getParameter("giornoFine");
-			String descrizione=request.getParameter("indirizzo") + " <br><br> " + request.getParameter("descrizione");		
+			Date dataInizio= new Date(Integer.parseInt(request.getParameter("dataInizio")));;
+			Date dataFine=new Date(Integer.parseInt(request.getParameter("dataInizio")));
+			
+			System.out.println(request.getParameter("dataInizio"));
+			
+			String descrizione=request.getParameter("dataFine") + " <br><br> " + request.getParameter("descrizione");		
 								
 			nuovoEvento.setUrl_img_evento(request.getParameter("urlImg"));
 			nuovoEvento.setNome_evento(request.getParameter("nomeEvento"));
