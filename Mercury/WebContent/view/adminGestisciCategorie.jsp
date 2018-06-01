@@ -73,7 +73,7 @@
 		</c:if>
 	</c:forEach>
 	</table>
-
+<!-- ciao filli -->
 <script>
 function myFunction(x) {
     var x = document.getElementById(x);
