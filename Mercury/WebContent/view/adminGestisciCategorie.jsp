@@ -59,7 +59,7 @@
 			<td><center><c:out value="${j.nome_categoria}"></c:out></center></td>
 			<td style="width:140px" align="center">
 			<c:if test="${j.nome_categoria != 'altro'}">
-				<button style="width:65px" id="${j.id_categoria}" onclick="myFunction('input${j.id_categoria}')">Modifica</button>
+				<button style="width:65px; color:Black" id="${j.id_categoria}" onclick="myFunction('input${j.id_categoria}')">Modifica</button>
 			</c:if></td>
 		</tr>
 		
