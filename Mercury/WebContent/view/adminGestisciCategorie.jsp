@@ -64,11 +64,10 @@
 		</tr>
 		
 		<c:if test="${j.nome_categoria != 'altro'}">
-		<tr id="input${j.id_categoria}" style="display:none; color:White">
-		<form action="" >
-			<td style="width:856px; color:Black"align="center">Modifica Categoria &nbsp; <input type="text" name="cat"></td>
-			<td style="width:140px; color:Black"align="center"><input type="submit"><input type="reset"></td>
-		</form>
+		<tr id="input${j.id_categoria}" style="display:none; width:100%; color:White" align="center">
+		<td style="width:100%; border:none; colspan:2"><form action="ControllerAdmin?param=0" method="get">
+			Modifica Categoria &nbsp; <input style="color:Black" type="text" name="cat" /><input style="color:Black" type="submit"/><input style="color:Black" type="reset" />
+		</form></td>
 		</tr>
 		</c:if>
 	</c:forEach>
