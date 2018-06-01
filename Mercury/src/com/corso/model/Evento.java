@@ -56,7 +56,7 @@ public class Evento
 		this.descrizione = descrizione;
 	}
 	
-	public String getData_inizio()
+	public Date getData_inizio()
 	{
 		return data_inizio;
 	}
@@ -66,7 +66,7 @@ public class Evento
 		this.data_inizio = data_inizio;
 	}
 	
-	public String getData_fine()
+	public Date getData_fine()
 	{
 		return data_fine;
 	}
