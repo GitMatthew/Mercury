@@ -43,7 +43,7 @@
 {
 %>
 
-  <h3 Style="text-align:center">Lista Enti</h3>
+  <h3 Style="text-align:center; color:White">Lista Enti</h3>
   
   <table border="1" style="width:100%">
 

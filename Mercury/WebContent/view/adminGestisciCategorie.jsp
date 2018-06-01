@@ -46,7 +46,7 @@
 {
 %>
 
-   <h3 Style="text-align:center">Lista Categorie</h3>
+   <h3 Style="text-align:center; color:White">Lista Categorie</h3>
   
   	<table border="1" style="width:100%">
 		<tr>
