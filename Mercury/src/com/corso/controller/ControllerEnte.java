@@ -1,7 +1,11 @@
 package com.corso.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import com.corso.model.Categoria;
 import com.corso.model.CategoriaImpl;
 import com.corso.model.EnteImpl;
+import com.corso.model.Evento;
 import com.corso.model.Regione;
 import com.corso.model.RegioneImpl;
 
@@ -65,24 +70,28 @@ public class ControllerEnte extends HttpServlet {
 		//Se la sessione è aperta passa al crea evento
 		} else if(session.getAttribute("from")=="enteHome") {
 			
-			String nomeEvento=request.getParameter("nomeEvento");
-			String indirizzo=request.getParameter("indirizzo");
-			String descrizione=request.getParameter("descrizione");
-			String id_categoria=request.getParameter("id_categoria");
-			String id_comune=request.getParameter("id_regione");
+			Evento nuovoEvento = new Evento();
+								
 			String dataInizio=request.getParameter("annoInizio") + "-" + request.getParameter("meseInizio") + "-" + request.getParameter("giornoInizio");
 			String dataFine=request.getParameter("annoFine") + "-" + request.getParameter("meseFine") + "-" + request.getParameter("giornoFine");
-			System.out.println(nomeEvento);
-			System.out.println(indirizzo);
-			System.out.println(descrizione);
-			System.out.println(id_categoria);
-			System.out.println(id_comune);
-			System.out.println(dataInizio);
-			System.out.println(dataFine);		
+			String descrizione=request.getParameter("indirizzo") + " <br><br> " + request.getParameter("descrizione");		
+								
+			nuovoEvento.setUrl_img_evento(request.getParameter("urlImg"));
+			nuovoEvento.setNome_evento(request.getParameter("nomeEvento"));
+			nuovoEvento.setId_categoria(Integer.parseInt(request.getParameter("id_categoria")));
+			nuovoEvento.setDescrizione(descrizione);
+			nuovoEvento.setId_comune(Integer.parseInt(request.getParameter("id_comune")));
+			//nuovoEvento.setData_inizio(dataInizio); 
+			//nuovoEvento.setData_fine(dataFine);
+			nuovoEvento.setUrl_sito_evento(request.getParameter("urlEvento"));
+			nuovoEvento.setId_ente(this.id_ente);
+			nuovoEvento.setId_status(1);
+			
+			
 			
 			
 	   //Gestisci Eventi
-	   } else if(session.getAttribute("from")=="gestisciEventi") {
+	   } else if(session.getAttribute("from")=="enteGestisciEventi") {
 						
 			
 	   //Gestisci account				
@@ -121,7 +130,7 @@ public class ControllerEnte extends HttpServlet {
 		
 		disp=request.getRequestDispatcher("/view/enteGestisciEventi.jsp");
 		
-		session.setAttribute("pagina" , "entegestisciEventi");
+		session.setAttribute("pagina" , "enteGestisciEventi");
 	}
     
     //Assega alla request i parametri per la pagina
@@ -150,7 +159,7 @@ public class ControllerEnte extends HttpServlet {
 			break;
 			
         case "2":
-        	callGestisciEventi(id_ente);
+        	callGestisciEventi(id_ente); 
 			break;
 			
         case "3":
