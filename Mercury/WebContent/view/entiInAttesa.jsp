@@ -48,7 +48,7 @@
   <table border="1" style="width:100%">
 
 	<tr>
-		<th>Evento</th>
+		<th>Ente</th>
 		<th>Descrizione</th>
 		<th>Email</th>
 		<th>Gestisci</th>

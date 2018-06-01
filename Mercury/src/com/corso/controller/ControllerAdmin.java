@@ -105,6 +105,18 @@ public class ControllerAdmin extends HttpServlet {
 			
 		}	 
 		
+		if(prm.equals("mod_ente"))  
+		{
+			HttpSession session = request.getSession();
+			int x=Integer.parseInt(request.getParameter("id_ente"));
+			int y=Integer.parseInt(request.getParameter("id_status"));
+			im.modEnte(x,y);
+			ArrayList<Ente> a=im.getAllEnts();
+			session.setAttribute("tutti_enti", a);
+			response.sendRedirect("view/adminGestisciEnti.jsp");	
+			
+		}	
+		
 		if(prm.equals("mod_cat"))
 		{
 			HttpSession session = request.getSession();
