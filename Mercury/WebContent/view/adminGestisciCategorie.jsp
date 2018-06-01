@@ -81,7 +81,7 @@ if(session.getAttribute("user")==null)
 		<form action="../ControllerAdmin" method="get">
 			Modifica Categoria &nbsp;
 			<input type="hidden" value="" id="id_cat" name="id_cate"/>
-			<input type="hidden" value="mod_cat" name="param" />
+			<input type="hidden" value="mod_cat" id="action" name="param" />
 			<input style="color:Black" type="text" name="cat" />
 			<input style="color:Black" type="submit"/>
 			<input style="color:Black" type="reset" />
@@ -94,13 +94,18 @@ if(session.getAttribute("user")==null)
 <script>
 function myFunction(t) {
 	var x=document.getElementById("input");
+	var y=document.getElementById("action");
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {
         x.style.display = "none";
     }
+	if(t!=0){
 	var o=document.getElementById("id_cat");
 	o.value=t;
+	}else{
+		y.value="new_cat";
+	}
 }
 </script>
 
