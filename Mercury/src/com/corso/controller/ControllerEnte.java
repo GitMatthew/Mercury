@@ -25,6 +25,7 @@ public class ControllerEnte extends HttpServlet {
 	RequestDispatcher disp=null;
 	HttpServletRequest request = null ;
 	EnteImpl ei = null ;
+	static HttpSession session = null ;
        
   
     public ControllerEnte() {
@@ -40,13 +41,17 @@ public class ControllerEnte extends HttpServlet {
 		
 		ei = new EnteImpl();
 		
+		this.session = request.getSession();
+		
+		//Sela sessione non è aperta esegui log in
+		if(session.getAttribute("user")==null) {
+				
 		String user=request.getParameter("user");
 		String psw=request.getParameter("psw");
 		
 		if(ei.verificaPsw (user , psw)) {	
 			id_ente = ei.idEnte(user);
 			callHome(id_ente);
-			HttpSession session = request.getSession();
 			session.setAttribute("user" , 1);
 			
 		} else {
@@ -56,13 +61,53 @@ public class ControllerEnte extends HttpServlet {
 		
 		disp.forward(request, response);
 		
+		
+		//Se la sessione è aperta passa al crea evento
+		} else if(session.getAttribute("from")=="enteHome") {
+			
+			String nomeEvento=request.getParameter("nomeEvento");
+			String indirizzo=request.getParameter("indirizzo");
+			String descrizione=request.getParameter("descrizione");
+			String id_categoria=request.getParameter("id_categoria");
+			String id_regione=request.getParameter("id_regione");
+			String dataInizio=request.getParameter("annoInizio") + "-" + request.getParameter("meseInizio") + "-" + request.getParameter("giornoInizio");
+			String dataFine=request.getParameter("annoFine") + "-" + request.getParameter("meseFine") + "-" + request.getParameter("giornoFine");
+			System.out.println(nomeEvento);
+			System.out.println(indirizzo);
+			System.out.println(descrizione);
+			System.out.println(id_categoria);
+			System.out.println(id_regione);
+			System.out.println(dataInizio);
+			System.out.println(dataFine);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+	   //Gestisci Eventi
+	   } else if(session.getAttribute("from")=="gestisciEventi") {
+						
+			
+	   //Gestisci account				
+	   } else if(session.getAttribute("from")=="accountEnte") {
+		   
+		   
+	   }
+	
 	}
 	
 	//restituisce id ente in sessione
 	public int getIdEnteLoggato () {	
 		return id_ente ;
+	
+	
 	}
-		
+		 
 
 	
 	//Assega alla request i parametri per la pagina
@@ -75,6 +120,7 @@ public class ControllerEnte extends HttpServlet {
 		
 		request.setAttribute("categorie", cat);
 		request.setAttribute("regioni", reg);
+		session.setAttribute("from" , "enteHome");
 		
 	}
 	
@@ -83,7 +129,7 @@ public class ControllerEnte extends HttpServlet {
 		
 		disp=request.getRequestDispatcher("/view/gestisciEventi.jsp");
 		
-		
+		session.setAttribute("pagina" , "gestisciEventi");
 	}
     
     //Assega alla request i parametri per la pagina
@@ -91,7 +137,7 @@ public class ControllerEnte extends HttpServlet {
 		
 		disp=request.getRequestDispatcher("/view/accountEnte.jsp");
 		
-		
+		session.setAttribute("pagina" , "accountEnte");
 	}
 	
 	
