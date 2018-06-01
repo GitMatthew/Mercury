@@ -18,7 +18,10 @@
 </head>
 <body>
 
-<h1>CREA UN NUOVO EVENTO</h1>
+<h1>CREA UN NUOVO EVENTO</h1> 
+
+<%= request.getAttribute("messaggio") %>
+<h1 value="messaggio"></h1>
 
     <form action="/Mercury_Mercury/ControllerEnte" method=get>
     <a href=/Mercury_Mercury/ControllerEnte?pag=1>CREA NUOVO EVENTO</a>   
@@ -48,7 +51,7 @@
     
     <br><br>
     
-    <label>Indirizzo</label> 
+    <label>Location / Indirizzo</label> 
     <br>
     <input type="text" name="indirizzo">
     
