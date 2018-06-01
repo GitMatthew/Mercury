@@ -65,7 +65,7 @@ if(session.getAttribute("user")==null)
 			<td style="width:140px" align="center">
 			<c:if test="${j.nome_categoria != 'altro'}">
 				<button style="width:65px; color:Black" onclick="myFunction('${j.id_categoria}')">Modifica</button>
-				<button style="width:65px; color:Black" onclick="../ControllerAdmin?param=del_cat&id_cat=${j.id_categoria}">Elimina</button>
+				<button style="width:65px; color:Black" onclick="location.href:'../ControllerAdmin?param=del_cat&id_cat=${j.id_categoria}'">Elimina</button>
 			</c:if></td>
 		</tr>
 
