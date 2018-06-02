@@ -113,31 +113,38 @@ a.linkAPRIricerca:hover {
 		Statement x = null;
 		ResultSet rs = null;
 	%>
-	<script>
-		function ricerca() {
-			var ric = "../ControllerHomepage?da=1";
-			ric = ric + "&categoria=";
-			ric = ric + document.getElementById("catSELEZIONATO").value;
-			ric = ric + "&regione=";
-			ric = ric + document.getElementById("regSELEZIONATO").value;
-			ric = ric + "&provincia=";
-			ric = ric + document.getElementById("proSELEZIONATO").value;
-			ric = ric + "&comune=";
-			ric = ric + document.getElementById("comSELEZIONATO").value;
-			ric = ric + "&dataInizio=";
-			ric = ric + document.getElementById("inizio").value;
-			ric = ric + "&dataFine=";
-			ric = ric + document.getElementById("fine").value;
-			document.getElementById("linkGETricerca").href = ric;
-		}
-	</script>
+	
 
 	<div align="center" class="row sticky-top"
 		style="overflow: auto; padding: 10px; max-width: 100%; background-color: rgba(128, 0, 0, 0.4);">
-		<a id="linkGETricerca" onclick="ricerca()" href="#"
-			data-toggle="collapse"> <img src="../images/search-icon.png"
-			style="padding-left: 10px; height: 40px;">
-		</a>
+		<a id="linkGETricerca" href="../ControllerHomepage?da=1">ricerca</a>
+		
+		<div class="col">
+		
+		<script>
+		$(document).ready(function() {
+
+			$("#linkGETricerca").click(function() {
+
+				var ric = "&categoria=";
+				ric = ric + document.getElementById("catSELEZIONATO").value;
+				ric = ric + "&regione=";
+				ric = ric + document.getElementById("regSELEZIONATO").value;
+				ric = ric + "&provincia=";
+				ric = ric + document.getElementById("proSELEZIONATO").value;
+				ric = ric + "&comune=";
+				ric = ric + document.getElementById("comSELEZIONATO").value;
+				ric = ric + "&dataInizio=";
+				ric = ric + document.getElementById("inizio").value;
+				ric = ric + "&dataFine=";
+				ric = ric + document.getElementById("fine").value;
+				$("#linkGETricerca").attr("href", function(i, origValue) {
+					return origValue + ric;
+				});
+			});
+			
+		});
+	</script>
 		<div class="col">
 			<a href="#catAPRI" data-toggle="collapse" class="linkAPRIricerca">
 				Categoria </a>
