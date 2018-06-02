@@ -276,7 +276,7 @@ a.linkAPRIricerca:hover {
 				</thead>
 				<tbody>
 				
-			<c:forEach var="j" items="${requestScope.risultatoRicerca}">
+			<c:forEach var="j" items="${sessionScope.risultatoRicerca}">
 				<tr>
 					<td><c:out value="${j.nome_evento }"></c:out></td>
 					<td><c:out value="${j.descrizione }"></c:out></td>
