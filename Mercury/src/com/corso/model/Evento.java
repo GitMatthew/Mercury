@@ -11,6 +11,7 @@ public class Evento
 	private String descrizione = null;
 	private String nome_categoria = null;
 	private String nome_comune = null;
+	private String nome_provincia = null;
 	private Date data_inizio;
 	private Date data_fine;
 	private int id_status;
@@ -161,6 +162,16 @@ public class Evento
 
 	public void setNome_status(String nome_status) {
 		this.nome_status = nome_status;
+	}
+
+	public String getNome_provincia()
+	{
+	    return nome_provincia;
+	}
+
+	public void setNome_provincia(String nome_provincia)
+	{
+	    this.nome_provincia = nome_provincia;
 	}
 	
 }
