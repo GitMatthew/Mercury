@@ -79,7 +79,7 @@
 			<br>
 			<label>Dal :</label> 
 			
-			<input type="date" id="inizio" name="dataInizio">
+			<input type="date" id="inizio" name="dataInizio" value="{{ Date.now() | date("2018-01-01") }}">
 			
 			<label>al :</label>  
 			
@@ -139,13 +139,13 @@
 				<tr>
 					<td>
 						<label>Sito web </label> 
-						<input name="url_sito_evento" placeholder="http://www.sito.it"> </input> 
+						<input name="url_sito_evento" placeholder="http://www.sito.it" value="${requestScope.evento.url_sito_evento}"> </input> 
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<label>Inserisci immagine</label>
-						 <input name="url_img_evento" placeholder="http://www.immagine.it">  
+						 <input name="url_img_evento" placeholder="http://www.immagine.it" value="${requestScope.evento.url_img_evento}">  
 					</td>
 			</table>  
 		</table>
