@@ -167,7 +167,7 @@
 			</table>
 		</table>
 	
-</form>
+
 		<label>Descrizione Evento :</label> 
 					<br>
 				   <textarea name="descrizione" maxlenght="100" cols="35" rows="5" value="descrizione"></textarea>
@@ -176,6 +176,7 @@
 					<br>
     
 					<input type="submit">
+</form>					
 
 		<div class="jumbotron text-center" style="margin-bottom: 0">
 		<p>Footer</p>
