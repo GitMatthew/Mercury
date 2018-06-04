@@ -193,16 +193,12 @@ public class ControllerEnte extends HttpServlet {
 		disp = request.getRequestDispatcher("/view/modificaEvento.jsp");
 		
 		Evento evt = EventoImpl.ricercaID(id);
-		
-		System.out.println(evt);
-		
-		request.setAttribute("evento", evt);
-		
-		
 		ArrayList<Categoria> cat = CategoriaImpl.tutteLeCategorie();
 		ArrayList<Regione> reg = RegioneImpl.tutteLeRegioni();
 		ArrayList<Comune> com = ComuneImpl.tuttiIComuni();
 		
+		request.setAttribute("evento", evt);
+				
 		request.setAttribute("categorie", cat);
 		request.setAttribute("regioni", reg);
 		request.setAttribute("comuni", com);
