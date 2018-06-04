@@ -204,6 +204,43 @@ public class EventoImpl implements EventoUtility {
 	return atList;
     }
     
+    public static Evento ricercaID (String id_evento) {
+    	Evento a = new Evento();
+		Connection conn = Dao.getConnection();
+		String qry = "SELECT * FROM eventi WHERE id_evento = "+id_evento;
+		try {
+		    Statement pst = conn.createStatement();
+		    ResultSet rst = pst.executeQuery(qry);
+
+		    rst.next();
+			a = new Evento();
+			a.setUrl_img_evento(rst.getString("url_img_evento"));
+			a.setNome_evento(rst.getString("nome_evento"));
+			a.setNome_categoria(rst.getString("nome_categoria"));
+			a.setDescrizione(rst.getString("descrizione"));
+			a.setNome_comune(rst.getString("nome_comune"));
+			a.setNome_status(rst.getString("nome_status"));
+			a.setData_inizio(rst.getDate("data_inizio"));
+			a.setData_fine(rst.getDate("data_fine"));
+			a.setId_evento(rst.getInt("id_evento"));		    
+		    
+		} catch (SQLException e) {
+		    e.printStackTrace();
+		}
+
+		finally {
+		    try {
+			conn.close();
+		    } catch (SQLException e) {
+			e.printStackTrace();
+		    }
+		}
+		return a; 
+
+	    
+    	
+    }
+    
     
 
 }
