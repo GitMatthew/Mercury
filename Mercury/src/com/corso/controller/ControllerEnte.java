@@ -119,15 +119,35 @@ public class ControllerEnte extends HttpServlet {
 			}
 			
 			disp.forward(request, response);
+	
+	
+			
 			
 			
 	   //Gestisci Eventi
 	   } else if(session.getAttribute("from")=="enteGestisciEventi") {
 		   
+		  //UPDATE eventi SET prezzo = 50 WHERE id = id_evento
 		   
 		   
-		   
-						
+	
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
 			
 	   //Gestisci account				
 	   } else if(session.getAttribute("from")=="accountEnte") {
@@ -169,7 +189,7 @@ public class ControllerEnte extends HttpServlet {
 		
 		disp=request.getRequestDispatcher("/view/enteGestisciEventi.jsp");
 		
-		session.setAttribute("pagina" , "enteGestisciEventi");
+		session.setAttribute("from" , "enteGestisciEventi");
 		request.setAttribute("messaggio", "Benvenuto su Mercury , in questa pagina puoi visualizzare e gestire gli eventi che hai creato !");
 		
 		ArrayList<Evento> evt = EventoImpl.eventiEnte(id_ente);
@@ -183,7 +203,7 @@ public class ControllerEnte extends HttpServlet {
 		
 		disp=request.getRequestDispatcher("/view/accountEnte.jsp");
 		 
-		session.setAttribute("pagina" , "accountEnte");
+		session.setAttribute("from" , "accountEnte");
 		request.setAttribute("messaggio", "Da questa pagina puoi gestire il tuo Account");
 	}
     
@@ -207,8 +227,7 @@ public class ControllerEnte extends HttpServlet {
 		request.setAttribute("comuni", com);
 		request.setAttribute("data_inizio", data_inizio);
 		request.setAttribute("data_fine", data_fine);
-		
-		session.setAttribute("pagina" , "modificaEvento");
+	
 		request.setAttribute("messaggio", "Puoi modificare il tuo evento tutti i cambiamenti esclusa la data dovranno essere approvati da un amministratore");
 	}
 	

@@ -65,7 +65,6 @@
 								<br> 
 								<select name="id_categoria"> 
 									<optgroup label ="Categoria">      
-									          <option value="${requestScope.evento.id_categoria}"></option>
 										 <c:forEach var="j" items="${requestScope.categorie}" >	            				
 											  <option value="${j.id_categoria}">${j.nome_categoria}</option>	              
 										 </c:forEach>  	           
