@@ -113,7 +113,7 @@
 
 	   <input type="submit">  
 	</table>
-</center>
+</center>   
 </form>
 
 	<div class="jumbotron text-center" style="margin-bottom: 0">
