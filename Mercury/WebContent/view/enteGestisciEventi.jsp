@@ -38,13 +38,14 @@
 	    <table border="1" style="width:100%">
 
 	<tr>
-		<th>Nome Evento</th>
+		<th>Nome_Evento_</th>
 		<th>Descrizione</th>
-		<th>Data Inizio</th>
-		<th>Data Fine</th>
+		<th>Data_Inizio</th>
+		<th>Data_Fine_</th>
 		<th>Status</th>
 		<th>Categoria</th>
 		<th>Comune</th>
+		<th>MODIFICA</th>
 	</tr>
 	
 	<c:forEach var="j" items="${requestScope.eventi}"> 
@@ -55,7 +56,9 @@
 			<td><c:out value="${j.data_fine}"></c:out></td>
 			<td><c:out value="${j.nome_status}"></c:out></td>
 			<td><c:out value="${j.nome_categoria}"></c:out></td>
-			<td><c:out value="${j.nome_comune}"></c:out></td>			 
+			<td><c:out value="${j.nome_comune}"></c:out></td>
+					
+			<td><a href=/Mercury_Mercury/ControllerEnte?pag=2?action=modifica?id_evento=${j.id_evento}>Modifica</a>/<a href=/Mercury_Mercury/ControllerEnte?pag=2?action=elimina>Elimina</a></td>					 
 		</tr>
 	</c:forEach>
 </table>
