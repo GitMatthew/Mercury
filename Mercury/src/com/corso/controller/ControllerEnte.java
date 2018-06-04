@@ -1,7 +1,11 @@
 package com.corso.controller;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,12 +19,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.corso.connection.Dao;
 import com.corso.model.Categoria;
 import com.corso.model.CategoriaImpl;
 import com.corso.model.Comune;
 import com.corso.model.ComuneImpl;
 import com.corso.model.EnteImpl;
 import com.corso.model.Evento;
+import com.corso.model.EventoImpl;
 import com.corso.model.Regione;
 import com.corso.model.RegioneImpl;
 
@@ -59,7 +65,7 @@ public class ControllerEnte extends HttpServlet {
 		if(ei.verificaPsw (user , psw)) {	
 			id_ente = ei.idEnte(user);
 			callHome(id_ente);
-			session.setAttribute("user" , 1);
+			session.setAttribute("user" , id_ente);
 			
 		} else {
 			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
@@ -69,16 +75,29 @@ public class ControllerEnte extends HttpServlet {
 		disp.forward(request, response);
 		
 		
+		
 		//Se la sessione è aperta passa al crea evento
 		} else if(session.getAttribute("from")=="enteHome") {
+			
+			if(request.getParameter("indirizzo")==null||request.getParameter("indirizzo")==""||
+			   request.getParameter("nomeEvento")==null||request.getParameter("nomeEvento")==""||
+			   request.getParameter("dataInizio")==null) {
+				
+				//disp=request.getRequestDispatcher("/view/enteHome.jsp");
+				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Complila tutti i campi obbligatori !!!");
+				disp.forward(request, response);
+		    }
 			
 			Evento nuovoEvento = new Evento();
 						
 			Date dataFine =Date.valueOf(request.getParameter("dataFine"));
-			Date dataInizio =Date.valueOf(request.getParameter("dataInizio"));
+			Date dataInizio =Date.valueOf(request.getParameter("dataInizio"));	
 			
-			String descrizione=request.getParameter("indirizzo") + " <br><br> " + request.getParameter("descrizione");		
-								
+			if(dataFine==null) {
+				dataFine=dataInizio;
+			}
+					
+			String descrizione="Location : "+request.getParameter("indirizzo") + " ~ " + request.getParameter("descrizione");										
 			nuovoEvento.setUrl_img_evento(request.getParameter("urlImg"));
 			nuovoEvento.setNome_evento(request.getParameter("nomeEvento"));
 			nuovoEvento.setId_categoria(Integer.parseInt(request.getParameter("id_categoria")));
@@ -92,10 +111,11 @@ public class ControllerEnte extends HttpServlet {
 			
 			if(ei.creaEvento(nuovoEvento)) {
 				disp=request.getRequestDispatcher("/view/enteGestisciEventi.jsp");
+				callGestisciEventi(id_ente);
 				request.setAttribute("messaggio", "COMPLIMENTI ! Il tuo Evento è stato creato ed è in attesa dell'approvazione di un Amministratore.");
 			} else {
 				disp=request.getRequestDispatcher("/view/enteHome.jsp");
-				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA !");
+				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Errore DataBase , riprova più tardi .");
 			}
 			
 			disp.forward(request, response);
@@ -103,6 +123,8 @@ public class ControllerEnte extends HttpServlet {
 			
 	   //Gestisci Eventi
 	   } else if(session.getAttribute("from")=="enteGestisciEventi") {
+		   
+		   
 		   
 		   
 						
@@ -125,7 +147,7 @@ public class ControllerEnte extends HttpServlet {
 
 	
 	//Assega alla request i parametri per la pagina
-	public void callHome (int id) {
+	public void callHome (int id) { 
 		
 		disp=request.getRequestDispatcher("/view/enteHome.jsp");
 		
@@ -149,13 +171,20 @@ public class ControllerEnte extends HttpServlet {
 		
 		session.setAttribute("pagina" , "enteGestisciEventi");
 		request.setAttribute("messaggio", "Benvenuto su Mercury , in questa pagina puoi visualizzare e gestire gli eventi che hai creato !");
+		
+		ArrayList<Evento> evt = EventoImpl.eventiEnte(id_ente);
+		
+		System.out.println(evt);
+		
+		request.setAttribute("eventi", evt);
+		
 	}
     
     //Assega alla request i parametri per la pagina
     public void callAccountEnte (int id) {
 		
 		disp=request.getRequestDispatcher("/view/accountEnte.jsp");
-		
+		 
 		session.setAttribute("pagina" , "accountEnte");
 		request.setAttribute("messaggio", "Da questa pagina puoi gestire il tuo Account");
 	}
@@ -171,6 +200,10 @@ public class ControllerEnte extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String pag = request.getParameter("pag");
+		String action = request.getParameter("action");
+		if(action==null) {
+			action = "";
+		}
 		
 		switch (pag) {
 		case "1":
@@ -178,6 +211,10 @@ public class ControllerEnte extends HttpServlet {
 			break;
 			
         case "2":
+        	if(action.equals("elimina")) {
+        		eliminaEvento(request.getParameter("id_evento"));
+        		
+        	}
         	callGestisciEventi(id_ente); 
 			break;
 			
@@ -192,6 +229,21 @@ public class ControllerEnte extends HttpServlet {
 		
 		disp.forward(request, response);
 		
+	}
+
+
+
+	private void eliminaEvento(String id) {
+		Connection conn = Dao.getConnection();
+		String qry = "DELETE * FROM eventi WHERE id_evento = '"+id+"'";
+		
+		try {
+		    Statement pst = conn.createStatement();
+		    ResultSet rst = pst.executeQuery(qry);
+ 
+		} catch (SQLException e) {
+		    e.printStackTrace();
+		}
 	}
 
 }

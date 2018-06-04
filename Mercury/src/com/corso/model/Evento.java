@@ -11,6 +11,7 @@ public class Evento
 	private String descrizione = null;
 	private String nome_categoria = null;
 	private String nome_comune = null;
+	private String nome_provincia = null;
 	private Date data_inizio;
 	private Date data_fine;
 	private int id_status;
@@ -20,6 +21,7 @@ public class Evento
 	private String url_img_evento;
 	private String url_sito_evento;
 	private String nome_status;
+	private String nome_ente ;
 	
 	public Evento() 
 	{
@@ -161,6 +163,24 @@ public class Evento
 
 	public void setNome_status(String nome_status) {
 		this.nome_status = nome_status;
+	}
+
+	public String getNome_provincia()
+	{
+	    return nome_provincia;
+	}
+
+	public void setNome_provincia(String nome_provincia)
+	{
+	    this.nome_provincia = nome_provincia;
+	}
+
+	public String getNome_ente() {
+		return nome_ente;
+	}
+
+	public void setNome_ente(String nome_ente) {
+		this.nome_ente = nome_ente;
 	}
 	
 }
