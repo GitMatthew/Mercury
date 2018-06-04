@@ -44,7 +44,7 @@
 		<th>Modifica</th>
 	</tr>
 	
-	<c:forEach var="j" items="${requestScope.eventi}">
+	<c:forEach var="j" items="${requestScope.eventi}"> 
 		<tr>
 			<td><c:out value="${j.nome_evento}"></c:out></td>
 			<td><c:out value="${j.descrizione}"></c:out></td>
