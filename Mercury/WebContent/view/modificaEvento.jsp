@@ -31,112 +31,116 @@
 		</ul>
 	</div>
 </nav>
+
+
+<h1>MODIFICA EVENTO</h1>
+
  <form action="/Mercury_Mercury/ControllerEnte" method=get>
     <a href=/Mercury_Mercury/ControllerEnte?pag=1>CREA NUOVO EVENTO</a>   
     <a href=/Mercury_Mercury/ControllerEnte?pag=2>GESTISCI EVENTO</a>   
     <a href=/Mercury_Mercury/ControllerEnte?pag=3>GESTISCI ACCOUNT</a>   
  </form>
  <form action="/Mercury_Mercury/ControllerEnte" method=post >
-	<table width="100%">
-		<table width="50%">
-			<tr>
-				<td>
-					<label>Nome Evento</label> 
-					<br>
-					<input type="text" name="nomeEvento">
-				</td>
+	<center>
+			<table width="100%">
+				<table width="50%">
+					<tr>
+						<td>
+							<label>Nome Evento</label> 
+							<br>
+							<input type="text" name="nomeEvento">
+						</td>
+					
+						<td>
+							<label>Seleziona tipologia di Evento</label> 
+								<br> 
+								<select name="id_categoria"> 
+									<optgroup label ="Categoria">         
+										 <c:forEach var="j" items="${requestScope.categorie}">	            				
+											  <option value="${j.id_categoria}">${j.nome_categoria}</option>	              
+										 </c:forEach>  	           
+									</optgroup>         
+								</select>
+						<td>
+					</tr>
+				</table>
+		   
 			
-				<td>
-					<label>Seleziona tipologia di Evento</label> 
-						<br> 
-						<select name="id_categoria"> 
-							<optgroup label ="Categoria">         
-								 <c:forEach var="j" items="${requestScope.categorie}">	            				
-									  <option value="${j.id_categoria}">${j.nome_categoria}</option>	              
+			<label>Periodo evento</label>
+			<br>
+			<label>Dal :</label> 
+			
+			<input type="date" id="inizio" name="dataInizio">
+			
+			<label>al :</label>  
+			
+			<input type="date" id="fine" name="dataFine">
+		 
+			<table width="50%">   
+			
+				<tr>
+					<td>
+				
+						<label>Regione </label> 
+					</td>
+				
+					<td>
+						<label>Provincia </label> 
+					</td>
+					<td>
+						<label>Comune </label> 
+					</td>
+				</tr>
+						
+					</td>
+				<tr>
+					<td>
+
+						<select name="id_regione"> 
+							<optgroup label ="Regione">         
+								 <c:forEach var="j" items="${requestScope.regioni}">	            				
+									  <option value="${j.id_regione}">${j.nome_regione}</option>	              
 								 </c:forEach>  	           
 							</optgroup>         
 						</select>
-				<td>
-			</tr>
-		</table>
-   
-    
-    <label>Periodo evento</label>
-    <br>
-    <label>Dal :</label> 
-    
-    <input type="date" id="inizio" name="dataInizio">
-    
-    <label>al :</label>  
-    
-    <input type="date" id="fine" name="dataFine">
- 
-	<table width="50%">   
-	
-		<tr>
-			<td>
-	    
-				<label>Regione </label> 
-			</td>
-		
-			<td>
-				<label>Provincia </label> 
-			</td>
-			<td>
-				<label>Comune </label> 
-			</td>
-		</tr>
+
+					</td>
+					<td>
+						<select name="id_provincia"> 
+							<optgroup label ="Provincia">         
+								<c:forEach var="j" items="${requestScope.regioni}">	            				<option value="${j.id_regione}">${j.nome_provincia}</option>	              
+								</c:forEach>  	           
+							</optgroup>         
+						</select>
+					</td>
+					
+					<td>
+					
+							<select name="id_comune"> 
+								<optgroup label ="Comune">         
+									 <c:forEach var="j" items="${requestScope.regioni}">	            				
+										  <option value="${j.id_comune}">${j.nome_comune}</option>	              
+									 </c:forEach>  	           
+								</optgroup>         
+							</select>
+					</td>
+
+				</tr>
 				
-			</td>
-		
-	    
-		<tr>
-			<td>
-
-				<select name="id_regione"> 
-					<optgroup label ="Regione">         
-						 <c:forEach var="j" items="${requestScope.regioni}">	            				
-							  <option value="${j.id_regione}">${j.nome_regione}</option>	              
-						 </c:forEach>  	           
-					</optgroup>         
-				</select>
-
-			</td>
-			<td>
-				<select name="id_provincia"> 
-					<optgroup label ="Provincia">         
-						<c:forEach var="j" items="${requestScope.regioni}">	            				<option value="${j.id_regione}">${j.nome_provincia}</option>	              
-						</c:forEach>  	           
-					</optgroup>         
-				</select>
-			</td>
-			
-			<td>
-			
-					<select name="id_comune"> 
-						<optgroup label ="Comune">         
-							 <c:forEach var="j" items="${requestScope.regioni}">	            				
-								  <option value="${j.id_comune}">${j.nome_comune}</option>	              
-							 </c:forEach>  	           
-						</optgroup>         
-					</select>
-			</td>
-
-		</tr>
-		
-		<tr>
-			<td>
-				<label>Sito web </label> 
-				<input name="url_sito_evento" placeholder="http://www.sito.it"> </input> 
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label>Inserisci immagine</label>
-				 <input name="url_img_evento" placeholder="http://www.immagine.it">  
-			</td>
-	</table>
-</table>
+				<tr>
+					<td>
+						<label>Sito web </label> 
+						<input name="url_sito_evento" placeholder="http://www.sito.it"> </input> 
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Inserisci immagine</label>
+						 <input name="url_img_evento" placeholder="http://www.immagine.it">  
+					</td>
+			</table>
+		</table>
+	</center>
 </form>
 		<label>Descrizione Evento :</label> 
 					<br>
