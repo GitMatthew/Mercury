@@ -73,96 +73,42 @@ public class EventoImpl implements EventoUtility {
 	return atList;
 
     }
-    @Override
-    public ArrayList<Evento> filtroProvince(String reg)
-    {
 
-	String x = "";
+	public static ArrayList<Evento> eventiEnte(int id_ente) {
+		ArrayList<Evento> atList = new ArrayList<Evento>();
+		Evento a = null;
+		Connection conn = Dao.getConnection();
+		String qry = "SELECT * FROM eventi WHERE id_ente = " + id_ente ;
+		try {
+		    Statement pst = conn.createStatement();
+		    ResultSet rst = pst.executeQuery(qry);
 
-	if (!(reg.equals("null")))
-	{
-	    x = x + " and r.nome_regione= '" + reg + "'";
-	} else
-	{
-	}
+		    while (rst.next()) {
+			a = new Evento();
+			a.setUrl_img_evento(rst.getString("url_img_evento"));
+			a.setNome_evento(rst.getString("titolo"));
+			a.setNome_categoria(rst.getString("nome_categoria"));
+			a.setDescrizione(rst.getString("descrizione"));
+			a.setNome_comune(rst.getString("nome_comune"));
+			a.setData_inizio(rst.getDate("data_inizio"));
+			a.setData_fine(rst.getDate("data_fine"));
+			atList.add(a);
+		    }
+		} catch (SQLException e) {
+		    e.printStackTrace();
+		}
 
-	x = x + " order by p.nome_provincia;";
+		finally {
+		    try {
+			conn.close();
+		    } catch (SQLException e) {
+			e.printStackTrace();
+		    }
+		}
+		return atList;
 
-	ArrayList<Evento> atList = new ArrayList<Evento>();
-	Evento a = null;
-	Connection conn = Dao.getConnection();
-	try
-	{
-	    Statement pst = conn.createStatement();
-	    ResultSet rst = pst.executeQuery(EventoUtility.FILTRO_PROVINCE + x);
-
-	    while (rst.next())
-	    {
-		a = new Evento();
-		a.setNome_provincia(rst.getString("nome_provincia"));
-		atList.add(a);
 	    }
-	} catch (SQLException e)
-	{
-	    e.printStackTrace();
-	}
-
-	finally
-	{
-	    try
-	    {
-		conn.close();
-	    } catch (SQLException e)
-	    {
-		e.printStackTrace();
-	    }
-	}
-	return atList;
-    }
-
-    @Override
-    public ArrayList<Evento> filtroComuni(String pro)
-    {
-	String x = "";
-
-	if (!(pro.equals("null")))
-	{
-	    x = x + " and p.nome_provincia= '" + pro + "'";
-	} else
-	{
-	}
-	x = x + " order by c.nome_comune;";
-
-	ArrayList<Evento> atList = new ArrayList<Evento>();
-	Evento a = null;
-	Connection conn = Dao.getConnection();
-	try
-	{
-	    Statement pst = conn.createStatement();
-	    ResultSet rst = pst.executeQuery(EventoUtility.FILTRO_COMUNI + x);
-
-	    while (rst.next())
-	    {
-		a = new Evento();
-		a.setNome_comune(rst.getString("nome_comune"));
-		atList.add(a);
-	    }
-	} catch (SQLException e)
-	{
-	    e.printStackTrace();
-	}
-
-	finally
-	{
-	    try
-	    {
-		conn.close();
-	    } catch (SQLException e)
-	    {
-		e.printStackTrace();
-	    }
-	}
-	return atList;
-    }
+    
+    
 
 }

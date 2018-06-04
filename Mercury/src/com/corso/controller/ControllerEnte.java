@@ -29,7 +29,7 @@ import com.corso.model.RegioneImpl;
 public class ControllerEnte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	static int id_ente = 0 ;
+	int id_ente = 0 ;
 	RequestDispatcher disp=null;
 	HttpServletRequest request = null ;
 	EnteImpl ei = null ;
@@ -60,7 +60,7 @@ public class ControllerEnte extends HttpServlet {
 		if(ei.verificaPsw (user , psw)) {	
 			id_ente = ei.idEnte(user);
 			callHome(id_ente);
-			session.setAttribute("user" , 1);
+			session.setAttribute("user" , id_ente);
 			
 		} else {
 			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
@@ -68,6 +68,7 @@ public class ControllerEnte extends HttpServlet {
 		}
 		
 		disp.forward(request, response);
+		
 		
 		
 		//Se la sessione è aperta passa al crea evento
