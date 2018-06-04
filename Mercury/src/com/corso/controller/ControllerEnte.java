@@ -174,8 +174,6 @@ public class ControllerEnte extends HttpServlet {
 		
 		ArrayList<Evento> evt = EventoImpl.eventiEnte(id_ente);
 		
-		System.out.println(evt);
-		
 		request.setAttribute("eventi", evt);
 		
 	}
@@ -187,6 +185,15 @@ public class ControllerEnte extends HttpServlet {
 		 
 		session.setAttribute("pagina" , "accountEnte");
 		request.setAttribute("messaggio", "Da questa pagina puoi gestire il tuo Account");
+	}
+    
+  //Assega alla request i parametri per la pagina
+    public void callModificaEvento (int id) {
+		
+		disp=request.getRequestDispatcher("/view/modificaEvento.jsp");
+		 
+		session.setAttribute("pagina" , "modificaEvento");
+		request.setAttribute("messaggio", "Puoi modificare il tuo evento tutti i cambiamenti esclusa la data dovranno essere approvati da un amministratore");
 	}
 	
 	
@@ -200,26 +207,28 @@ public class ControllerEnte extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String pag = request.getParameter("pag");
-		String action = request.getParameter("action");
-		if(action==null) {
-			action = "";
-		}
+		String id_evento = request.getParameter("id_evento");	
 		
 		switch (pag) {
 		case "1":
 			callHome(id_ente);
 			break;
 			
-        case "2":
-        	if(action.equals("elimina")) {
-        		eliminaEvento(request.getParameter("id_evento"));
-        		
-        	}
-        	callGestisciEventi(id_ente); 
+        case "2": 		
+        	callGestisciEventi(id_ente);
 			break;
 			
         case "3":
         	callAccountEnte(id_ente);
+			break;
+			
+        case "4":
+        	callModificaEvento(id_ente);
+			break;
+			
+        case "5":
+        	eliminaEvento(id_evento);
+        	      	
 			break;
 
 		default:
@@ -235,14 +244,18 @@ public class ControllerEnte extends HttpServlet {
 
 	private void eliminaEvento(String id) {
 		Connection conn = Dao.getConnection();
-		String qry = "DELETE * FROM eventi WHERE id_evento = '"+id+"'";
-		
+		String qry = "DELETE FROM eventi WHERE id_evento = "+id;		    
+		    
 		try {
 		    Statement pst = conn.createStatement();
-		    ResultSet rst = pst.executeQuery(qry);
+		    int rs = pst.executeUpdate(qry);
+		    callGestisciEventi(id_ente);
+		    request.setAttribute("messaggio", "Evento Eliminato con successo !");
  
 		} catch (SQLException e) {
 		    e.printStackTrace();
+		    callGestisciEventi(id_ente);
+		    request.setAttribute("messaggio", "Eliminazione fallita !");
 		}
 	}
 
