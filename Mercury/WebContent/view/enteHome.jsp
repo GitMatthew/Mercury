@@ -125,7 +125,8 @@
 					<td>
 						<select name="id_provincia"> 
 							<optgroup label ="Provincia">         
-								<c:forEach var="j" items="${requestScope.regioni}">	            				<option value="${j.id_regione}">${j.nome_provincia}</option>	              
+								<c:forEach var="j" items="${requestScope.regioni}">	            				
+								<option value="${j.id_regione}">${j.nome_regione}</option>	              
 								</c:forEach>  	           
 							</optgroup>         
 						</select>
@@ -135,7 +136,7 @@
 					
 							<select name="id_comune"> 
 								<optgroup label ="Comune">         
-									 <c:forEach var="j" items="${requestScope.regioni}">	            				
+									 <c:forEach var="j" items="${requestScope.comuni}">	            				
 										  <option value="${j.id_comune}">${j.nome_comune}</option>	              
 									 </c:forEach>  	           
 								</optgroup>         
