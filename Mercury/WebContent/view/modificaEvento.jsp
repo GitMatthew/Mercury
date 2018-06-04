@@ -55,17 +55,18 @@
 				<table width="50%">
 					<tr>
 						<td>
-							<label>Nome Evento</label> 
+							<label>Cambia Nome Evento</label> 
 							<br>
 							<input type="text" name="nomeEvento" value="${requestScope.evento.nome_evento}">
 						</td>
 					
 						<td>
-							<label>Seleziona tipologia di Evento</label> 
+							<label>Cambia tipologia di Evento</label> 
 								<br> 
 								<select name="id_categoria"> 
-									<optgroup label ="Categoria">         
-										 <c:forEach var="j" items="${requestScope.categorie}">	            				
+									<optgroup label ="Categoria">      
+									          <option value="${requestScope.evento.id_categoria}"></option>
+										 <c:forEach var="j" items="${requestScope.categorie}" >	            				
 											  <option value="${j.id_categoria}">${j.nome_categoria}</option>	              
 										 </c:forEach>  	           
 									</optgroup>         
@@ -75,15 +76,15 @@
 				</table>
 		   
 			
-			<label>Periodo evento</label>
+			<label>Cambia Periodo evento</label>
 			<br>
 			<label>Dal :</label> 
 			
-			<input type="date" id="inizio" name="dataInizio" value="{{ Date.now() | date("2018-01-01") }}">
+			<input type="date" id="inizio" name="dataInizio" value="${requestScope.data_inizio}">
 			
 			<label>al :</label>  
 			
-			<input type="date" id="fine" name="dataFine">
+			<input type="date" id="fine" name="dataFine" value="${requestScope.data_fine}">
 		 
 			<table width="50%">   
 			
@@ -138,20 +139,20 @@
 				
 				<tr>
 					<td>
-						<label>Sito web </label> 
+						<label>Cambia Sito web </label> 
 						<input name="url_sito_evento" placeholder="http://www.sito.it" value="${requestScope.evento.url_sito_evento}"> </input> 
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<label>Inserisci immagine</label>
+						<label>Cambia immagine</label>
 						 <input name="url_img_evento" placeholder="http://www.immagine.it" value="${requestScope.evento.url_img_evento}">  
 					</td>
 			</table>  
 		</table>
 	
 </form>
-		<label>Descrizione Evento :</label> 
+		<label>Modifica Descrizione Evento :</label> 
 					<br>
 				   <textarea name="descrizione" maxlenght="100" cols="35" rows="5" value="descrizione">${requestScope.evento.descrizione}</textarea>
 					<br><br>

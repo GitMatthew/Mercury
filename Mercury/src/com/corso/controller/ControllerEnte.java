@@ -195,13 +195,18 @@ public class ControllerEnte extends HttpServlet {
 		Evento evt = EventoImpl.ricercaID(id);
 		ArrayList<Categoria> cat = CategoriaImpl.tutteLeCategorie();
 		ArrayList<Regione> reg = RegioneImpl.tutteLeRegioni();
-		ArrayList<Comune> com = ComuneImpl.tuttiIComuni();
+		ArrayList<Comune> com = ComuneImpl.tuttiIComuni();		
 		
 		request.setAttribute("evento", evt);
-				
+		
+		String data_inizio = evt.getData_inizio().toString();
+		String data_fine = evt.getData_fine().toString();;
+	
 		request.setAttribute("categorie", cat);
 		request.setAttribute("regioni", reg);
 		request.setAttribute("comuni", com);
+		request.setAttribute("data_inizio", data_inizio);
+		request.setAttribute("data_fine", data_fine);
 		
 		session.setAttribute("pagina" , "modificaEvento");
 		request.setAttribute("messaggio", "Puoi modificare il tuo evento tutti i cambiamenti esclusa la data dovranno essere approvati da un amministratore");
