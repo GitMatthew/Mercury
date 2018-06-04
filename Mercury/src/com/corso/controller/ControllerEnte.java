@@ -29,7 +29,7 @@ import com.corso.model.RegioneImpl;
 public class ControllerEnte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	int id_ente = 0 ;
+	static int id_ente = 0 ;
 	RequestDispatcher disp=null;
 	HttpServletRequest request = null ;
 	EnteImpl ei = null ;

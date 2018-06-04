@@ -94,6 +94,8 @@ public class EventoImpl implements EventoUtility {
 			a.setData_fine(rst.getDate("data_fine"));
 			atList.add(a);
 		    }
+		    
+		    System.out.println(atList);
 		} catch (SQLException e) {
 		    e.printStackTrace();
 		}
