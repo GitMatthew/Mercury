@@ -108,6 +108,98 @@ public class EventoImpl implements EventoUtility {
 		return atList; 
 
 	    }
+	
+	@Override
+    public ArrayList<Evento> filtroProvince(String reg)
+    {
+
+	String x = "";
+
+	if (!(reg.equals("null")))
+	{
+	    x = x + " and r.nome_regione= '" + reg + "'";
+	} else
+	{
+	}
+
+	x = x + " order by p.nome_provincia;";
+
+	ArrayList<Evento> atList = new ArrayList<Evento>();
+	Evento a = null;
+	Connection conn = Dao.getConnection();
+	try
+	{
+	    Statement pst = conn.createStatement();
+	    ResultSet rst = pst.executeQuery(EventoUtility.FILTRO_PROVINCE + x);
+
+	    while (rst.next())
+	    {
+		a = new Evento();
+		a.setNome_provincia(rst.getString("nome_provincia"));
+		atList.add(a);
+	    }
+	} catch (SQLException e)
+	{
+	    e.printStackTrace();
+	}
+
+	finally
+	{
+	    try
+	    {
+		conn.close();
+	    } catch (SQLException e)
+	    {
+		e.printStackTrace();
+	    }
+	}
+	return atList;
+    }
+
+    @Override
+    public ArrayList<Evento> filtroComuni(String pro)
+    {
+	String x = "";
+
+	if (!(pro.equals("null")))
+	{
+	    x = x + " and p.nome_provincia= '" + pro + "'";
+	} else
+	{
+	}
+	x = x + " order by c.nome_comune;";
+
+	ArrayList<Evento> atList = new ArrayList<Evento>();
+	Evento a = null;
+	Connection conn = Dao.getConnection();
+	try
+	{
+	    Statement pst = conn.createStatement();
+	    ResultSet rst = pst.executeQuery(EventoUtility.FILTRO_COMUNI + x);
+
+	    while (rst.next())
+	    {
+		a = new Evento();
+		a.setNome_comune(rst.getString("nome_comune"));
+		atList.add(a);
+	    }
+	} catch (SQLException e)
+	{
+	    e.printStackTrace();
+	}
+
+	finally
+	{
+	    try
+	    {
+		conn.close();
+	    } catch (SQLException e)
+	    {
+		e.printStackTrace();
+	    }
+	}
+	return atList;
+    }
     
     
 
