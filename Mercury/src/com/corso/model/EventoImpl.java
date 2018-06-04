@@ -23,7 +23,7 @@ public class EventoImpl implements EventoUtility {
 	} else {
 	}
 	if (!(pro.equals("null"))) {
-	    x = x + " and p.nome_provincia= '" + pro + "'";
+	    x = x + " and p.nome_provincia= '" + pro + "'"; 
 	} else {
 	}
 	if (!(com.equals("null"))) {
