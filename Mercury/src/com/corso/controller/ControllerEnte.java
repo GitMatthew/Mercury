@@ -188,9 +188,11 @@ public class ControllerEnte extends HttpServlet {
 	}
     
   //Assega alla request i parametri per la pagina
-    public void callModificaEvento (int id) {
+    public void callModificaEvento (String id) {
 		
 		disp=request.getRequestDispatcher("/view/modificaEvento.jsp");
+		
+		
 		 
 		session.setAttribute("pagina" , "modificaEvento");
 		request.setAttribute("messaggio", "Puoi modificare il tuo evento tutti i cambiamenti esclusa la data dovranno essere approvati da un amministratore");
@@ -223,7 +225,7 @@ public class ControllerEnte extends HttpServlet {
 			break;
 			
         case "4":
-        	callModificaEvento(id_ente);
+        	callModificaEvento(id_evento);
 			break;
 			
         case "5":
