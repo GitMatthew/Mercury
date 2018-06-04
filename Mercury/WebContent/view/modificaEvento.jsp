@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% if(session.getAttribute("user")==null)
+{
+	RequestDispatcher disp=request.getRequestDispatcher("loginEnte.jsp");
+	request.setAttribute("messaggio", "Per proseguire serve una sessione attiva. Effettua il Login");
+	disp.forward(request, response);
+} 
+%>  
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -108,7 +116,8 @@
 					<td>
 						<select name="id_provincia"> 
 							<optgroup label ="Provincia">         
-								<c:forEach var="j" items="${requestScope.regioni}">	            				<option value="${j.id_regione}">${j.nome_provincia}</option>	              
+								<c:forEach var="j" items="${requestScope.regioni}">	            				
+								<option value="${j.id_regione}">${j.nome_regione}</option>	              
 								</c:forEach>  	           
 							</optgroup>         
 						</select>
@@ -118,7 +127,7 @@
 					
 							<select name="id_comune"> 
 								<optgroup label ="Comune">         
-									 <c:forEach var="j" items="${requestScope.regioni}">	            				
+									 <c:forEach var="j" items="${requestScope.comuni}">	            				
 										  <option value="${j.id_comune}">${j.nome_comune}</option>	              
 									 </c:forEach>  	           
 								</optgroup>         
