@@ -58,7 +58,7 @@
 			<td><c:out value="${j.nome_categoria}"></c:out></td>
 			<td><c:out value="${j.nome_comune}"></c:out></td>
 					
-			<td><a href=/Mercury_Mercury/ControllerEnte?pag=2?action=modifica?id_evento=${j.id_evento}>Modifica</a>/<a href=/Mercury_Mercury/ControllerEnte?pag=2?action=elimina>Elimina</a></td>					 
+			<td><a href=/Mercury_Mercury/ControllerEnte?pag=2?action=modifica?id_evento=${j.id_evento}>Modifica</a>/<a href=/Mercury_Mercury/ControllerEnte?pag=2?action=elimina?id_evento=${j.id_evento}>Elimina</a></td>					 
 		</tr>
 	</c:forEach>
 </table>

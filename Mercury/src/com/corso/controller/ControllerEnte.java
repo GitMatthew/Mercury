@@ -1,7 +1,11 @@
 package com.corso.controller;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.corso.connection.Dao;
 import com.corso.model.Categoria;
 import com.corso.model.CategoriaImpl;
 import com.corso.model.Comune;
@@ -195,6 +200,10 @@ public class ControllerEnte extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String pag = request.getParameter("pag");
+		String action = request.getParameter("action");
+		if(action==null) {
+			action = "";
+		}
 		
 		switch (pag) {
 		case "1":
@@ -202,6 +211,10 @@ public class ControllerEnte extends HttpServlet {
 			break;
 			
         case "2":
+        	if(action.equals("elimina")) {
+        		eliminaEvento(request.getParameter("id_evento"));
+        		
+        	}
         	callGestisciEventi(id_ente); 
 			break;
 			
@@ -216,6 +229,21 @@ public class ControllerEnte extends HttpServlet {
 		
 		disp.forward(request, response);
 		
+	}
+
+
+
+	private void eliminaEvento(String id) {
+		Connection conn = Dao.getConnection();
+		String qry = "DELETE * FROM eventi WHERE id_evento = '"+id+"'";
+		
+		try {
+		    Statement pst = conn.createStatement();
+		    ResultSet rst = pst.executeQuery(qry);
+ 
+		} catch (SQLException e) {
+		    e.printStackTrace();
+		}
 	}
 
 }

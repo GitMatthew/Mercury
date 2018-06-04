@@ -97,7 +97,6 @@ public class EventoImpl implements EventoUtility {
 			atList.add(a);
 		    }
 		    
-		    System.out.println(atList);
 		} catch (SQLException e) {
 		    e.printStackTrace();
 		}
