@@ -32,6 +32,7 @@
 	</div>
 </nav>
 
+<center>
 
 <h1>MODIFICA EVENTO</h1>
 
@@ -41,8 +42,7 @@
     <a href=/Mercury_Mercury/ControllerEnte?pag=3>GESTISCI ACCOUNT</a>   
  </form>
  <form action="/Mercury_Mercury/ControllerEnte" method=post >
-	<center>
-			<table width="100%">
+				<table width="100%">
 				<table width="50%">
 					<tr>
 						<td>
@@ -140,11 +140,11 @@
 					</td>
 			</table>
 		</table>
-	</center>
+	
 </form>
 		<label>Descrizione Evento :</label> 
 					<br>
-				   <textarea name="descrizione" maxlenght="100" cols="35" rows="5" value="descrizione"></textarea>
+				   <textarea name="descrizione" maxlenght="100" cols="35" rows="5" value="descrizione">ciao</textarea>
 					<br><br>
 					
 					<input type="submit">
@@ -152,7 +152,7 @@
 		<div class="jumbotron text-center" style="margin-bottom: 0">
 		<p>Footer</p>
 		</div>
-
+	</center>
 
 </body>
 </html>
