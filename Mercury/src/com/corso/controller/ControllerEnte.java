@@ -192,7 +192,7 @@ public class ControllerEnte extends HttpServlet {
 		
 		disp=request.getRequestDispatcher("/view/modificaEvento.jsp");
 		
-		
+		Evento evt = EventoImpl.ricercaID(id);
 		 
 		session.setAttribute("pagina" , "modificaEvento");
 		request.setAttribute("messaggio", "Puoi modificare il tuo evento tutti i cambiamenti esclusa la data dovranno essere approvati da un amministratore");

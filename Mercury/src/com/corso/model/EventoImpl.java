@@ -204,7 +204,7 @@ public class EventoImpl implements EventoUtility {
 	return atList;
     }
     
-    public Evento ricercaID (String id_evento) {
+    public static Evento ricercaID (String id_evento) {
     	Evento a = new Evento();
 		Connection conn = Dao.getConnection();
 		String qry = "SELECT * FROM eventi WHERE id_evento = "+id_evento;
