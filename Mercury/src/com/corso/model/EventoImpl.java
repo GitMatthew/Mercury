@@ -51,7 +51,7 @@ public class EventoImpl implements EventoUtility {
 	    while (rst.next()) {
 		a = new Evento();
 		a.setUrl_img_evento(rst.getString("url_img_evento"));
-		a.setNome_evento(rst.getString("nome_evento"));
+		a.setNome_evento(rst.getString("titolo"));
 		a.setNome_categoria(rst.getString("nome_categoria"));
 		a.setDescrizione(rst.getString("descrizione"));
 		a.setNome_comune(rst.getString("nome_comune"));
@@ -78,7 +78,7 @@ public class EventoImpl implements EventoUtility {
 		ArrayList<Evento> atList = new ArrayList<Evento>();
 		Evento a = null;
 		Connection conn = Dao.getConnection();
-		String qry = "SELECT * FROM eventi ; ";
+		String qry = EVENTI_ENTE + " and e.id_ente = '"+id_ente+"'";
 		try {
 		    Statement pst = conn.createStatement();
 		    ResultSet rst = pst.executeQuery(qry);
@@ -87,9 +87,9 @@ public class EventoImpl implements EventoUtility {
 			a = new Evento();
 			a.setUrl_img_evento(rst.getString("url_img_evento"));
 			a.setNome_evento(rst.getString("nome_evento"));
-			a.setNome_categoria(rst.getString("nome_categoria"));
+			//a.setNome_categoria(rst.getString("_categoria"));
 			a.setDescrizione(rst.getString("descrizione"));
-			a.setNome_comune(rst.getString("nome_comune"));
+			//a.setNome_comune(rst.getString("nome_comune"));
 			a.setData_inizio(rst.getDate("data_inizio"));
 			a.setData_fine(rst.getDate("data_fine"));
 			atList.add(a);

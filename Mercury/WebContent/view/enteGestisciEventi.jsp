@@ -49,10 +49,10 @@
 			<td><c:out value="${j.nome_evento}"></c:out></td>
 			<td><c:out value="${j.descrizione}"></c:out></td>
 			<td><c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
-			<td><c:out value="${j.id_status}"></c:out></td>
-			<td><c:out value="${j.id_categoria}"></c:out></td>
-			<td><c:out value="${j.id_comune}"></c:out></td>
-			<td><c:out value="${j.id_ente}"></c:out></td>
+			<td><c:out value="${j.nome_status}"></c:out></td>
+			<td><c:out value="${j.nome_categoria}"></c:out></td>
+			<td><c:out value="${j.nome_comune}"></c:out></td>
+			<td><c:out value="${j.nome_ente}"></c:out></td>
 			 
 		</tr>
 	</c:forEach>

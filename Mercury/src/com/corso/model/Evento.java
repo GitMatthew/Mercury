@@ -21,6 +21,7 @@ public class Evento
 	private String url_img_evento;
 	private String url_sito_evento;
 	private String nome_status;
+	private String nome_ente ;
 	
 	public Evento() 
 	{
@@ -172,6 +173,14 @@ public class Evento
 	public void setNome_provincia(String nome_provincia)
 	{
 	    this.nome_provincia = nome_provincia;
+	}
+
+	public String getNome_ente() {
+		return nome_ente;
+	}
+
+	public void setNome_ente(String nome_ente) {
+		this.nome_ente = nome_ente;
 	}
 	
 }
