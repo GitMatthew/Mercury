@@ -38,22 +38,24 @@
 	    <table border="1" style="width:100%">
 
 	<tr>
-		<th>Evento</th>
+		<th>Nome Evento</th>
 		<th>Descrizione</th>
-		<th>Data Inizio - Data Fine</th>
-		<th>Modifica</th>
+		<th>Data Inizio</th>
+		<th>Data Fine</th>
+		<th>Status</th>
+		<th>Categoria</th>
+		<th>Comune</th>
 	</tr>
 	
 	<c:forEach var="j" items="${requestScope.eventi}"> 
 		<tr>
 			<td><c:out value="${j.nome_evento}"></c:out></td>
 			<td><c:out value="${j.descrizione}"></c:out></td>
-			<td><c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
+			<td><c:out value="${j.data_fine}"></c:out></td>
+			<td><c:out value="${j.data_fine}"></c:out></td>
 			<td><c:out value="${j.nome_status}"></c:out></td>
 			<td><c:out value="${j.nome_categoria}"></c:out></td>
-			<td><c:out value="${j.nome_comune}"></c:out></td>
-			<td><c:out value="${j.nome_ente}"></c:out></td>
-			 
+			<td><c:out value="${j.nome_comune}"></c:out></td>			 
 		</tr>
 	</c:forEach>
 </table>
