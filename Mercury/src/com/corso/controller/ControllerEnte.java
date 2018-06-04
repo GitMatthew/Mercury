@@ -190,10 +190,23 @@ public class ControllerEnte extends HttpServlet {
   //Assega alla request i parametri per la pagina
     public void callModificaEvento (String id) {
 		
-		disp=request.getRequestDispatcher("/view/modificaEvento.jsp");
+		disp = request.getRequestDispatcher("/view/modificaEvento.jsp");
 		
 		Evento evt = EventoImpl.ricercaID(id);
-		 
+		
+		System.out.println(evt);
+		
+		request.setAttribute("evento", evt);
+		
+		
+		ArrayList<Categoria> cat = CategoriaImpl.tutteLeCategorie();
+		ArrayList<Regione> reg = RegioneImpl.tutteLeRegioni();
+		ArrayList<Comune> com = ComuneImpl.tuttiIComuni();
+		
+		request.setAttribute("categorie", cat);
+		request.setAttribute("regioni", reg);
+		request.setAttribute("comuni", com);
+		
 		session.setAttribute("pagina" , "modificaEvento");
 		request.setAttribute("messaggio", "Puoi modificare il tuo evento tutti i cambiamenti esclusa la data dovranno essere approvati da un amministratore");
 	}

@@ -41,6 +41,7 @@
     <a href=/Mercury_Mercury/ControllerEnte?pag=2>GESTISCI EVENTO</a>   
     <a href=/Mercury_Mercury/ControllerEnte?pag=3>GESTISCI ACCOUNT</a>   
  </form>
+ 
  <form action="/Mercury_Mercury/ControllerEnte" method=post >
 				<table width="100%">
 				<table width="50%">
@@ -48,7 +49,7 @@
 						<td>
 							<label>Nome Evento</label> 
 							<br>
-							<input type="text" name="nomeEvento">
+							<input type="text" name="nomeEvento" value="${requestScope.evento.nome_evento}">
 						</td>
 					
 						<td>
@@ -144,7 +145,7 @@
 </form>
 		<label>Descrizione Evento :</label> 
 					<br>
-				   <textarea name="descrizione" maxlenght="100" cols="35" rows="5" value="descrizione">ciao</textarea>
+				   <textarea name="descrizione" maxlenght="100" cols="35" rows="5" value="descrizione">${requestScope.evento.descrizione}</textarea>
 					<br><br>
 					
 					<input type="submit">
