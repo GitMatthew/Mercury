@@ -145,7 +145,8 @@ a.linkAPRIricerca:hover {
 			
 		});
 	</script>
-		<div class="col">
+		<div align="center" class="row sticky-top"
+		style="overflow: auto; padding: 10px; max-width: 100%; background-color: rgba(128, 0, 0, 0.4);">
 			<a href="#catAPRI" data-toggle="collapse" class="linkAPRIricerca">
 				Categoria </a>
 			<div id="catAPRI" class="collapse">
