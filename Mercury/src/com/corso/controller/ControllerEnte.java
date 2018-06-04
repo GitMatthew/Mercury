@@ -74,13 +74,25 @@ public class ControllerEnte extends HttpServlet {
 		//Se la sessione è aperta passa al crea evento
 		} else if(session.getAttribute("from")=="enteHome") {
 			
+			if(request.getParameter("indirizzo")==null||request.getParameter("indirizzo")==""||
+			   request.getParameter("nomeEvento")==null||request.getParameter("nomeEvento")==""||
+			   request.getParameter("dataInizio")==null) {
+				
+				//disp=request.getRequestDispatcher("/view/enteHome.jsp");
+				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Complila tutti i campi obbligatori !!!");
+				disp.forward(request, response);
+		    }
+			
 			Evento nuovoEvento = new Evento();
 						
 			Date dataFine =Date.valueOf(request.getParameter("dataFine"));
-			Date dataInizio =Date.valueOf(request.getParameter("dataInizio"));
+			Date dataInizio =Date.valueOf(request.getParameter("dataInizio"));	
 			
-			String descrizione=request.getParameter("indirizzo") + " ~ " + request.getParameter("descrizione");		
-								
+			if(dataFine==null) {
+				dataFine=dataInizio;
+			}
+					
+			String descrizione="Location : "+request.getParameter("indirizzo") + " ~ " + request.getParameter("descrizione");										
 			nuovoEvento.setUrl_img_evento(request.getParameter("urlImg"));
 			nuovoEvento.setNome_evento(request.getParameter("nomeEvento"));
 			nuovoEvento.setId_categoria(Integer.parseInt(request.getParameter("id_categoria")));
@@ -98,7 +110,7 @@ public class ControllerEnte extends HttpServlet {
 				request.setAttribute("messaggio", "COMPLIMENTI ! Il tuo Evento è stato creato ed è in attesa dell'approvazione di un Amministratore.");
 			} else {
 				disp=request.getRequestDispatcher("/view/enteHome.jsp");
-				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA !");
+				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Errore DataBase , riprova più tardi .");
 			}
 			
 			disp.forward(request, response);
@@ -130,7 +142,7 @@ public class ControllerEnte extends HttpServlet {
 
 	
 	//Assega alla request i parametri per la pagina
-	public void callHome (int id) {
+	public void callHome (int id) { 
 		
 		disp=request.getRequestDispatcher("/view/enteHome.jsp");
 		

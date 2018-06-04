@@ -33,7 +33,7 @@
     
     <form action="/Mercury_Mercury/ControllerEnte" method=post >
     
-    <label>Nome Evento</label> 
+    <label>Nome Evento*</label> 
     <br>
     <input type="text" name="nomeEvento">
     
@@ -41,7 +41,7 @@
     
     <label>Periodo evento</label>
     <br>
-    <label>Dal :</label> 
+    <label>Dal* :</label> 
     
     <input type="date" id="inizio" name="dataInizio">
     
@@ -51,7 +51,7 @@
     
     <br><br>
     
-    <label>Location / Indirizzo</label> 
+    <label>Location o Indirizzo*</label> 
     <br>
     <input type="text" name="indirizzo">
     
@@ -113,6 +113,8 @@
     <input type="text" name="urlImg">
     
     <br><br>
+    <h5 type=color:red>I campi contrassegnati da asterisco(*) sono OBBLIGATORI !</h5>
+    <br>
     
     <input type="submit">
     
