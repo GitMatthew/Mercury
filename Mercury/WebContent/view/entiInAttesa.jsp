@@ -45,7 +45,7 @@
 
   <h3 Style="text-align:center; color:White">Lista Enti</h3>
   
-  <table border="1" style="width:100%">
+  	<table border="1" style="width:100%">
 
 	<tr style="color:White">
 		<th>Ente</th>
@@ -59,11 +59,14 @@
 			<td><c:out value="${j.nome_ente}"></c:out></td>
 			<td><c:out value="${j.descrizione_ente}"></c:out></td>
 			<td><c:out value="${j.email_ente}"></c:out>
-			<td style="width:140px" align="center"><button style="width:65px ; color:Black" onclick="location.href='../ControllerAdmin?param=mod_stat_ente&id_ente=${j.id_ente}&id_status=2'">Approva</button><button style="width:65px ; color:Black" onclick="location.href='../ControllerAdmin?param=mod_stat_ente&id_ente=${j.id_ente}&id_status=3'">Rifiuta</button></td>
-			  
+			<td style="width:140px" align="center">
+			<button style="width:65px ; color:Black" onclick="location.href='../ControllerAdmin?param=mod_stat_ente&id_ente=${j.id_ente}&id_status=2'">Approva</button>
+			<button style="width:65px ; color:Black" onclick="location.href='../ControllerAdmin?param=mod_stat_ente&id_ente=${j.id_ente}&id_status=3'">Rifiuta</button>
+			</td>
+			
 		</tr>
 	</c:forEach>
-</table>
+	</table>
 <% 
 }
 else
@@ -71,9 +74,8 @@ else
 	out.print("Nessun Ente in Attesa");
 }
 %>
-
-
 </div>
-
 </body>
+
+
 </html>
