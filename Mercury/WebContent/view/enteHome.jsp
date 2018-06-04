@@ -57,7 +57,7 @@
     
     <br><br>
       
-    <label>Selezione tipologia di Evento</label> 
+    <label>Selezione tipologia di Evento</label>  
     <br> 
     <select name="id_categoria"> 
         <optgroup label ="Categoria">         
