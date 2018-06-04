@@ -170,7 +170,7 @@
 </form>
 		<label>Descrizione Evento :</label> 
 					<br>
-				   <textarea name="descrizione" maxlenght="100" cols="35" rows="5" value="descrizione">ciao</textarea>
+				   <textarea name="descrizione" maxlenght="100" cols="35" rows="5" value="descrizione"></textarea>
 					<br><br>
 					<h5 type=color:red>I campi contrassegnati da asterisco(*) sono OBBLIGATORI !</h5>
 					<br>
