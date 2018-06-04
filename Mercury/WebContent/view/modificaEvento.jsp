@@ -138,7 +138,7 @@
 						<label>Inserisci immagine</label>
 						 <input name="url_img_evento" placeholder="http://www.immagine.it">  
 					</td>
-			</table>
+			</table>  
 		</table>
 	
 </form>
