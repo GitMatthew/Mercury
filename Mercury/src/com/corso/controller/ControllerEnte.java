@@ -329,7 +329,7 @@ public class ControllerEnte extends HttpServlet {
 			break;
 			
         case "4":
-        	callModificaEvento(id_evento);
+        	callModificaEvento(id_evento); 
         	disp.forward(request, response);
 			break;
 			
