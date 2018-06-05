@@ -446,7 +446,7 @@ var xxx=1;
 			<div id="box4" class="boxDestra"></div>
 		</div>
 	</div>
-	<br>
+	<br> 
 	<br>
 	<div class="jumbotron text-center" style="margin-bottom: 0">
 		<p>Footer</p>
