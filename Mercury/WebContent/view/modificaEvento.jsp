@@ -50,7 +50,7 @@
     <a href=/Mercury_Mercury/ControllerEnte?pag=3>GESTISCI ACCOUNT</a>   
  </form>
  
- <form action="/Mercury_Mercury/ControllerEnte" method=post >
+ <form action="/Mercury_Mercury/ControllerEnte${requestScope.evento.id_evento}?" method=post >
 				<table width="100%">
 				<table width="50%">
 					<tr>

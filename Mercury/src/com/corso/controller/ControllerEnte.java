@@ -126,10 +126,16 @@ public class ControllerEnte extends HttpServlet {
 			
 	   //Gestisci Eventi
 	   } else if(session.getAttribute("from")=="enteGestisciEventi") {
+		  
+		  Date dataFine =Date.valueOf(request.getParameter("dataFine"));
+		  Date dataInizio =Date.valueOf(request.getParameter("dataInizio")); 
 		   
-		  //UPDATE eventi SET prezzo = 50 WHERE id = id_evento
+		  String qry = "UPDATE eventi SET nome_evento = "+request.getParameter("nomeEvento")+" , descrizione = "+request.getParameter("descrizione") +" , " 
+		  		     + "data_inizio = "+ dataInizio +" , data_fine = "+ dataFine +" , id_status = 1 , id_comune = "+ request.getParameter("id_comune") +" , "
+		  		     + "id_categoria = "+ request.getParameter("id_categoria") +" , url_img_evento = "+request.getParameter("urlImg")+" , " 
+		  		     + "url_sito_evento = "+request.getParameter("urlEvento")+" WHERE id = "+request.getParameter("id_evento") ;
 		   
-		   
+		   System.out.println(qry);
 	
 				   
 				   
