@@ -54,28 +54,44 @@ public class ControllerHomepage extends HttpServlet
 			case ("1"):
 				EventoImpl ev1 = new EventoImpl();
 				ArrayList<Evento> RicEv1 = ev1.ricerca(cat, reg, pro, com, ini, fin);
-				
 				HttpSession s1 = request.getSession();
 				s1.setAttribute("risultatoRicerca", RicEv1);
 				response.sendRedirect("view/homepageMercury.jsp");
+				
 				break;
 			// cascata tra regioni e province
 			case ("2"):
 				EventoImpl ev2 = new EventoImpl();
-				ArrayList<Evento> RicEv2 = ev2.filtroProvince(reg);
+				ArrayList<String> RicEv2 = ev2.filtroProvince(reg);
 				
 				HttpSession s2 = request.getSession();
-				s2.setAttribute("cascataRegProv", RicEv2);
-				response.sendRedirect("view/homepageMercury.jsp");
+				s2.setAttribute("dammiPro", RicEv2);
+				// request.setAttribute("dammiPro", RicEv2);
+				if (RicEv2 != null) {
+					for (String j : RicEv2) {
+						System.out.print("  ...  " + j + "  \n ");
+						
+					}
+					
+					response.sendRedirect("view/homepageMercury.jsp");
+				}
 				break;
 			// cascata tra province e comuni
 			case ("3"):
 				EventoImpl ev3 = new EventoImpl();
-				ArrayList<Evento> RicEv3 = ev3.filtroComuni(pro);
+				ArrayList<String> RicEv3 = ev3.filtroComuni(pro);
 				HttpSession s3 = request.getSession();
-				s3.setAttribute("cascataProvCom", RicEv3);
-				response.sendRedirect("view/homepageMercury.jsp");
+				s3.setAttribute("dammiCom", RicEv3);
+				
+				if (RicEv3 != null) {
+					for (String j : RicEv3) {
+						System.out.print("  ...  " + j + "  \n ");
+						
+					}
+					response.sendRedirect("view/homepageMercury.jsp");
+				}
 				break;
+			
 			default:
 				// nse sa;
 			}
