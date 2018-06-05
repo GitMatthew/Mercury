@@ -80,7 +80,7 @@ public class InviaEmail
 	    	 	
 	    	 	mail.setSubject(oggetto);
 	    	 	mail.setText(testo+testoEventi);
-	    	 	
+	    	 	 
 	    	 	Transport tr = sessione.getTransport("smtp");
 				tr.connect(host, user, psw);
 	    	 	Transport.send(mail, mail.getAllRecipients());
@@ -91,11 +91,12 @@ public class InviaEmail
 	     }
 	}
 	
-public void sendEmail(boolean status) throws SQLException {
+public void sendEmail(boolean status, String email) throws SQLException {
 		
 		if(con==null) con=Dao.getConnection();
         Properties p = System.getProperties();
-	
+      
+        
 		p.setProperty("mail.smtp.host", this.host);
 	    p.put("mail.smtp.host", this.host);
 	    p.put("mail.debug", "true");
@@ -118,7 +119,7 @@ public void sendEmail(boolean status) throws SQLException {
 	    if(status==false) { testo= "La tua richiesta di iscrizione è stata: Rifiutata";}
 	    try {
 	    	
-	    		String dest =("email");
+	    		String dest =(email);
 	    		mail.setFrom(new InternetAddress(mittente));
 	    	 	mail.addRecipients(Message.RecipientType.TO, dest);
 	    	 	
