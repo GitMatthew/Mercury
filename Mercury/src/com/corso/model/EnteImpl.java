@@ -67,6 +67,40 @@ public class EnteImpl implements EnteUtility {
 		return id ;
 	
 	}
+	
+    public static Ente enteByID (int id) {
+		
+		String qry = "SELECT * FROM enti WHERE id_ente='"+id+"'";
+		Connection conn=Dao.getConnection();
+		Statement st = null ;
+		ResultSet rs = null ;
+		Ente e = new Ente();
+		
+		try {			
+		    st = conn.createStatement();					
+			rs = st.executeQuery(qry);			
+			rs.next();	
+			
+			e.setId_ente(id);
+			e.setNome_ente(rs.getString("nome_ente"));
+			e.setPsw_ente(rs.getString("psw_ente"));
+			e.setTelefono_ente(rs.getString("telefono_ente"));
+			e.setId_status(rs.getInt("id_status"));
+			e.setEmail_ente(rs.getString("email_ente"));
+			e.setUser_ente(rs.getString("user_ente"));
+			e.setUrl_img_ente(rs.getString("url_img_ente"));
+			e.setDescrizione_ente(rs.getString("descrizione_ente"));
+			e.setUrl_sito_ente(rs.getString("url_sito_ente"));
+			
+			
+		} catch (SQLException ex) {
+			System.out.println("errore sql");		
+			ex.printStackTrace();	
+		}	
+		
+		return e ;
+	
+	}
 
 	@Override
 	public ArrayList<Ente> getEnti(String qry) {

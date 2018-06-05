@@ -24,6 +24,7 @@ import com.corso.model.Categoria;
 import com.corso.model.CategoriaImpl;
 import com.corso.model.Comune;
 import com.corso.model.ComuneImpl;
+import com.corso.model.Ente;
 import com.corso.model.EnteImpl;
 import com.corso.model.Evento;
 import com.corso.model.EventoImpl;
@@ -118,12 +119,8 @@ public class ControllerEnte extends HttpServlet {
 				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Errore DataBase , riprova più tardi .");
 			}
 			
-			disp.forward(request, response);
-	
-	
-			
-			
-			
+			disp.forward(request, response);			
+						
 	   //Gestisci Eventi
 	   } else if(session.getAttribute("from")=="enteGestisciEventi") {
 		   
@@ -143,8 +140,9 @@ public class ControllerEnte extends HttpServlet {
 			try {
 			    Statement pst = conn.createStatement();
 			    int rs = pst.executeUpdate(qry);
-			    //callGestisciEventi(id_ente);
-			    //request.setAttribute("messaggio", "Evento Modificato con successo e in attesa di approvazione.");
+			    callGestisciEventi(id_ente);
+			    request.setAttribute("messaggio", "Evento Modificato con successo e in attesa di approvazione.");
+			    
 	 
 			} catch (SQLException e) {
 			    e.printStackTrace();
@@ -159,7 +157,31 @@ public class ControllerEnte extends HttpServlet {
 	   //Gestisci account				
 	   } else if(session.getAttribute("from")=="accountEnte") {
 		   
-		   
+		   String qry = "UPDATE enti SET nome_ente = '"+request.getParameter("nome_ente")+"' , psw_ente = '"+request.getParameter("psw_ente")+"' , "
+				      + "telefono_ente = '"+request.getParameter("telefono_ente")+"' , email_ente = '"+request.getParameter("email_ente")+"' , "
+				      + "user_ente = '"+request.getParameter("user_ente")+"' , url_img_ente = '"+request.getParameter("url_img_ente")+" ' , "
+				      + "descrizione_ente = '"+request.getParameter("descrizione_ente")+"' , url_sito_ente = '"+request.getParameter("url_sito_ente")+"' "
+				      + "WHERE id_ente = "+ id_ente ;
+				      
+		              System.out.println(qry);
+		              
+		              Connection conn = Dao.getConnection();	    
+					    
+		  			try {
+		  			    Statement pst = conn.createStatement();
+		  			    int rs = pst.executeUpdate(qry);
+		  			    callHome(id_ente);
+		  			    request.setAttribute("messaggio", "Informazioni account aggiornate .");
+		  			    
+		  	 
+		  			} catch (SQLException e) {
+		  			    e.printStackTrace();
+		  			    callAccountEnte(id_ente);
+		  			    request.setAttribute("messaggio", "Modifica fallita !");
+		  			} 
+		  	
+		  				   
+		  			disp.forward(request, response);
 	   }
 	
 	}
@@ -209,6 +231,10 @@ public class ControllerEnte extends HttpServlet {
     public void callAccountEnte (int id) {
 		
 		disp=request.getRequestDispatcher("/view/accountEnte.jsp");
+		
+		Ente e = EnteImpl.enteByID(id);
+		
+		request.setAttribute("ente", e);
 		 
 		session.setAttribute("from" , "accountEnte");
 		request.setAttribute("messaggio", "Da questa pagina puoi gestire il tuo Account");
