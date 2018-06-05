@@ -84,7 +84,7 @@ var xxx=1;
 				ric = ric + document.getElementById("regSELEZIONATO").value;
 				ric = ric + "&provincia=";
 				ric = ric + document.getElementById("proSELEZIONATO").value;
-				ric = ric + "&comune=";
+				ric = ric + "&comune="; 
 				ric = ric + document.getElementById("comSELEZIONATO").value;
 				ric = ric + "&dataInizio=";
 				ric = ric + document.getElementById("inizio").value;
