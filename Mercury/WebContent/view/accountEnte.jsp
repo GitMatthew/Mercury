@@ -124,7 +124,7 @@ provaBG{background-color:blue;}
     <a href=/Mercury_Mercury/ControllerEnte?pag=3>GESTISCI ACCOUNT</a>   
     </form>
     
-  <form action="../ControllerEnte" method="post">
+  <form action="/Mercury_Mercury/ControllerEnte" method="post">
   <center>
 	<table width="100%">
 		<table width="50%">
@@ -132,36 +132,36 @@ provaBG{background-color:blue;}
 				<td>
 					<label for=user_ente>Username</label> 
     					<br> 
-    						<input type="text" value="" name="user_ente">  
+    						<input type="text" value="${requestScope.ente.user_ente}" name="user_ente">  
 				</td>
 				<td>  
  						<label for=psw_ente>Password</label> 
    						<br> 
-    					<input type="password" value="" name="psw_ente">   
+    					<input type="text" value="${requestScope.ente.psw_ente}" name="psw_ente">   
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<label for=nome_ente>Nome Ente</label> 
     				<br> 
-    				<input type="text" value="" name="nome_ente">
+    				<input type="text" value="${requestScope.ente.nome_ente}" name="nome_ente">
  				</td>
 				<td>	
 					<label for=email_ente>Email</label> 
     				<br> 
-    				<input type="email" value="" name="email_ente"placeholder="g.@yahoo.it">
+    				<input type="email" value="${requestScope.ente.email_ente}" name="email_ente"placeholder="g.@yahoo.it">
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<label for=telefono_ente>Telefono</label> 
     				<br> 
-    				<input type="tel" value="" name="telefono_ente">
+    				<input type="tel" value="${requestScope.ente.telefono_ente}" name="telefono_ente">
 				</td>
 				<td>
 					<label for=url_img_ente>Immagine Ente</label> 
     				<br> 
-    				<input type="url" value="" name="url_img_ente" placeholder="www.immagine.it">  	
+    				<input type="url" value="${requestScope.ente.url_img_ente}" name="url_img_ente" placeholder="www.immagine.it">  	
 				</td>		
 			</tr>
 		</table>
@@ -170,7 +170,7 @@ provaBG{background-color:blue;}
 				<td>
 					<label for=url_sito_ente>Sito Ente</label> 
 				    <br> 
-				    <input type="url" value="" name="url_sito_ente" placeholder="www.sito.it" size="37">  
+				    <input type="url" value="${requestScope.ente.url_sito_ente}" name="url_sito_ente" placeholder="www.sito.it" size="37">  
 				</td>
 			</tr>
 			<tr>
@@ -181,8 +181,7 @@ provaBG{background-color:blue;}
 			</tr>
 			<tr>
 				<td>
-				    <textarea name="descrizione" maxlenght="80" cols="47" rows="5" > 
-					</textarea>
+				    <textarea name="descrizione_ente" maxlenght="80" cols="47" rows="5" >${requestScope.ente.descrizione_ente}</textarea>
 				
 				</td>
 			
