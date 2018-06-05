@@ -29,13 +29,13 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace">
-	<a class="navbar-brand noSpace" href="../ControllerHomepage?da=0"><img
+	<a class="navbar-brand noSpace" href="/Mercury_Mercury/ControllerHomepage?da=0"><img
 		class="noSpace" style="width: 150px; height: 60px;"
-		src="../images/logo.jpg"> </a>
+		src="/Mercury_Mercury/images/logo.jpg"> </a>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active spaziaLato"><a class="nav-link"
-				href="../ControllerHomepage?da=0">HOME</a></li>
+				href="/Mercury_Mercury/ControllerHomepage?da=0">HOME</a></li>
 			
 		</ul>
 	</div>
@@ -65,7 +65,7 @@
 		<th>Nome_Evento_</th>
 		<th>Descrizione</th>
 		<th>Data_Inizio</th>
-		<th>Data_Fine_</th>
+		<th>Data_Fine__</th>
 		<th>Status</th>
 		<th>Categoria</th>
 		<th>Comune</th>

@@ -40,22 +40,22 @@ public class Evento
 	
 	public String getNome_evento()
 	{
-		return nome_evento;
+		return nome_evento.replace("§","'");
 	}
 	
 	public void setNome_evento(String nome_evento)
 	{
-		this.nome_evento = nome_evento;
+		this.nome_evento = nome_evento.replace("'","§");
 	}
 	
 	public String getDescrizione()
 	{
-		return descrizione;
+		return descrizione.replace("§","'"); 
 	}
 	
 	public void setDescrizione(String descrizione)
 	{
-		this.descrizione = descrizione;
+		this.descrizione = descrizione.replace("'","§");
 	}
 	
 	public Date getData_inizio()

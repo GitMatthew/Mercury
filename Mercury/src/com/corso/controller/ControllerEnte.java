@@ -63,9 +63,9 @@ public class ControllerEnte extends HttpServlet {
 		String psw=request.getParameter("psw");
 		
 		if(ei.verificaPsw (user , psw)) {	
-			id_ente = ei.idEnte(user);
-			callHome(id_ente);
+			id_ente = ei.idEnte(user);			
 			session.setAttribute("user" , id_ente);
+			callHome(id_ente);
 			
 		} else {
 			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
@@ -126,34 +126,35 @@ public class ControllerEnte extends HttpServlet {
 			
 	   //Gestisci Eventi
 	   } else if(session.getAttribute("from")=="enteGestisciEventi") {
-		  
+		   
 		  Date dataFine =Date.valueOf(request.getParameter("dataFine"));
 		  Date dataInizio =Date.valueOf(request.getParameter("dataInizio")); 
 		   
-		  String qry = "UPDATE eventi SET nome_evento = "+request.getParameter("nomeEvento")+" , descrizione = "+request.getParameter("descrizione") +" , " 
-		  		     + "data_inizio = "+ dataInizio +" , data_fine = "+ dataFine +" , id_status = 1 , id_comune = "+ request.getParameter("id_comune") +" , "
-		  		     + "id_categoria = "+ request.getParameter("id_categoria") +" , url_img_evento = "+request.getParameter("urlImg")+" , " 
-		  		     + "url_sito_evento = "+request.getParameter("urlEvento")+" WHERE id = "+request.getParameter("id_evento") ;
+		  
+		  
+		  
+		  String qry = "UPDATE eventi SET nome_evento = '"+request.getParameter("nomeEvento").replace("'","§")+"' , descrizione = '"+request.getParameter("descrizione").replace("'","§") +"' , " 
+		  		     + "data_inizio = '"+ dataInizio +"' , data_fine = '"+ dataFine +"' , id_status = 1 , id_comune = "+ request.getParameter("id_comune") +" , "
+		  		     + "id_categoria = "+ request.getParameter("id_categoria") +" , url_img_evento = '"+request.getParameter("url_img_evento")+"' , " 
+		  		     + "url_sito_evento = '"+request.getParameter("url_sito_evento")+"' WHERE id_evento = "+request.getParameter("id_evento") ;
 		   
-		   System.out.println(qry);
+		   Connection conn = Dao.getConnection();	    
+			    
+			try {
+			    Statement pst = conn.createStatement();
+			    int rs = pst.executeUpdate(qry);
+			    callGestisciEventi(id_ente);
+			    request.setAttribute("messaggio", "Evento Modificato con successo e in attesa di approvazione.");
+	 
+			} catch (SQLException e) {
+			    e.printStackTrace();
+			    callGestisciEventi(id_ente);
+			    request.setAttribute("messaggio", "Modifica fallita !");
+			} 
 	
 				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
+			disp.forward(request, response);	   
+				  			   
 			
 	   //Gestisci account				
 	   } else if(session.getAttribute("from")=="accountEnte") {
