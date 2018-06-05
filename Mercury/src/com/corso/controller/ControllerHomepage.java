@@ -25,27 +25,28 @@ public class ControllerHomepage extends HttpServlet
 	{
 		
 		try {
+			String da = "0";
+			String cat = "null";
+			String reg = "null";
+			String pro = "null";
+			String com = "null";
+			String ini = "";
+			String fin = "";
 			
-			String da = request.getParameter("da");
-			String cat = request.getParameter("categoria");
-			String reg = request.getParameter("regione");
-			String pro = request.getParameter("provincia");
-			String com = request.getParameter("comune");
-			String ini = request.getParameter("dataInizio");
-			String fin = request.getParameter("dataFine");
+			da = request.getParameter("da");
+			cat = request.getParameter("categoria");
+			reg = request.getParameter("regione");
+			pro = request.getParameter("provincia");
+			com = request.getParameter("comune");
+			ini = request.getParameter("dataInizio");
+			fin = request.getParameter("dataFine");
 			
 			switch (da)
 			{
 			// Tutto ciò che torna alla Homepage
 			case ("0"):
-				cat = "null";
-				reg = "null";
-				pro = "null";
-				com = "null";
-				ini = "";
-				fin = "";
 				EventoImpl ev0 = new EventoImpl();
-				ArrayList<Evento> RicEv0 = ev0.ricerca(cat, reg, pro, com, ini, fin);
+				ArrayList<Evento> RicEv0 = ev0.ricerca("null", "null", "null", "null", "", "");
 				HttpSession s0 = request.getSession();
 				s0.setAttribute("risultatoRicerca", RicEv0);
 				response.sendRedirect("view/homepageMercury.jsp");
@@ -56,6 +57,13 @@ public class ControllerHomepage extends HttpServlet
 				ArrayList<Evento> RicEv1 = ev1.ricerca(cat, reg, pro, com, ini, fin);
 				HttpSession s1 = request.getSession();
 				s1.setAttribute("risultatoRicerca", RicEv1);
+				
+				s1.setAttribute("cate", cat);
+				s1.setAttribute("regi", reg);
+				s1.setAttribute("prov", pro);
+				s1.setAttribute("comu", com);
+				s1.setAttribute("iniz", ini);
+				s1.setAttribute("fine", fin);
 				response.sendRedirect("view/homepageMercury.jsp");
 				
 				break;
@@ -66,6 +74,13 @@ public class ControllerHomepage extends HttpServlet
 				
 				HttpSession s2 = request.getSession();
 				s2.setAttribute("dammiPro", RicEv2);
+				s2.setAttribute("cate", cat);
+				s2.setAttribute("regi", reg);
+				s2.setAttribute("prov", "null");
+				s2.setAttribute("comu", "null");
+				s2.setAttribute("dammiCom", null);
+				s2.setAttribute("iniz", ini);
+				s2.setAttribute("fine", fin);
 				// request.setAttribute("dammiPro", RicEv2);
 				if (RicEv2 != null) {
 					for (String j : RicEv2) {
@@ -82,6 +97,12 @@ public class ControllerHomepage extends HttpServlet
 				ArrayList<String> RicEv3 = ev3.filtroComuni(pro);
 				HttpSession s3 = request.getSession();
 				s3.setAttribute("dammiCom", RicEv3);
+				s3.setAttribute("cate", cat);
+				s3.setAttribute("regi", reg);
+				s3.setAttribute("prov", pro);
+				s3.setAttribute("comu", "null");
+				s3.setAttribute("iniz", ini);
+				s3.setAttribute("fine", fin);
 				
 				if (RicEv3 != null) {
 					for (String j : RicEv3) {
