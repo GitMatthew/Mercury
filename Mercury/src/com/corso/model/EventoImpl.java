@@ -37,12 +37,12 @@ public class EventoImpl implements EventoUtility
 		else {
 		}
 		if (!(ini.equals(""))) {
-			x = x + " and e.data_inizio= '" + ini + "'";
+			x = x + " and e.data_inizio >= '" + ini + "'";
 		}
 		else {
 		}
 		if (!(fin.equals(""))) {
-			x = x + " and e.data_fine= '" + fin + "'";
+			x = x + " and e.data_fine <= '" + fin + "'";
 		}
 		else {
 		}
@@ -58,6 +58,7 @@ public class EventoImpl implements EventoUtility
 			
 			while (rst.next()) {
 				a = new Evento();
+				a.setUrl_sito_evento(rst.getString("url_sito_evento"));
 				a.setUrl_img_evento(rst.getString("url_img_evento"));
 				a.setNome_evento(rst.getString("titolo"));
 				a.setNome_categoria(rst.getString("nome_categoria"));
