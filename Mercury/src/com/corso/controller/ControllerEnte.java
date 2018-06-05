@@ -143,8 +143,8 @@ public class ControllerEnte extends HttpServlet {
 			try {
 			    Statement pst = conn.createStatement();
 			    int rs = pst.executeUpdate(qry);
-			    callGestisciEventi(id_ente);
-			    request.setAttribute("messaggio", "Evento Modificato con successo e in attesa di approvazione.");
+			    //callGestisciEventi(id_ente);
+			    //request.setAttribute("messaggio", "Evento Modificato con successo e in attesa di approvazione.");
 	 
 			} catch (SQLException e) {
 			    e.printStackTrace();
