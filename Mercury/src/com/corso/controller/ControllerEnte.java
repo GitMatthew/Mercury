@@ -138,8 +138,6 @@ public class ControllerEnte extends HttpServlet {
 		  		     + "id_categoria = "+ request.getParameter("id_categoria") +" , url_img_evento = '"+request.getParameter("url_img_evento")+"' , " 
 		  		     + "url_sito_evento = '"+request.getParameter("url_sito_evento")+"' WHERE id_evento = "+request.getParameter("id_evento") ;
 		   
-		   System.out.println(request.getParameter("descrizione").replace("'","$"));
-		   
 		   Connection conn = Dao.getConnection();	    
 			    
 			try {
