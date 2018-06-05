@@ -65,7 +65,7 @@
 		<th>Nome_Evento_</th>
 		<th>Descrizione</th>
 		<th>Data_Inizio</th>
-		<th>Data_Fine_</th>
+		<th>Data_Fine__</th>
 		<th>Status</th>
 		<th>Categoria</th>
 		<th>Comune</th>
