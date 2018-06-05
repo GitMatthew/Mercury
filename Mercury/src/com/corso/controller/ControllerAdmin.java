@@ -157,7 +157,7 @@ public class ControllerAdmin extends HttpServlet {
 			int y=Integer.parseInt(request.getParameter("id_cat"));
 			im.delCat(y);
 			ArrayList<Categoria> a=im.getAllCat();
-			session.setAttribute("tutte_le_cat", a);
+			session.setAttribute("tutte_le_cat", a); 
 			response.sendRedirect("view/adminGestisciCategorie.jsp"); 
 		}	
 		
