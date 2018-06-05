@@ -153,22 +153,8 @@ public class ControllerEnte extends HttpServlet {
 			} 
 	
 				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
-				   
+			disp.forward(request, response);	   
+				  			   
 			
 	   //Gestisci account				
 	   } else if(session.getAttribute("from")=="accountEnte") {
