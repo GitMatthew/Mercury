@@ -11,9 +11,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
- <meta http-equiv="Pragma" content="no-cache">
- <meta http-equiv="Cache-Control" content="no-cache">
- <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT">
 <title>Bootstrap 4 Website Example</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,85 +22,58 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<style>
-a.linkAPRIricerca {
-	padding: 10px;
-	background-color: #f44336;
-	color: white;
-	padding: 5px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	background-color: #f44336;
-}
-
-a.linkAPRIricerca:hover {
-	background-color: #A52A2A;
-	color: #FF8C00;
-}
-
-#catSELEZIONATO, #regSELEZIONATO, #proSELEZIONATO, #comSELEZIONATO {
-	max-width: 150px !important;
-}
-
-.boxDestra {
-	width: 100%;
-	height: 300px;
-	margin-left: 8px;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
-}
-
-#box1 {
-	background-image: url('../images/newsletter.jpg');
-}
-
-#box2 {
-	background-image: url('../images/registraEnte.jpg');
-}
-
-#box3 {
-	background-image: url('../images/publi1.jpg');
-}
-
-#box4 {
-	background-image: url('../images/publi2.jpg');
-}
-
-.spaziaLato {
-	padding: 0px 20px 0px 20px;
-}
-
-.tabDATA {
-	min-width: 120px !important;
-}
-
-.noSpace {
-	padding: 0px !important;
-	margin: 0px !important;
-}
-
-.appari {
-}
-
-
-.scompari {
-}
-
-provaBG{background-color:blue;}
-
-</style>
+<link rel="stylesheet" type="text/css" href="../css/homepageStile.css">
 </head>
 <body>
 	<script>
-
-
 	
-	
+		
+		function dataEccessivainizio() {
+			var ini = document.getElementById("inizio").value;
+			var fin = document.getElementById("fine").value;
+
+			if (fin < ini) {
+				document.getElementById("inizio").style.backgroundColor = "red";
+			} else {
+				document.getElementById("inizio").style.backgroundColor = "white";
+			}
+		}
+		
+		function dataEccessivafine() {
+			var ini = document.getElementById("inizio").value;
+			var fin = document.getElementById("fine").value;
+
+			if (fin < ini) {
+				document.getElementById("fine").style.backgroundColor = "red";
+			} else {
+				document.getElementById("fine").style.backgroundColor = "white";
+			}
+		}
+		
+		
+		
+		
+var xxx=1;
 		$(document).ready(function() {
 			
-			
+			   $("#cambiavedi").click(function(){
+				   if(xxx==1)
+				   {
+					   xxx=2;
+			        $("#vediLargo").hide("slow", function(){
+			        	 $("#vediStretto").show(1000);
+			        });
+			        }
+				   else{xxx=1;
+					   $("#vediStretto").hide("slow", function(){
+				        	 $("#vediLargo").show(1000);
+				        });
+					   
+				   }
+			    });
+	
+	
+		
 			
 
 			$("#linkGETricerca").click(function() {
@@ -124,88 +94,56 @@ provaBG{background-color:blue;}
 					return origValue + ric;
 				});
 			});
-		
-	
-	$("#regSELEZIONATO").change(function() 
-				{  var xReg = document.getElementById("regSELEZIONATO").value;
-		    		var xhttp = new XMLHttpRequest();
-		    		xhttp.onreadystatechange = function() 
-		    			{
-		        		if (this.readyState == 4 && this.status == 200 /*(this.status == 200 || this.status == 302 || this.status == 401)*/) 
-		        			{ 	/*location.reload();*/ } };
-		    var reg = "../ControllerHomepage?da=2&regione="+ xReg;
-		    xhttp.open("GET", reg , true); 
-		    xhttp.send(); 
-		});
-  
-    
-		$("#proSELEZIONATO").change(function() {	
-			    var xhttp = new XMLHttpRequest();
-			    xhttp.onreadystatechange = function() {     
-			    	if (this.readyState == 4 && this.status == 200) {	/*location.reload();*/ };
-			    }
-			    var pro = "../ControllerHomepage?da=3&provincia="+document.getElementById("proSELEZIONATO").value;
-			    xhttp.open("GET", pro , true); 
-			    xhttp.send(); 
-		});
 
-		
-		/*	$.ajax({
-				 
-			    // The URL for the request
-			    url: "post.php",
-			 
-			    // The data to send (will be converted to a query string)
-			    data: {
-			        id: 123
-			    },
-			 
-			    // Whether this is a POST or GET request
-			    type: "GET",
-			 
-			    // The type of data we expect back
-			    dataType : "json",
-			})
-			 
-			*/
-		
-		
-		
-	/*	$(function worker(){
-		    // don't cache ajax or content won't be fresh
-		   $.ajaxSetup ({
-		        cache: false,
-		        complete: function() {
-		          // Schedule the next request when the current one's complete
-		          setTimeout(worker, 3000);
-		        }
-		    });
-		    var ajax_load = "<select  id='proSELEZIONATO'>	<option  value='null' id='primoPro' >seleziona</option>		<c:forEach var='j' items='${sessionScope.dammiPro}'>			<option><c:out value='${j}'>${j}</c:out></option>			</c:forEach>			</select> "  ;		    
-		    // load() functions
-		 	
-		    	var ric = "../ControllerHomepage?da=0&categoria=";
-			ric = ric + document.getElementById("catSELEZIONATO").value;
-			ric = ric + "&regione=";
-			ric = ric + document.getElementById("regSELEZIONATO").value;
-			ric = ric + "&provincia=";
-			ric = ric + document.getElementById("proSELEZIONATO").value;
-			ric = ric + "&comune=";
-			ric = ric + document.getElementById("comSELEZIONATO").value;
-			ric = ric + "&dataInizio=";
-			ric = ric + document.getElementById("inizio").value;
-			ric = ric + "&dataFine=";
-			ric = ric + document.getElementById("fine").value;
-		    var loadUrl = ric ;
-		    $("#proAPRI").style.display="none" ;
-		    $("#proAPRI2").html(ajax_load).load(loadUrl);
+			$("#regSELEZIONATO").change(function() {
+				var ric = "&categoria=";
+				ric = ric + document.getElementById("catSELEZIONATO").value;
+				ric = ric + "&regione=";
+				ric = ric + document.getElementById("regSELEZIONATO").value;
+				ric = ric + "&dataInizio=";
+				ric = ric + document.getElementById("inizio").value;
+				ric = ric + "&dataFine=";
+				ric = ric + document.getElementById("fine").value;
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						location.reload();
+					}
+				};
+				var reg = "../ControllerHomepage?da=2" + ric;
+				xhttp.open("GET", reg, true);
+				xhttp.send();
+			});
 
-		// end  
-		});*/
-	
+			$("#proSELEZIONATO").change(function() {
+
+				var ric = "&categoria=";
+				ric = ric + document.getElementById("catSELEZIONATO").value;
+				ric = ric + "&regione=";
+				ric = ric + document.getElementById("regSELEZIONATO").value;
+				ric = ric + "&provincia=";
+				ric = ric + document.getElementById("proSELEZIONATO").value;
+				ric = ric + "&dataInizio=";
+				ric = ric + document.getElementById("inizio").value;
+				ric = ric + "&dataFine=";
+				ric = ric + document.getElementById("fine").value;
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+
+						location.reload();
+
+					}
+					;
+				}
+				var pro = "../ControllerHomepage?da=3" + ric;
+				xhttp.open("GET", pro, true);
+				xhttp.send();
+			});
 
 		});
-		</script>
-	
+	</script>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace">
 	<a class="navbar-brand noSpace" href="../ControllerHomepage?da=0"><img
 		class="noSpace" style="width: 150px; height: 60px;"
@@ -231,8 +169,8 @@ provaBG{background-color:blue;}
 		style="margin: 0px; padding: 0px 30px 10px 30px; color: white; background-image: url('../images/sfondo3.jpg'); background-repeat: no-repeat; background-position: center; background-size: cover;">
 		<h1 style="color: #f54b03;">MERCURY EVENTS</h1>
 		<br>
-		<h3 id="stampah3" style="color: #f54b03;">Gli eventi in Italia che aspettano
-			solo il tuo click</h3>
+		<h3 id="stampah3" style="color: #f54b03;">Gli eventi in Italia
+			che aspettano solo il tuo click</h3>
 		<br>
 		<h2 style="color: #f54b03;">
 			cerca tutti gli eventi italiani scegliendo la categoria che
@@ -250,7 +188,7 @@ provaBG{background-color:blue;}
 		style="overflow: auto; padding: 10px; margin: 0px; min-width: 100%; max-width: 100%; background-color: rgba(128, 0, 0, 0.4);">
 		<a id="linkGETricerca" href="../ControllerHomepage?da=1"><img
 			style="padding-left: 5px; height: 40px;"
-			src="../images/search-icon.png" /></a>
+			src="../images/search-icon2.png" /></a>
 		<div class="col">
 			<a href="#catAPRI" data-toggle="collapse" class="linkAPRIricerca">
 				Categoria </a>
@@ -259,103 +197,156 @@ provaBG{background-color:blue;}
 					try {
 						x = conn.createStatement();
 						rs = x.executeQuery("select nome_categoria from categorie order by nome_categoria ASC");
-
+						
+						String cat1 = (String) session.getAttribute("cate");
 						out.print("<select id= 'catSELEZIONATO'>");
-						out.print("<option id='primoCat' value='null'> seleziona </option> ");
+						if (cat1 == null) {
+							out.print("<option id='primoCat' value='null'> seleziona </option> ");
+						}
+						else {
+							if (cat1.equals("null")) {
+								out.print("<option id='primoCat' value='" + cat1 + "'> seleziona </option> ");
+							}
+							else {
+								out.print("<option id='primoCat' value='" + cat1 + "'>" + cat1 + "</option> ");
+								out.print("<option id='primoCat' value='null'> -------- </option> ");
+							}
+						}
+						
 						while (rs.next()) {
 							out.print("<option value='" + rs.getString("nome_categoria") + "'>");
 							out.print(rs.getString("nome_categoria"));
 							out.print("</option>");
 						}
 						out.print("</select>");
-					} catch (Exception e) {
+					}
+					catch (Exception e) {
 						out.println("wrong entry" + e);
 					}
 				%>
 			</div>
 		</div>
 		<div class="col">
-			<a href="#regAPRI" data-toggle="collapse" class="linkAPRIricerca" >
+			<a href="#regAPRI" data-toggle="collapse" class="linkAPRIricerca">
 				Regione </a>
-			<div id="regAPRI" class="collapse"  >
-			
-			  
-			
+			<div id="regAPRI" class="collapse">
 				<%
 					try {
 						x = conn.createStatement();
-						rs = x.executeQuery("select nome_regione from regioni ");
-
-						out.print("<select  onchange='daje()' id= 'regSELEZIONATO'>");
-						out.print("<option id='primoReg'  value='null'> seleziona </option> ");
+						rs = x.executeQuery("select nome_regione from regioni order by nome_regione ASC; ");
+						
+						String reg1 = (String) session.getAttribute("regi");
+						out.print("<select  id= 'regSELEZIONATO'>");
+						if (reg1 == null) {
+							out.print("<option id='primoReg'  value='null'> seleziona </option> ");
+						}
+						else {
+							if (reg1.equals("null")) {
+								out.print("<option id='primoReg' value='" + reg1 + "'> seleziona </option> ");
+							}
+							else {
+								out.print("<option id='primoReg' value='" + reg1 + "'>" + reg1 + "</option> ");
+								out.print("<option id='primoReg2'  value='null'> -------- </option> ");
+								
+							}
+						}
+						
 						while (rs.next()) {
 							out.print("<option value='" + rs.getString("nome_regione") + "'>");
 							out.print(rs.getString("nome_regione"));
 							out.print("</option>");
 						}
 						out.print("</select>");
-					} catch (Exception e) {
+					}
+					catch (Exception e) {
 						out.println("wrong entry" + e);
 					}
 				%>
 			</div>
 		</div>
 		<div class="col">
-			<a id="aProvincia" href="#proAPRI"  data-toggle="collapse" class="linkAPRIricerca">
-				Provincia </a>
-					<div id="proAPRI2" class="collapse"> </div>
+			<a id="aProvincia" href="#proAPRI" data-toggle="collapse"
+				class="linkAPRIricerca"> Provincia </a>
+			<div id="proAPRI2" class="collapse"></div>
 			<div id="proAPRI" class="collapse">
-
-				<select  id="proSELEZIONATO">
-				<option  value="null" id='primoPro' >seleziona</option>
-				<c:forEach var="j" items="${sessionScope.dammiPro}">
-						<option><c:out value="${j}">${j}</c:out></option>
-					</c:forEach>
-				</select>
+				<%
+					try {
+						x = conn.createStatement();
+						String prov1;
+						String reg2 = (String) session.getAttribute("regi");
+						
+						if (reg2 == null) {
+							reg2 = "null";
+						}
+						
+						if (reg2.equals("null")) {
+							prov1 = "null";
+						}
+						else {
+							prov1 = (String) session.getAttribute("prov");
+						}
+						
+						rs = x.executeQuery(
+						        "SELECT p.nome_provincia from province as p, regioni as r where p.id_regione=r.id_regione and r.nome_regione='"
+						                + reg2 + "' order by nome_provincia ASC;");
+				%>
+				<select id='proSELEZIONATO'>
+					<%
+						if (prov1 == null) {
+								out.print("<option id='primoPro'  value='null' > seleziona </option> ");//lista
+							}
+							else {
+								if (prov1.equals("null")) {
+									out.print("<option id='primoPro' value='" + prov1 + "'> seleziona  </option> ");//lista
+								}
+								else {
+									out.print("<option id='primoPro' value='" + prov1 + "'>" + prov1 + "</option> ");
+									out.print("<option id='primoPro2'  value='null'>--------</option> ");
+									
+								}
+							}
+							
+							while (rs.next()) {
+								out.print("<option value='" + rs.getString("nome_provincia") + "'>");
+								out.print(rs.getString("nome_provincia"));
+								out.print("</option>");
+							}
+							
+							out.print("</select>");
+						}
+						catch (Exception e) {
+							out.println("wrong entry" + e);
+						}
+					%>
 				
 			</div>
 		</div>
-		<div class="col" >
-			<a id="aComune" href="#comAPRI" data-toggle="collapse" class="linkAPRIricerca">
-				Comune </a>
+		<div class="col">
+			<a id="aComune" href="#comAPRI" data-toggle="collapse"
+				class="linkAPRIricerca"> Comune </a>
 			<div id="comAPRI" class="collapse">
-					<select  id="comSELEZIONATO" >
-				<option  value="null" id='primoCom' >seleziona</option>
-				<c:forEach var="K" items="${sessionScope.dammiCom}">
+				<select id="comSELEZIONATO">
+					<option value="null" id='primoCom'>seleziona</option>
+					<c:forEach var="K" items="${sessionScope.dammiCom}">
 						<option><c:out value="${K}">${K}</c:out></option>
 					</c:forEach>
 				</select>
-				
 			</div>
-		 
 		</div>
 		<div class="col">
 			<input type="date" id="inizio" class="form-control"
 				onchange="myFunction()" style="max-width: 100%;">
+				
 		</div>
 		<div class="col">
 			<input type="date" id="fine" onchange="dataEccessiva()"
 				class="form-control" style="max-width: 100%;">
 		</div>
-		<script>
-			function dataEccessiva() {
-				var ini = document.getElementById("inizio").value;
-				var fin = document.getElementById("fine").value;
-
-				if (fin < ini) {
-					document.getElementById("fine").style.backgroundColor = "red";
-				} 
-				else 
-				{
-					document.getElementById("fine").style.backgroundColor = "white";
-				}
-			}
-		</script>
 	</div>
-	<br>
-	<br>
+<button style="margin-left:3%;"  type="button" class="btn btn-secondary" id="cambiavedi" >cambia visualizzazione</button>
 	<div align="center" class="row" style="max-width: 100%; padding: 20px;">
-		<div class="col-sm-10">
+	
+		<div style="display:none;" id="vediStretto" class="col-sm-10">
 			<table class="table table-dark table-hover">
 				<thead>
 					<tr>
@@ -370,9 +361,9 @@ provaBG{background-color:blue;}
 				</thead>
 				<tbody>
 					<c:forEach var="j" items="${sessionScope.risultatoRicerca}">
-						<tr data-href="<c:out value="${j.url_sito_evento}"></c:out>">
-							<td><img style="height: 40px; width: 40px;"
-								src="<c:out value="${j.url_img_evento }"></c:out>"></td>
+						<tr onclick="document.location='<c:out value="${j.url_sito_evento}"></c:out>' ">
+							<td>
+							<img style="height: 40px; width: 40px;"	src="<c:out value='${j.url_img_evento }'></c:out>"></td>
 							<td><c:out value="${j.nome_evento }"></c:out></td>
 							<td><c:out value="${j.nome_categoria }"></c:out></td>
 							<td><c:out value="${j.descrizione }"></c:out></td>
@@ -384,19 +375,70 @@ provaBG{background-color:blue;}
 				</tbody>
 			</table>
 		</div>
+		
+		
+		
+		
+		
+		<div id="vediLargo" style="display:block;" class="col-sm-10">
+			<table style="width:100%;">
+				<c:forEach var="j" items="${sessionScope.risultatoRicerca}">
+					<tr>
+						<td class="bordini">
+							<div class="card" class="bordini">
+								<div class="card-body" class="bordini">
+									<table style="width: 100%">
+										<tr>
+											<td style="width: 150px;"><img
+												style="width: 150px; height: 150px; margin-right: 20px;"
+												src="<c:out value='${j.url_img_evento }'></c:out>" /></td>
+											<td style="float: left;">
+												<h2 style="float: left;" class="card-title">
+													<c:out value="${j.nome_evento }"></c:out>
+												</h2>
+											
+												<br>
+											<br><br>
+												<p class="card-text">
+													<c:out value="${j.descrizione }"></c:out>
+												</p> <a href="<c:out value="${j.url_sito_evento}"></c:out>"
+												class="card-link"> link evento</a> <a href="#"
+												class="card-link">link ente</a>
+											</td>
+												
+											<td style="right: 0px; text-align:right;">
+											
+											<h2 style="margin-left: 100px;" class="badge badge-primary">
+													<c:out value="${j.nome_categoria }"></c:out>
+												</h2><br><br>
+											da <c:out value="${j.data_inizio }"></c:out>
+										<br>a <c:out value="${j.data_fine }"></c:out><br><br>
+												<h2 style="margin-left: 100px;" class="badge badge-danger">
+													<c:out value="${j.nome_comune }"></c:out>
+												</h2>
+												
+												</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
 		<div class="col-sm-2"
 			style="padding: 0px; border-left: 2px solid #f54b03;">
-			<a style="display:block;" href="../ControllerNewsletter?n=0" ><div id="box1" class="boxDestra">
-				<h2>
-					iscriviti <br> alla
-				</h2>
-			</div> </a>
-			<a   href="registraEnte.jsp" style="text-decoration: none; display:block;"><div
-					id="box2" class="boxDestra">
+			<a style="display: block;" href="../ControllerNewsletter?n=0"><div
+					id="box1" class="boxDestra">
+					<h2>
+						iscriviti <br> alla
+					</h2>
+				</div> </a> <a href="registraEnte.jsp"
+				style="text-decoration: none; display: block;"><div id="box2"
+					class="boxDestra">
 					<h3>
-						<br>vuoi pubblicare i tuoi eventi? <br>
-						<br>
-						<br>
+						<br>vuoi pubblicare i tuoi eventi? <br> <br> <br>
 						<br> diventa ente Mercury
 					</h3>
 				</div></a>
