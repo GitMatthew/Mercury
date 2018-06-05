@@ -108,6 +108,13 @@ provaBG{background-color:blue;}
 			
 		</ul>
 	</div>
+	<div >
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active spaziaLato"><a class="nav-link"
+				href="/Mercury_Mercury/ControllerEnte?pag=6">LOG OUT</a></li>
+			
+		</ul>
+	</div>
 </nav>
 
 <center>

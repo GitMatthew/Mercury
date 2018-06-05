@@ -51,31 +51,31 @@
 			<table width="50%">
 				<tr>
 					<td >
-						<label for=user_ente>Username</label> 
+						<label for=user_ente>Username*</label> 
 							<br> 
 								<input type="text" value="" name="user_ente">  
 					</td>
 					<td >
-							<label for=psw_ente>Password</label> 
+							<label for=psw_ente>Password*</label> 
 							<br> 
 							<input type="text" value="" name="psw_ente">   
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<label for=nome_ente>Nome Ente</label> 
+						<label for=nome_ente>Nome Ente*</label> 
 						<br> 
 						<input type="text" value="" name="nome_ente">
 					</td>
 					<td>	
-						<label for=email_ente>Email</label> 
+						<label for=email_ente>Email*</label> 
 						<br> 
 						<input type="email" value="" name="email_ente"placeholder="g.@yahoo.it">
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<label for=telefono_ente>Telefono</label> 
+						<label for=telefono_ente>Telefono*</label> 
 						<br> 
 						<input type="tel" value="" name="telefono_ente">
 					</td>
@@ -99,8 +99,7 @@
 					
 						<label for=descrizione_ente>Descrizione Ente</label> 
 						
-						<textarea name="descrizione_ente" maxlenght="100" cols="67" rows="5" > 
-						</textarea>
+						<textarea name="descrizione_ente" maxlenght="100" cols="67" rows="5" ></textarea>
 					
 					</td>
 				
@@ -113,6 +112,10 @@
 	</table>
 </center>   
 </form>
+
+     <br><br>
+     <h5 type=color:red>I campi contrassegnati da asterisco(*) sono OBBLIGATORI !</h5>
+	 <br>
 
 	<div class="jumbotron text-center" style="margin-bottom: 0">
 		<p>Footer</p>

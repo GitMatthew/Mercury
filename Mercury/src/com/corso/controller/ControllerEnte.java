@@ -55,22 +55,24 @@ public class ControllerEnte extends HttpServlet {
 		
 		ei = new EnteImpl();
 		
-		this.session = request.getSession();
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		this.session = request.getSession(); 
+	
 		// Registra un nuovo ente 
-		 System.out.println(session.getAttribute("from"));
 	   if(session.getAttribute("from")=="registraEnte") {
+		   
+		   if(request.getParameter("nome_ente")==null || request.getParameter("psw_ente")==null ||
+				   request.getParameter("nome_ente")=="" || request.getParameter("psw_ente")=="" || 
+				   request.getParameter("telefono_ente")==null || request.getParameter("telefono_ente")=="" ||
+				   request.getParameter("user_ente")==null || request.getParameter("user_ente")=="" ||
+				   request.getParameter("email_ente")==null || request.getParameter("email_ente")=="") {
+			   
+			   
+			   disp=request.getRequestDispatcher("/view/registraEnte.jsp");
+			   session.setAttribute("from" , null);
+			   request.setAttribute("messaggio", "Registrazione fallita , compila tutti i campi obbligatori !");
+			   disp.forward(request, response);
+			   		   
+		   }
 		    			
 			String insertQry = "INSERT enti (nome_ente , psw_ente , telefono_ente , id_status , email_ente ,"
 			                  +"  user_ente , url_img_ente , descrizione_ente , url_sito_ente) "
@@ -78,8 +80,6 @@ public class ControllerEnte extends HttpServlet {
 			                  + "'"+request.getParameter("telefono_ente")+"' , 1 , '"+request.getParameter("email_ente")+"' , "
 			          		  + "'"+request.getParameter("user_ente")+"' , '"+request.getParameter("url_img_ente")+"' , "
 			          		  + "'"+request.getParameter("descrizione_ente")+"' , '"+request.getParameter("url_sito_ente")+"'  ) ";
-		  		   
-			System.out.println(insertQry);
 			
 			Connection conn = Dao.getConnection();	    
 		    
@@ -87,43 +87,17 @@ public class ControllerEnte extends HttpServlet {
 			    Statement pst = conn.createStatement();
 			    int rs = pst.executeUpdate(insertQry);
 			    disp=request.getRequestDispatcher("/view/loginEnte.jsp");
+			    session.setAttribute("from" , null); 
 				request.setAttribute("messaggio", "Ti sei iscritto con successo");
 				disp.forward(request, response);
 	 
 			} catch (SQLException e) {
 				disp=request.getRequestDispatcher("/view/registraEnte.jsp"); 
+				session.setAttribute("from" , null);
 				request.setAttribute("messaggio", "Registrazione fallita , email , user o numero di telefono sono già presenti sul database");
 				disp.forward(request, response);
-			} 
-			
-			
-			
-	   }
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-		
+			}   
+		}
 		//Sela sessione non è aperta esegui log in
 		if(session.getAttribute("user")==null) {
 				
@@ -341,31 +315,43 @@ public class ControllerEnte extends HttpServlet {
 		switch (pag) {
 		case "1":
 			callHome(id_ente);
+			disp.forward(request, response);
 			break;
 			
         case "2": 		
         	callGestisciEventi(id_ente);
+        	disp.forward(request, response);
 			break;
 			
         case "3":
         	callAccountEnte(id_ente);
+        	disp.forward(request, response);
 			break;
 			
         case "4":
         	callModificaEvento(id_evento);
+        	disp.forward(request, response);
 			break;
 			
         case "5":
         	eliminaEvento(id_evento);
+        	disp.forward(request, response);
+        	      	
+			break;
+			
+        case "6":
+        	session.invalidate();
+        	response.sendRedirect("view/homepageMercury.jsp"); 
         	      	
 			break;
 
 		default:
 			callHome(id_ente);
+			disp.forward(request, response);
 			break;
 		} 
 		
-		disp.forward(request, response);
+		
 		
 	}
 
