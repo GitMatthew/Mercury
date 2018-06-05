@@ -63,9 +63,9 @@ public class ControllerEnte extends HttpServlet {
 		String psw=request.getParameter("psw");
 		
 		if(ei.verificaPsw (user , psw)) {	
-			id_ente = ei.idEnte(user);
-			callHome(id_ente);
+			id_ente = ei.idEnte(user);			
 			session.setAttribute("user" , id_ente);
+			callHome(id_ente);
 			
 		} else {
 			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
