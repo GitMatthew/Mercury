@@ -15,13 +15,14 @@ public class EnteImpl implements EnteUtility {
 	
 
 	//ciao
-	public boolean verificaPsw (String user , String psw) {	
+	public int verificaPsw (String user , String psw) {	
 		
 		String qry = "SELECT * FROM enti WHERE user_ente='"+user+"'";
 		Connection conn=Dao.getConnection();
 		Statement st = null ;
 		ResultSet rs = null ;
 		String pswOk = null;
+		int status = 0 ;
 		
 		try {	
 			
@@ -29,17 +30,22 @@ public class EnteImpl implements EnteUtility {
 			rs = st.executeQuery(qry);			
 			rs.next();			
 			pswOk = rs.getString("psw_ente");
+			status = rs.getInt("id_status");
 			
 		} catch (SQLException e) {
 			System.out.println("errore sql");		
 			e.printStackTrace();
-			return false ;		
+			return 4 ;		
 		}	
 		
-		if(psw.equals(pswOk)) {
-			return true ;
+		if(psw.equals(pswOk) && status == 2) {
+			return 2 ;
+		} else if (status == 1){
+			return 1 ;
+		} else if (status == 3){
+			return 3 ;
 		} else {
-			return false ;
+			return 4 ;
 		}
 	
 	}

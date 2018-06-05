@@ -104,14 +104,20 @@ public class ControllerEnte extends HttpServlet {
 		String user=request.getParameter("user");
 		String psw=request.getParameter("psw");
 		
-		if(ei.verificaPsw (user , psw)) {	
+		if(ei.verificaPsw (user , psw)==2) {	
 			id_ente = ei.idEnte(user);			
 			session.setAttribute("user" , id_ente);
 			callHome(id_ente);
 			
+		} else if(ei.verificaPsw (user , psw)==1){
+			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
+			request.setAttribute("messaggio", "Sei in attesa di approvazione da parte di un amministratore");
+		} else if(ei.verificaPsw (user , psw)==3){
+			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
+			request.setAttribute("messaggio", "Accesso rifiutato sei stato bloccato");
 		} else {
 			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
-			request.setAttribute("messaggio", "User o Password Errati");
+			request.setAttribute("messaggio", "User o Password errati");		
 		}
 		
 		disp.forward(request, response);

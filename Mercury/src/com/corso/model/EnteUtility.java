@@ -15,7 +15,7 @@ public interface EnteUtility {
 	
 	//public ArrayList<Ente> getEnti(String qry) ;
 	
-	public boolean verificaPsw (String user , String psw);
+	public int verificaPsw (String user , String psw);
 	
 	//public void approvaEnte (int id_ente) ;
 	//public void rifiutaEnte (int id_ente) ;
