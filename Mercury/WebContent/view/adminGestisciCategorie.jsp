@@ -67,8 +67,6 @@ if(session.getAttribute("user")==null)
 
 				<button style="width:65px; color:Black" onclick="location.href:'../ControllerAdmin?param=del_cat&id_cat=${j.id_categoria}'">Elimina</button>
 
-				<button style="width:65px; color:Black" onclick="location.href='../ControllerAdmin?param=del_cat&id_cat=${j.id_categoria}'">Elimina</button>
-
 			</c:if></td>
 		</tr>
 
