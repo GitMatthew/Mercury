@@ -90,4 +90,48 @@ public class InviaEmail
 	    	 	e.printStackTrace();
 	     }
 	}
+	
+public void sendEmail(boolean status) throws SQLException {
+		
+		if(con==null) con=Dao.getConnection();
+        Properties p = System.getProperties();
+	
+		p.setProperty("mail.smtp.host", this.host);
+	    p.put("mail.smtp.host", this.host);
+	    p.put("mail.debug", "true");
+	    p.put("mail.smtp.auth", "true"); 
+	     
+	    Session sessione = Session.getDefaultInstance(p, new SmtpAutenticazione(user, psw) );
+	    sessione.setPasswordAuthentication(new URLName("smtp", host, 465, "INBOX", user, psw), new PasswordAuthentication(user, psw));
+	     
+	    MimeMessage mail = new MimeMessage(sessione);
+	    
+
+       
+		 oggetto = "Richiesta iscrizione nuovo Ente"; 
+		
+		
+	
+	    String testo = "";
+	   
+	    if(status==true) { testo= "La tua richiesta di iscrizione è stata: Approvata";}
+	    if(status==false) { testo= "La tua richiesta di iscrizione è stata: Rifiutata";}
+	    try {
+	    	
+	    		String dest =("email");
+	    		mail.setFrom(new InternetAddress(mittente));
+	    	 	mail.addRecipients(Message.RecipientType.TO, dest);
+	    	 	
+	    	 	mail.setSubject(oggetto);
+	    	 	mail.setText(testo);
+	    	 	
+	    	 	Transport tr = sessione.getTransport("smtp");
+				tr.connect(host, user, psw);
+	    	 	Transport.send(mail, mail.getAllRecipients());
+	    	 	System.out.println(mail);
+	    	 }	
+	    catch(Exception e) {
+	    	 	e.printStackTrace();
+	     }
+	}
 }
