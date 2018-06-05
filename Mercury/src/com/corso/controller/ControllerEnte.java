@@ -91,7 +91,7 @@ public class ControllerEnte extends HttpServlet {
 				disp.forward(request, response);
 	 
 			} catch (SQLException e) {
-				disp=request.getRequestDispatcher("/view/registraEnte.jsp");
+				disp=request.getRequestDispatcher("/view/registraEnte.jsp"); 
 				request.setAttribute("messaggio", "Registrazione fallita , email , user o numero di telefono sono già presenti sul database");
 				disp.forward(request, response);
 			} 
