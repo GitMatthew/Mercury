@@ -87,7 +87,7 @@ var xxx=1;
 				ric = ric + "&comune="; 
 				ric = ric + document.getElementById("comSELEZIONATO").value;
 				ric = ric + "&dataInizio=";
-				ric = ric + document.getElementById("inizio").value;
+				ric = ric + document.getElementById("inizio").value; 
 				ric = ric + "&dataFine=";
 				ric = ric + document.getElementById("fine").value;
 				$("#linkGETricerca").attr("href", function(i, origValue) {
