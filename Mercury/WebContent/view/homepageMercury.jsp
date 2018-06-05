@@ -327,7 +327,7 @@ provaBG{background-color:blue;}
 				</select>
 				
 			</div>
-		
+		 
 		</div>
 		<div class="col">
 			<input type="date" id="inizio" class="form-control"
