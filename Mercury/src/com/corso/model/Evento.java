@@ -50,7 +50,7 @@ public class Evento
 	
 	public String getDescrizione()
 	{
-		return descrizione.replace("§","'");
+		return descrizione.replace("§","'"); 
 	}
 	
 	public void setDescrizione(String descrizione)
