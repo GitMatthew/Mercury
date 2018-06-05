@@ -304,7 +304,54 @@ public class NewsletterImpl implements NewsletterUtility {
 		return risultato;
 	}
 
+	public void sendMail(int status,int id_ente){
+		
+		final String user="mercurysincronox@gmail.com";
+		final String password="rootroot";
+		String mail="";
+		String oggetto="Richiesta iscrizione nuovo Ente";
+	    String testo = "";
+	    try {
+	    Connection con=Dao.getConnection();
+	    Statement st=con.createStatement();
+	    ResultSet rs=st.executeQuery("Select email_ente from enti where id_ente="+id_ente);
+	    rs.next();
+	    mail=rs.getString("email_ente");
+	    
+	    if(status==2) { testo= "La tua richiesta di iscrizione è stata: Approvata";}
+	    if(status==3) { testo= "La tua richiesta di iscrizione è stata: Rifiutata";}
+	    if(status==4) { testo= "Sei stato bloccato.";}
+	    
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.setProperty("mail.transport.protocol", "smtp");     
+		props.setProperty("mail.host", "smtp.gmail.com");  
+		props.put("mail.smtp.auth", "true");  
+		props.put("mail.smtp.port", "465");  
+		props.put("mail.smtp.socketFactory.port", "465");  
+		props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");  
+		props.put("mail.smtp.socketFactory.fallback", "false");  
 
+		Session session = Session.getDefaultInstance(props,
+				new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(user,password);
+			}
+		});
+		
+			MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(user));
+			message.addRecipient(Message.RecipientType.TO,new InternetAddress(mail));
+			message.setSubject(oggetto);
+			message.setText(testo);
+			Transport.send(message);
+
+		} catch (MessagingException e) {e.printStackTrace();}
+	    	catch (SQLException e) {e.printStackTrace();
+		}
+	
+		
+	}
 
 
 
