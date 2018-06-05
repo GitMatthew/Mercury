@@ -38,10 +38,10 @@ function initCorners() {
 		<div id="menu"
 			style="border-top: 5px solid #0041C2; border-bottom: 5px solid #0041C2;">
 			<ul>
-				<li><a href="../ControllerHomepage?da=0" title="Mercury" class="active">> Home</a></li>
-				<li><a href="../ControllerNewsletter?n=0" title="Iscrizione Newsletter">Iscrizione Newsletter</a></li>
-				<li><a href="registraEnte.jsp" title="Iscrizione Ente">Iscrizione Ente</a></li>
-				<li><a href="loginEnte.jsp" title="Login Ente">Login Ente</a></li>
+				<li><a href="" title="Mercury" class="active">> Home</a></li>
+				<li><a href="" title="Ricerca">Iscrizione Newsletter</a></li>
+				<li><a href="" title="Ricerca">Iscrizione Ente</a></li>
+				<li><a href="" title="Ricerca">Login Ente</a></li>
 			</ul>
 		</div>
 
@@ -176,11 +176,11 @@ function initCorners() {
 			</div>
 
 			<div id="box2" class="border-radius">
-				<a href="../ControllerNewsletter?n=0" title="Newsletter"><img src="images/newsletter.png"></a>
+				<a href="" title="Newsletter"><img src="images/newsletter.png"></a>
 			</div>
 
 			<div id="box2" class="border-radius">
-				<a href="registraEnte.jsp" title="Registrazione Ente"><img src="images/ente.png"></a>
+				<a href="" title="Registrazione Enme"><img src="images/ente.png"></a>
 			</div>
 
 
