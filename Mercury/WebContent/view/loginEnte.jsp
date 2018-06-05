@@ -16,6 +16,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	
+	
 
 
 <title>Insert title here</title>
@@ -39,8 +41,11 @@
 
 <h1>Esegui il login</h1>
 
-<%= request.getAttribute("messaggio") %>
-<h1 value="messaggio"></h1>
+<% if(request.getAttribute("messaggio")!=null) { %>   	
+<h6 ><%=request.getAttribute("messaggio")%></h6>	
+<% } else {	%>	
+<h6 >Benvenuto su Mercury !</h6> 
+<% } %>
 
 <form action="/Mercury_Mercury/ControllerEnte" method=post>
 

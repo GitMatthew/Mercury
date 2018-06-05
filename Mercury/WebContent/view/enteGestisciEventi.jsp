@@ -25,6 +25,76 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	
+	<style>
+a.linkAPRIricerca {
+	padding: 10px;
+	background-color: #f44336;
+	color: white;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	background-color: #f44336;
+}
+
+a.linkAPRIricerca:hover {
+	background-color: #A52A2A;
+	color: #FF8C00;
+}
+
+#catSELEZIONATO, #regSELEZIONATO, #proSELEZIONATO, #comSELEZIONATO {
+	max-width: 150px !important;
+}
+
+.boxDestra {
+	width: 100%;
+	height: 300px;
+	margin-left: 8px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+
+#box1 {
+	background-image: url('../images/newsletter.jpg');
+}
+
+#box2 {
+	background-image: url('../images/registraEnte.jpg');
+}
+
+#box3 {
+	background-image: url('../images/publi1.jpg');
+}
+
+#box4 {
+	background-image: url('../images/publi2.jpg');
+}
+
+.spaziaLato {
+	padding: 0px 20px 0px 20px;
+}
+
+.tabDATA {
+	min-width: 120px !important;
+}
+
+.noSpace {
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
+.appari {
+}
+
+
+.scompari {
+}
+
+provaBG{background-color:blue;}
+
+</style>
 </head> 
 <body>
 
@@ -44,8 +114,11 @@
 <center>
 <h1>GESTISCI EVENTI</h1>
 
-<%= request.getAttribute("messaggio") %>
-<h1 value="messaggio"></h1>
+<% if(request.getAttribute("messaggio")!=null) { %>   	
+<h6 ><%=request.getAttribute("messaggio")%></h6>	
+<% } else {	%>	
+<h6 >Benvenuto su Mercury !</h6> 
+<% } %>
 
     <form action="/Mercury_Mercury/ControllerEnte" method=get>
     <a href=/Mercury_Mercury/ControllerEnte?pag=1>CREA NUOVO EVENTO</a>   
