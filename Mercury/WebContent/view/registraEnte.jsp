@@ -38,8 +38,13 @@
 
 
 <h1>REGISTRAZIONE</h1>
+<% if(request.getAttribute("messaggio")!=null) { %>   	
+<h6 ><%=request.getAttribute("messaggio")%></h6>	
+<% } else {	%>	
+<h6 >Compila tutti campi per iscriverti !</h6> 
+<% } %>
 
-    
+<% session.setAttribute("from" , "registraEnte"); %>    
 <form action="/Mercury_Mercury/ControllerEnte" method=post>      
 	<center>
 		<table width="100%">
@@ -53,7 +58,7 @@
 					<td >
 							<label for=psw_ente>Password</label> 
 							<br> 
-							<input type="password" value="" name="psw_ente">   
+							<input type="text" value="" name="psw_ente">   
 					</td>
 				</tr>
 				<tr>
@@ -77,7 +82,7 @@
 					<td>
 						<label for=url_img_ente>Immagine Ente</label> 
 						<br> 
-						<input type="url" value="" name="url_img_ente" placeholder="www.immagine.it">  	
+						<input type="text" value="" name="url_img_ente" >  	
 					</td>		
 				</tr>
 			</table>
@@ -86,7 +91,7 @@
 					<td>
 						<label for=url_sito_ente>Sito Ente</label> 
 						<br> 
-						<input type="url" value="" name="url_sito_ente" placeholder="www.sito.it" size="37">  
+						<input type="text" value="" name="url_sito_ente" size="37">  
 					</td>
 				</tr>
 				<tr>
@@ -94,7 +99,7 @@
 					
 						<label for=descrizione_ente>Descrizione Ente</label> 
 						
-						<textarea name="descrizione" maxlenght="100" cols="67" rows="5" > 
+						<textarea name="descrizione_ente" maxlenght="100" cols="67" rows="5" > 
 						</textarea>
 					
 					</td>

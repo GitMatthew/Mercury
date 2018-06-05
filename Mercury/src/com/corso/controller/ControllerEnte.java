@@ -43,7 +43,7 @@ public class ControllerEnte extends HttpServlet {
        
   
     public ControllerEnte() {
-        super();
+        super(); 
 
     }
     
@@ -56,6 +56,73 @@ public class ControllerEnte extends HttpServlet {
 		ei = new EnteImpl();
 		
 		this.session = request.getSession();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		// Registra un nuovo ente 
+		 System.out.println(session.getAttribute("from"));
+	   if(session.getAttribute("from")=="registraEnte") {
+		    			
+			String insertQry = "INSERT enti (nome_ente , psw_ente , telefono_ente , id_status , email_ente ,"
+			                  +"  user_ente , url_img_ente , descrizione_ente , url_sito_ente) "
+			                  +"values ( '"+request.getParameter("nome_ente")+"' , '"+request.getParameter("psw_ente")+"' , "
+			                  + "'"+request.getParameter("telefono_ente")+"' , 1 , '"+request.getParameter("email_ente")+"' , "
+			          		  + "'"+request.getParameter("user_ente")+"' , '"+request.getParameter("url_img_ente")+"' , "
+			          		  + "'"+request.getParameter("descrizione_ente")+"' , '"+request.getParameter("url_sito_ente")+"'  ) ";
+		  		   
+			System.out.println(insertQry);
+			
+			Connection conn = Dao.getConnection();	    
+		    
+			try {
+			    Statement pst = conn.createStatement();
+			    int rs = pst.executeUpdate(insertQry);
+			    disp=request.getRequestDispatcher("/view/loginEnte.jsp");
+				request.setAttribute("messaggio", "Ti sei iscritto con successo");
+				disp.forward(request, response);
+	 
+			} catch (SQLException e) {
+				disp=request.getRequestDispatcher("/view/registraEnte.jsp");
+				request.setAttribute("messaggio", "Registrazione fallita , email , user o numero di telefono sono già presenti sul database");
+				disp.forward(request, response);
+			} 
+			
+			
+			
+	   }
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
 		
 		//Sela sessione non è aperta esegui log in
 		if(session.getAttribute("user")==null) {
@@ -161,9 +228,7 @@ public class ControllerEnte extends HttpServlet {
 				      + "telefono_ente = '"+request.getParameter("telefono_ente")+"' , email_ente = '"+request.getParameter("email_ente")+"' , "
 				      + "user_ente = '"+request.getParameter("user_ente")+"' , url_img_ente = '"+request.getParameter("url_img_ente")+" ' , "
 				      + "descrizione_ente = '"+request.getParameter("descrizione_ente")+"' , url_sito_ente = '"+request.getParameter("url_sito_ente")+"' "
-				      + "WHERE id_ente = "+ id_ente ;
-				      
-		              System.out.println(qry);
+				      + "WHERE id_ente = "+ id_ente ;  		              
 		              
 		              Connection conn = Dao.getConnection();	    
 					    
@@ -181,7 +246,7 @@ public class ControllerEnte extends HttpServlet {
 		  			} 
 		  	
 		  				   
-		  			disp.forward(request, response);
+		  			disp.forward(request, response);	   
 	   }
 	
 	}

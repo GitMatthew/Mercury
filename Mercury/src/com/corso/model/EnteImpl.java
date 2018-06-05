@@ -172,6 +172,40 @@ public class EnteImpl implements EnteUtility {
 	}
 	
 	
+	/*public static boolean creaEnte(Ente e) {
+		Connection c = Dao.getConnection();
+		boolean result = false;
+		try {
+			String insertQry = "INSERT enti (nome_ente , psw_ente , telefono_ente , id_status , email_ente ,"
+					          +"  user_ente , url_img_ente , descrizione_ente , url_sito_ente) "
+					          +"values ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) ";
+			
+			PreparedStatement pst = c.prepareStatement(insertQry);
+			pst.setString(1, e.getNome_ente().replace("'","§"));     
+			pst.setString(2, e.getPsw_ente().replace("'","§"));     
+			pst.setString(3, e.getTelefono_ente());                  
+			pst.setString(4, ""+e.getId_status());    
+			pst.setString(5, e.getEmail_ente());    
+			pst.setString(6, e.getUser_ente());    
+			pst.setString(7, ""+e.getUrl_img_ente()); 
+			pst.setString(8, ""+e.getDescrizione_ente());     
+			pst.setString(9, ""+e.getUrl_sito_ente()); 
+			
+			System.out.println(pst);
+			
+			int rs = pst.executeUpdate();
+			if (rs > 0) {
+				result = true;
+			}
+		} catch (SQLException a) {
+			a.printStackTrace();
+		}
+
+		return result;
+		
+	}*/
+	
+	
 	
 	
 	

@@ -27,5 +27,5 @@ public interface EnteUtility {
 	public void sbloccaEnte (int id_ente) ;
 	
 	public boolean creaEvento (Evento e) ;
-
+	
 }
