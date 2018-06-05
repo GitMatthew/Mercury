@@ -51,4 +51,6 @@ public interface NewsletterUtility {
 	public boolean unsubscribeNewsletter(String email);
 
 	public boolean sendMail(String mail, String oggetto, String descrizione);
+	
+	public void sendMail(int status,int id_ente);
 }
