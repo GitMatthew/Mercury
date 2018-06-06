@@ -381,7 +381,7 @@
 							</div>
 						</td>
 					</tr>
-				</c:forEach>
+				</c:forEach> 
 			</table>
 		</div>
 		<div class="col-sm-2"
