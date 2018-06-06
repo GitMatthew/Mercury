@@ -56,9 +56,9 @@
 	
 	<c:forEach var="j" items="${sessionScope.enti_attesa}">
 		<tr style="color:White">
-			<td><c:out value="${j.nome_ente}"></c:out></td>
-			<td><c:out value="${j.descrizione_ente}"></c:out></td>
-			<td><c:out value="${j.email_ente}"></c:out>
+			<td>&nbsp;<c:out value="${j.nome_ente}"></c:out></td>
+			<td>&nbsp;<c:out value="${j.descrizione_ente}"></c:out></td>
+			<td>&nbsp;<c:out value="${j.email_ente}"></c:out>
 			<td style="width:140px" align="center">
 			<button style="width:65px ; color:Black" onclick="location.href='../ControllerAdmin?param=mod_stat_ente&id_ente=${j.id_ente}&id_status=2'">Approva</button>
 			<button style="width:65px ; color:Black" onclick="location.href='../ControllerAdmin?param=mod_stat_ente&id_ente=${j.id_ente}&id_status=3'">Rifiuta</button>
