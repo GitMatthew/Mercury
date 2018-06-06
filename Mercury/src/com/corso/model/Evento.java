@@ -58,7 +58,7 @@ public class Evento
 	
 	public String getDescrizione()
 	{
-		return descrizione; 
+		return descrizione;  
 	}
 	
 	public void setDescrizione(String descrizione)
