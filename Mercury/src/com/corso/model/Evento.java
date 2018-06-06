@@ -48,22 +48,22 @@ public class Evento
 	
 	public String getNome_evento()
 	{
-		return nome_evento.replace("§","'");
+		return nome_evento;
 	}
 	
 	public void setNome_evento(String nome_evento)
 	{
-		this.nome_evento = nome_evento.replace("'","§");
+		this.nome_evento = nome_evento.replace("'","\'");
 	}
 	
 	public String getDescrizione()
 	{
-		return descrizione.replace("§","'"); 
+		return descrizione; 
 	}
 	
 	public void setDescrizione(String descrizione)
 	{
-		this.descrizione = descrizione.replace("'","§");
+		this.descrizione = descrizione.replace("'","\'");
 	}
 	
 	public Date getData_inizio()
