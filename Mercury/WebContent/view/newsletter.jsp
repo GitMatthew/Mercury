@@ -38,27 +38,12 @@ function initCorners() {
 		<div id="menu"
 			style="border-top: 5px solid #0041C2; border-bottom: 5px solid #0041C2;">
 			<ul>
-				<li><a href="" title="Mercury" class="active">> Home</a></li>
-				<li><a href="" title="Ricerca">Iscrizione Newsletter</a></li>
-				<li><a href="" title="Ricerca">Iscrizione Ente</a></li>
-				<li><a href="" title="Ricerca">Login Ente</a></li>
+				<li><a href="../ControllerHomepage?da=0" title="Mercury" class="active">> Home</a></li>
+				<li><a href="../ControllerNewsletter?n=0" title="Iscrizione Newsletter">Iscrizione Newsletter</a></li>
+				<li><a href="registraEnte.jsp" title="Iscrizione Ente">Iscrizione Ente</a></li>
+				<li><a href="loginEnte.jsp" title="Login Ente">Login Ente</a></li>
 			</ul>
 		</div>
-
-		<div id="menu" style="border-bottom: 6px solid #0041C2;">
-			<ul>
-				<li><a href="" title="Mercury">Ricerca</a></li>
-				<li><a href="" title="Ricerca">Ricerca</a></li>
-				<li><a href="" title="Ricerca">Ricerca</a></li>
-				<li><a href="" title="Ricerca">Ricerca</a></li>
-				<li><a href="" title="Ricerca">Ricerca</a></li>
-				<li><a href="" title="Ricerca">Ricerca</a></li>
-				<li><a href="" title="Ricerca">Ricerca</a></li>
-				<li><a href="" title="Ricerca">Ricerca</a></li>
-			</ul>
-		</div>
-
-
 
 		<div id="contenuto">
 			<div id="box" class="border-radius">
@@ -67,6 +52,7 @@ function initCorners() {
 				<div style="text-align: left; padding: 10px">
 					<h2>Configura inserimento di un Luogo:</h2>
 					<form method="get" action="../ControllerNewsletter">
+						<p style="display: inline">Inserisci Regione:</p>
 						<input type="hidden" name="n" value="1"> <c:choose>
 								<c:when test="${sessionScope.regioneScelta!=null}">
 									<select name="regione" style="margin: 10px">
@@ -75,18 +61,20 @@ function initCorners() {
 									</select>
 								</c:when>
 								<c:otherwise>
-									<select name="regione" style="margin: 10px">
+									<select name="regione" id="regione" style="margin: 10px" onchange="this.form.submit()">
+										<option>Seleziona</option>
 										<c:forEach var="j" items="${sessionScope.regioni}">
 											<option value="${j.id_regione}"><c:out
 													value="${j.nome_regione }"></c:out></option>
 										</c:forEach>
 									</select>
 								</c:otherwise>
-							</c:choose> <input type="hidden" name="regione" value="regione"> <input
-								type="submit" name="submit" value="Inserisci regione">
+							</c:choose> <input type="hidden" name="regione" value="regione"> <noscript><input
+								type="submit" name="submit" value="Inserisci regione"></noscript>
 					</form>
 
 					<form method="get" action="../ControllerNewsletter">
+						<p style="display: inline">Inserisci Provincia:</p>
 						<input type="hidden" name="n" value="2"> <c:choose>
 								<c:when test="${sessionScope.provinciaScelta!=null}">
 									<select name="provincia" style="margin: 10px">
@@ -95,7 +83,8 @@ function initCorners() {
 									</select>
 								</c:when>
 								<c:otherwise>
-									<select name="provincia" style="margin: 10px">
+									<select name="provincia" id="provincia" style="margin: 10px" onchange="this.form.submit()">
+										<option>Seleziona</option>
 										<c:forEach var="j" items="${sessionScope.province}">
 											<option value="${j.id_provincia}"><c:out
 													value="${j.nome_provincia}"></c:out></option>
@@ -103,10 +92,11 @@ function initCorners() {
 									</select>
 								</c:otherwise>
 							</c:choose><input type="hidden" name="provincia" value="provincia">
-								<input type="submit" name="submit" value="Inserisci provincia">
+								<noscript><input type="submit" name="submit" value="Inserisci provincia"></noscript>
 					</form>
 
 					<form method="get" action="../ControllerNewsletter">
+						<p style="display: inline">Inserisci Comune:</p>
 						<input type="hidden" name="n" value="3"> <c:choose>
 								<c:when test="${sessionScope.comuneScelta!=null}">
 									<select name="comune" style="margin: 10px">
@@ -115,15 +105,16 @@ function initCorners() {
 									</select>
 								</c:when>
 								<c:otherwise>
-									<select name="comune" style="margin: 10px">
+									<select name="comune" id="comune" style="margin: 10px" onchange="this.form.submit()">
+										<option>Seleziona</option>
 										<c:forEach var="j" items="${sessionScope.comuni}">
 											<option value="${j.id_comune}"><c:out
 													value="${j.nome_comune }"></c:out></option>
 										</c:forEach>
 									</select>
 								</c:otherwise>
-							</c:choose> <input type="hidden" name="comune" value="comune"><input
-								type="submit" name="submit" value="Conferma comune">
+							</c:choose> <input type="hidden" name="comune" value="comune"><noscript><input
+								type="submit" name="submit" value="Conferma comune"></noscript>
 					</form>
 
 					<form method="get" action="../ControllerNewsletter">
@@ -176,11 +167,11 @@ function initCorners() {
 			</div>
 
 			<div id="box2" class="border-radius">
-				<a href="" title="Newsletter"><img src="images/newsletter.png"></a>
+				<a href="../ControllerNewsletter?n=0" title="Newsletter"><img src="images/newsletter.png"></a>
 			</div>
 
 			<div id="box2" class="border-radius">
-				<a href="" title="Registrazione Enme"><img src="images/ente.png"></a>
+				<a href="registraEnte.jsp" title="Registrazione Ente"><img src="images/ente.png"></a>
 			</div>
 
 

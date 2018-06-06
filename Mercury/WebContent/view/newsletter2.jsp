@@ -45,19 +45,7 @@ function initCorners() {
 			</ul>
 		</div>
 
-		<div id="menu" style="border-bottom: 6px solid #0041C2;">
-			<ul>
-				<li><a href="" title="Mercury">Ricerca</a></li>
-				<li><a href="" title="Ricerca">Ricerca</a></li>
-				<li><a href="" title="Ricerca">Ricerca</a></li>
-				<li><a href="" title="Ricerca">Ricerca</a></li>
-				<li><a href="" title="Ricerca">Ricerca</a></li>
-				<li><a href="" title="Ricerca">Ricerca</a></li>
-				<li><a href="" title="Ricerca">Ricerca</a></li>
-				<li><a href="" title="Ricerca">Ricerca</a></li>
-			</ul>
-		</div>
-
+		
 
 
 		<div id="contenuto">
