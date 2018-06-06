@@ -45,7 +45,11 @@ public class ComuneImpl implements ComuneUtility {
 		Connection conn=Dao.getConnection();
 		Statement st = null ;
 		ResultSet rs = null ;
-		String qry = "SELECT * FROM comuni WHERE nome_comune = '"+nome.replace("'", "\\'")+"'";
+		String n = "" ;
+		if (nome.replace("'", "\\'")!=null) {
+		n = nome.replace("'", "\\'"); 
+		}
+		String qry = "SELECT * FROM comuni WHERE nome_comune = '"+n+"'";
 		int r = 0 ;
 		
 try {	
