@@ -215,7 +215,7 @@
 					
 					<td>
 					
-							<select id="id_comune" name="id_comune">  
+							<select id="id_comune" name="id_comune">   
 								         
 							</select>
 					</td>
