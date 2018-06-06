@@ -89,13 +89,13 @@
 				<table width="50%">
 					<tr>
 						<td>
-							<label>Nome Evento*</label> 
+							<label><b><i>Nome Evento*</i></b></label> 
 							<br>
 							<input type="text" name="nomeEvento">
 						</td>
 					
 						<td>
-							<label>Seleziona tipologia di Evento*</label> 
+							<label><b><i>Seleziona tipologia di Evento*</i></b></label> 
 								<br> 
 								<select name="id_categoria"> 
 									<optgroup label ="Categoria">         
@@ -180,14 +180,14 @@
 				<tr>
 					<td>
 			
-						<label>Regione </label> 
+						<label><b><i>Regione</i></b></label> 
 					</td>
 				
 					<td>
-						<label>Provincia </label> 
+						<label><b><i>Provincia</i></b></label> 
 					</td>
 					<td>
-						<label>Comune </label> 
+						<label><b><i>Comune</i></b></label> 
 					</td>
 				</tr>
 						
@@ -232,17 +232,17 @@
 				<tr>
 					<td>	
 						
-						<label>Location o Indirizzo*</label> 
+						<label><b><i>Location o Indirizzo*</i></b></label> 
 						
 						<input type="text" name="indirizzo">
 					
 					</td>
 					<td>
-						<label>Sito web </label> 
+						<label><b><i>Sito web</i></b></label> 
 						<input name="url_sito_evento" placeholder="http://www.sito.it"> </input> 
 					</td>
 					<td>
-						<label>Inserisci immagine</label>
+						<label><b><i>Inserisci immagine</i></b></label>
 						 <input name="url_img_evento" placeholder="http://www.immagine.it">  
 					</td>
 				</tr>
@@ -251,15 +251,29 @@
 			</table>
 		</table>
 	
-
-		<label>Descrizione Evento :</label> 
-					<br>
-				   <textarea name="descrizione" maxlenght="100" cols="35" rows="5" value="descrizione"></textarea>
-					<br><br>
+	<table width="50%">
+		<tr>
+				<td>
+				
+					<label for=descrizione_ente><b><i>Descrizione Ente</i></b></label> 
+				</td>
+			</tr>
+			<tr>
+				<td>
+				    <textarea name="descrizione_ente" maxlenght="80" cols="80" rows="5" >${requestScope.ente.descrizione_ente}</textarea>
+				
+				</td>		
+			</tr>
+			<tr>
+				<td>	
 					<h5 type=color:red>I campi contrassegnati da asterisco(*) sono OBBLIGATORI !</h5>
 					<br>
-    
+    				<center>
 					<input type="submit">
+					</center>
+				</td>
+			</tr>					
+	</table>
 </form>					
 
 		<div class="jumbotron text-center" style="margin-bottom: 0">
