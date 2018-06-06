@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import com.corso.model.NewsletterImpl;
 import com.corso.model.AdminImpl;
 import com.corso.model.Categoria;
 import com.corso.model.Ente;
@@ -35,7 +35,7 @@ public class ControllerAdmin extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		
+		NewsletterImpl NI=new NewsletterImpl();
 		String prm=request.getParameter("param");
 		
 		response.setContentType("text/html");
@@ -112,6 +112,7 @@ public class ControllerAdmin extends HttpServlet {
 			int x=Integer.parseInt(request.getParameter("id_ente"));
 			int y=Integer.parseInt(request.getParameter("id_status"));
 			im.modEnte(x,y);
+			NI.sendMail(y, x);
 			ArrayList<Ente> a=im.getEntiAttesa();
 			session.setAttribute("enti_attesa", a);
 			response.sendRedirect("view/entiInAttesa.jsp");	
@@ -124,6 +125,7 @@ public class ControllerAdmin extends HttpServlet {
 			int x=Integer.parseInt(request.getParameter("id_ente"));
 			int y=Integer.parseInt(request.getParameter("id_status"));
 			im.modEnte(x,y);
+			NI.sendMail(y, x);
 			ArrayList<Ente> a=im.getAllEnts();
 			session.setAttribute("tutti_enti", a);
 			response.sendRedirect("view/adminGestisciEnti.jsp");	
