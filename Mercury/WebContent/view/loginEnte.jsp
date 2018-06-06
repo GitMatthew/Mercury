@@ -53,6 +53,9 @@ if(session.getAttribute("user")!=null) {
 <h6 >Benvenuto su Mercury !</h6> 
 <% } %>
 
+
+<br>
+
 <form action="/Mercury_Mercury/ControllerEnte" method=post>
 
 
