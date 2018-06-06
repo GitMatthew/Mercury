@@ -201,7 +201,7 @@
 						out.print("</select>");
 					}
 					catch (Exception e) {
-						out.println("wrong entry" + e);
+						out.println("wrong entry" + e); 
 					}
 				%>
 						
