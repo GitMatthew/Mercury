@@ -391,7 +391,8 @@
 					<h2>
 						iscriviti <br> alla
 					</h2>
-				</div> </a> <a href="registraEnte.jsp"
+				</div> </a> 
+			<a href="registraEnte.jsp"
 				style="text-decoration: none; display: block;"><div id="box2"
 					class="boxDestra">
 					<h3>
