@@ -87,7 +87,7 @@ public class ControllerAdmin extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.invalidate();
-			response.sendRedirect("view/adminLogin.jsp"); 
+			response.sendRedirect("view/loginAdmin.jsp"); 
 		}
 		
 		if(prm.equals("mod_stat"))
