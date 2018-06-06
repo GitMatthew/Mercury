@@ -97,7 +97,7 @@
 						<td>
 							<label>Cambia tipologia di Evento</label> 
 								<br> 
-								<select name="id_categoria"> 
+								<select name="id_categoria" class="selectpicker"> 
 									<optgroup label ="Categoria">      
 										 <c:forEach var="j" items="${requestScope.categorie}" >	            				
 											  <option value="${j.id_categoria}">${j.nome_categoria}</option>	              
@@ -191,7 +191,7 @@
 						x = conn.createStatement();
 						rs = x.executeQuery("select nome_regione from regioni order by nome_regione ASC; ");
 						
-						out.print("<select  id= 'id_regione'>");
+						out.print("<select  id= 'id_regione' class='selectpicker'>");
 						out.print("<option id='primoReg'  value='null'> seleziona </option> ");
 						while (rs.next()) {
 							out.print("<option value='" + rs.getString("nome_regione") + "'>");
@@ -208,14 +208,14 @@
 
 					</td>
 					<td>
-						<select id="id_provincia" name="id_provincia"> 
+						<select id="id_provincia" name="id_provincia" class="selectpicker"> 
 							     
 						</select>
 					</td>
 					
 					<td>
 					
-							<select id="id_comune" name="id_comune">   
+							<select id="id_comune" name="id_comune" class="selectpicker">   
 								         
 							</select>
 					</td>
