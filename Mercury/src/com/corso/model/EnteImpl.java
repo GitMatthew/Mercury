@@ -162,8 +162,8 @@ public class EnteImpl implements EnteUtility {
 			pst.setString(6, ""+e.getId_comune());    //id_comune
 			pst.setString(7, ""+e.getId_categoria()); //id_categoria
 			pst.setString(8, ""+e.getId_ente());      //id_ente
-			pst.setString(9, e.getUrl_img_evento());  //url_img_evento
-			pst.setString(10, e.getUrl_sito_evento());//url_sito_evento
+			pst.setString(9, e.getUrl_img_evento().replace("'","\'"));  //url_img_evento
+			pst.setString(10, e.getUrl_sito_evento().replace("'","\'"));//url_sito_evento
 			
 			int rs = pst.executeUpdate();
 			if (rs > 0) {
