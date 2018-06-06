@@ -65,21 +65,19 @@ if(session.getAttribute("user")==null)
 			<c:if test="${j.nome_categoria != 'altro'}">
 				<button style="width:65px; color:Black" onclick="myFunction('${j.id_categoria}')">Modifica</button>
 
-<<<<<<< HEAD
+
 				<button style="width:65px; color:Black" onclick="location.href='../ControllerAdmin?param=del_cat&id_cat=${j.id_categoria}';">Elimina</button>
-=======
-				<button style="width:65px; color:Black" onclick="location.href='../ControllerAdmin?param=del_cat&id_cat=${j.id_categoria}'">Elimina</button>
->>>>>>> branch 'master' of https://github.com/GitMatthew/Mercury.git
+
+
 
 			</c:if></td>
 		</tr>
-<<<<<<< HEAD
+
 
 		
 		
 
-=======
->>>>>>> branch 'master' of https://github.com/GitMatthew/Mercury.git
+
 	</c:forEach>
 	
 	
