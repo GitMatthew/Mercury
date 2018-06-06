@@ -91,7 +91,7 @@ public class InviaEmail
 	     }
 	}
 	
-public void sendEmail(boolean status, String email) throws SQLException {
+public void sendEmail(int status, String email) throws SQLException {
 		
 		if(con==null) con=Dao.getConnection();
         Properties p = System.getProperties();
@@ -115,8 +115,8 @@ public void sendEmail(boolean status, String email) throws SQLException {
 	
 	    String testo = "";
 	   
-	    if(status==true) { testo= "La tua richiesta di iscrizione è stata: Approvata";}
-	    if(status==false) { testo= "La tua richiesta di iscrizione è stata: Rifiutata";}
+	    if(status==2) { testo= "La tua richiesta di iscrizione è stata: Approvata";}
+	    if(status==3) { testo= "La tua richiesta di iscrizione è stata: Rifiutata";}
 	    try {
 	    	
 	    		String dest =(email);
