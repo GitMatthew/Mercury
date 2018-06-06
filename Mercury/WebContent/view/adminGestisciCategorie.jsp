@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <% 
-if(session.getAttribute("admin")==null)
+if(session.getAttribute("admin")==null) 
 {
 	HttpSession sessione= request.getSession();
 	sessione.setAttribute("rst", "Per proseguire serve una sessione attiva. Effettua il Login");
