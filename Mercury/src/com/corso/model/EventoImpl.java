@@ -129,7 +129,6 @@ public class EventoImpl implements EventoUtility
 	@Override
 	public ArrayList<String> filtroProvince(String reg)
 	{
-		System.out.println(reg);
 		String x = "";
 		if (!(reg.equals("null"))) {
 			x = x + " and r.nome_regione= '" + reg + "'";
