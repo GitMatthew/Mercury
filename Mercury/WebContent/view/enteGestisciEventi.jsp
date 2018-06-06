@@ -152,7 +152,7 @@ provaBG{background-color:blue;}
 </center>
  
  
- <div style="height:40%; overflow: auto; width:80%"class="container">
+ <div style="height:40%; overflow: auto; width:auto"class="container">
   
 	    <table border="1" style="width:100%">
 
