@@ -354,6 +354,58 @@ public class NewsletterImpl implements NewsletterUtility {
 	
 		
 	}
+	
+public void sendMail(int status_ev, String email, int id_evento){
+		
+		final String user="mercurysincronox@gmail.com";
+		final String password="rootroot";
+		String mail=email;
+		String oggetto="Approvazione Evento";
+	    String testo = "";
+	    String nome="";
+	    String nomeEv="";
+	    try {
+	    Connection con=Dao.getConnection();
+	    Statement st=con.createStatement();
+	    
+	    ResultSet rs=st.executeQuery("Select nome_ente,nome_evento from enti INNER JOIN eventi on enti.id_ente=eventi.id_ente where id_evento="+id_evento);
+	    rs.next();
+	    nome=rs.getString("nome_ente");
+	    nomeEv=rs.getString("nome_evento");
+	     
+	    if(status_ev==2) { testo = "Gentile "+nome+", l'evento: "+"'"+nomeEv+"'"+" è stato approvato!";}
+	    if(status_ev==3) { testo = "Gentile "+nome+", l'evento: "+"'"+nomeEv+"'"+" è stato rifiutato per non conformità alle condizioni d'uso.";}
+	    
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.setProperty("mail.transport.protocol", "smtp");     
+		props.setProperty("mail.host", "smtp.gmail.com");  
+		props.put("mail.smtp.auth", "true");  
+		props.put("mail.smtp.port", "465");  
+		props.put("mail.smtp.socketFactory.port", "465");  
+		props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");  
+		props.put("mail.smtp.socketFactory.fallback", "false");  
+
+		Session session = Session.getDefaultInstance(props,
+				new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(user,password);
+			}
+		});
+		
+			MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(user));
+			message.addRecipient(Message.RecipientType.TO,new InternetAddress(mail));
+			message.setSubject(oggetto);
+			message.setText(testo);
+			Transport.send(message);
+
+		} catch (MessagingException e) {e.printStackTrace();}
+	    	catch (SQLException e) {e.printStackTrace();
+		}
+	
+		
+	}
 
 
 

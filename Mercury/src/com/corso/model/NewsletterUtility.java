@@ -53,4 +53,6 @@ public interface NewsletterUtility {
 	public boolean sendMail(String mail, String oggetto, String descrizione);
 	
 	public void sendMail(int status,int id_ente);
+	
+	public void sendMail(int status_ev, String email, int id_evento); 
 }
