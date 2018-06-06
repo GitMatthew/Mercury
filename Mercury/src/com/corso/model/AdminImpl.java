@@ -40,7 +40,7 @@ public class AdminImpl implements AdminUtility {
 	public void sendNotifica(int id_evento, int id_status) {
 		NewsletterImpl NI= new NewsletterImpl();
 		Connection conn=Dao.getConnection();
-		String email="";
+		String email=""; 
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rst = st.executeQuery("Select email_ente from enti INNER JOIN eventi ON enti.id_ente=eventi.id_ente where id_evento="+id_evento);

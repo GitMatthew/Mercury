@@ -372,7 +372,7 @@ public void sendMail(int status_ev, String email, int id_evento){
 	    rs.next();
 	    nome=rs.getString("nome_ente");
 	    nomeEv=rs.getString("nome_evento");
-	    
+	     
 	    if(status_ev==2) { testo = "Gentile "+nome+", l'evento: "+"'"+nomeEv+"'"+" è stato approvato!";}
 	    if(status_ev==3) { testo = "Gentile "+nome+", l'evento: "+"'"+nomeEv+"'"+" è stato rifiutato per non conformità alle condizioni d'uso.";}
 	    

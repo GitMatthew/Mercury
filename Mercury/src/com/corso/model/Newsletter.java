@@ -26,7 +26,7 @@ public class Newsletter {
 	public Date getUltimo_invio() {
 		return ultimo_invio;
 	}
-	public void setUltimo_invio(Date ultimo_invio) {
+	public void setUltimo_invio(Date ultimo_invio) { 
 		this.ultimo_invio = ultimo_invio;
 	}
 	public int getId_cadenza() {

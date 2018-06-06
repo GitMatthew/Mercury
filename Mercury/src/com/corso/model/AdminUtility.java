@@ -21,7 +21,7 @@ public interface AdminUtility {
 
 	public boolean login(String user, String psw);
 
-	public void sendNotifica(int id_evento, int id_status);
+	public void sendNotifica(int id_evento, int id_status); 
 
 	public ArrayList<Evento> getEventiAttesa();
 
