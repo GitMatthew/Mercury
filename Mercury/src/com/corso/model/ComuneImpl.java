@@ -39,5 +39,32 @@ public class ComuneImpl implements ComuneUtility {
 		
 		return com;
 	}
+	
+	public static int comuneIDByName(String nome) {
+		
+		Connection conn=Dao.getConnection();
+		Statement st = null ;
+		ResultSet rs = null ;
+		String qry = "SELECT * FROM comuni WHERE nome_comune = '"+nome.replace("'", "\\'")+"'";
+		int r = 0 ;
+		
+try {	
+			
+		    st = conn.createStatement();					
+			rs = st.executeQuery(qry);
+			
+                rs.next();              	
+				
+				r=rs.getInt("id_comune");		
+			
+		} catch (SQLException e) {
+			System.out.println("errore sql");		
+			e.printStackTrace();	
+		}
+		
+		
+		return r ;	
+		
+	}
 
 }

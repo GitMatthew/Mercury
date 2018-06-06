@@ -237,7 +237,7 @@
 		</table>
 	
 
-		<label>Modifica Descrizione Evento :</label> 
+		<label>Modifica Descrizione Evento :</label>  
 					<br>
 				   <textarea name="descrizione" maxlenght="100" cols="35" rows="5" value="descrizione">${requestScope.evento.descrizione}</textarea>
 					<br><br>
