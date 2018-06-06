@@ -53,7 +53,7 @@ public class Evento
 	
 	public void setNome_evento(String nome_evento)
 	{
-		this.nome_evento = nome_evento.replace("'","\'");
+		this.nome_evento = nome_evento;
 	}
 	
 	public String getDescrizione()
@@ -63,7 +63,7 @@ public class Evento
 	
 	public void setDescrizione(String descrizione)
 	{
-		this.descrizione = descrizione.replace("'","\'");
+		this.descrizione = descrizione;
 	}
 	
 	public Date getData_inizio()
