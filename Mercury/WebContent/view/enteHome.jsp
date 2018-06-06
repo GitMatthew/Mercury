@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.util.*"%>
+<%@ page import="java.lang.*"%>
+<%@ page import="javax.servlet.http.HttpServletRequest"%>
+<%@ page import="javax.servlet.http.HttpServletResponse"%>
+<%@ page import="com.corso.connection.Dao"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% if(session.getAttribute("user")==null)
@@ -10,9 +17,9 @@
 } 
 %>    
 <html>
-<head> 
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Bootstrap 4 Website Example</title>
+<title>Mercury Events</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -23,77 +30,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-	
-	<style>
-a.linkAPRIricerca {
-	padding: 10px;
-	background-color: #f44336;
-	color: white;
-	padding: 5px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	background-color: #f44336;
-}
-
-a.linkAPRIricerca:hover {
-	background-color: #A52A2A;
-	color: #FF8C00;
-}
-
-#catSELEZIONATO, #regSELEZIONATO, #proSELEZIONATO, #comSELEZIONATO {
-	max-width: 150px !important;
-}
-
-.boxDestra {
-	width: 100%;
-	height: 300px;
-	margin-left: 8px;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
-}
-
-#box1 {
-	background-image: url('../images/newsletter.jpg');
-}
-
-#box2 {
-	background-image: url('../images/registraEnte.jpg');
-}
-
-#box3 {
-	background-image: url('../images/publi1.jpg');
-}
-
-#box4 {
-	background-image: url('../images/publi2.jpg');
-}
-
-.spaziaLato {
-	padding: 0px 20px 0px 20px;
-}
-
-.tabDATA {
-	min-width: 120px !important;
-}
-
-.noSpace {
-	padding: 0px !important;
-	margin: 0px !important;
-}
-
-.appari {
-}
-
-
-.scompari {
-}
-
-provaBG{background-color:blue;}
-
-</style>
-
+<link rel="stylesheet" type="text/css" href="/Mercury_Mercury/css/homepageStile.css">
 </head>
 <body>
  
@@ -188,7 +125,56 @@ provaBG{background-color:blue;}
 					</tr>
 				</table>
 		   
-						
+					
+					
+					<script>
+					
+					$(document).ready(function() {						
+
+								$("#id_regione").change(function() {$.ajax({type : 'POST',
+															data : {regione : $("#id_regione").val(),dap : "0"},
+															url : '/Mercury_Mercury/ControllerHomepage',
+															success : function(result) {
+																	var vPro = [];
+																	vPro.push(result);
+																	var json = JSON.parse(result);
+																	$('#id_provincia').empty();
+																	$('#id_comune').empty();
+																	$('#id_provincia').append('<option value="null">seleziona</option>');
+																	$('#id_comune').append('<option value="null">seleziona</option>');
+																	for ( var i in json.pro22) {
+																		$('#id_provincia').append('<option value="'+json.pro22[i]+'">'+ json.pro22[i]+ '</option>')
+																	}
+																}
+															});
+
+												});
+
+								$("#id_provincia").change(function() {$.ajax({
+																type : 'POST',
+																data : {provincia : $("#id_provincia").val(),dap : "1"},
+																url : '/Mercury_Mercury/ControllerHomepage',
+																success : function(result) {
+																	var vCom = [];
+																	vCom.push(result);
+																	var json = JSON.parse(result);
+																	$('#id_comune').empty();
+																	$('#id_comune').append('<option value="null">seleziona</option>');
+																	for ( var i in json.com22) {
+																		$('#id_comune').append('<option value="'+json.com22[i]+'">'+ json.com22[i]+ '</option>')
+																	}
+																}
+															});
+
+												});	});
+					
+					
+					</script>	<%
+		Connection conn = null;
+		conn = Dao.getConnection();
+		Statement x = null;
+		ResultSet rs = null;
+	%>
 			<table width="50%">   
 			
 				<tr>
@@ -208,34 +194,36 @@ provaBG{background-color:blue;}
 					</td>
 				<tr>
 					<td>
-
-						<select name="id_regione"> 
-							<optgroup label ="Regione">         
-								 <c:forEach var="j" items="${requestScope.regioni}">	            				
-									  <option value="${j.id_regione}">${j.nome_regione}</option>	              
-								 </c:forEach>  	           
-							</optgroup>         
-						</select>
+                 <%
+					try {
+						x = conn.createStatement();
+						rs = x.executeQuery("select nome_regione from regioni order by nome_regione ASC; ");
+						
+						out.print("<select  id= 'id_regione'>");
+						out.print("<option id='primoReg'  value='null'> seleziona </option> ");
+						while (rs.next()) {
+							out.print("<option value='" + rs.getString("nome_regione") + "'>");
+							out.print(rs.getString("nome_regione"));
+							out.print("</option>");
+						}
+						out.print("</select>");
+					}
+					catch (Exception e) {
+						out.println("wrong entry" + e);
+					}
+				%>
 
 					</td>
 					<td>
-						<select name="id_provincia"> 
-							<optgroup label ="Provincia">         
-								<c:forEach var="j" items="${requestScope.regioni}">	            				
-								<option value="${j.id_regione}">${j.nome_regione}</option>	              
-								</c:forEach>  	           
-							</optgroup>         
+						<select id="id_provincia" name="id_provincia"> 
+							     
 						</select>
 					</td>
 					
 					<td>
 					
-							<select name="id_comune"> 
-								<optgroup label ="Comune">         
-									 <c:forEach var="j" items="${requestScope.comuni}">	            				
-										  <option value="${j.id_comune}">${j.nome_comune}</option>	              
-									 </c:forEach>  	           
-								</optgroup>         
+							<select id="id_comune" name="id_comune"> 
+								         
 							</select>
 					</td>
 
