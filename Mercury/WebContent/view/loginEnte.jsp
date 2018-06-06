@@ -23,7 +23,7 @@ if(session.getAttribute("user")!=null) {
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	
-	
+	 
 
 
 <title>Insert title here</title>

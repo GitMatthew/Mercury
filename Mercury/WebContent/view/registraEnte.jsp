@@ -21,7 +21,7 @@
 </head>
 <body style="text-align:center">
 
-
+ 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace">
 	<a class="navbar-brand noSpace" href="/Mercury_Mercury/ControllerHomepage?da=0"><img
 		class="noSpace" style="width: 150px; height: 60px;"

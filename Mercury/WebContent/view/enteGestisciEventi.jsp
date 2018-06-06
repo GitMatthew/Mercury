@@ -12,7 +12,7 @@
 %>    
   
 <html>
-<head>
+<head> 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Bootstrap 4 Website Example</title>
 <meta charset="utf-8">
