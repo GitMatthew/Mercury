@@ -135,7 +135,7 @@ public class AdminImpl implements AdminUtility {
 		Connection c = Dao.getConnection();
 		try {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_NEW_CAT);
-			pst.setString(1, Cat);
+			pst.setString(1, Cat.replace("'","\'"));
 			pst.executeUpdate();
 		} catch (SQLException a) {
 			a.printStackTrace();
@@ -148,7 +148,7 @@ public class AdminImpl implements AdminUtility {
 		Connection c = Dao.getConnection();
 		try {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.MODIFY_CAT);
-			pst.setString(1,mcat);
+			pst.setString(1,mcat.replace("'","\'"));
 			pst.setInt(2, id_categoria);
 
 			pst.executeUpdate();
