@@ -127,7 +127,7 @@ provaBG{background-color:blue;}
 <% if(request.getAttribute("messaggio")!=null) { %>   	
 <h6 ><%=request.getAttribute("messaggio")%></h6>	
 <% } else {	%>	
-<h6 >Benvenuto su Mercury !</h6> 
+<h6 >Benvenuto su Mercury !</h6>  
 <% } %>
 
      <div align="center" class="row sticky-top"
