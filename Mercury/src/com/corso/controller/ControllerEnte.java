@@ -286,7 +286,7 @@ public class ControllerEnte extends HttpServlet {
 		
 		Ente e = EnteImpl.enteByID(id);
 		
-		request.setAttribute("ente", e);
+		request.setAttribute("ente", e); 
 		 
 		session.setAttribute("from" , "accountEnte");
 		request.setAttribute("messaggio", "Da questa pagina puoi gestire il tuo Account");
