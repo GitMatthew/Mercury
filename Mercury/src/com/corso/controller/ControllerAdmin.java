@@ -190,7 +190,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		{
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("user", user);
+			session.setAttribute("admin", user); 
 			ArrayList<Evento> ev = new ArrayList<Evento>();
 			ev=log.getEventiAttesa();
 			session.setAttribute("attesa", ev);
