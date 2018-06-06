@@ -116,7 +116,7 @@ public class ControllerAdmin extends HttpServlet {
 			ArrayList<Ente> a=im.getEntiAttesa();
 			session.setAttribute("enti_attesa", a);
 			response.sendRedirect("view/entiInAttesa.jsp");	
-			
+			//prova
 		}	 
 		
 		if(prm.equals("mod_ente"))  
