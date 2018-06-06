@@ -16,7 +16,7 @@ import com.corso.model.Categoria;
 import com.corso.model.Ente;
 import com.corso.model.Evento;
 
-
+ 
 
 @WebServlet("/ControllerAdmin")
 public class ControllerAdmin extends HttpServlet {
@@ -103,7 +103,7 @@ public class ControllerAdmin extends HttpServlet {
 			ArrayList<Evento> a=im.getAllEvents();
 			session.setAttribute("gestione_eventi", a);
 			response.sendRedirect("view/adminGestisciEventi.jsp");	
-			
+			  
 		}
 		
 
@@ -116,8 +116,7 @@ public class ControllerAdmin extends HttpServlet {
 			NI.sendMail(y, x);
 			ArrayList<Ente> a=im.getEntiAttesa();
 			session.setAttribute("enti_attesa", a);
-			response.sendRedirect("view/entiInAttesa.jsp");	
-			
+			response.sendRedirect("view/entiInAttesa.jsp");
 		}	 
 		
 		if(prm.equals("mod_ente"))  

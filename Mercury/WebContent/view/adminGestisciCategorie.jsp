@@ -52,12 +52,29 @@ if(session.getAttribute("user")==null)
   	
   	<center><button style="width:250px; color:Black" onclick="myFunction(0)">Aggiungi Nuova Categoria</button></center>
   	
-  	<table border="1" style="width:100%">
-		<tr style="color:White">
-			<th>Nome Categoria</th>
-			<th>Gestisci</th>
+  	<br>
+	<table border="none" align="center">
+		<tr id="input" style="display:none; width:100%; color:White" align="center" colspan="2"> 
+		<td style="width:100%;">
+		<form action="../ControllerAdmin" method="get">
+			&nbsp; Nome Categoria &nbsp;
+			<input type="hidden" value="" id="id_cat" name="id_cate"/>
+			<input type="hidden" value="mod_cat" id="action" name="param" />
+			<input style="color:Black" type="text" name="cat" />
+			<input style="color:Black" type="submit"/>
+			<input style="color:Black" type="reset" />
+		</form></td> 
 		</tr>
-	 
+	</table>
+  	<br>
+  	<table style="width:100%;color:White">
+	 	<tr style="color:White; align:center">
+			<th style="width:840px"><center>Nome Categoria</center></th>
+			<th><center>Gestisci</center></th>
+		</tr>
+  </table>
+  <div style="height:430px; overflow:auto;">
+  	<table border="1" style="width:100%">
 	<c:forEach var="j" items="${sessionScope.tutte_le_cat}">
 		<tr style="color:White">
 			<td><center><c:out value="${j.nome_categoria}"></c:out></center></td>
@@ -79,22 +96,9 @@ if(session.getAttribute("user")==null)
 
 
 	</c:forEach>
-	
-	
-		</table>
-	<table border="none" align="center">
-		<tr id="input" style="display:none; width:100%; color:White" align="center" colspan="2"> 
-		<td style="width:100%;">
-		<form action="../ControllerAdmin" method="get">
-			Modifica Categoria &nbsp;
-			<input type="hidden" value="" id="id_cat" name="id_cate"/>
-			<input type="hidden" value="mod_cat" id="action" name="param" />
-			<input style="color:Black" type="text" name="cat" />
-			<input style="color:Black" type="submit"/>
-			<input style="color:Black" type="reset" />
-		</form></td> 
-		</tr>
 	</table>
+	</div>
+
 	
 <script>
 function myFunction(t) {

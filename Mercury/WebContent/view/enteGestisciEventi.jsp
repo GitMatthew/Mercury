@@ -152,15 +152,15 @@ provaBG{background-color:blue;}
 </center>
  
  
- <div style="height:40%; overflow: auto; width:80%"class="container">
+ <div style="height:40%; overflow: auto; width:auto"class="container">
   
 	    <table border="1" style="width:100%">
 
 	<tr>
-		<th>Nome Evento </th>
+		<th>Nome_Evento </th>
 		<th>Descrizione</th>
-		<th>Data Inizio</th>
-		<th>Data Fine</th>
+		<th>Data_Inizio</th>
+		<th>Data_Fine__</th>
 		<th>Status</th>
 		<th>Categoria</th>
 		<th>Comune</th>
