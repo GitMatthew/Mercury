@@ -37,8 +37,29 @@ public class AdminImpl implements AdminUtility {
 	}
 
 	@Override
-	public void sendNotifica() {
-		// in attesa dello sviluppo del sistema e-mail
+	public void sendNotifica(int id_evento, int id_status) {
+		NewsletterImpl NI= new NewsletterImpl();
+		Connection conn=Dao.getConnection();
+		String email="";
+		try {
+			Statement st = conn.createStatement();
+			ResultSet rst = st.executeQuery("Select email_ente from enti INNER JOIN eventi ON enti.id_ente=eventi.id_ente where id_evento="+id_evento);
+
+			while (rst.next()) {
+			email= rst.getString("email_ente");
+			}
+		} catch (SQLException a) {
+			a.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException o) {
+				o.printStackTrace();
+			}
+		}
+		NI.sendMail(id_status, email, id_evento);
+
+		
 	}
 
 	@Override
