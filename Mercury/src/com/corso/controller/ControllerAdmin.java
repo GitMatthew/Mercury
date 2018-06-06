@@ -79,7 +79,16 @@ public class ControllerAdmin extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("tutte_le_cat", a);
 			response.sendRedirect("view/adminGestisciCategorie.jsp");
+			
 		}	
+		
+		if(prm.equals("5"))
+		{
+			
+			HttpSession session = request.getSession();
+			session.invalidate();
+			response.sendRedirect("view/adminLogin.jsp"); 
+		}
 		
 		if(prm.equals("mod_stat"))
 		{
