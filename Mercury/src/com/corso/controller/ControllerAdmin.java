@@ -115,8 +115,7 @@ public class ControllerAdmin extends HttpServlet {
 			NI.sendMail(y, x);
 			ArrayList<Ente> a=im.getEntiAttesa();
 			session.setAttribute("enti_attesa", a);
-			response.sendRedirect("view/entiInAttesa.jsp");	
-			//prova
+			response.sendRedirect("view/entiInAttesa.jsp");
 		}	 
 		
 		if(prm.equals("mod_ente"))  
