@@ -157,10 +157,10 @@ provaBG{background-color:blue;}
 	    <table border="1" style="width:100%">
 
 	<tr>
-		<th>Nome_Evento_</th>
+		<th>Nome Evento </th>
 		<th>Descrizione</th>
-		<th>Data_Inizio</th>
-		<th>Data_Fine__</th>
+		<th>Data Inizio</th>
+		<th>Data Fine</th>
 		<th>Status</th>
 		<th>Categoria</th>
 		<th>Comune</th>
