@@ -24,7 +24,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/homepageStile.css">
 </head>
-<body>
+<body> 
 	<script>
 		function dataEccessivainizio() {
 			var ini = document.getElementById("inizio").value;
