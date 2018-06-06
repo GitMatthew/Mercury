@@ -25,7 +25,7 @@ public class ControllerNewsletter extends HttpServlet {
 		String hidden = request.getParameter("n");
 		NewsletterImpl ip=new NewsletterImpl();			
 		HttpSession s=request.getSession();	
- 
+
 		ArrayList<Regione> regioni = ip.getRegioni();	
 		ArrayList<Provincia> province = null;
 		ArrayList<Comune> comuni = null;
