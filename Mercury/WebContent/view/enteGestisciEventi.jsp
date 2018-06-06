@@ -127,22 +127,37 @@ provaBG{background-color:blue;}
 <h6 >Benvenuto su Mercury !</h6> 
 <% } %>
 
-    <form action="/Mercury_Mercury/ControllerEnte" method=get>
-    <a href=/Mercury_Mercury/ControllerEnte?pag=1>CREA NUOVO EVENTO</a>   
-    <a href=/Mercury_Mercury/ControllerEnte?pag=2>GESTISCI EVENTO</a>   
-    <a href=/Mercury_Mercury/ControllerEnte?pag=3>GESTISCI ACCOUNT</a> 
- 
+     <div align="center" class="row sticky-top"
+		style="overflow: auto; padding: 10px; margin: 0px; min-width: 100%; max-width: 100%; background-color: rgba(128, 0, 0, 0.4);">
+
+		<div class="col">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=1"  class="linkAPRIricerca">
+				NUOVO EVENTO </a>
+				</div>
+        
+		<div class="col">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=2"  class="linkAPRIricerca">
+				GESTISCI EVENTO </a>
+				</div>
+
+		<div class="col">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=3"  class="linkAPRIricerca">
+				GESTISCI ACCOUNT </a>
+				</div>	
+						  
+	</div>
+	<br>
  
  
 </center>
  
  
- <div style="height:40%; overflow: auto; width:80%"class="container">
+ <div style="height:40%; overflow: auto; width:auto"class="container">
   
 	    <table border="1" style="width:100%">
 
 	<tr>
-		<th>Nome_Evento_</th>
+		<th>Nome_Evento </th>
 		<th>Descrizione</th>
 		<th>Data_Inizio</th>
 		<th>Data_Fine__</th>
