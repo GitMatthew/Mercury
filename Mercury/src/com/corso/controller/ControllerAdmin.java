@@ -102,7 +102,7 @@ public class ControllerAdmin extends HttpServlet {
 			ArrayList<Evento> a=im.getAllEvents();
 			session.setAttribute("gestione_eventi", a);
 			response.sendRedirect("view/adminGestisciEventi.jsp");	
-			
+			  
 		}
 		
 
