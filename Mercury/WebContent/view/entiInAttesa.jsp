@@ -34,6 +34,7 @@
       <li class="active"><a href="../ControllerAdmin?param=2">Enti in Attesa</a></li>
       <li><a href="../ControllerAdmin?param=3">Gestisci Enti</a></li>
       <li><a href="../ControllerAdmin?param=4">Gestisci Categorie</a></li>
+      <li><a href="../ControllerAdmin?param=5">Logout</a></li>
     </ul>
   </div>
 </nav></center>
