@@ -47,7 +47,7 @@
 
   <h3 Style="text-align:center; color:White">Lista Eventi</h3>
   
-  <table border="1" style="width:100%">
+  <table border="1" style="width:100%;height:427px;">
 
 	<tr style="color:White">
 		<th>Evento</th>
