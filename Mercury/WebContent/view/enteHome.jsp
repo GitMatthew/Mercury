@@ -115,12 +115,12 @@
 						<td>
 							<label>Dal* :</label> 
 							
-							<input type="date" id="inizio" name="dataInizio">
+							<input type="date" id="inizio" name="dataInizio" value="${requestScope.oggi}" min="${requestScope.oggi}">
 						</td>
 						<td>
 							<label>al* :</label>  
 							
-							<input type="date" id="fine" name="dataFine">
+							<input type="date" id="fine" name="dataFine" value="${requestScope.oggi}" min="${requestScope.oggi}">
 						</td>
 					</tr>
 				</table>
