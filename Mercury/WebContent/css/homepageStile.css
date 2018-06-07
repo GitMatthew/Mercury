@@ -10,6 +10,7 @@ a.linkAPRIricerca {
 	display: inline-block;
 	
 }
+<<<<<<< HEAD
 
 
 a:link {
@@ -43,6 +44,9 @@ a:active {
 	
 }
 
+=======
+ 
+>>>>>>> branch 'master' of https://github.com/GitMatthew/Mercury.git
 a.linkAPRIricerca:hover {
 	background-color: #A52A2A;
 	color: #FF8C00;
