@@ -43,6 +43,8 @@ if(session.getAttribute("user")!=null) {
 	</div>
 </nav>
 
+<br>
+<br> 
 
 
 <h1>Esegui il login</h1>
@@ -60,14 +62,13 @@ if(session.getAttribute("user")!=null) {
 
 
 
-Username <br/><input type="text" name="user" /><br/>
-Password <br/><input type="password"  name="psw"/><br/>
+<b><i>Username</i></b> <br/><input type="text" name="user" /><br/>
+<b><i>Password</i></b> <br/><input type="password"  name="psw"/><br/>
+
+<br>
 
 <input type="submit">
 </form>
-<div class="jumbotron text-center" style="margin-bottom: 0">
-		<p>Footer</p>
-	</div>
 
 </body>
 </html>
