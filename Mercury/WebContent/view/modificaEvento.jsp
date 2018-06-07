@@ -243,12 +243,12 @@
 		<table width="50%">
 			<tr>
 				<td>
-					<label for=descrizione_ente><b><i>Descrizione Ente</i></b></label> 
+					<label for=descrizione><b><i>Descrizione Ente</i></b></label> 
 				</td>
 			</tr>
 			<tr>
 				<td>
-				    <textarea name="descrizione_ente" maxlenght="80" cols="80" rows="5" >${requestScope.evento.descrizione}</textarea>
+				    <textarea name="descrizione" maxlenght="80" cols="80" rows="5" >${requestScope.evento.descrizione}</textarea>
 				
 				</td>		
 			</tr>

@@ -256,12 +256,12 @@
 		<tr>
 				<td>
 				
-					<label for=descrizione_ente><b><i>Descrizione Ente</i></b></label> 
+					<label for=descrizione><b><i>Descrizione Ente</i></b></label> 
 				</td>
 			</tr>
 			<tr>
 				<td>
-				    <textarea name="descrizione_ente" maxlenght="80" cols="80" rows="5" >${requestScope.ente.descrizione_ente}</textarea>
+				    <textarea name="descrizione" maxlenght="80" cols="80" rows="5" ></textarea>
 				
 				</td>		
 			</tr>
