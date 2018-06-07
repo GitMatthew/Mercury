@@ -91,7 +91,7 @@
 
 							$("#regSELEZIONATO").change(function() {
 								
-								
+								 
 								$.ajax({type : 'POST',
 														data : {regione : $("#regSELEZIONATO").val(),dap : "0"},
 														url : '../ControllerHomepage',
