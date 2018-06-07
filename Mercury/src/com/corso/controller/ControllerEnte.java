@@ -187,7 +187,7 @@ public class ControllerEnte extends HttpServlet {
 		  Date dataInizio =Date.valueOf(request.getParameter("dataInizio")); 
 		   
 		  
-		  
+		  System.out.println(request.getParameter("id_comune"));
 		  
 		  String qry = "UPDATE eventi SET nome_evento = '"+request.getParameter("nomeEvento").replace("'","\\'")+"' , descrizione = '"+request.getParameter("descrizione").replace("'","\\'") +"' , " 
 		  		     + "data_inizio = '"+ dataInizio +"' , data_fine = '"+ dataFine +"' , id_status = 1 , id_comune = "+ ComuneImpl.comuneIDByName(request.getParameter("id_comune")) +" , "
@@ -206,7 +206,7 @@ public class ControllerEnte extends HttpServlet {
 			} catch (SQLException e) {
 			    e.printStackTrace();
 			    callGestisciEventi(id_ente);
-			    request.setAttribute("messaggio", "Modifica fallita !");
+			    request.setAttribute("messaggio", "Modifica fallita ! Errore Database .");
 			} 
 	
 				   

@@ -201,8 +201,8 @@
 						x = conn.createStatement();
 						rs = x.executeQuery("select nome_regione from regioni order by nome_regione ASC; ");
 						
-						out.print("<select  id= 'id_regione' class='selectpicker'>");
-						out.print("<option id='primoReg'  value='null'> seleziona </option> ");
+						out.print("<select  id= 'id_regione' class='select'>");
+						out.print("<option id='primoReg'  value='null'> Regione Precedente </option> ");
 						while (rs.next()) {
 							out.print("<option value='" + rs.getString("nome_regione") + "'>");
 							out.print(rs.getString("nome_regione"));
@@ -218,15 +218,15 @@
 
 					</td>
 					<td>
-						<select id="id_provincia" name="id_provincia" class="selectpicker"> 
-							     
+						<select id="id_provincia" name="id_provincia" class="select"> 
+							     <option >Provincia Precedente</option>
 						</select>
 					</td>
 					
 					<td>
 					
-							<select id="id_comune" name="id_comune" class="selectpicker">   
-								         
+							<select id="id_comune" name="id_comune" class="select">   
+							     <option value="${requestScope.evento.id_comune}" selected="selected">Comune Precedente</option>	         
 							</select>
 					</td>
 
@@ -257,15 +257,10 @@
 				
 				</td>		
 			</tr>
-			<center>
-				<tr>
-					<td>
-						<input type="submit">
-					</td>
-				</tr>
-			</center>
-		</table>					
-								
+			
+		</table>
+		<br>					
+		<center>	<input type="submit">	</center>				
 					
 </form>					
 
