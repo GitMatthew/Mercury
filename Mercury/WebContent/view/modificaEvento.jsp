@@ -99,8 +99,13 @@
 								<br> 
 								<select name="id_categoria" class="selectpicker"> 
 									<optgroup label ="Categoria">      
-										 <c:forEach var="j" items="${requestScope.categorie}" >	            				
-											  <option value="${j.id_categoria}">${j.nome_categoria}</option>	              
+										 <c:forEach var="j" items="${requestScope.categorie}" >	           														  
+                                              <c:if test="${j.id_categoria == requestScope.evento.id_categoria}">
+                                                   <option value="${j.id_categoria}" selected="selected">${j.nome_categoria}</option>
+                                              </c:if>
+                                              <c:if test="${j.id_categoria != requestScope.evento.id_categoria}">
+                                                   <option value="${j.id_categoria}">${j.nome_categoria}</option>
+                                              </c:if>											              
 										 </c:forEach>  	           
 									</optgroup>         
 								</select>
