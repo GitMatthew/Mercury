@@ -23,6 +23,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/homepageStile.css">
+
 </head>
 <body>
 	<script>
@@ -202,7 +203,7 @@
 				out.print("<a href='#entiAPRI'	data-toggle='collapse' class='nav-link'>AREA ENTI</a></li>");
 			}else{
 				
-				out.print("<a href='../ControlLerEnte?pas=1'  class='nav-link'>TORNA AREA ENTE</a></li>");
+				out.print("<a href='../ControllerEnte?pag=1'  class='nav-link'>TORNA AREA ENTE</a></li>");
 			}
 		%>
 						
@@ -235,7 +236,7 @@
  
   </ul>
   <!-- The slideshow -->
-  <div class="carousel-inner">
+  <div class="carousel-inner banner01">
   
    
       <%		try {
@@ -243,9 +244,9 @@
 						x = conn.createStatement();
 						rs = x.executeQuery("select e.url_sito_evento , e.url_img_evento from eventi as e where data_inizio>= now() order by data_inizio ASC limit 3");
 						rs.next();
-						out.print("<div align='center' class='carousel-inner carousel-item active'><a href='"+ rs.getString("url_sito_evento") +"'><img src='" + rs.getString("url_img_evento") +"' style='width:auto ; height:299px;'></a></div>");
+						out.print("<div align='center' class='banner01 carousel-inner carousel-item active'><a href='"+ rs.getString("url_sito_evento") +"'><img src='" + rs.getString("url_img_evento") +"' style='width:auto ; height:300px;'></a></div>");
 						while (rs.next()) {
-							out.print("<div align='center' class='carousel-inner carousel-item'><a href='"+ rs.getString("url_sito_evento") +"'><img src='" + rs.getString("url_img_evento") + "' style='width:auto ; height:299px;'></a></div>");
+							out.print("<div align='center' class='banner01 carousel-inner carousel-item'><a href='"+ rs.getString("url_sito_evento") +"'><img src='" + rs.getString("url_img_evento") + "' style='width:auto ; height:300px;'></a></div>");
 									}
 					}
 					catch (Exception e) {
@@ -266,13 +267,13 @@
 	
 
 
-	<div align="center" class="row sticky-top"
-		style="overflow: auto; padding: 10px; margin: 0px; min-width: 100%; max-width: 100%; background-color: rgba(128, 0, 0, 0.4);">
+	<div align="center" class="row sticky-top banner01"
+		style="overflow: auto; padding: 10px; margin: 0px; min-width: 100%; max-width: 100%; background-color: rgba(128, 0, 0, 0.0);">
 		<a id="linkGETricerca" href="../ControllerHomepage?da=1"><img
 			style="padding-left: 5px; height: 40px;"
 			src="../images/search-icon2.png" /></a>
 		<div class="col">
-			<a href="#catAPRI" data-toggle="collapse" class="linkAPRIricerca">
+			<a href="#catAPRI" data-toggle="collapse" class="linkAPRIricerca banner01">
 				Categoria </a>
 			<div id="catAPRI" class="collapse">
 				<%
@@ -296,7 +297,7 @@
 			</div>
 		</div>
 		<div class="col">
-			<a href="#regAPRI" data-toggle="collapse" class="linkAPRIricerca">
+			<a href="#regAPRI" data-toggle="collapse" class="linkAPRIricerca banner01">
 				Regione </a>
 			<div id="regAPRI" class="collapse">
 				
@@ -311,7 +312,7 @@
 		</div>
 		<div class="col">
 			<a id="aProvincia" href="#proAPRI" data-toggle="collapse"
-				class="linkAPRIricerca"> Provincia </a>
+				class="linkAPRIricerca banner01"> Provincia </a>
 			<div id="proAPRI2" class="collapse"></div>
 			<div id="proAPRI" class="collapse">
 				<select id="pro11">
@@ -321,7 +322,7 @@
 		</div>
 		<div class="col">
 			<a id="aComune" href="#comAPRI" data-toggle="collapse"
-				class="linkAPRIricerca"> Comune </a>
+				class="linkAPRIricerca banner01"> Comune </a>
 			<div id="comAPRI" class="collapse">
 				<select id="com11">
 					<option value="null">seleziona</option>
