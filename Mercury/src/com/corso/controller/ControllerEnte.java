@@ -134,6 +134,7 @@ public class ControllerEnte extends HttpServlet {
 			   request.getParameter("nomeEvento")==null||request.getParameter("nomeEvento")==""||
 			   request.getParameter("dataInizio")==null) {
 				
+				callHome(id_ente);
 				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Complila tutti i campi obbligatori !!!");
 				disp.forward(request, response);
 		    }
@@ -172,7 +173,7 @@ public class ControllerEnte extends HttpServlet {
 				callGestisciEventi(id_ente);
 				request.setAttribute("messaggio", "COMPLIMENTI ! Il tuo Evento è stato creato ed è in attesa dell'approvazione di un Amministratore.");
 			} else {
-				disp=request.getRequestDispatcher("/view/enteHome.jsp");
+				callHome(id_ente);
 				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Errore DataBase , riprova più tardi .");
 			}
 			
@@ -254,6 +255,7 @@ public class ControllerEnte extends HttpServlet {
 	public void callHome (int id) { 
 		
 		disp=request.getRequestDispatcher("/view/enteHome.jsp");
+		
 		
 		ArrayList<Categoria> cat = CategoriaImpl.tutteLeCategorie();
 		ArrayList<Regione> reg = RegioneImpl.tutteLeRegioni();
