@@ -49,7 +49,7 @@
   <table style="width:100%;color:White">
   <tr style="color:White">
 		<th style="width:125px">Evento</th>
-		<th style="width:450px">Descrizione</th>
+		<th style="width:420px">Descrizione</th>
 		<th style="width:180px">Data Inizio - Data Fine</th>
 		<th style="width:45px">Status</th>
 		<th><center>Gestisci</center></th>
@@ -59,9 +59,9 @@
  <table border="1" style="width:100%">
 	<c:forEach var="j" items="${sessionScope.gestione_eventi}">
 		<tr style="color:White">
-			<td>&nbsp;<c:out value="${j.nome_evento}"></c:out></td>
-			<td style="width:450px">&nbsp;<c:out value="${j.descrizione}"></c:out></td>
-			<td>&nbsp;<c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
+			<td style="width:125px">&nbsp;<c:out value="${j.nome_evento}"></c:out></td>
+			<td style="width:420px">&nbsp;<c:out value="${j.descrizione}"></c:out></td>
+			<td style="width:180px">&nbsp;<c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
 			<td>&nbsp;<c:out value="${j.nome_status}"></c:out></td>
 			<td style="width:140px" align="center">
 			<c:if test="${j.id_status==3}"><button style="width:65px; color:Black" onclick="location.href='../ControllerAdmin?param=mod_ev&id_evento=${j.id_evento}&id_status=2'">Approva</button></c:if>
