@@ -22,7 +22,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/homepageStile.css">
+<link rel="stylesheet" type="text/css" href="../css/homepageStile.css" />
 
 </head>
 <body>
@@ -57,17 +57,20 @@
 
 							$("#cambiavedi").click(function() {
 								if (xxx == 1) {
-									xxx = 2;
+									
 									$("#vediLargo").hide(1000, function() {
 										$("#vediStretto").show(1000);
 									});
-								} else {
-									xxx = 1;
+									$("#cambiavedi").attr("disabled",true);
+									setTimeout(function (){$("#cambiavedi").attr("disabled",false);},2000);
+									xxx = 2;} else {
+									
 									$("#vediStretto").hide(1000, function() {
 										$("#vediLargo").show(1000);
 									});
-
-								}
+									$("#cambiavedi").attr("disabled",true);
+									setTimeout(function (){$("#cambiavedi").attr("disabled",false);},2000);
+									xxx = 1;}
 							});
 							$("#linkGETricerca").click(function() {
 
@@ -166,7 +169,7 @@
 												$("#tabellaStretta tr").filter(function() {
 																	$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 																});
-												$("#tabellaLarga tr").filter(function() {
+												$("#tabellaLarga1 tr").filter(function() {
 																	$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 																});
 
@@ -368,7 +371,7 @@
 				<tbody id="tabellaStretta">
 					<c:forEach var="j" items="${sessionScope.risultatoRicerca}">
 						<tr
-							onclick="document.location='<c:out value="${j.url_sito_evento}"></c:out>' ">
+							onclick="window.location='<c:out value="${j.url_sito_evento}"></c:out>','_blank' ">
 							<td><img style="height: 40px; width: 40px;"
 								src="<c:out value='${j.url_img_evento }'></c:out>"></td>
 							<td><c:out value="${j.nome_evento }"></c:out></td>
@@ -383,7 +386,7 @@
 			</table>
 		</div>
 		<div id="vediLargo" style="display: block;" class="col-sm-10">
-			<table style="width: 100%;">
+			<table style="width: 100%;" id="tabellaLarga1">
 				<c:forEach var="j" items="${sessionScope.risultatoRicerca}">
 					<tr>
 						<td class="bordini">
@@ -404,7 +407,7 @@
 											<br>
 												<p class="card-text">
 													<c:out value="${j.descrizione }"></c:out>
-												</p> <a href="<c:out value="${j.url_sito_evento}"></c:out>"
+												</p> <a target="_blank" href="<c:out value="${j.url_sito_evento}"></c:out>"
 												class="card-link"> link evento</a> 
 											<a href="<c:out value="${j.url_sito_ente}"></c:out>"
 												class="card-link"> link ente</a> 
