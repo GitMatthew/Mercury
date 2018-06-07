@@ -115,9 +115,9 @@ public class ControllerEnte extends HttpServlet {
 		} else if(ei.verificaPsw (user , psw)==1){
 			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
 			request.setAttribute("messaggio", "Sei in attesa di approvazione da parte di un amministratore");
-		} else if(ei.verificaPsw (user , psw)==3){
+		} else if(ei.verificaPsw (user , psw)==3||ei.verificaPsw (user , psw)==4){
 			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
-			request.setAttribute("messaggio", "Accesso rifiutato sei stato bloccato");
+			request.setAttribute("messaggio", "Accesso rifiutato account disattivato");
 		} else {
 			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
 			request.setAttribute("messaggio", "User o Password errati");		
