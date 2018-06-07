@@ -157,36 +157,36 @@ provaBG{background-color:blue;}
 		<table width="50%">
 			<tr>
 				<td>
-					<label for=user_ente>Username</label> 
+					<label for=user_ente><b><i>Username</i></b></label> 
     					<br> 
     						<input type="text" value="${requestScope.ente.user_ente}" name="user_ente">  
 				</td>
 				<td>  
- 						<label for=psw_ente>Password</label> 
+ 						<label for=psw_ente><b><i>Password</i></b></label> 
    						<br> 
     					<input type="text" value="${requestScope.ente.psw_ente}" name="psw_ente">   
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label for=nome_ente>Nome Ente</label> 
+					<label for=nome_ente><b><i>Nome Ente</i></b></label> 
     				<br> 
     				<input type="text" value="${requestScope.ente.nome_ente}" name="nome_ente">
  				</td>
 				<td>	
-					<label for=email_ente>Email</label> 
+					<label for=email_ente><b><i>Email</i></b></label> 
     				<br> 
     				<input type="email" value="${requestScope.ente.email_ente}" name="email_ente"placeholder="g.@yahoo.it">
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label for=telefono_ente>Telefono</label> 
+					<label for=telefono_ente><b><i>Telefono</i></b></label> 
     				<br> 
     				<input type="tel" value="${requestScope.ente.telefono_ente}" name="telefono_ente">
 				</td>
 				<td>
-					<label for=url_img_ente>Immagine Ente</label> 
+					<label for=url_img_ente><b><i>Immagine Ente</i></b></label> 
     				<br> 
     				<input type="url" value="${requestScope.ente.url_img_ente}" name="url_img_ente" placeholder="www.immagine.it">  	
 				</td>		
@@ -195,7 +195,7 @@ provaBG{background-color:blue;}
 		<table width="50%">
 			<tr>
 				<td>
-					<label for=url_sito_ente>Sito Ente</label> 
+					<label for=url_sito_ente><b><i>Sito Ente</i></b></label> 
 				    <br> 
 				    <input type="url" value="${requestScope.ente.url_sito_ente}" name="url_sito_ente" placeholder="www.sito.it" size="37">  
 				</td>
@@ -203,12 +203,12 @@ provaBG{background-color:blue;}
 			<tr>
 				<td>
 				
-					<label for=descrizione_ente>Descrizione Ente</label> 
+					<label for=descrizione_ente><b><i>Descrizione Ente</i></b></label> 
 				</td>
 			</tr>
 			<tr>
 				<td>
-				    <textarea name="descrizione_ente" maxlenght="80" cols="47" rows="5" >${requestScope.ente.descrizione_ente}</textarea>
+				    <textarea name="descrizione_ente" maxlenght="80" cols="68" rows="5" >${requestScope.ente.descrizione_ente}</textarea>
 				
 				</td>
 			

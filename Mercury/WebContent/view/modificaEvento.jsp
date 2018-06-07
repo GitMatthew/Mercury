@@ -89,13 +89,13 @@
 				<table width="50%">
 					<tr>
 						<td>
-							<label>Cambia Nome Evento</label> 
+							<label><b><i>Cambia Nome Evento</i></b></label> 
 							<br>
 							<input type="text" name="nomeEvento" value="${requestScope.evento.nome_evento}">
 						</td>
 					
 						<td>
-							<label>Cambia tipologia di Evento</label> 
+							<label><b><i>Cambia tipologia di Evento</i></b></label> 
 								<br> 
 								<select name="id_categoria" class="selectpicker"> 
 									<optgroup label ="Categoria">      
@@ -106,18 +106,23 @@
 								</select>
 						<td>
 					</tr>
+					<tr>
+						<td>
+							<label><b><i>Cambia Periodo evento</i></b></label>
+							<br>
+							<label>Dal :</label> 
+							
+							<input type="date" id="inizio" name="dataInizio" value="${requestScope.data_inizio}">
+							
+							<label>al :</label>  
+							
+							<input type="date" id="fine" name="dataFine" value="${requestScope.data_fine}">
+						</td>
+					</tr>
 				</table>
 		   
 			
-			<label>Cambia Periodo evento</label>
-			<br>
-			<label>Dal :</label> 
 			
-			<input type="date" id="inizio" name="dataInizio" value="${requestScope.data_inizio}">
-			
-			<label>al :</label>  
-			
-			<input type="date" id="fine" name="dataFine" value="${requestScope.data_fine}">
 		 
 			<table width="50%"> 
 			
@@ -173,14 +178,14 @@
 				<tr>
 					<td>
 				
-						<label>Regione </label> 
+						<label><b><i>Regione</i></b></label> 
 					</td>
 				
 					<td>
-						<label>Provincia </label> 
+						<label><b><i>Provincia</i></b></label> 
 					</td>
 					<td>
-						<label>Comune </label> 
+						<label><b><i>Comune</i></b></label> 
 					</td>
 				</tr>
 						
@@ -224,25 +229,38 @@
 				
 				<tr>
 					<td>
-						<label>Cambia Sito web </label> 
+						<label><b><i>Cambia Sito web</i></b></label> 
 						<input name="url_sito_evento" placeholder="http://www.sito.it" value="${requestScope.evento.url_sito_evento}"> </input> 
 					</td>
-				</tr>
-				<tr>
+				
 					<td>
-						<label>Cambia immagine</label>
+						<label><b><i>Cambia immagine</i></b></label>
 						 <input name="url_img_evento" placeholder="http://www.immagine.it" value="${requestScope.evento.url_img_evento}">  
 					</td>
 			</table>  
 		</table>
 	
-
-		<label>Modifica Descrizione Evento :</label>  
-					<br>
-				   <textarea name="descrizione" maxlenght="100" cols="35" rows="5" value="descrizione">${requestScope.evento.descrizione}</textarea>
-					<br><br>
-					
-					<input type="submit">
+		<table width="50%">
+			<tr>
+				<td>
+					<label for=descrizione_ente><b><i>Descrizione Ente</i></b></label> 
+				</td>
+			</tr>
+			<tr>
+				<td>
+				    <textarea name="descrizione_ente" maxlenght="80" cols="80" rows="5" >${requestScope.ente.descrizione_ente}</textarea>
+				
+				</td>		
+			</tr>
+			<center>
+				<tr>
+					<td>
+						<input type="submit">
+					</td>
+				</tr>
+			</center>
+		</table>					
+								
 					
 </form>					
 
