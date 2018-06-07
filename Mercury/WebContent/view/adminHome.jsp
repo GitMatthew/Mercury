@@ -49,10 +49,10 @@
   <h3 Style="text-align:center; color:White">Lista Eventi</h3>
   <table style="width:100%;color:White">
   <tr style="colro:White">
-	 	<th style="width:172px">Evento</th> 
-		<th style="width:177px">Descrizione</th>
+	 	<th style="width:145px">Evento</th> 
+		<th style="width:500px">Descrizione</th>
 		<th style="width:514px">Data Inizio - Data Fine</th>
-		<th><center>Gestisci</center></th>
+		<th style="width:194px"><center>Gestisci</center></th>
 	</tr>
   </table>
   <div style="height:430px; overflow:auto;">
@@ -60,9 +60,9 @@
 	
 	<c:forEach var="j" items="${sessionScope.attesa}">
 		<tr style="color:White">
-			<td>&nbsp;<c:out value="${j.nome_evento}"></c:out></td>
-			<td>&nbsp;<c:out value="${j.descrizione}"></c:out></td>
-			<td>&nbsp;<c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
+			<td style="width:145px">&nbsp;<c:out value="${j.nome_evento}"></c:out></td>
+			<td style="width:500px">&nbsp;<c:out value="${j.descrizione}"></c:out></td>
+			<td style="width:194px">&nbsp;<c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
 			<td style="width:140px" align="center"><button style="width:65px; color:Black" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=2'">Approva</button><button style="width:65px ; color:Black" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=3'">Rifiuta</button></td>
 			
 
