@@ -8,25 +8,6 @@
 	<title>Mercury</title>
 	<link rel="shortcut icon" href="images/favicon.gif" />
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<!--[if IE]>
-<link rel="stylesheet" type="text/CSS" href="ie.css">
-<script type="text/javascript" src="curvycorners.js"></script>
-<script type="text/javascript">
-addEvent(window, 'load', initCorners);
-    
-function initCorners() {
-    var settings = {
-        tl: { radius: 20 },
-        tr: { radius: 20 },
-        bl: { radius: 20 },
-        br: { radius: 20 },
-        antiAlias: true
-    }
-    
-    curvyCorners(settings, "#round");
-    }     
-</script>
-<![endif]-->
 </head>
 <body>
 	<div id="pagina" class="border-radius">
