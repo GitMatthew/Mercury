@@ -107,7 +107,7 @@
 						<td>
 					</tr>
 					<tr>
-						<td style="text-align:right"> 
+						<td style="text-align:right">  
 							<label><b><i>Periodo evento</b></i></label>
 						</td>
 					</tr>
