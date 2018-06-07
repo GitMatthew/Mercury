@@ -35,7 +35,7 @@ public class EnteImpl implements EnteUtility {
 		} catch (SQLException e) {
 			System.out.println("errore sql");		
 			e.printStackTrace();
-			return 4 ;		
+			return 5 ;		
 		}	
 		
 		if(psw.equals(pswOk) && status == 2) {
@@ -44,8 +44,10 @@ public class EnteImpl implements EnteUtility {
 			return 1 ;
 		} else if (status == 3){
 			return 3 ;
-		} else {
+		} else if (status == 4){
 			return 4 ;
+		} else {
+			return 5 ;
 		}
 	
 	}

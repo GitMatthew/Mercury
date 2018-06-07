@@ -115,9 +115,9 @@ public class ControllerEnte extends HttpServlet {
 		} else if(ei.verificaPsw (user , psw)==1){
 			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
 			request.setAttribute("messaggio", "Sei in attesa di approvazione da parte di un amministratore");
-		} else if(ei.verificaPsw (user , psw)==3){
+		} else if(ei.verificaPsw (user , psw)==3||ei.verificaPsw (user , psw)==4){
 			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
-			request.setAttribute("messaggio", "Accesso rifiutato sei stato bloccato");
+			request.setAttribute("messaggio", "Accesso rifiutato account disattivato");
 		} else {
 			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
 			request.setAttribute("messaggio", "User o Password errati");		
@@ -132,8 +132,9 @@ public class ControllerEnte extends HttpServlet {
 			
 			if(request.getParameter("indirizzo")==null||request.getParameter("indirizzo")==""||
 			   request.getParameter("nomeEvento")==null||request.getParameter("nomeEvento")==""||
-			   request.getParameter("dataInizio")==null) {
+			   request.getParameter("dataInizio")==null||request.getParameter("id_comune")==null) {
 				
+				callHome(id_ente);
 				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Complila tutti i campi obbligatori !!!");
 				disp.forward(request, response);
 		    }
@@ -146,8 +147,9 @@ public class ControllerEnte extends HttpServlet {
 			if(dataFine==null) {
 				dataFine=dataInizio;
 			}
-					
-			String descrizione="Location : "+request.getParameter("indirizzo").replace("'","\\'") + " ~ " + request.getParameter("descrizione").replace("'","\\'");	
+		
+			String descrizione="";
+			descrizione="Location : "+request.getParameter("indirizzo").replace("'","\\'") + " ~ " + request.getParameter("descrizione").replace("'","\\'");	
 			if(request.getParameter("urlImg")!=null) {
 				nuovoEvento.setUrl_img_evento(request.getParameter("urlImg").replace("'","\\'"));
 			} else {
@@ -172,7 +174,7 @@ public class ControllerEnte extends HttpServlet {
 				callGestisciEventi(id_ente);
 				request.setAttribute("messaggio", "COMPLIMENTI ! Il tuo Evento è stato creato ed è in attesa dell'approvazione di un Amministratore.");
 			} else {
-				disp=request.getRequestDispatcher("/view/enteHome.jsp");
+				callHome(id_ente);
 				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Errore DataBase , riprova più tardi .");
 			}
 			
@@ -184,7 +186,18 @@ public class ControllerEnte extends HttpServlet {
 		  Date dataFine =Date.valueOf(request.getParameter("dataFine"));
 		  Date dataInizio =Date.valueOf(request.getParameter("dataInizio")); 
 		   
+		  if(dataFine==null) {
+				dataFine=dataInizio;
+			}
 		  
+		  if(request.getParameter("descrizione")==null||request.getParameter("descrizione")==""||
+				   request.getParameter("nomeEvento")==null||request.getParameter("nomeEvento")==""||
+				   request.getParameter("dataInizio")==null||request.getParameter("id_comune")==null) {
+					
+					callGestisciEventi(id_ente);
+					request.setAttribute("messaggio", "MODIFICA FALLITA ! I campi obbligatori non possono essere vuoti !!!");
+					disp.forward(request, response);
+			    } 
 		  
 		  
 		  String qry = "UPDATE eventi SET nome_evento = '"+request.getParameter("nomeEvento").replace("'","\\'")+"' , descrizione = '"+request.getParameter("descrizione").replace("'","\\'") +"' , " 
@@ -204,7 +217,7 @@ public class ControllerEnte extends HttpServlet {
 			} catch (SQLException e) {
 			    e.printStackTrace();
 			    callGestisciEventi(id_ente);
-			    request.setAttribute("messaggio", "Modifica fallita !");
+			    request.setAttribute("messaggio", "Modifica fallita ! Errore Database .");
 			} 
 	
 				   
@@ -254,6 +267,7 @@ public class ControllerEnte extends HttpServlet {
 	public void callHome (int id) { 
 		
 		disp=request.getRequestDispatcher("/view/enteHome.jsp");
+		
 		
 		ArrayList<Categoria> cat = CategoriaImpl.tutteLeCategorie();
 		ArrayList<Regione> reg = RegioneImpl.tutteLeRegioni();

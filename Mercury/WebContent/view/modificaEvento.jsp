@@ -99,8 +99,13 @@
 								<br> 
 								<select name="id_categoria" class="selectpicker"> 
 									<optgroup label ="Categoria">      
-										 <c:forEach var="j" items="${requestScope.categorie}" >	            				
-											  <option value="${j.id_categoria}">${j.nome_categoria}</option>	              
+										 <c:forEach var="j" items="${requestScope.categorie}" >	           														  
+                                              <c:if test="${j.id_categoria == requestScope.evento.id_categoria}">
+                                                   <option value="${j.id_categoria}" selected="selected">${j.nome_categoria}</option>
+                                              </c:if>
+                                              <c:if test="${j.id_categoria != requestScope.evento.id_categoria}">
+                                                   <option value="${j.id_categoria}">${j.nome_categoria}</option>
+                                              </c:if>											              
 										 </c:forEach>  	           
 									</optgroup>         
 								</select>
@@ -110,7 +115,7 @@
 						<td>
 							<label><b><i>Cambia Periodo evento</i></b></label>
 							<br>
-							<label>Dal :</label> 
+							<label>Dal* :</label> 
 							
 							<input type="date" id="inizio" name="dataInizio" value="${requestScope.data_inizio}">
 							
@@ -185,7 +190,7 @@
 						<label><b><i>Provincia</i></b></label> 
 					</td>
 					<td>
-						<label><b><i>Comune</i></b></label> 
+						<label><b><i>Comune*</i></b></label> 
 					</td>
 				</tr>
 						
@@ -196,8 +201,8 @@
 						x = conn.createStatement();
 						rs = x.executeQuery("select nome_regione from regioni order by nome_regione ASC; ");
 						
-						out.print("<select  id= 'id_regione' class='selectpicker'>");
-						out.print("<option id='primoReg'  value='null'> seleziona </option> ");
+						out.print("<select  id= 'id_regione' class='select'>");
+						out.print("<option id='primoReg'  value='null'> Regione Precedente </option> ");
 						while (rs.next()) {
 							out.print("<option value='" + rs.getString("nome_regione") + "'>");
 							out.print(rs.getString("nome_regione"));
@@ -213,15 +218,15 @@
 
 					</td>
 					<td>
-						<select id="id_provincia" name="id_provincia" class="selectpicker"> 
-							     
+						<select id="id_provincia" name="id_provincia" class="select"> 
+							     <option >Provincia Precedente</option>
 						</select>
 					</td>
 					
 					<td>
 					
-							<select id="id_comune" name="id_comune" class="selectpicker">   
-								         
+							<select id="id_comune" name="id_comune" class="select">   
+							     <option value="${requestScope.evento.id_comune}" selected="selected">Comune Precedente</option>	         
 							</select>
 					</td>
 
@@ -243,24 +248,19 @@
 		<table width="50%">
 			<tr>
 				<td>
-					<label for=descrizione_ente><b><i>Descrizione Ente</i></b></label> 
+					<label for=descrizione><b><i>Descrizione Ente</i></b></label> 
 				</td>
 			</tr>
 			<tr>
 				<td>
-				    <textarea name="descrizione_ente" maxlenght="80" cols="80" rows="5" >${requestScope.ente.descrizione_ente}</textarea>
+				    <textarea name="descrizione" maxlenght="80" cols="80" rows="5" >${requestScope.evento.descrizione}</textarea>
 				
 				</td>		
 			</tr>
-			<center>
-				<tr>
-					<td>
-						<input type="submit">
-					</td>
-				</tr>
-			</center>
-		</table>					
-								
+			
+		</table>
+		<br>					
+		<center>	<input type="submit">	</center>				
 					
 </form>					
 
