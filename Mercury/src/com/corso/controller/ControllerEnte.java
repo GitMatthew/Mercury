@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -257,9 +259,15 @@ public class ControllerEnte extends HttpServlet {
 		ArrayList<Regione> reg = RegioneImpl.tutteLeRegioni();
 		ArrayList<Comune> com = ComuneImpl.tuttiIComuni();
 		
+		//Data di oggi		
+		LocalDate timePoint = LocalDate.now(); 
+		String oggi = timePoint.toString();	
+			   
+		
 		request.setAttribute("categorie", cat);
 		request.setAttribute("regioni", reg);
 		request.setAttribute("comuni", com);
+		request.setAttribute("oggi", oggi);
 		session.setAttribute("from" , "enteHome");
 		
 		request.setAttribute("messaggio", "Benvenuto su Mercury , in questa pagina puoi creare i tuoi Eventi !");
