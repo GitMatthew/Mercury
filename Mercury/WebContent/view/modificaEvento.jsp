@@ -19,7 +19,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Mercury Events</title>
+<title>Ente</title> 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -34,7 +34,8 @@
 </head>
 <body>
  
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace"
+		style="background-color:black !important;">
 	<a class="navbar-brand noSpace" href="/Mercury_Mercury/ControllerHomepage?da=0"><img
 		class="noSpace" style="width: 150px; height: 60px;"
 		src="/Mercury_Mercury/images/logo.jpg"> </a>
@@ -56,28 +57,33 @@
 
 <center>
 
-<h1>MODIFICA EVENTO</h1>
+<div class="banner01">
+<br><br>
+<h1 class="scrittabianca">MODIFICA EVENTO</h1>
 <% if(request.getAttribute("messaggio")!=null) { %>   	
-<h6 ><%=request.getAttribute("messaggio")%></h6>	
+<h3 class="scrittabianca"><%=request.getAttribute("messaggio")%></h3>	
 <% } else {	%>	
-<h6 >Benvenuto su Mercury !</h6> 
+<h3 class="scrittabianca">Benvenuto su Mercury !</h3> 
 <% } %>
 
-  <div align="center" class="row sticky-top"
+  <br><br>
+  </div>
+  
+  <div align="center" class="row sticky-top  banner01"
 		style="overflow: auto; padding: 10px; margin: 0px; min-width: 100%; max-width: 100%; background-color: rgba(128, 0, 0, 0.4);">
 
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=1"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=1"  class="linkAPRIricerca banner01 ">
 				NUOVO EVENTO </a>
 				</div>
         
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=2"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=2"  class="linkAPRIricerca banner01 ">
 				GESTISCI EVENTO </a>
 				</div>
 
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=3"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=3"  class="linkAPRIricerca banner01">
 				GESTISCI ACCOUNT </a>
 				</div>	
 						  

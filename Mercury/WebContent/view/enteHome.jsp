@@ -34,7 +34,8 @@
 </head>
 <body>
  
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace"
+		style="background-color:black !important;">
 	<a class="navbar-brand noSpace" href="/Mercury_Mercury/ControllerHomepage?da=0"><img
 		class="noSpace" style="width: 150px; height: 60px;"
 		src="/Mercury_Mercury/images/logo.jpg"> </a>
@@ -54,36 +55,37 @@
 	</div>
 </nav>
 
-<center>
-
-<h1>CREA EVENTO</h1>
+<center><div class="banner01">
+<br><br>
+<h1 class="scrittabianca">CREA EVENTO</h1>
 <% if(request.getAttribute("messaggio")!=null) { %>   	
-<h6 ><%=request.getAttribute("messaggio")%></h6>	
+<h3 class="scrittabianca"><%=request.getAttribute("messaggio")%></h3>	
 <% } else {	%>	
-<h6 >Benvenuto su Mercury !</h6> 
+<h3 class="scrittabianca">Benvenuto su Mercury !</h3> 
 <% } %>
 
- <div align="center" class="row sticky-top"
+<br><br></div>
+ <div align="center" class="row sticky-top banner01"
 		style="overflow: auto; padding: 10px; margin: 0px; min-width: 100%; max-width: 100%; background-color: rgba(128, 0, 0, 0.4);">
 
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=1"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=1"  class="linkAPRIricerca banner01">
 				NUOVO EVENTO </a>
 				</div>
         
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=2"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=2"  class="linkAPRIricerca banner01">
 				GESTISCI EVENTO </a>
 				</div>
 
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=3"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=3"  class="linkAPRIricerca banner01">
 				GESTISCI ACCOUNT </a>
 				</div>	
 						  
 	</div>
 	<br>
-	
+	<div class="container">
  <form action="/Mercury_Mercury/ControllerEnte" method=post >
 			<table width="100%">
 				<table width="50%">
@@ -294,8 +296,9 @@
 				</td>
 			</tr>					
 	</table>
-</form>					
-
+</form>				
+</div>	
+<br>
 		<div class="jumbotron text-center" style="margin-bottom: 0">
 		<p>Footer</p>
 		</div>

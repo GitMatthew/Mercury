@@ -242,7 +242,7 @@
       <%		try {
     	  				
 						x = conn.createStatement();
-						rs = x.executeQuery("select e.url_sito_evento , e.url_img_evento from eventi as e where data_inizio>= now() order by data_inizio ASC limit 3");
+						rs = x.executeQuery("select e.url_sito_evento , e.url_img_evento from eventi as e where id_status=2 and data_inizio>= now() order by data_inizio ASC limit 3");
 						rs.next();
 						out.print("<div align='center' class='banner01 carousel-inner carousel-item active'><a href='"+ rs.getString("url_sito_evento") +"'><img src='" + rs.getString("url_img_evento") +"' style='width:auto ; height:300px;'></a></div>");
 						while (rs.next()) {
