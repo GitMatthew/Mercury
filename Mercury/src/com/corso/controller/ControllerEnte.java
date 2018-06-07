@@ -57,7 +57,7 @@ public class ControllerEnte extends HttpServlet {
 		
 		this.session = request.getSession(); 
 	
-		// Registra un nuovo ente 
+	   // Registra un nuovo ente 
 	   if(session.getAttribute("from")=="registraEnte") {
 		   
 		   if(request.getParameter("nome_ente")==null || request.getParameter("psw_ente")==null ||
@@ -72,7 +72,7 @@ public class ControllerEnte extends HttpServlet {
 			   request.setAttribute("messaggio", "Registrazione fallita , compila tutti i campi obbligatori !");
 			   disp.forward(request, response);
 			   		   
-		   }
+		   } else {
 		    			
 			String insertQry = "INSERT enti (nome_ente , psw_ente , telefono_ente , id_status , email_ente ,"
 			                  +"  user_ente , url_img_ente , descrizione_ente , url_sito_ente) "
@@ -96,7 +96,8 @@ public class ControllerEnte extends HttpServlet {
 				session.setAttribute("from" , null);
 				request.setAttribute("messaggio", "Registrazione fallita , email , user o numero di telefono sono già presenti sul database");
 				disp.forward(request, response);
-			}   
+			} 
+		  }
 		}
 		//Sela sessione non è aperta esegui log in
 		if(session.getAttribute("user")==null) {
