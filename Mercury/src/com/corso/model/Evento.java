@@ -19,14 +19,6 @@ public class Evento
 	private int id_categoria;
 	private int id_ente;
 	private String url_img_evento;
-	public String getUrl_sito_evento() {
-		return url_sito_evento;
-	}
-
-	public void setUrl_sito_evento(String url_sito_evento) {
-		this.url_sito_evento = url_sito_evento;
-	}
-
 	private String url_sito_evento;
 	private String nome_status;
 	private String nome_ente ;
@@ -36,6 +28,16 @@ public class Evento
 		super();
 	}
 	
+	
+	public String getUrl_sito_evento() {
+		return url_sito_evento;
+	}
+
+	public void setUrl_sito_evento(String url_sito_evento) {
+		this.url_sito_evento = url_sito_evento;
+	}
+
+
 	public int getId_evento()
 	{
 		return id_evento;
