@@ -22,17 +22,17 @@ public class EventoImpl implements EventoUtility
 		else {
 		}
 		if (!(reg.equals("null"))) {
-			x = x + " and r.nome_regione= '" + reg + "'";
+			x = x + " and r.id_regione= '" + reg + "'";
 		}
 		else {
 		}
 		if (!(pro.equals("null"))) {
-			x = x + " and p.nome_provincia= '" + pro + "'";
+			x = x + " and p.id_provincia= '" + pro + "'";
 		}
 		else {
 		}
 		if (!(com.equals("null"))) {
-			x = x + " and com.nome_comune= '" + com + "'";
+			x = x + " and com.id_comune= '" + com + "'";
 		}
 		else {
 		}
@@ -47,7 +47,7 @@ public class EventoImpl implements EventoUtility
 		else {
 		}
 		
-		x = x + " order by data_inizio asc;";
+		x = x + " and data_inizio>= now() order by data_inizio asc;";
 		
 		ArrayList<Evento> atList = new ArrayList<Evento>();
 		Evento a = null;
@@ -58,6 +58,7 @@ public class EventoImpl implements EventoUtility
 			
 			while (rst.next()) {
 				a = new Evento();
+				a.setUrl_sito_ente(rst.getString("url_sito_ente"));
 				a.setUrl_sito_evento(rst.getString("url_sito_evento"));
 				a.setUrl_img_evento(rst.getString("url_img_evento"));
 				a.setNome_evento(rst.getString("titolo"));
@@ -124,82 +125,6 @@ public class EventoImpl implements EventoUtility
 		}
 		return atList;
 		
-	}
-	
-	@Override
-	public ArrayList<String> filtroProvince(String reg)
-	{
-		String x = "";
-		if (!(reg.equals("null"))) {
-			x = x + " and r.nome_regione= '" + reg + "'";
-			
-			x = x + " order by p.nome_provincia;";
-			
-			ArrayList<String> atList = new ArrayList<String>();
-			
-			Connection conn = Dao.getConnection();
-			try {
-				Statement pst = conn.createStatement();
-				ResultSet rst = pst.executeQuery(EventoUtility.FILTRO_PROVINCE + x);
-				
-				while (rst.next()) {
-					atList.add(rst.getString("nome_provincia"));
-					
-				}
-			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
-			
-			finally {
-				try {
-					conn.close();
-				}
-				catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			return atList;
-		}
-		return null;
-	}
-	
-	@Override
-	public ArrayList<String> filtroComuni(String pro)
-	{
-		String x = "";
-		
-		if (!(pro.equals("null"))) {
-			x = x + " and p.nome_provincia= '" + pro + "'";
-			
-			x = x + " order by c.nome_comune;";
-			
-			ArrayList<String> atList = new ArrayList<String>();
-			
-			Connection conn = Dao.getConnection();
-			try {
-				Statement pst = conn.createStatement();
-				ResultSet rst = pst.executeQuery(EventoUtility.FILTRO_COMUNI + x);
-				
-				while (rst.next()) {
-					atList.add(rst.getString("nome_comune"));
-				}
-			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
-			
-			finally {
-				try {
-					conn.close();
-				}
-				catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			return atList;
-		}
-		return null;
 	}
 	
 	public static Evento ricercaID(String id_evento)

@@ -30,10 +30,12 @@
 			var ini = document.getElementById("inizio").value;
 			var fin = document.getElementById("fine").value;
 
+		
+	if(!((fin=="")||(ini=="")))
 			if (fin < ini) {
-				document.getElementById("inizio").style.backgroundColor = "red";
+				document.getElementById("inizio").style.border  = " 2px solid red";
 			} else {
-				document.getElementById("inizio").style.backgroundColor = "white";
+				document.getElementById("inizio").style.border  = " 0px solid red";
 			}
 		}
 
@@ -42,9 +44,9 @@
 			var fin = document.getElementById("fine").value;
 
 			if (fin < ini) {
-				document.getElementById("fine").style.backgroundColor = "red";
+				document.getElementById("fine").style.border  = " 2px solid red";
 			} else {
-				document.getElementById("fine").style.backgroundColor = "white";
+				document.getElementById("fine").style.border  = " 0px solid red";
 			}
 		}
 		var xxx = 1;
@@ -86,10 +88,14 @@
 
 											});
 
-							$("#regSELEZIONATO").change(function() {$.ajax({type : 'POST',
+							$("#regSELEZIONATO").change(function() {
+								
+								
+								$.ajax({type : 'POST',
 														data : {regione : $("#regSELEZIONATO").val(),dap : "0"},
 														url : '../ControllerHomepage',
 														success : function(result) {
+															
 																var vPro = [];
 																vPro.push(result);
 																var json = JSON.parse(result);
@@ -97,27 +103,58 @@
 																$('#com11').empty();
 																$('#pro11').append('<option value="null">seleziona</option>');
 																$('#com11').append('<option value="null">seleziona</option>');
+																
+																var x1 =0;
+																var x2 = 0;
 																for ( var i in json.pro22) {
-																	$('#pro11').append('<option value="'+json.pro22[i]+'">'+ json.pro22[i]+ '</option>')
-																}
-															}
-														});
+																	x2 =0 ;
+																	for ( var j in json.pro23) {
+																		if(x2==x1){
+																			$('#pro11').append('<option value="'+json.pro22[i]+'">'+ json.pro23[j]+ '</option>');
+																			
+																		}
+																	
+																		x2=x2+1;
+																	}
+																x1 = x1+1 ;
+																	}
+																
+															
+														}
+														
+								  			});
 
 											});
 
-							$("#pro11").change(function() {$.ajax({
+							$("#pro11").change(function() {
+							
+								$.ajax({
 															type : 'POST',
 															data : {provincia : $("#pro11").val(),dap : "1"},
 															url : '../ControllerHomepage',
 															success : function(result) {
+																
+																
 																var vCom = [];
 																vCom.push(result);
 																var json = JSON.parse(result);
 																$('#com11').empty();
 																$('#com11').append('<option value="null">seleziona</option>');
+													
+																var x1 =0;
+																var x2 = 0;
 																for ( var i in json.com22) {
-																	$('#com11').append('<option value="'+json.com22[i]+'">'+ json.com22[i]+ '</option>')
-																}
+																	x2 =0 ;
+																	for ( var j in json.com23) {
+																		if(x2==x1){
+																			$('#com11').append('<option value="'+json.com22[i]+'">'+ json.com23[j]+ '</option>');
+																			
+																		}
+																	
+																		x2=x2+1;
+																	}
+																x1 = x1+1 ;
+																	}
 															}
 														});
 
@@ -136,6 +173,18 @@
 
 						});
 	</script>
+		<%
+		Connection conn = null;
+		conn = Dao.getConnection();
+		Statement x = null;
+		ResultSet rs = null ;
+		%>
+
+		
+		
+			
+	
+	
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace"
 		style="background-color:black !important;"> <a
 		class="navbar-brand noSpace" href="../ControllerHomepage?da=0"><img
@@ -145,8 +194,18 @@
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active spaziaLato"><a class="nav-link"
 				href="../ControllerHomepage?da=0">HOME</a></li>
-			<li class="nav-item spaziaLato"><a href="#entiAPRI"
-				data-toggle="collapse" class="nav-link ">AREA ENTI</a></li>
+			<li class="nav-item spaziaLato">
+			<%
+			String user = (String)session.getAttribute("user");
+			if(user==null){
+				
+				out.print("<a href='#entiAPRI'	data-toggle='collapse' class='nav-link'>AREA ENTI</a></li>");
+			}else{
+				
+				out.print("<a href='../ControlLerEnte?pas=1'  class='nav-link'>TORNA AREA ENTE</a></li>");
+			}
+		%>
+						
 			<div id="entiAPRI" class="collapse">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active spaziaLato"><a class="nav-link"
@@ -158,25 +217,55 @@
 		</ul>
 	</div>
 	</nav>
-	<div class="jumbotron text-center"
-		style="margin: 0px; padding: 0px 30px 10px 30px; color: white; background-image: url('../images/sfondo3.jpg'); background-repeat: no-repeat; background-position: center; background-size: cover;">
-		<h1 style="color: #f54b03;">MERCURY EVENTS</h1>
-		<br>
-		<h3 id="stampah3" style="color: #f54b03;">Gli eventi in Italia
-			che aspettano solo il tuo click</h3>
-		<br>
-		<h2 style="color: #f54b03;">
-			cerca tutti gli eventi italiani scegliendo la categoria che
-			preferisci, i luoghi che ami, <br> o i giorni che ti stanno piu'
-			comodi
-		</h2>
-	</div>
-	<%
-		Connection conn = null;
-		conn = Dao.getConnection();
-		Statement x = null;
-		ResultSet rs = null;
-	%>
+	
+	
+	
+	<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  
+  
+  <ul class="carousel-indicators">
+
+			
+	<li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+			
+ 
+  </ul>
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+  
+   
+      <%		try {
+    	  				
+						x = conn.createStatement();
+						rs = x.executeQuery("select e.url_sito_evento , e.url_img_evento from eventi as e where data_inizio>= now() order by data_inizio ASC limit 3");
+						rs.next();
+						out.print("<div align='center' class='carousel-inner carousel-item active'><a href='"+ rs.getString("url_sito_evento") +"'><img src='" + rs.getString("url_img_evento") +"' style='width:auto ; height:299px;'></a></div>");
+						while (rs.next()) {
+							out.print("<div align='center' class='carousel-inner carousel-item'><a href='"+ rs.getString("url_sito_evento") +"'><img src='" + rs.getString("url_img_evento") + "' style='width:auto ; height:299px;'></a></div>");
+									}
+					}
+					catch (Exception e) {
+						out.println("wrong entry" + e);
+					}
+		%>
+
+  </div>
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+	
+	
+
+
 	<div align="center" class="row sticky-top"
 		style="overflow: auto; padding: 10px; margin: 0px; min-width: 100%; max-width: 100%; background-color: rgba(128, 0, 0, 0.4);">
 		<a id="linkGETricerca" href="../ControllerHomepage?da=1"><img
@@ -190,22 +279,7 @@
 					try {
 						x = conn.createStatement();
 						rs = x.executeQuery("select nome_categoria from categorie order by nome_categoria ASC");
-						/*
-						String cat1 = (String) session.getAttribute("cate");
-						out.print("<select id= 'catSELEZIONATO'>");
-						if (cat1 == null) {
-							out.print("<option id='primoCat' value='null'> seleziona </option> ");
-						}
-						else {
-							if (cat1.equals("null")) {
-								out.print("<option id='primoCat' value='" + cat1 + "'> seleziona </option> ");
-							}
-							else {
-								out.print("<option id='primoCat' value='" + cat1 + "'>" + cat1 + "</option> ");
-								out.print("<option id='primoCat' value='null'> -------- </option> ");
-							}
-						}
-						*/
+			
 						out.print("<select id= 'catSELEZIONATO'>");
 						out.print("<option id='primoCat' value='null'> seleziona </option> ");
 						while (rs.next()) {
@@ -225,40 +299,14 @@
 			<a href="#regAPRI" data-toggle="collapse" class="linkAPRIricerca">
 				Regione </a>
 			<div id="regAPRI" class="collapse">
-				<%
-					try {
-						x = conn.createStatement();
-						rs = x.executeQuery("select nome_regione from regioni order by nome_regione ASC; ");
-						/*
-						String reg1 = (String) session.getAttribute("regi");
-						out.print("<select  id= 'regSELEZIONATO'>");
-						if (reg1 == null) {
-							out.print("<option id='primoReg'  value='null'> seleziona </option> ");
-						}
-						else {
-							if (reg1.equals("null")) {
-								out.print("<option id='primoReg' value='" + reg1 + "'> seleziona </option> ");
-							}
-							else {
-								out.print("<option id='primoReg' value='" + reg1 + "'>" + reg1 + "</option> ");
-								out.print("<option id='primoReg2'  value='null'> -------- </option> ");
-								
-							}
-						}
-						*/
-						out.print("<select  id= 'regSELEZIONATO'>");
-						out.print("<option id='primoReg'  value='null'> seleziona </option> ");
-						while (rs.next()) {
-							out.print("<option value='" + rs.getString("nome_regione") + "'>");
-							out.print(rs.getString("nome_regione"));
-							out.print("</option>");
-						}
-						out.print("</select>");
-					}
-					catch (Exception e) {
-						out.println("wrong entry" + e);
-					}
-				%>
+				
+<select  id= 'regSELEZIONATO'>
+<option id='primoReg'  value='null'> seleziona </option>
+			<c:forEach var="j" items="${sessionScope.reg22}">
+				<option  value="<c:out value="${j.id_regione}"></c:out>"> <c:out value="${j.nome_regione}"></c:out>	 </option> 
+			</c:forEach>	
+			
+			</select>		
 			</div>
 		</div>
 		<div class="col">
@@ -282,10 +330,10 @@
 		</div>
 		<div class="col">
 			<input type="date" id="inizio" class="form-control"
-				onchange="myFunction()" style="max-width: 100%;">
+				onchange="dataEccessivainizio()" style="max-width: 100%;">
 		</div>
 		<div class="col">
-			<input type="date" id="fine" onchange="dataEccessiva()"
+			<input type="date" id="fine" onchange="dataEccessivafine()"
 				class="form-control" style="max-width: 100%;">
 		</div>
 	</div>
@@ -342,9 +390,12 @@
 								<div class="card-body" class="bordini">
 									<table style="width: 100%" id="tabellaLarga">
 										<tr>
-											<td style="width: 150px;"><img
-												style="width: 150px; height: 150px; margin-right: 20px;"
-												src="<c:out value='${j.url_img_evento }'></c:out>" /></td>
+											<td style="width: 150px;">
+											<img style="width: 150px; height: 150px; margin-right: 20px;"
+												src="<c:out value='${j.url_img_evento }'></c:out>" />
+												</td>
+												
+												
 											<td style="float: left;">
 												<h2 style="float: left;" class="card-title">
 													<c:out value="${j.nome_evento }"></c:out>
@@ -353,8 +404,9 @@
 												<p class="card-text">
 													<c:out value="${j.descrizione }"></c:out>
 												</p> <a href="<c:out value="${j.url_sito_evento}"></c:out>"
-												class="card-link"> link evento</a> <a href="#"
-												class="card-link">link ente</a>
+												class="card-link"> link evento</a> 
+											<a href="<c:out value="${j.url_sito_ente}"></c:out>"
+												class="card-link"> link ente</a> 
 											</td>
 											<td style="right: 0px; text-align: right;">
 												<h3>
@@ -381,7 +433,7 @@
 							</div>
 						</td>
 					</tr>
-				</c:forEach> 
+				</c:forEach>
 			</table>
 		</div>
 		<div class="col-sm-2"
@@ -391,8 +443,7 @@
 					<h2>
 						iscriviti <br> alla
 					</h2>
-				</div> </a> 
-			<a href="registraEnte.jsp"
+				</div> </a> <a href="registraEnte.jsp"
 				style="text-decoration: none; display: block;"><div id="box2"
 					class="boxDestra">
 					<h3>

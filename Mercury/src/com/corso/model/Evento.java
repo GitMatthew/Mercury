@@ -22,7 +22,7 @@ public class Evento
 	private String url_sito_evento;
 	private String nome_status; 
 	private String nome_ente ;
-	
+	private String url_sito_ente;
 	public Evento() 
 	{
 		super();
@@ -184,6 +184,16 @@ public class Evento
 
 	public void setNome_ente(String nome_ente) {
 		this.nome_ente = nome_ente;
+	}
+
+
+	public String getUrl_sito_ente() {
+		return url_sito_ente;
+	}
+
+
+	public void setUrl_sito_ente(String url_sito_ente) {
+		this.url_sito_ente = url_sito_ente;
 	}
 	
 }

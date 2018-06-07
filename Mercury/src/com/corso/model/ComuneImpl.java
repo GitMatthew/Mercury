@@ -70,5 +70,49 @@ try {
 		return r ;	
 		
 	}
+	
+	@Override
+	public ArrayList<Comune> filtroComuni(String pro)
+	{
+		String x = "";
+		
+		if (!(pro.equals("null"))) {
+			x = x + " and p.id_provincia= '" + pro + "'";
+			
+			x = x + " order by c.nome_comune;";
+			
+			ArrayList<Comune> atList = new ArrayList<Comune>();
+			Comune c = null;
+			Connection conn = Dao.getConnection();
+			try {
+				c = new Comune();
+				Statement pst = conn.createStatement();
+				ResultSet rst = pst.executeQuery(ComuneUtility.FILTRO_COMUNI + x);
+				
+				while (rst.next()) {
+					c = new Comune();
+					c.setNome_comune(rst.getString("nome_comune"));
+					c.setId_comune(rst.getInt("id_comune"));
+					atList.add(c);
+					
+				}
+				
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			finally {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return atList;
+		}
+		return null;
+	}
 
 }
