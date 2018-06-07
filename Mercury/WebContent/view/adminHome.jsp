@@ -51,8 +51,8 @@
   <tr style="colro:White">
 	 	<th style="width:145px">Evento</th> 
 		<th style="width:500px">Descrizione</th>
-		<th style="width:514px">Data Inizio - Data Fine</th>
-		<th style="width:194px"><center>Gestisci</center></th>
+		<th style="width:194px">Data Inizio - Data Fine</th>
+		<th style="width:140px"><center>Gestisci</center></th>
 	</tr>
   </table>
   <div style="height:430px; overflow:auto;">
