@@ -109,6 +109,7 @@
 					<tr>
 						<td style="text-align:right">  
 							<label><b><i>Periodo evento</b></i></label>
+							
 						</td>
 					</tr>
 					<tr>
@@ -120,7 +121,7 @@
 						<td>
 							<label>al* :</label>  
 							
-							<input type="date" id="fine" name="dataFine" value="${requestScope.oggi}" min="${requestScope.oggi}">
+							<input type="date" id="fine" name="dataFine" value="${requestScope.oggi}" min="#id_inizio">
 						</td>
 					</tr>
 				</table>

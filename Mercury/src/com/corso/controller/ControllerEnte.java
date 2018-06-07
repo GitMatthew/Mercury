@@ -147,8 +147,9 @@ public class ControllerEnte extends HttpServlet {
 			if(dataFine==null) {
 				dataFine=dataInizio;
 			}
-					
-			String descrizione="Location : "+request.getParameter("indirizzo").replace("'","\\'") + " ~ " + request.getParameter("descrizione").replace("'","\\'");	
+		
+			String descrizione="";
+			descrizione="Location : "+request.getParameter("indirizzo").replace("'","\\'") + " ~ " + request.getParameter("descrizione").replace("'","\\'");	
 			if(request.getParameter("urlImg")!=null) {
 				nuovoEvento.setUrl_img_evento(request.getParameter("urlImg").replace("'","\\'"));
 			} else {

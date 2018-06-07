@@ -248,7 +248,7 @@
 			</tr>
 			<tr>
 				<td>
-				    <textarea name="descrizione_ente" maxlenght="80" cols="80" rows="5" >${requestScope.ente.descrizione_ente}</textarea>
+				    <textarea name="descrizione_ente" maxlenght="80" cols="80" rows="5" >${requestScope.evento.descrizione}</textarea>
 				
 				</td>		
 			</tr>
