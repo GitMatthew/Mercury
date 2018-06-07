@@ -9,7 +9,7 @@
 	response.sendRedirect("loginAdmin.jsp");
 } 
 
-%>
+%> 
 <html>
 <head>
   <title>Administrator Page</title>
