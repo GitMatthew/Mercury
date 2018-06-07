@@ -132,50 +132,80 @@
 					
 					$(document).ready(function() {						
 
-								$("#id_regione").change(function() {$.ajax({type : 'POST',
-															data : {regione : $("#id_regione").val(),dap : "0"},
-															url : '/Mercury_Mercury/ControllerHomepage',
-															success : function(result) {
-																	var vPro = [];
-																	vPro.push(result);
-																	var json = JSON.parse(result);
-																	$('#id_provincia').empty();
-																	$('#id_comune').empty();
-																	$('#id_provincia').append('<option value="null">seleziona</option>');
-																	$('#id_comune').append('<option value="null">seleziona</option>');
-																	for ( var i in json.pro22) {
-																		$('#id_provincia').append('<option value="'+json.pro22[i]+'">'+ json.pro22[i]+ '</option>')
+						$("#id_regione").change(function() {
+							
+							
+							$.ajax({type : 'POST',
+													data : {regione : $("#id_regione").val(),dap : "0"},
+													url : '/Mercury_Mercury/ControllerHomepage',
+													success : function(result) {
+				
+															var vPro = [];
+															vPro.push(result);
+															var json = JSON.parse(result);
+															$('#id_provincia').empty();
+															$('#id_comune').empty();
+															$('#id_provincia').append('<option value="null">seleziona</option>');
+															$('#id_comune').append('<option value="null">seleziona</option>');
+															
+															var x1 =0;
+															var x2 = 0;
+															for ( var i in json.pro22) {
+																x2 =0 ;
+																for ( var j in json.pro23) {
+																	if(x2==x1){
+																		$('#id_provincia').append('<option value="'+json.pro22[i]+'">'+ json.pro23[j]+ '</option>');
+																		
 																	}
+																
+																	x2=x2+1;
 																}
-															});
+															x1 = x1+1 ;
+																}
+															
+														
+													}
+													
+							  			});
 
-												});
+										});
 
-								$("#id_provincia").change(function() {$.ajax({
-																type : 'POST',
-																data : {provincia : $("#id_provincia").val(),dap : "1"},
-																url : '/Mercury_Mercury/ControllerHomepage',
-																success : function(result) {
-																	var vCom = [];
-																	vCom.push(result);
-																	var json = JSON.parse(result);
-																	$('#id_comune').empty();
-																	$('#id_comune').append('<option value="null">seleziona</option>');
-																	for ( var i in json.com22) {
-																		$('#id_comune').append('<option value="'+json.com22[i]+'">'+ json.com22[i]+ '</option>')
+						$("#id_provincia").change(function() {
+						
+							$.ajax({
+														type : 'POST',
+														data : {provincia : $("#id_provincia").val(),dap : "1"},
+														url : '/Mercury_Mercury/ControllerHomepage',
+														success : function(result) {
+															
+															
+															var vCom = [];
+															vCom.push(result);
+															var json = JSON.parse(result);
+															$('#id_comune').empty();
+															$('#id_comune').append('<option value="null">seleziona</option>');
+												
+															var x1 =0;
+															var x2 = 0;
+															for ( var i in json.com22) {
+																x2 =0 ;
+																for ( var j in json.com23) {
+																	if(x2==x1){
+																		$('#id_comune').append('<option value="'+json.com22[i]+'">'+ json.com23[j]+ '</option>');
+																		
 																	}
+																
+																	x2=x2+1;
 																}
-															});
+															x1 = x1+1 ;
+																}
+														}
+													});
 
-												});	});
+										});	});
 					
 					
-					</script>	<%
-		Connection conn = null;
-		conn = Dao.getConnection();
-		Statement x = null;
-		ResultSet rs = null;
-	%>
+					</script>	
 			<table width="50%">   
 			
 				<tr>
@@ -195,24 +225,13 @@
 					</td>
 				<tr>
 					<td>
-                 <%
-					try {
-						x = conn.createStatement();
-						rs = x.executeQuery("select nome_regione from regioni order by nome_regione ASC; ");
-						
-						out.print("<select  id= 'id_regione'>");
-						out.print("<option id='primoReg'  value='null'> seleziona </option> ");
-						while (rs.next()) {
-							out.print("<option value='" + rs.getString("nome_regione") + "'>");
-							out.print(rs.getString("nome_regione"));
-							out.print("</option>");
-						}
-						out.print("</select>");
-					}
-					catch (Exception e) {
-						out.println("wrong entry" + e);
-					}
-				%>
+                 <select  id= 'id_regione'>
+                        <option id='primoReg'  value='null'> seleziona </option>
+			        <c:forEach var="j" items="${sessionScope.reg22}">
+				<option  value="<c:out value="${j.id_regione}"></c:out>"> <c:out value="${j.nome_regione}"></c:out>	 </option> 
+			        </c:forEach>	
+			
+			</select>	
 
 					</td>
 					<td>

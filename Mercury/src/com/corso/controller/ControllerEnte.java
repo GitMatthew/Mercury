@@ -163,7 +163,7 @@ public class ControllerEnte extends HttpServlet {
 			nuovoEvento.setNome_evento(request.getParameter("nomeEvento").replace("'","\\'"));
 			nuovoEvento.setId_categoria(Integer.parseInt(request.getParameter("id_categoria")));
 			nuovoEvento.setDescrizione(descrizione);
-			nuovoEvento.setId_comune(ComuneImpl.comuneIDByName(request.getParameter("id_comune")));
+			nuovoEvento.setId_comune(Integer.parseInt(request.getParameter("id_comune")));
 			nuovoEvento.setData_inizio(dataInizio);  
 			nuovoEvento.setData_fine(dataFine);		
 			nuovoEvento.setId_ente(this.id_ente);
@@ -201,7 +201,7 @@ public class ControllerEnte extends HttpServlet {
 		  
 		  
 		  String qry = "UPDATE eventi SET nome_evento = '"+request.getParameter("nomeEvento").replace("'","\\'")+"' , descrizione = '"+request.getParameter("descrizione").replace("'","\\'") +"' , " 
-		  		     + "data_inizio = '"+ dataInizio +"' , data_fine = '"+ dataFine +"' , id_status = 1 , id_comune = "+ ComuneImpl.comuneIDByName(request.getParameter("id_comune")) +" , "
+		  		     + "data_inizio = '"+ dataInizio +"' , data_fine = '"+ dataFine +"' , id_status = 1 , id_comune = "+ request.getParameter("id_comune") +" , "
 		  		     + "id_categoria = "+ request.getParameter("id_categoria") +" , url_img_evento = '"+request.getParameter("url_img_evento").replace("'","\\'")+"' , " 
 		  		     + "url_sito_evento = '"+request.getParameter("url_sito_evento").replace("'","\\'")+"' WHERE id_evento = "+request.getParameter("id_evento") ;
 		   
@@ -276,6 +276,16 @@ public class ControllerEnte extends HttpServlet {
 		//Data di oggi		
 		LocalDate timePoint = LocalDate.now(); 
 		String oggi = timePoint.toString();	
+		
+		
+		ArrayList<Regione> reg22 = new ArrayList<Regione>();
+		EventoImpl ev0 = new EventoImpl();
+		RegioneImpl rg = new RegioneImpl();
+		reg22 = rg.filtroRegioni();
+		HttpSession s0 = request.getSession();
+		s0.setAttribute("reg22", reg22);
+		
+		
 			   
 		
 		request.setAttribute("categorie", cat);
@@ -326,6 +336,13 @@ public class ControllerEnte extends HttpServlet {
 		ArrayList<Comune> com = ComuneImpl.tuttiIComuni();		
 		
 		request.setAttribute("evento", evt);
+		
+		ArrayList<Regione> reg22 = new ArrayList<Regione>();
+		EventoImpl ev0 = new EventoImpl();
+		RegioneImpl rg = new RegioneImpl();
+		reg22 = rg.filtroRegioni();
+		HttpSession s0 = request.getSession();
+		s0.setAttribute("reg22", reg22);
 		
 		String data_inizio = evt.getData_inizio().toString();
 		String data_fine = evt.getData_fine().toString();;
