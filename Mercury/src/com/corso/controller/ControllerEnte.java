@@ -194,7 +194,7 @@ public class ControllerEnte extends HttpServlet {
 				   request.getParameter("nomeEvento")==null||request.getParameter("nomeEvento")==""||
 				   request.getParameter("dataInizio")==null||request.getParameter("id_comune")==null) {
 					
-					callHome(id_ente);
+					callGestisciEventi(id_ente);
 					request.setAttribute("messaggio", "MODIFICA FALLITA ! Complila tutti i campi obbligatori !!!");
 					disp.forward(request, response);
 			    } 
