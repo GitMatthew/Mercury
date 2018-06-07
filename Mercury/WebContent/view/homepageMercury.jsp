@@ -196,8 +196,8 @@
 				href="../ControllerHomepage?da=0">HOME</a></li>
 			<li class="nav-item spaziaLato">
 			<%
-			String user = (String)session.getAttribute("user");
-			if(user==null){
+			
+			if(session.getAttribute("user")==null){
 				
 				out.print("<a href='#entiAPRI'	data-toggle='collapse' class='nav-link'>AREA ENTI</a></li>");
 			}else{
