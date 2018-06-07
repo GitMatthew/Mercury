@@ -84,7 +84,7 @@ public class ControllerEnte extends HttpServlet {
 			Connection conn = Dao.getConnection();	    
 		    
 			try {
-			    Statement pst = conn.createStatement();
+			    Statement pst = conn.createStatement(); 
 			    int rs = pst.executeUpdate(insertQry);
 			    disp=request.getRequestDispatcher("/view/loginEnte.jsp");
 			    session.setAttribute("from" , null); 
