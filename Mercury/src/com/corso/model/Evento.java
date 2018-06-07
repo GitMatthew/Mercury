@@ -20,7 +20,7 @@ public class Evento
 	private int id_ente;
 	private String url_img_evento;
 	private String url_sito_evento;
-	private String nome_status;
+	private String nome_status; 
 	private String nome_ente ;
 	
 	public Evento() 
