@@ -48,10 +48,10 @@
  
   <table style="width:100%;color:White">
   <tr style="color:White">
-		<th style="width:147px">Evento</th>
-		<th style="width:150px">Descrizione</th>
-		<th style="width:395px">Data Inizio - Data Fine</th>
-		<th style="width:167px">Status</th>
+		<th style="width:125px">Evento</th>
+		<th style="width:450px">Descrizione</th>
+		<th style="width:180px">Data Inizio - Data Fine</th>
+		<th style="width:45px">Status</th>
 		<th><center>Gestisci</center></th>
 	</tr>
  </table>
@@ -60,7 +60,7 @@
 	<c:forEach var="j" items="${sessionScope.gestione_eventi}">
 		<tr style="color:White">
 			<td>&nbsp;<c:out value="${j.nome_evento}"></c:out></td>
-			<td style="width:350px">&nbsp;<c:out value="${j.descrizione}"></c:out></td>
+			<td style="width:450px">&nbsp;<c:out value="${j.descrizione}"></c:out></td>
 			<td>&nbsp;<c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
 			<td>&nbsp;<c:out value="${j.nome_status}"></c:out></td>
 			<td style="width:140px" align="center">
