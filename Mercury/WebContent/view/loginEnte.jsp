@@ -41,6 +41,7 @@ if(session.getAttribute("user")!=null) {
 			
 		</ul>
 	</div>
+	
 </nav>
 
 <br>
