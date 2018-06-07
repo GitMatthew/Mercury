@@ -115,7 +115,7 @@
 						<td>
 							<label><b><i>Cambia Periodo evento</i></b></label>
 							<br>
-							<label>Dal :</label> 
+							<label>Dal* :</label> 
 							
 							<input type="date" id="inizio" name="dataInizio" value="${requestScope.data_inizio}">
 							
@@ -190,7 +190,7 @@
 						<label><b><i>Provincia</i></b></label> 
 					</td>
 					<td>
-						<label><b><i>Comune</i></b></label> 
+						<label><b><i>Comune*</i></b></label> 
 					</td>
 				</tr>
 						

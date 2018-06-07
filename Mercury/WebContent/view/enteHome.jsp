@@ -119,7 +119,7 @@
 							<input type="date" id="inizio" name="dataInizio" value="${requestScope.oggi}" min="${requestScope.oggi}">
 						</td>
 						<td>
-							<label>al* :</label>  
+							<label>al :</label>  
 							
 							<input type="date" id="fine" name="dataFine" value="${requestScope.oggi}" min="#id_inizio">
 						</td>
@@ -188,7 +188,7 @@
 						<label><b><i>Provincia</i></b></label> 
 					</td>
 					<td>
-						<label><b><i>Comune</i></b></label> 
+						<label><b><i>Comune*</i></b></label> 
 					</td>
 				</tr>
 						
