@@ -132,7 +132,7 @@ public class ControllerEnte extends HttpServlet {
 			
 			if(request.getParameter("indirizzo")==null||request.getParameter("indirizzo")==""||
 			   request.getParameter("nomeEvento")==null||request.getParameter("nomeEvento")==""||
-			   request.getParameter("dataInizio")==null) {
+			   request.getParameter("dataInizio")==null||request.getParameter("id_comune")==null) {
 				
 				callHome(id_ente);
 				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Complila tutti i campi obbligatori !!!");
@@ -186,8 +186,19 @@ public class ControllerEnte extends HttpServlet {
 		  Date dataFine =Date.valueOf(request.getParameter("dataFine"));
 		  Date dataInizio =Date.valueOf(request.getParameter("dataInizio")); 
 		   
+		  if(dataFine==null) {
+				dataFine=dataInizio;
+			}
 		  
-		  System.out.println(request.getParameter("id_comune"));
+		  if(request.getParameter("descrizione")==null||request.getParameter("descrizione")==""||
+				   request.getParameter("nomeEvento")==null||request.getParameter("nomeEvento")==""||
+				   request.getParameter("dataInizio")==null||request.getParameter("id_comune")==null) {
+					
+					callHome(id_ente);
+					request.setAttribute("messaggio", "MODIFICA FALLITA ! Complila tutti i campi obbligatori !!!");
+					disp.forward(request, response);
+			    } 
+		  
 		  
 		  String qry = "UPDATE eventi SET nome_evento = '"+request.getParameter("nomeEvento").replace("'","\\'")+"' , descrizione = '"+request.getParameter("descrizione").replace("'","\\'") +"' , " 
 		  		     + "data_inizio = '"+ dataInizio +"' , data_fine = '"+ dataFine +"' , id_status = 1 , id_comune = "+ ComuneImpl.comuneIDByName(request.getParameter("id_comune")) +" , "
