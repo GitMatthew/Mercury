@@ -241,8 +241,25 @@
   <!-- The slideshow -->
   <div class="carousel-inner banner01">
   
+  
+  <div id="slideshow" >
+<div align='center' class='banner01 carousel-inner carousel-item active'>
+<% out.print( "<a href='" + session.getAttribute("bannerattivosito")+ "'><img src='" + session.getAttribute("bannerattivoimg") +"' style='width:auto ; height:300px;'/> </a> "); %>
+</div>
+			
+<c:forEach var="j" items="${sessionScope.carosello}">
+ 	<div align='center' class='banner01 carousel-inner carousel-item'>
+<a href="<c:out value="${j.url_sito_evento}"></c:out>"><img src="<c:out value="${j.url_img_evento}"></c:out>" style="width:auto ; height:300px;"> </a>
+ 	</div>
+</c:forEach>	
+					</div>		
    
-      <%		try {
+   </div>	
+   
+   
+   
+      <%	/*	try {  
+//select e.url_sito_evento , e.url_img_evento from eventi as e where id_status=2 and data_inizio>= now() order by data_inizio ASC limit 3    	  
     	  				
 						x = conn.createStatement();
 						rs = x.executeQuery("select e.url_sito_evento , e.url_img_evento from eventi as e where id_status=2 and data_inizio>= now() order by data_inizio ASC limit 3");
@@ -255,9 +272,8 @@
 					catch (Exception e) {
 						out.println("wrong entry" + e);
 					}
-		%>
-
-  </div>
+		*/%>
+<div>
   <!-- Left and right controls -->
   <a class="carousel-control-prev" href="#demo" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>

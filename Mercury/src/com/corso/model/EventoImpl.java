@@ -11,6 +11,17 @@ import com.corso.connection.Dao;
 public class EventoImpl implements EventoUtility
 {
 	
+	 
+	public ArrayList<Evento>  dammiBannerHome() 
+	{
+		ArrayList<Evento>  x = ricerca("null", "null", "null", "null", "", "");
+		ArrayList<Evento>  y = new ArrayList<Evento> ();
+	
+		y.add(x.get(1)) ;
+		y.add(x.get(2)) ;
+		return y;
+	}
+	
 	@Override
 	public ArrayList<Evento> ricerca(String cat, String reg, String pro, String com, String ini, String fin)
 	{
@@ -47,7 +58,7 @@ public class EventoImpl implements EventoUtility
 		else {
 		}
 		
-		x = x + " and data_inizio>= now() order by data_inizio asc;";
+		x = x + " and data_inizio>= now() order by data_inizio , titolo , descrizione asc;";
 		
 		ArrayList<Evento> atList = new ArrayList<Evento>();
 		Evento a = null;

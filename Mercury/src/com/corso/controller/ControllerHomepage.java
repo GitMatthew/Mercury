@@ -52,18 +52,26 @@ public class ControllerHomepage extends HttpServlet {
 	    String ini = request.getParameter("dataInizio");
 	    String fin = request.getParameter("dataFine");
 
+	   
 	    switch (da) {
 	    // Tutto ciò che torna alla Homepage
 	    case ("0"):
 
 		ArrayList<Regione> reg22 = new ArrayList<Regione>();
-
+	    String bai ="";
+	    String bas ="" ;
+	    ArrayList<Evento> carosello = new ArrayList<Evento>();
+	    
 		EventoImpl ev0 = new EventoImpl();
 		RegioneImpl rg = new RegioneImpl();
 		ArrayList<Categoria> cate = CategoriaImpl.tutteLeCategorie();
 		reg22 = rg.filtroRegioni();
 		ArrayList<Evento> RicEv0 = ev0.ricerca("null", "null", "null", "null", "", "");
 		HttpSession s0 = request.getSession();
+		carosello=ev0.dammiBannerHome();
+		s0.setAttribute("carosello", carosello);
+		s0.setAttribute("bannerattivosito", RicEv0.get(0).getUrl_sito_evento());
+		s0.setAttribute("bannerattivoimg", RicEv0.get(0).getUrl_img_evento());
 		s0.setAttribute("risultatoRicerca", RicEv0);
 		s0.setAttribute("reg22", reg22);
 		s0.setAttribute("cate", cate);
