@@ -75,6 +75,8 @@ public class ControllerHomepage extends HttpServlet {
 		s0.setAttribute("risultatoRicerca", RicEv0);
 		s0.setAttribute("reg22", reg22);
 		s0.setAttribute("cate", cate);
+
+		
 		response.sendRedirect("view/homepageMercury.jsp");
 		break;
 	    // filtro di ricerca
@@ -83,7 +85,16 @@ public class ControllerHomepage extends HttpServlet {
 		ArrayList<Evento> RicEv1 = ev1.ricerca(cat, reg, pro, com, ini, fin);
 		HttpSession s1 = request.getSession();
 		s1.setAttribute("risultatoRicerca", RicEv1);
-
+		String errore="0" ;
+		if(RicEv1.size()==0) 
+		{
+			
+			s1.setAttribute("errore", errore);
+		}else {
+			
+			errore=null;
+			s1.setAttribute("errore", errore);
+		}
 		response.sendRedirect("view/homepageMercury.jsp");
 
 		break;

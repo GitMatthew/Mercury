@@ -443,6 +443,11 @@
 					</tr>
 				</c:forEach>
 			</table>
+<% 
+
+if(session.getAttribute("errore")!=null){
+out.print("<h3>Ci dispiace ma la sua ricerca non ha prodotto risultati.  Hai un evento da proporre? <a href='registraEnte.jsp' class='rossorosso nosottolinea'>registrati</a> subito come ente!</h3>");
+	}else{}%>		
 		</div>
 		<div class="col-sm-2"
 			style="padding: 0px; border-left: 2px solid #f54b03;">
