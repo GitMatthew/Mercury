@@ -49,6 +49,7 @@
   <h3 Style="text-align:center; color:White">Lista Eventi</h3>
   <table style="width:100%;color:White">
   <tr style="colro:White">
+ 		<th style="width:110px">Immagine</th> 
 	 	<th style="width:172px">Evento</th> 
 		<th style="width:177px">Descrizione</th>
 		<th style="width:514px">Data Inizio - Data Fine</th>
@@ -60,6 +61,7 @@
 	
 	<c:forEach var="j" items="${sessionScope.attesa}">
 		<tr style="color:White">
+			<td><img style="width:auto;height:auto" src="<c:out value="${j.url_img_evento}"></c:out>"></td>
 			<td>&nbsp;<c:out value="${j.nome_evento}"></c:out></td>
 			<td>&nbsp;<c:out value="${j.descrizione}"></c:out></td>
 			<td>&nbsp;<c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
