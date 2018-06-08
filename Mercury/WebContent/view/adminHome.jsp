@@ -49,9 +49,9 @@
   <h3 Style="text-align:center; color:White">Lista Eventi</h3>
   <table style="width:100%;color:White;">
   <tr style="colro:White">
- 		<th style="width:110px">Immagine</th> 
-	 	<th style="width:152px">Evento</th> 
-		<th style="width:430px">Descrizione</th>
+ 		<th style="width:215px">Immagine</th> 
+	 	<th style="width:162px">Evento</th> 
+		<th style="width:320px">Descrizione</th>
 		<th style="width:150px">Data Inizio - Data Fine</th>
 		<th><center>Gestisci</center></th>
 	</tr>
@@ -63,8 +63,8 @@
 		<tr style="color:White">
 			<td style="width:120px:;height:120px"><center><img style="display: block; width:100%;height:100%" src="<c:out value="${j.url_img_evento}"></c:out>"></center></td>
 			<td style="width:172px; word-wrap:break-word;"><div>&nbsp;<c:out value="${j.nome_evento}"></c:out></div></td>
-			<td style="width:350px; word-wrap:break-word;"><div style="word-wrap:break-word;">&nbsp;<c:out value="${j.descrizione}"></c:out></div></td>
-			<td style="width:140px;word-wrap:break-word;height:auto"><div>&nbsp;<c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></div></td>
+			<td style="width:325px; word-wrap:break-word;"><div style="word-wrap:break-word;">&nbsp;<c:out value="${j.descrizione}"></c:out></div></td>
+			<td style="width:140px;word-wrap:break-word;height:auto"><div><center><c:out value="${j.data_inizio}"></c:out><br><c:out value="${j.data_fine}"></c:out></center></div></td>
 			<td style="width:140px" align="center"><button style="width:65px; color:Black" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=2'">Approva</button><button style="width:65px ; color:Black" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=3'">Rifiuta</button></td>
 			
  
