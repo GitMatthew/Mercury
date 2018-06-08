@@ -61,7 +61,7 @@
 	
 	<c:forEach var="j" items="${sessionScope.attesa}">
 		<tr style="color:White">
-			<td><img style="width:auto;height:auto" src="<c:out value="${j.url_img_evento}"></c:out>"></td>
+			<td><img style="width:100px;height:100px" src="<c:out value="${j.url_img_evento}"></c:out>"></td>
 			<td>&nbsp;<c:out value="${j.nome_evento}"></c:out></td>
 			<td>&nbsp;<c:out value="${j.descrizione}"></c:out></td>
 			<td>&nbsp;<c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
