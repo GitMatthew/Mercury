@@ -2,13 +2,46 @@
 
 a.linkAPRIricerca {
 	padding: 10px;
-	background-color: #f44336;
+	
 	color: white;
 	padding: 5px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	background-color: #f44336;
+	
+}
+
+
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+	 text-decoration: none;
+}
+
+
+.nosottolinea , nosottolinea:hover{
+	text-decoration:none ;
+	
+}
+
+.rossorosso{color:red ;}
+
+.rossorosso:hover{color:red ;}
+
+.scrittabianca{
+	color:white; 
+	
 }
 
 a.linkAPRIricerca:hover {
@@ -19,6 +52,11 @@ a.linkAPRIricerca:hover {
 #catSELEZIONATO, #regSELEZIONATO, #proSELEZIONATO, #comSELEZIONATO {
 	max-width: 150px !important;
 }
+
+  .carousel-inner  {
+      width: 100%;
+      height: 300px!important;
+  }
 
 .boxDestra {
 	width: 100%;
@@ -59,9 +97,15 @@ a.linkAPRIricerca:hover {
 }
 
 .bordini{
-	 border-bottom: 2px dotted #f54b03 !important;
-	 border-top: 2px dotted #3271e7 !important;
+	height: auto;
 	
+}
+
+.banner01{
+background-image: url('../images/neroarancio.jpg');
+background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 }
 
 provaBG {

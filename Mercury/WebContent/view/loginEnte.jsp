@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
 <%session.setAttribute("from" , null);
 if(session.getAttribute("user")!=null) {
 	RequestDispatcher disp=request.getRequestDispatcher("../ControllerEnte?pag=1");
@@ -22,15 +25,15 @@ if(session.getAttribute("user")!=null) {
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-	
-	 
+	<link rel="stylesheet" type="text/css" href="/Mercury_Mercury/css/homepageStile.css">
 
 
 <title>Insert title here</title>
 </head>
-<body style="text-align:center">
+<body  style="text-align:center">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace"
+		style="background-color:black !important;">
 	<a class="navbar-brand noSpace" href="/Mercury_Mercury/ControllerHomepage?da=0"><img
 		class="noSpace" style="width: 150px; height: 60px;"
 		src="/Mercury_Mercury/images/logo.jpg"> </a>
@@ -41,6 +44,7 @@ if(session.getAttribute("user")!=null) {
 			
 		</ul>
 	</div>
+	
 </nav>
 
 <br>
@@ -67,7 +71,7 @@ if(session.getAttribute("user")!=null) {
 
 <br>
 
-<input type="submit">
+<input class="" height="50" type="submit">
 </form>
 
 </body>

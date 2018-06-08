@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -113,9 +115,9 @@ public class ControllerEnte extends HttpServlet {
 		} else if(ei.verificaPsw (user , psw)==1){
 			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
 			request.setAttribute("messaggio", "Sei in attesa di approvazione da parte di un amministratore");
-		} else if(ei.verificaPsw (user , psw)==3){
+		} else if(ei.verificaPsw (user , psw)==3||ei.verificaPsw (user , psw)==4){
 			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
-			request.setAttribute("messaggio", "Accesso rifiutato sei stato bloccato");
+			request.setAttribute("messaggio", "Accesso rifiutato account disattivato");
 		} else {
 			disp=request.getRequestDispatcher("/view/loginEnte.jsp");
 			request.setAttribute("messaggio", "User o Password errati");		
@@ -130,8 +132,9 @@ public class ControllerEnte extends HttpServlet {
 			
 			if(request.getParameter("indirizzo")==null||request.getParameter("indirizzo")==""||
 			   request.getParameter("nomeEvento")==null||request.getParameter("nomeEvento")==""||
-			   request.getParameter("dataInizio")==null) {
+			   request.getParameter("dataInizio")==null||request.getParameter("id_comune")==null) {
 				
+				callHome(id_ente);
 				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Complila tutti i campi obbligatori !!!");
 				disp.forward(request, response);
 		    }
@@ -144,8 +147,9 @@ public class ControllerEnte extends HttpServlet {
 			if(dataFine==null) {
 				dataFine=dataInizio;
 			}
-					
-			String descrizione="Location : "+request.getParameter("indirizzo").replace("'","\\'") + " ~ " + request.getParameter("descrizione").replace("'","\\'");	
+		
+			String descrizione="";
+			descrizione="Location : "+request.getParameter("indirizzo").replace("'","\\'") + " ~ " + request.getParameter("descrizione").replace("'","\\'");	
 			if(request.getParameter("urlImg")!=null) {
 				nuovoEvento.setUrl_img_evento(request.getParameter("urlImg").replace("'","\\'"));
 			} else {
@@ -159,7 +163,7 @@ public class ControllerEnte extends HttpServlet {
 			nuovoEvento.setNome_evento(request.getParameter("nomeEvento").replace("'","\\'"));
 			nuovoEvento.setId_categoria(Integer.parseInt(request.getParameter("id_categoria")));
 			nuovoEvento.setDescrizione(descrizione);
-			nuovoEvento.setId_comune(ComuneImpl.comuneIDByName(request.getParameter("id_comune")));
+			nuovoEvento.setId_comune(Integer.parseInt(request.getParameter("id_comune")));
 			nuovoEvento.setData_inizio(dataInizio);  
 			nuovoEvento.setData_fine(dataFine);		
 			nuovoEvento.setId_ente(this.id_ente);
@@ -170,7 +174,7 @@ public class ControllerEnte extends HttpServlet {
 				callGestisciEventi(id_ente);
 				request.setAttribute("messaggio", "COMPLIMENTI ! Il tuo Evento è stato creato ed è in attesa dell'approvazione di un Amministratore.");
 			} else {
-				disp=request.getRequestDispatcher("/view/enteHome.jsp");
+				callHome(id_ente);
 				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Errore DataBase , riprova più tardi .");
 			}
 			
@@ -182,11 +186,22 @@ public class ControllerEnte extends HttpServlet {
 		  Date dataFine =Date.valueOf(request.getParameter("dataFine"));
 		  Date dataInizio =Date.valueOf(request.getParameter("dataInizio")); 
 		   
+		  if(dataFine==null) {
+				dataFine=dataInizio;
+			}
 		  
+		  if(request.getParameter("descrizione")==null||request.getParameter("descrizione")==""||
+				   request.getParameter("nomeEvento")==null||request.getParameter("nomeEvento")==""||
+				   request.getParameter("dataInizio")==null||request.getParameter("id_comune")==null) {
+					
+					callGestisciEventi(id_ente);
+					request.setAttribute("messaggio", "MODIFICA FALLITA ! I campi obbligatori non possono essere vuoti !!!");
+					disp.forward(request, response);
+			    } 
 		  
 		  
 		  String qry = "UPDATE eventi SET nome_evento = '"+request.getParameter("nomeEvento").replace("'","\\'")+"' , descrizione = '"+request.getParameter("descrizione").replace("'","\\'") +"' , " 
-		  		     + "data_inizio = '"+ dataInizio +"' , data_fine = '"+ dataFine +"' , id_status = 1 , id_comune = "+ ComuneImpl.comuneIDByName(request.getParameter("id_comune")) +" , "
+		  		     + "data_inizio = '"+ dataInizio +"' , data_fine = '"+ dataFine +"' , id_status = 1 , id_comune = "+ request.getParameter("id_comune") +" , "
 		  		     + "id_categoria = "+ request.getParameter("id_categoria") +" , url_img_evento = '"+request.getParameter("url_img_evento").replace("'","\\'")+"' , " 
 		  		     + "url_sito_evento = '"+request.getParameter("url_sito_evento").replace("'","\\'")+"' WHERE id_evento = "+request.getParameter("id_evento") ;
 		   
@@ -202,7 +217,7 @@ public class ControllerEnte extends HttpServlet {
 			} catch (SQLException e) {
 			    e.printStackTrace();
 			    callGestisciEventi(id_ente);
-			    request.setAttribute("messaggio", "Modifica fallita !");
+			    request.setAttribute("messaggio", "Modifica fallita ! Errore Database .");
 			} 
 	
 				   
@@ -253,13 +268,30 @@ public class ControllerEnte extends HttpServlet {
 		
 		disp=request.getRequestDispatcher("/view/enteHome.jsp");
 		
+		
 		ArrayList<Categoria> cat = CategoriaImpl.tutteLeCategorie();
 		ArrayList<Regione> reg = RegioneImpl.tutteLeRegioni();
 		ArrayList<Comune> com = ComuneImpl.tuttiIComuni();
 		
+		//Data di oggi		
+		LocalDate timePoint = LocalDate.now(); 
+		String oggi = timePoint.toString();	
+		
+		
+		ArrayList<Regione> reg22 = new ArrayList<Regione>();
+		EventoImpl ev0 = new EventoImpl();
+		RegioneImpl rg = new RegioneImpl();
+		reg22 = rg.filtroRegioni();
+		HttpSession s0 = request.getSession();
+		s0.setAttribute("reg22", reg22);
+		
+		
+			   
+		
 		request.setAttribute("categorie", cat);
 		request.setAttribute("regioni", reg);
 		request.setAttribute("comuni", com);
+		request.setAttribute("oggi", oggi);
 		session.setAttribute("from" , "enteHome");
 		
 		request.setAttribute("messaggio", "Benvenuto su Mercury , in questa pagina puoi creare i tuoi Eventi !");
@@ -304,6 +336,13 @@ public class ControllerEnte extends HttpServlet {
 		ArrayList<Comune> com = ComuneImpl.tuttiIComuni();		
 		
 		request.setAttribute("evento", evt);
+		
+		ArrayList<Regione> reg22 = new ArrayList<Regione>();
+		EventoImpl ev0 = new EventoImpl();
+		RegioneImpl rg = new RegioneImpl();
+		reg22 = rg.filtroRegioni();
+		HttpSession s0 = request.getSession();
+		s0.setAttribute("reg22", reg22);
 		
 		String data_inizio = evt.getData_inizio().toString();
 		String data_fine = evt.getData_fine().toString();;

@@ -34,7 +34,8 @@
 </head>
 <body>
  
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace"
+		style="background-color:black !important;">
 	<a class="navbar-brand noSpace" href="/Mercury_Mercury/ControllerHomepage?da=0"><img
 		class="noSpace" style="width: 150px; height: 60px;"
 		src="/Mercury_Mercury/images/logo.jpg"> </a>
@@ -54,36 +55,37 @@
 	</div>
 </nav>
 
-<center>
-
-<h1>CREA EVENTO</h1>
+<center><div class="banner01">
+<br><br>
+<h1 class="scrittabianca">CREA EVENTO</h1>
 <% if(request.getAttribute("messaggio")!=null) { %>   	
-<h6 ><%=request.getAttribute("messaggio")%></h6>	
+<h3 class="scrittabianca"><%=request.getAttribute("messaggio")%></h3>	
 <% } else {	%>	
-<h6 >Benvenuto su Mercury !</h6> 
+<h3 class="scrittabianca">Benvenuto su Mercury !</h3> 
 <% } %>
 
- <div align="center" class="row sticky-top"
+<br><br></div>
+ <div align="center" class="row sticky-top banner01"
 		style="overflow: auto; padding: 10px; margin: 0px; min-width: 100%; max-width: 100%; background-color: rgba(128, 0, 0, 0.4);">
 
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=1"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=1"  class="linkAPRIricerca banner01">
 				NUOVO EVENTO </a>
 				</div>
         
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=2"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=2"  class="linkAPRIricerca banner01">
 				GESTISCI EVENTO </a>
 				</div>
 
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=3"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=3"  class="linkAPRIricerca banner01">
 				GESTISCI ACCOUNT </a>
 				</div>	
 						  
 	</div>
 	<br>
-	
+	<div class="container">
  <form action="/Mercury_Mercury/ControllerEnte" method=post >
 			<table width="100%">
 				<table width="50%">
@@ -107,20 +109,21 @@
 						<td>
 					</tr>
 					<tr>
-						<td style="text-align:right"> 
+						<td style="text-align:right">  
 							<label><b><i>Periodo evento</b></i></label>
+							
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<label>Dal* :</label> 
 							
-							<input type="date" id="inizio" name="dataInizio">
+							<input type="date" id="inizio" name="dataInizio" value="${requestScope.oggi}" min="${requestScope.oggi}">
 						</td>
 						<td>
-							<label>al* :</label>  
+							<label>al :</label>  
 							
-							<input type="date" id="fine" name="dataFine">
+							<input type="date" id="fine" name="dataFine" value="${requestScope.oggi}" min="#id_inizio">
 						</td>
 					</tr>
 				</table>
@@ -131,50 +134,80 @@
 					
 					$(document).ready(function() {						
 
-								$("#id_regione").change(function() {$.ajax({type : 'POST',
-															data : {regione : $("#id_regione").val(),dap : "0"},
-															url : '/Mercury_Mercury/ControllerHomepage',
-															success : function(result) {
-																	var vPro = [];
-																	vPro.push(result);
-																	var json = JSON.parse(result);
-																	$('#id_provincia').empty();
-																	$('#id_comune').empty();
-																	$('#id_provincia').append('<option value="null">seleziona</option>');
-																	$('#id_comune').append('<option value="null">seleziona</option>');
-																	for ( var i in json.pro22) {
-																		$('#id_provincia').append('<option value="'+json.pro22[i]+'">'+ json.pro22[i]+ '</option>')
+						$("#id_regione").change(function() {
+							
+							
+							$.ajax({type : 'POST',
+													data : {regione : $("#id_regione").val(),dap : "0"},
+													url : '/Mercury_Mercury/ControllerHomepage',
+													success : function(result) {
+				
+															var vPro = [];
+															vPro.push(result);
+															var json = JSON.parse(result);
+															$('#id_provincia').empty();
+															$('#id_comune').empty();
+															$('#id_provincia').append('<option value="null">seleziona</option>');
+															$('#id_comune').append('<option value="null">seleziona</option>');
+															
+															var x1 =0;
+															var x2 = 0;
+															for ( var i in json.pro22) {
+																x2 =0 ;
+																for ( var j in json.pro23) {
+																	if(x2==x1){
+																		$('#id_provincia').append('<option value="'+json.pro22[i]+'">'+ json.pro23[j]+ '</option>');
+																		
 																	}
+																
+																	x2=x2+1;
 																}
-															});
+															x1 = x1+1 ;
+																}
+															
+														
+													}
+													
+							  			});
 
-												});
+										});
 
-								$("#id_provincia").change(function() {$.ajax({
-																type : 'POST',
-																data : {provincia : $("#id_provincia").val(),dap : "1"},
-																url : '/Mercury_Mercury/ControllerHomepage',
-																success : function(result) {
-																	var vCom = [];
-																	vCom.push(result);
-																	var json = JSON.parse(result);
-																	$('#id_comune').empty();
-																	$('#id_comune').append('<option value="null">seleziona</option>');
-																	for ( var i in json.com22) {
-																		$('#id_comune').append('<option value="'+json.com22[i]+'">'+ json.com22[i]+ '</option>')
+						$("#id_provincia").change(function() {
+						
+							$.ajax({
+														type : 'POST',
+														data : {provincia : $("#id_provincia").val(),dap : "1"},
+														url : '/Mercury_Mercury/ControllerHomepage',
+														success : function(result) {
+															
+															
+															var vCom = [];
+															vCom.push(result);
+															var json = JSON.parse(result);
+															$('#id_comune').empty();
+															$('#id_comune').append('<option value="null">seleziona</option>');
+												
+															var x1 =0;
+															var x2 = 0;
+															for ( var i in json.com22) {
+																x2 =0 ;
+																for ( var j in json.com23) {
+																	if(x2==x1){
+																		$('#id_comune').append('<option value="'+json.com22[i]+'">'+ json.com23[j]+ '</option>');
+																		
 																	}
+																
+																	x2=x2+1;
 																}
-															});
+															x1 = x1+1 ;
+																}
+														}
+													});
 
-												});	});
+										});	});
 					
 					
-					</script>	<%
-		Connection conn = null;
-		conn = Dao.getConnection();
-		Statement x = null;
-		ResultSet rs = null;
-	%>
+					</script>	
 			<table width="50%">   
 			
 				<tr>
@@ -187,31 +220,20 @@
 						<label><b><i>Provincia</i></b></label> 
 					</td>
 					<td>
-						<label><b><i>Comune</i></b></label> 
+						<label><b><i>Comune*</i></b></label> 
 					</td>
 				</tr>
 						
 					</td>
 				<tr>
 					<td>
-                 <%
-					try {
-						x = conn.createStatement();
-						rs = x.executeQuery("select nome_regione from regioni order by nome_regione ASC; ");
-						
-						out.print("<select  id= 'id_regione'>");
-						out.print("<option id='primoReg'  value='null'> seleziona </option> ");
-						while (rs.next()) {
-							out.print("<option value='" + rs.getString("nome_regione") + "'>");
-							out.print(rs.getString("nome_regione"));
-							out.print("</option>");
-						}
-						out.print("</select>");
-					}
-					catch (Exception e) {
-						out.println("wrong entry" + e);
-					}
-				%>
+                 <select  id= 'id_regione'>
+                        <option id='primoReg'  value='null'> seleziona </option>
+			        <c:forEach var="j" items="${sessionScope.reg22}">
+				<option  value="<c:out value="${j.id_regione}"></c:out>"> <c:out value="${j.nome_regione}"></c:out>	 </option> 
+			        </c:forEach>	
+			
+			</select>	
 
 					</td>
 					<td>
@@ -255,12 +277,12 @@
 		<tr>
 				<td>
 				
-					<label for=descrizione_ente><b><i>Descrizione Ente</i></b></label> 
+					<label for=descrizione><b><i>Descrizione Ente</i></b></label> 
 				</td>
 			</tr>
 			<tr>
 				<td>
-				    <textarea name="descrizione_ente" maxlenght="80" cols="80" rows="5" >${requestScope.ente.descrizione_ente}</textarea>
+				    <textarea name="descrizione" maxlenght="80" cols="80" rows="5" ></textarea>
 				
 				</td>		
 			</tr>
@@ -274,8 +296,9 @@
 				</td>
 			</tr>					
 	</table>
-</form>					
-
+</form>				
+</div>	
+<br>
 		<div class="jumbotron text-center" style="margin-bottom: 0">
 		<p>Footer</p>
 		</div>

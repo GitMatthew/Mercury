@@ -19,7 +19,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Mercury Events</title>
+<title>Ente</title> 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -34,7 +34,8 @@
 </head>
 <body>
  
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace"
+		style="background-color:black !important;">
 	<a class="navbar-brand noSpace" href="/Mercury_Mercury/ControllerHomepage?da=0"><img
 		class="noSpace" style="width: 150px; height: 60px;"
 		src="/Mercury_Mercury/images/logo.jpg"> </a>
@@ -56,28 +57,33 @@
 
 <center>
 
-<h1>MODIFICA EVENTO</h1>
+<div class="banner01">
+<br><br>
+<h1 class="scrittabianca">MODIFICA EVENTO</h1>
 <% if(request.getAttribute("messaggio")!=null) { %>   	
-<h6 ><%=request.getAttribute("messaggio")%></h6>	
+<h3 class="scrittabianca"><%=request.getAttribute("messaggio")%></h3>	
 <% } else {	%>	
-<h6 >Benvenuto su Mercury !</h6> 
+<h3 class="scrittabianca">Benvenuto su Mercury !</h3> 
 <% } %>
 
-  <div align="center" class="row sticky-top"
+  <br><br>
+  </div>
+  
+  <div align="center" class="row sticky-top  banner01"
 		style="overflow: auto; padding: 10px; margin: 0px; min-width: 100%; max-width: 100%; background-color: rgba(128, 0, 0, 0.4);">
 
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=1"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=1"  class="linkAPRIricerca banner01 ">
 				NUOVO EVENTO </a>
 				</div>
         
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=2"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=2"  class="linkAPRIricerca banner01 ">
 				GESTISCI EVENTO </a>
 				</div>
 
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=3"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=3"  class="linkAPRIricerca banner01">
 				GESTISCI ACCOUNT </a>
 				</div>	
 						  
@@ -99,8 +105,13 @@
 								<br> 
 								<select name="id_categoria" class="selectpicker"> 
 									<optgroup label ="Categoria">      
-										 <c:forEach var="j" items="${requestScope.categorie}" >	            				
-											  <option value="${j.id_categoria}">${j.nome_categoria}</option>	              
+										 <c:forEach var="j" items="${requestScope.categorie}" >	           														  
+                                              <c:if test="${j.id_categoria == requestScope.evento.id_categoria}">
+                                                   <option value="${j.id_categoria}" selected="selected">${j.nome_categoria}</option>
+                                              </c:if>
+                                              <c:if test="${j.id_categoria != requestScope.evento.id_categoria}">
+                                                   <option value="${j.id_categoria}">${j.nome_categoria}</option>
+                                              </c:if>											              
 										 </c:forEach>  	           
 									</optgroup>         
 								</select>
@@ -110,7 +121,7 @@
 						<td>
 							<label><b><i>Cambia Periodo evento</i></b></label>
 							<br>
-							<label>Dal :</label> 
+							<label>Dal* :</label> 
 							
 							<input type="date" id="inizio" name="dataInizio" value="${requestScope.data_inizio}">
 							
@@ -130,51 +141,80 @@
 					
 					$(document).ready(function() {						
 
-								$("#id_regione").change(function() {$.ajax({type : 'POST',
-															data : {regione : $("#id_regione").val(),dap : "0"},
-															url : '/Mercury_Mercury/ControllerHomepage',
-															success : function(result) {
-																	var vPro = [];
-																	vPro.push(result);
-																	var json = JSON.parse(result);
-																	$('#id_provincia').empty();
-																	$('#id_comune').empty();
-																	$('#id_provincia').append('<option value="null">seleziona</option>');
-																	$('#id_comune').append('<option value="null">seleziona</option>');
-																	for ( var i in json.pro22) {
-																		$('#id_provincia').append('<option value="'+json.pro22[i]+'">'+ json.pro22[i]+ '</option>')
+						$("#id_regione").change(function() {
+							
+							
+							$.ajax({type : 'POST',
+													data : {regione : $("#id_regione").val(),dap : "0"},
+													url : '/Mercury_Mercury/ControllerHomepage',
+													success : function(result) {
+				
+															var vPro = [];
+															vPro.push(result);
+															var json = JSON.parse(result);
+															$('#id_provincia').empty();
+															$('#id_comune').empty();
+															$('#id_provincia').append('<option value="null">seleziona</option>');
+															$('#id_comune').append('<option value="null">seleziona</option>');
+															
+															var x1 =0;
+															var x2 = 0;
+															for ( var i in json.pro22) {
+																x2 =0 ;
+																for ( var j in json.pro23) {
+																	if(x2==x1){
+																		$('#id_provincia').append('<option value="'+json.pro22[i]+'">'+ json.pro23[j]+ '</option>');
+																		
 																	}
+																
+																	x2=x2+1;
 																}
-															});
+															x1 = x1+1 ;
+																}
+															
+														
+													}
+													
+							  			});
 
-												});
+										});
 
-								$("#id_provincia").change(function() {$.ajax({
-																type : 'POST',
-																data : {provincia : $("#id_provincia").val(),dap : "1"},
-																url : '/Mercury_Mercury/ControllerHomepage',
-																success : function(result) {
-																	var vCom = [];
-																	vCom.push(result);
-																	var json = JSON.parse(result);
-																	$('#id_comune').empty();
-																	$('#id_comune').append('<option value="null">seleziona</option>');
-																	for ( var i in json.com22) {
-																		$('#id_comune').append('<option value="'+json.com22[i]+'">'+ json.com22[i]+ '</option>')
+						$("#id_provincia").change(function() {
+						
+							$.ajax({
+														type : 'POST',
+														data : {provincia : $("#id_provincia").val(),dap : "1"},
+														url : '/Mercury_Mercury/ControllerHomepage',
+														success : function(result) {
+															
+															
+															var vCom = [];
+															vCom.push(result);
+															var json = JSON.parse(result);
+															$('#id_comune').empty();
+															$('#id_comune').append('<option value="null">seleziona</option>');
+												
+															var x1 =0;
+															var x2 = 0;
+															for ( var i in json.com22) {
+																x2 =0 ;
+																for ( var j in json.com23) {
+																	if(x2==x1){
+																		$('#id_comune').append('<option value="'+json.com22[i]+'">'+ json.com23[j]+ '</option>');
+																		
 																	}
+																
+																	x2=x2+1;
 																}
-															});
+															x1 = x1+1 ;
+																}
+														}
+													});
 
-												});	});
+										});	});
 					
 					
-					</script>	<%
-		Connection conn = null;
-		conn = Dao.getConnection();
-		Statement x = null;
-		ResultSet rs = null;
-	%>  
-			
+					</script>	
 				<tr>
 					<td>
 				
@@ -185,43 +225,31 @@
 						<label><b><i>Provincia</i></b></label> 
 					</td>
 					<td>
-						<label><b><i>Comune</i></b></label> 
+						<label><b><i>Comune*</i></b></label> 
 					</td>
 				</tr>
 						
 				<tr>
 					<td>
-                         <%
-					try {
-						x = conn.createStatement();
-						rs = x.executeQuery("select nome_regione from regioni order by nome_regione ASC; ");
-						
-						out.print("<select  id= 'id_regione' class='selectpicker'>");
-						out.print("<option id='primoReg'  value='null'> seleziona </option> ");
-						while (rs.next()) {
-							out.print("<option value='" + rs.getString("nome_regione") + "'>");
-							out.print(rs.getString("nome_regione"));
-							out.print("</option>");
-						}
-						out.print("</select>");
-					}
-					catch (Exception e) {
-						out.println("wrong entry" + e); 
-					}
-				%>
-						
+                        <select  id= 'id_regione'>
+                        <option id='primoReg'  value='null'> seleziona </option>
+			        <c:forEach var="j" items="${sessionScope.reg22}">
+				<option  value="<c:out value="${j.id_regione}"></c:out>"> <c:out value="${j.nome_regione}"></c:out>	 </option> 
+			        </c:forEach>	
+			
+			</select>
 
 					</td>
 					<td>
-						<select id="id_provincia" name="id_provincia" class="selectpicker"> 
-							     
+						<select id="id_provincia" name="id_provincia" class="select"> 
+							     <option >Provincia Precedente</option>
 						</select>
 					</td>
 					
 					<td>
 					
-							<select id="id_comune" name="id_comune" class="selectpicker">   
-								         
+							<select id="id_comune" name="id_comune" class="select">   
+							     <option value="${requestScope.evento.id_comune}" selected="selected">Comune Precedente</option>	         
 							</select>
 					</td>
 
@@ -243,24 +271,19 @@
 		<table width="50%">
 			<tr>
 				<td>
-					<label for=descrizione_ente><b><i>Descrizione Ente</i></b></label> 
+					<label for=descrizione><b><i>Descrizione Ente</i></b></label> 
 				</td>
 			</tr>
 			<tr>
 				<td>
-				    <textarea name="descrizione_ente" maxlenght="80" cols="80" rows="5" >${requestScope.ente.descrizione_ente}</textarea>
+				    <textarea name="descrizione" maxlenght="80" cols="80" rows="5" >${requestScope.evento.descrizione}</textarea>
 				
 				</td>		
 			</tr>
-			<center>
-				<tr>
-					<td>
-						<input type="submit">
-					</td>
-				</tr>
-			</center>
-		</table>					
-								
+			
+		</table>
+		<br>					
+		<center>	<input type="submit">	</center>				
 					
 </form>					
 

@@ -12,9 +12,9 @@
 %>    
   
 <html>
-<head> 
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Bootstrap 4 Website Example</title>
+<title>Mercury Events</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -25,80 +25,13 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-	
-	<style>
-a.linkAPRIricerca {
-	padding: 10px;
-	background-color: #f44336;
-	color: white;
-	padding: 5px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	background-color: #f44336;
-}
+<link rel="stylesheet" type="text/css" href="/Mercury_Mercury/css/homepageStile.css">
 
-a.linkAPRIricerca:hover {
-	background-color: #A52A2A;
-	color: #FF8C00;
-}
-
-#catSELEZIONATO, #regSELEZIONATO, #proSELEZIONATO, #comSELEZIONATO {
-	max-width: 150px !important;
-}
-
-.boxDestra {
-	width: 100%;
-	height: 300px;
-	margin-left: 8px;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
-}
-
-#box1 {
-	background-image: url('../images/newsletter.jpg');
-}
-
-#box2 {
-	background-image: url('../images/registraEnte.jpg');
-}
-
-#box3 {
-	background-image: url('../images/publi1.jpg');
-}
-
-#box4 {
-	background-image: url('../images/publi2.jpg');
-}
-
-.spaziaLato {
-	padding: 0px 20px 0px 20px;
-}
-
-.tabDATA {
-	min-width: 120px !important;
-}
-
-.noSpace {
-	padding: 0px !important;
-	margin: 0px !important;
-}
-
-.appari {
-}
-
-
-.scompari {
-}
-
-provaBG{background-color:blue;}
-
-</style>
-</head> 
+</head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark noSpace"
+		style="background-color:black !important;">
 	<a class="navbar-brand noSpace" href="/Mercury_Mercury/ControllerHomepage?da=0"><img
 		class="noSpace" style="width: 150px; height: 60px;"
 		src="/Mercury_Mercury/images/logo.jpg"> </a>
@@ -119,29 +52,32 @@ provaBG{background-color:blue;}
 </nav>
 
 <center>
-<h1>GESTISCI EVENTI</h1>
-
+<div class="banner01">
+<br><br>
+<h1 class="scrittabianca">GESTISCI EVENTI</h1>
 <% if(request.getAttribute("messaggio")!=null) { %>   	
-<h6 ><%=request.getAttribute("messaggio")%></h6>	
+<h3 class="scrittabianca"><%=request.getAttribute("messaggio")%></h3>	
 <% } else {	%>	
-<h6 >Benvenuto su Mercury !</h6> 
+<h3 class="scrittabianca">Benvenuto su Mercury !</h3> 
 <% } %>
 
-     <div align="center" class="row sticky-top"
+<br><br></div>
+
+     <div align="center" class="row sticky-top banner01"
 		style="overflow: auto; padding: 10px; margin: 0px; min-width: 100%; max-width: 100%; background-color: rgba(128, 0, 0, 0.4);">
 
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=1"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=1"  class="linkAPRIricerca banner01">
 				NUOVO EVENTO </a>
 				</div>
         
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=2"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=2"  class="linkAPRIricerca banner01">
 				GESTISCI EVENTO </a>
 				</div>
 
 		<div class="col">
-			<a href="/Mercury_Mercury/ControllerEnte?pag=3"  class="linkAPRIricerca">
+			<a href="/Mercury_Mercury/ControllerEnte?pag=3"  class="linkAPRIricerca banner01">
 				GESTISCI ACCOUNT </a>
 				</div>	
 						  
@@ -151,11 +87,9 @@ provaBG{background-color:blue;}
  
 </center>
  
- 
- <div style="height:40%; overflow: auto; width:auto"class="container">
-  
-	    <table border="1" style="width:100%">
-
+	<div  id="vediStretto" class="col-sm-12">
+			<table class="table table-dark table-hover">
+<thead>
 	<tr>
 		<th>Nome_Evento </th>
 		<th>Descrizione</th>
@@ -166,7 +100,9 @@ provaBG{background-color:blue;}
 		<th>Comune</th>
 		<th>MODIFICA</th>
 	</tr>
+	</thead>
 	
+	<tbody>
 	<c:forEach var="j" items="${requestScope.eventi}"> 
 		<tr>
 			<td><c:out value="${j.nome_evento}"></c:out></td>
@@ -177,9 +113,10 @@ provaBG{background-color:blue;}
 			<td><c:out value="${j.nome_categoria}"></c:out></td>
 			<td><c:out value="${j.nome_comune}"></c:out></td>
 					
-			<td><a href="/Mercury_Mercury/ControllerEnte?pag=4&id_evento=${j.id_evento}">Modifica</a>/<a href="/Mercury_Mercury/ControllerEnte?pag=5&id_evento=${j.id_evento}">Elimina</a></td>					 
+			<td><a class="nosottolina" href="/Mercury_Mercury/ControllerEnte?pag=4&id_evento=${j.id_evento}">Modifica</a>/<a class="nosottolina rossorosso" href="/Mercury_Mercury/ControllerEnte?pag=5&id_evento=${j.id_evento}">Elimina</a></td>					 
 		</tr>
 	</c:forEach>
+		</tbody>
 </table>
 	
     </form>

@@ -60,7 +60,7 @@
 	<c:forEach var="j" items="${sessionScope.gestione_eventi}">
 		<tr style="color:White">
 			<td>&nbsp;<c:out value="${j.nome_evento}"></c:out></td>
-			<td>&nbsp;<c:out value="${j.descrizione}"></c:out></td>
+			<td style="width:350px">&nbsp;<c:out value="${j.descrizione}"></c:out></td>
 			<td>&nbsp;<c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
 			<td>&nbsp;<c:out value="${j.nome_status}"></c:out></td>
 			<td style="width:140px" align="center">
