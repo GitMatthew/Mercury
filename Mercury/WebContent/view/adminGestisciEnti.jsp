@@ -46,7 +46,7 @@
 
   <h3 Style="text-align:center; color:White">Lista Enti</h3>
   
-  <table border="1" style="width:100%"> 
+  <table border="1" style="width:100%; table-layout: auto;"> 
 
 	<tr style="color:White">
 		<th>Ente</th>
