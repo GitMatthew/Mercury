@@ -46,7 +46,7 @@
 
   <h3 Style="text-align:center; color:White">Lista Enti</h3>
   
-  <table border="1" style="width:100%; table-layout: auto;"> 
+  <table border="1" style="width:100%; table-layout: fixed;"> 
 
 	<tr style="color:White">
 		<th>Ente</th>
@@ -58,7 +58,7 @@
 	<c:forEach var="j" items="${sessionScope.tutti_enti}">
 		<tr style="color:White">
 			<td>&nbsp;<c:out value="${j.nome_ente}"></c:out></td>
-			<td>&nbsp;<c:out value="${j.descrizione_ente}"></c:out></td>
+			<td style="word-wrap:break-word;">&nbsp;<c:out value="${j.descrizione_ente}"></c:out></td>
 			<td>&nbsp;<c:out value="${j.nome_status}"></c:out></td>
 			<td style="width:205px" align="center">
 			<c:if test="${j.id_status==3 || j.id_status==4 }"><button style="width:65px; color:Black" onclick="location.href='../ControllerAdmin?param=mod_ente&id_ente=${j.id_ente}&id_status=2'">Approva</button></c:if>
