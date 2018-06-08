@@ -370,8 +370,7 @@
 				</thead>
 				<tbody id="tabellaStretta">
 					<c:forEach var="j" items="${sessionScope.risultatoRicerca}">
-						<tr
-							onclick="window.location='<c:out value="${j.url_sito_evento}"></c:out>','_blank' ">
+						<tr	onclick="window.open('<c:out value="${j.url_sito_evento}"></c:out>') "	>
 							<td><img style="height: 40px; width: 40px;"
 								src="<c:out value='${j.url_img_evento }'></c:out>"></td>
 							<td><c:out value="${j.nome_evento }"></c:out></td>

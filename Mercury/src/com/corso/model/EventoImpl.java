@@ -17,7 +17,7 @@ public class EventoImpl implements EventoUtility
 		
 		String x = "";
 		if (!(cat.equals("null"))) {
-			x = x + " and cat.nome_categoria= '" + cat + "'";
+			x = x + " and cat.id_categoria= '" + cat + "'";
 		}
 		else {
 		}
