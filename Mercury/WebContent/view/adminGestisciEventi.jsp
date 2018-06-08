@@ -48,21 +48,21 @@
  
   <table style="width:100%;color:White">
   <tr style="color:White">
-		<th style="width:147px">Evento</th>
-		<th style="width:150px">Descrizione</th>
-		<th style="width:395px">Data Inizio - Data Fine</th>
-		<th style="width:167px">Status</th>
+		<th style="width:180px">Evento</th>
+		<th style="width:340px">Descrizione</th>
+		<th style="width:180px">Data Inizio - Data Fine</th>
+		<th style="width:110px">Status</th>
 		<th><center>Gestisci</center></th>
 	</tr>
  </table>
  <div style="height:430px; overflow:auto;">
- <table border="1" style="width:100%">
+ <table border="1" style="width:100%; table-layout: auto;">
 	<c:forEach var="j" items="${sessionScope.gestione_eventi}">
 		<tr style="color:White">
-			<td>&nbsp;<c:out value="${j.nome_evento}"></c:out></td>
+			<td style="width:172px">&nbsp;<c:out value="${j.nome_evento}"></c:out></td>
 			<td style="width:350px">&nbsp;<c:out value="${j.descrizione}"></c:out></td>
-			<td>&nbsp;<c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
-			<td>&nbsp;<c:out value="${j.nome_status}"></c:out></td>
+			<td style="width:140px;height:auto">&nbsp;<c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
+			<td><center><c:out value="${j.nome_status}"></c:out></center></td>
 			<td style="width:140px" align="center">
 			<c:if test="${j.id_status==3}"><button style="width:65px; color:Black" onclick="location.href='../ControllerAdmin?param=mod_ev&id_evento=${j.id_evento}&id_status=2'">Approva</button></c:if>
 			<c:if test="${j.id_status==2}"><button style="width:65px; color:Black" onclick="location.href='../ControllerAdmin?param=mod_ev&id_evento=${j.id_evento}&id_status=3'">Rifiuta</button></c:if></td>

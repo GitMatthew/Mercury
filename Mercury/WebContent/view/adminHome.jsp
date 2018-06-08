@@ -50,9 +50,9 @@
   <table style="width:100%;color:White;">
   <tr style="colro:White">
  		<th style="width:110px">Immagine</th> 
-	 	<th style="width:172px">Evento</th> 
-		<th style="width:177px">Descrizione</th>
-		<th style="width:514px">Data Inizio - Data Fine</th>
+	 	<th style="width:152px">Evento</th> 
+		<th style="width:430px">Descrizione</th>
+		<th style="width:150px">Data Inizio - Data Fine</th>
 		<th><center>Gestisci</center></th>
 	</tr>
   </table>
@@ -61,10 +61,10 @@
 	
 	<c:forEach var="j" items="${sessionScope.attesa}">
 		<tr style="color:White">
-			<td><img style="width:120px:;height:120px" src="<c:out value="${j.url_img_evento}"></c:out>"></td>
-			<td>&nbsp;<c:out value="${j.nome_evento}"></c:out></td>
-			<td style="width:170px">&nbsp;<c:out value="${j.descrizione}"></c:out></td>
-			<td>&nbsp;<c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
+			<td style="width:120px:;height:120px"><center><img style="width:115px:;height:115px" src="<c:out value="${j.url_img_evento}"></c:out>"></center></td>
+			<td style="width:172px">&nbsp;<c:out value="${j.nome_evento}"></c:out></td>
+			<td style="width:350px">&nbsp;<c:out value="${j.descrizione}"></c:out></td>
+			<td style="width:140px;height:auto">&nbsp;<c:out value="${j.data_inizio}"></c:out> - <c:out value="${j.data_fine}"></c:out></td>
 			<td style="width:140px" align="center"><button style="width:65px; color:Black" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=2'">Approva</button><button style="width:65px ; color:Black" onclick="location.href='../ControllerAdmin?param=mod_stat&id_evento=${j.id_evento}&id_status=3'">Rifiuta</button></td>
 			
  

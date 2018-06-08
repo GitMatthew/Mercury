@@ -282,7 +282,7 @@
 			</tr>
 			<tr>
 				<td>
-				    <textarea name="descrizione" maxlenght="80" cols="80" rows="5" ></textarea>
+				    <textarea name="descrizione" maxlength="500" cols="80" rows="5" ></textarea>
 				
 				</td>		
 			</tr>
