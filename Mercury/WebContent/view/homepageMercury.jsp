@@ -274,29 +274,18 @@
 		style="overflow: auto; padding: 10px; margin: 0px; min-width: 100%; max-width: 100%; background-color: rgba(128, 0, 0, 0.0);">
 		<a id="linkGETricerca" href="../ControllerHomepage?da=1"><img
 			style="padding-left: 5px; height: 40px;"
-			src="../images/search-icon2.png" /></a>
+			src="../images/search-icon3.png" /></a>
 		<div class="col">
 			<a href="#catAPRI" data-toggle="collapse" class="linkAPRIricerca banner01">
 				Categoria </a>
 			<div id="catAPRI" class="collapse">
-				<%
-					try {
-						x = conn.createStatement();
-						rs = x.executeQuery("select nome_categoria from categorie order by nome_categoria ASC");
+		<select  id= 'catSELEZIONATO'>
+<option id='primoCat'  value='null'> seleziona </option>
+			<c:forEach var="j" items="${sessionScope.cate}">
+				<option  value="<c:out value="${j.id_categoria}"></c:out>"> <c:out value="${j.nome_categoria}"></c:out>	 </option> 
+			</c:forEach>	
 			
-						out.print("<select id= 'catSELEZIONATO'>");
-						out.print("<option id='primoCat' value='null'> seleziona </option> ");
-						while (rs.next()) {
-							out.print("<option value='" + rs.getString("nome_categoria") + "'>");
-							out.print(rs.getString("nome_categoria"));
-							out.print("</option>");
-						}
-						out.print("</select>");
-					}
-					catch (Exception e) {
-						out.println("wrong entry" + e);
-					}
-				%>
+			</select>		
 			</div>
 		</div>
 		<div class="col">
