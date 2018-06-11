@@ -67,7 +67,7 @@
 			
 		</tr>
 	</c:forEach>
-	</table>
+	</table> 
 <% 
 }
 else
