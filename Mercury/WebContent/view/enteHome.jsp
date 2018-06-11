@@ -277,7 +277,7 @@
 		<tr>
 				<td>
 				
-					<label for=descrizione><b><i>Descrizione Ente</i></b></label> 
+					<label for=descrizione><b><i>Descrizione</i></b></label> 
 				</td>
 			</tr>
 			<tr>

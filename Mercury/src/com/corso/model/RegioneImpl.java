@@ -79,4 +79,39 @@ public class RegioneImpl implements RegioneUtility
 		
 	}
 	
+	public static Regione regioneByID (int id) {
+		
+		Connection conn = Dao.getConnection();
+		Regione r = null;
+		String qry = "SELECT * FROM regioni WHERE id_regione = '"+id+"'";
+		try {
+			
+			
+			Statement pst = conn.createStatement();
+			ResultSet rst = pst.executeQuery(qry);
+			
+			rst.next();
+				r = new Regione();
+				r.setNome_regione(rst.getString("nome_regione"));
+				r.setId_regione(rst.getInt("id_regione"));
+				
+			
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				conn.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return r ;
+		
+	}
+	
 }

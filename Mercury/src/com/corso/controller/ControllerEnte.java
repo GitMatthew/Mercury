@@ -137,14 +137,14 @@ public class ControllerEnte extends HttpServlet {
 				callHome(id_ente);
 				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Complila tutti i campi obbligatori !!!");
 				disp.forward(request, response);
-		    }
+		    } else {
 			
 			Evento nuovoEvento = new Evento();
 						
-			Date dataFine =Date.valueOf(request.getParameter("dataFine"));
-			Date dataInizio =Date.valueOf(request.getParameter("dataInizio"));	
+			Date dataFine =Date.valueOf(request.getParameter("dataFine"));		
+			Date dataInizio =Date.valueOf(request.getParameter("dataInizio"));
 			
-			if(dataFine==null) {
+			if((dataInizio.compareTo(dataFine)) > 0) {
 				dataFine=dataInizio;
 			}
 		
@@ -165,7 +165,7 @@ public class ControllerEnte extends HttpServlet {
 			nuovoEvento.setDescrizione(descrizione);
 			nuovoEvento.setId_comune(Integer.parseInt(request.getParameter("id_comune")));
 			nuovoEvento.setData_inizio(dataInizio);  
-			nuovoEvento.setData_fine(dataFine);		
+			nuovoEvento.setData_fine(dataFine);	
 			nuovoEvento.setId_ente(this.id_ente);
 			nuovoEvento.setId_status(1);
 			
@@ -177,6 +177,7 @@ public class ControllerEnte extends HttpServlet {
 				callHome(id_ente);
 				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Errore DataBase , riprova più tardi .");
 			}
+		    }
 			
 			disp.forward(request, response);			
 						
@@ -186,7 +187,7 @@ public class ControllerEnte extends HttpServlet {
 		  Date dataFine =Date.valueOf(request.getParameter("dataFine"));
 		  Date dataInizio =Date.valueOf(request.getParameter("dataInizio")); 
 		   
-		  if(dataFine==null) {
+		  if((dataInizio.compareTo(dataFine)) > 0) {
 				dataFine=dataInizio;
 			}
 		  
@@ -394,7 +395,7 @@ public class ControllerEnte extends HttpServlet {
 			
         case "6":
         	session.invalidate();
-        	response.sendRedirect("view/homepageMercury.jsp"); 
+        	response.sendRedirect("/Mercury_Mercury/ControllerHomepage?da=0"); 
         	      	
 			break;
 
