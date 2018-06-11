@@ -84,6 +84,7 @@ public class InviaEmail
 	    	 	Transport tr = sessione.getTransport("smtp");
 				tr.connect(host, user, psw);
 	    	 	Transport.send(mail, mail.getAllRecipients());
+	    	 	st.executeUpdate(NewsletterUtility.UPDATE_DATA);
 	    	 	System.out.println(mail);
 	    	 }	
 	     }catch(Exception e) {
