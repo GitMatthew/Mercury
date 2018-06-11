@@ -98,6 +98,9 @@ public class ControllerNewsletter extends HttpServlet {
 			break;
 
 		case "7":											// iscrizione alla newsletter
+			
+			s.setAttribute("messaggio2", "");
+			s.setAttribute("messaggio", "");
 			String mail = request.getParameter("mail");			
 			String cadenza = request.getParameter("cadenza");			
 			String[] listacategorie = null;

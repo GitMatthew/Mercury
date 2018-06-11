@@ -212,12 +212,12 @@
         
 		<form method="get" action="../ControllerNewsletter">			
 	
-        <h2>Lista iscrizione luoghi della Newsletter :</h2>
+        
        
         
 		<c:choose>
 			<c:when test="${sessionScope.luoghi.size()>0}">
-				
+				<h2>Lista iscrizione luoghi della Newsletter :</h2>
 								<c:forEach items="${sessionScope.luoghi}" var="current">
 					<p style="color: red; display: inline;">
 						<c:out value="Luogo:"></c:out>
@@ -226,7 +226,7 @@
 						<c:out
 							value="${current.regione.nome_regione} ${current.provincia.nome_provincia} ${current.comune.nome_comune}" />
 					</p>
-					<p>-------------------------------------------------</p>
+					<hr>
 				</c:forEach>
 				<p>
 				     <input type="hidden" name="n" value="6"> <input type="submit"
