@@ -206,7 +206,12 @@
 		
 		</div>
 		
-	
+		
+		
+	    <table>
+	    
+	    <tr><td width="50%">
+	    	    
 					
 		<div>
         
@@ -217,7 +222,15 @@
         
 		<c:choose>
 			<c:when test="${sessionScope.luoghi.size()>0}">
-				<h2>Lista iscrizione luoghi della Newsletter :</h2>
+			
+				<h3>Lista iscrizione luoghi della Newsletter :</h3>
+				</td>
+				<td>
+				<h3>Concludi l'iscrizione alla Newsletter:</h3>
+				</td>
+				</tr>
+				<tr><td width="50%">
+				<hr>
 								<c:forEach items="${sessionScope.luoghi}" var="current">
 					<p style="color: red; display: inline;">
 						<c:out value="Luogo:"></c:out>
@@ -242,16 +255,11 @@
 		
 				</form>
 				
-				
-			<br>
-	        <br>
-	        <br>
-	        <br>
+	        
 			
-			
-		
-			<c:if test="${requestScope.news == 2 }"> 
-			<h2>Concludi l'iscrizione alla Newsletter:</h2>
+			</td>
+		    <td>
+			<c:if test="${requestScope.news == 2 }"> 			
 				<div style="text-align: left; padding: 10px">
 					<form method="get" action="../ControllerNewsletter">
 						<input type="hidden" name="n" value="7">
@@ -284,6 +292,9 @@
 					<br></br>
  
 	</div>
+	
+	</td></tr>
+	</table>
 	
 
 	<br>
