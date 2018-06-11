@@ -93,10 +93,11 @@ public class ControllerAdmin extends HttpServlet {
 		if(prm.equals("mod_stat"))
 		{
 			HttpSession session = request.getSession();
+			session.removeAttribute("notmod");
 			int x=Integer.parseInt(request.getParameter("id_evento"));
 			int y=Integer.parseInt(request.getParameter("id_status"));
-			im.modEvento(x,y);
-			im.sendNotifica(x, y); 
+			if(im.modEvento(x,y)==true) {im.sendNotifica(x, y);}
+			else {session.setAttribute("notmod","Modifica non valida, Ente non approvato");}
 			ArrayList<Evento> a=im.getEventiAttesa();
 			session.setAttribute("attesa", a);
 			response.sendRedirect("view/adminHome.jsp");	
@@ -106,10 +107,12 @@ public class ControllerAdmin extends HttpServlet {
 		if(prm.equals("mod_ev"))
 		{
 			HttpSession session = request.getSession();
+			session.removeAttribute("notmod");
 			int x=Integer.parseInt(request.getParameter("id_evento"));
 			int y=Integer.parseInt(request.getParameter("id_status"));
-			im.modEvento(x,y);
-			im.sendNotifica(x, y);
+			if(im.modEvento(x,y)==true) {im.sendNotifica(x, y);}
+			else {session.setAttribute("notmod","Modifica non valida, Ente non approvato");}
+			
 			ArrayList<Evento> a=im.getAllEvents();
 			session.setAttribute("gestione_eventi", a);
 			response.sendRedirect("view/adminGestisciEventi.jsp");	

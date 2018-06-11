@@ -33,7 +33,7 @@ public interface AdminUtility {
 	
 	public void delCat(int id_categoria);
 
-	public void modEvento(int id_ev,int id_status);
+	public boolean modEvento(int id_ev,int id_status);
 	
 	public void modEnte(int id_ent,int id_status);
 	

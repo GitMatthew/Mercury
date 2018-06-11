@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
+
 import com.corso.connection.Dao;
 
 public class AdminImpl implements AdminUtility {
@@ -170,9 +172,22 @@ public class AdminImpl implements AdminUtility {
 
 	@Override
 
-	public void modEvento(int id_ev, int id_status) {
+	public boolean modEvento(int id_ev, int id_status) {
 
 		Connection c = Dao.getConnection();
+		Statement st;
+		ResultSet rst;
+		boolean res=false;
+		int x=0;
+		try {
+		String qry="select enti.id_status from enti,eventi where eventi.id_ente=enti.id_ente and eventi.id_evento="+id_ev;
+		st=c.createStatement();
+		rst=st.executeQuery(qry);
+		rst.next();
+		x=rst.getInt("id_status");
+		}catch(SQLException l) {l.printStackTrace();}
+		
+		if(x==2) {
 		try {
 			PreparedStatement pst = c.prepareStatement(AdminUtility.SET_EVENT_STATUS);
 			
@@ -188,7 +203,8 @@ public class AdminImpl implements AdminUtility {
 
 		} catch (SQLException u) {
 			u.printStackTrace();
-		}
+		} res=true;;}else {}
+		return res;
 	}
 
 	@Override
