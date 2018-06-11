@@ -137,7 +137,7 @@ public class ControllerEnte extends HttpServlet {
 				callHome(id_ente);
 				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Complila tutti i campi obbligatori !!!");
 				disp.forward(request, response);
-		    }
+		    } else {
 			
 			Evento nuovoEvento = new Evento();
 						
@@ -177,6 +177,7 @@ public class ControllerEnte extends HttpServlet {
 				callHome(id_ente);
 				request.setAttribute("messaggio", "CREAZIONE EVENTO FALLITA ! Errore DataBase , riprova più tardi .");
 			}
+		    }
 			
 			disp.forward(request, response);			
 						
