@@ -56,4 +56,40 @@ public class ProvinciaImpl implements ProvinciaUtility
 		return null;
 	}
 	
+public static Provincia provinciaByID (int id) {
+		
+		Connection conn = Dao.getConnection();
+		Provincia p = null;
+		String qry = "SELECT * FROM province WHERE id_provincia = '"+id+"'";
+		try {
+			
+			
+			Statement pst = conn.createStatement();
+			ResultSet rst = pst.executeQuery(qry);
+			
+			rst.next();
+				p = new Provincia();
+				p.setNome_provincia(rst.getString("nome_provincia"));
+				p.setId_provincia(rst.getInt("id_provincia"));
+				p.setId_regione(rst.getInt("id_regione"));
+				
+			
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				conn.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return p ;
+		
+	}
+	
 }

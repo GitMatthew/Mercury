@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 
-
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,13 +15,19 @@ import javax.servlet.http.HttpSession;
 import com.corso.model.Cadenza;
 import com.corso.model.Categoria;
 import com.corso.model.Comune;
+import com.corso.model.ComuneImpl;
+import com.corso.model.EventoImpl;
 import com.corso.model.Luogo;
 import com.corso.model.NewsletterImpl;
 import com.corso.model.Provincia;
+import com.corso.model.ProvinciaImpl;
 import com.corso.model.Regione;
+import com.corso.model.RegioneImpl;
 @WebServlet("/ControllerNewsletter")
 public class ControllerNewsletter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	RequestDispatcher disp=null;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String hidden = request.getParameter("n");
@@ -36,57 +42,24 @@ public class ControllerNewsletter extends HttpServlet {
 
 		switch (hidden) {
 		case "0":
+						   
+			ArrayList<Luogo> luoghi = new ArrayList<Luogo>();
+			s.setAttribute("luoghi", luoghi);	
 			s.setAttribute("categorie", categorie);
 			s.setAttribute("cadenze", cadenze);
-			s.setAttribute("regioni", regioni);	   
-			ArrayList<Luogo> luoghi = new ArrayList<Luogo>();
-			s.setAttribute("luoghi", luoghi);	   
+			request.setAttribute("message", null);
+			
+			ArrayList<Regione> reg22 = new ArrayList<Regione>();
+			EventoImpl ev0 = new EventoImpl();
+			RegioneImpl rg = new RegioneImpl();
+			reg22 = rg.filtroRegioni();
+			HttpSession s0 = request.getSession();
+			s0.setAttribute("reg22", reg22);
+			
 			response.sendRedirect("view/newsletter.jsp");
 			break;
-
-		case "1":
-			province = ip.getProvince(request.getParameter("regione"));
-			Regione reg = null;
-			if(reg==null) {
-				for(Regione x : regioni) {
-					if(x.getId_regione()==Integer.parseInt(request.getParameter("regione"))) {
-						reg = x; 
-					}
-				}
-			}
-			s.setAttribute("regioneScelta", reg);
-			s.setAttribute("province", province);
-			response.sendRedirect("view/newsletter.jsp");
-			break;
-
-		case "2":
-			Provincia prov = null;
-			if(prov==null) {
-				for(Provincia x :(ArrayList<Provincia>) s.getAttribute("province")) {
-					if(x.getId_provincia()==Integer.parseInt(request.getParameter("provincia"))) {
-						prov = x; 
-					}
-				}
-			}
-			comuni = ip.getComuni(request.getParameter("provincia"));
-			s.setAttribute("provinciaScelta", prov);
-			s.setAttribute("comuni", comuni);
-			response.sendRedirect("view/newsletter.jsp");
-			break;
-
-		case "3":
-			Comune com = null;
-			if(com==null) {
-				for(Comune x :(ArrayList<Comune>) s.getAttribute("comuni")) {
-					if(x.getId_comune()==Integer.parseInt(request.getParameter("comune"))) {
-						com = x; 
-					}
-				}
-			}
-			s.setAttribute("comuneScelta", com);
-			response.sendRedirect("view/newsletter.jsp");
-			break;
-
+			
+		
 		case "4":
 			s.setAttribute("regioneScelta", null);
 			s.setAttribute("province", null);
@@ -97,21 +70,20 @@ public class ControllerNewsletter extends HttpServlet {
 			break;
 
 		case "5":
-			if(s.getAttribute("regioneScelta")!=null){
+			if(request.getParameter("id_regione")!= null && request.getParameter("id_regione")!="null"){
 				Luogo luogo = new Luogo();
-				luogo.setRegione((Regione) s.getAttribute("regioneScelta"));
-				luogo.setProvincia((Provincia) s.getAttribute("provinciaScelta"));
-				luogo.setComune((Comune) s.getAttribute("comuneScelta"));
+				luogo.setRegione(RegioneImpl.regioneByID(Integer.parseInt(request.getParameter("id_regione"))));
+				luogo.setProvincia(ProvinciaImpl.provinciaByID(Integer.parseInt(request.getParameter("id_provincia"))));	
+				luogo.setComune(ComuneImpl.comuneByID(Integer.parseInt(request.getParameter("id_comune"))));
+				
 				luoghi = (ArrayList<Luogo>) s.getAttribute("luoghi");
 				luoghi.add(luogo);
 				s.setAttribute("luoghi", luoghi);
 			}
 
 			//svuoto vecchi attributi
-			s.setAttribute("regioneScelta", null);
-			s.setAttribute("province", null);
+			s.setAttribute("regioneScelta", null);			
 			s.setAttribute("provinciaScelta", null);
-			s.setAttribute("comuni", null);
 			s.setAttribute("comuneScelta", null);
 			//Aggiungo l'arraylist alla sessione
 			response.sendRedirect("view/newsletter.jsp");
@@ -121,6 +93,7 @@ public class ControllerNewsletter extends HttpServlet {
 			//svuoto l'arraylist luoghi
 			ArrayList<Luogo> luoghiDue = new ArrayList<Luogo>();
 			s.setAttribute("luoghi", luoghiDue);
+			request.setAttribute("news" , null );
 			response.sendRedirect("view/newsletter.jsp");
 			break;
 
@@ -137,12 +110,7 @@ public class ControllerNewsletter extends HttpServlet {
 			
 			ArrayList<Luogo> luoghiTre = (ArrayList<Luogo>) s.getAttribute("luoghi");		
 			
-			if(mail.equals("")||mail.equals(" ")) {
-				s.setAttribute("messaggio", "Attenzione! Email è un campo obbligatorio!");
-				response.sendRedirect("view/newsletter2.jsp");
-			}else {
-				response.sendRedirect("view/newsletter3.jsp");
-			}
+			
 			
 			ip.subscribeNewsletter(mail,cadenza,luoghiTre,listacategorie);
 			String oggetto = "Benvenuto in Mercury";
@@ -152,6 +120,14 @@ public class ControllerNewsletter extends HttpServlet {
 					+ "\n"
 					+ "Senza impegno! - unsubscribe mail: http://localhost:8080/MercuryUmberto/view/unsubscribe-newsletter.jsp";
 			ip.sendMail(mail, oggetto, descrizione);
+			
+			if(mail.equals("")||mail.equals(" ")) {
+				s.setAttribute("messaggio", "Attenzione! Email è un campo obbligatorio!");
+				response.sendRedirect("view/newsletter.jsp");
+			}else {
+				request.setAttribute("message", "Registrazione Riuscita !  Torna alla HOME.");
+				response.sendRedirect("/Mercury_Mercury/ControllerHomepage?da=0");
+			}
 			break;
 
 		case "8":											//fase di disiscrizione e controllo al db

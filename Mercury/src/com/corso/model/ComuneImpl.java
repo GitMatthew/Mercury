@@ -114,5 +114,41 @@ try {
 		}
 		return null;
 	}
+	
+public static Comune comuneByID (int id) {
+		
+		Connection conn = Dao.getConnection();
+		Comune c = null;
+		String qry = "SELECT * FROM comuni WHERE id_comune = '"+id+"'";
+		try {
+			
+			
+			Statement pst = conn.createStatement();
+			ResultSet rst = pst.executeQuery(qry);
+			
+			rst.next();
+				c = new Comune();
+				c.setNome_comune(rst.getString("nome_comune"));
+				c.setId_comune(rst.getInt("id_comune"));
+				c.setId_provincia(rst.getInt("id_provincia"));
+				
+			
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				conn.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return c ;
+		
+	}
 
 }
