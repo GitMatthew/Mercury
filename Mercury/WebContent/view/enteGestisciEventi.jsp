@@ -113,7 +113,7 @@
 					
 			<td><a class="nosottolina" href="/Mercury_Mercury/ControllerEnte?pag=4&id_evento=${j.id_evento}">Modifica</a>/<a class="nosottolina rossorosso" href="/Mercury_Mercury/ControllerEnte?pag=5&id_evento=${j.id_evento}">Elimina</a></td>					 
 		</tr>
-	</c:forEach>
+	</c:forEach> 
 		</tbody>
 </table>
 
