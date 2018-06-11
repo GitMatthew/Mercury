@@ -144,7 +144,7 @@ public class ControllerEnte extends HttpServlet {
 			Date dataFine =Date.valueOf(request.getParameter("dataFine"));
 			Date dataInizio =Date.valueOf(request.getParameter("dataInizio"));	
 			
-			if(dataFine==null) {
+			if(dataFine==null || (dataInizio.compareTo(dataFine)) > 0) {
 				dataFine=dataInizio;
 			}
 		
@@ -186,7 +186,7 @@ public class ControllerEnte extends HttpServlet {
 		  Date dataFine =Date.valueOf(request.getParameter("dataFine"));
 		  Date dataInizio =Date.valueOf(request.getParameter("dataInizio")); 
 		   
-		  if(dataFine==null) {
+		  if(dataFine==null || (dataInizio.compareTo(dataFine)) > 0) {
 				dataFine=dataInizio;
 			}
 		  
