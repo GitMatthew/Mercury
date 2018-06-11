@@ -320,14 +320,14 @@ public class NewsletterImpl implements NewsletterUtility {
 	    nome=rs.getString("nome_ente");
 	    mail=rs.getString("email_ente");
 	    
-	    if(status==2) { testo = "Gentile "+nome+", la tua richiesta di iscrizione è stata: Approvata, Benvenuto in Mercury!";}
-	    if(status==3) { testo = "Gentile "+nome+", la tua richiesta di iscrizione è stata: Rifiutata, contattare l'amministratore.";}
-	    if(status==4) { testo = "Gentile "+nome+", A causa di mancata osservanza del codice di utilizzo della nostra piattaforma, \n Sei stato bloccato.";oggetto="Sospensione iscrizione ente";}
+	    if(status==2) { testo = "Gentile "+nome+", la sua richiesta di iscrizione è stata: Approvata, Benvenuto in Mercury!";}
+	    if(status==3) { testo = "Gentile "+nome+", la sua richiesta di iscrizione è stata: Rifiutata, contattare l'amministratore.";}
+	    if(status==4) { testo = "Gentile "+nome+", A causa di mancata osservanza del codice di utilizzo della nostra piattaforma, \n è stato bloccato.";oggetto="Sospensione iscrizione ente";}
 	    
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
 		props.setProperty("mail.transport.protocol", "smtp");     
-		props.setProperty("mail.host", "smtp.gmail.com");  
+		props.setProperty("mail.host", "smtp.gmail.com");   
 		props.put("mail.smtp.auth", "true");  
 		props.put("mail.smtp.port", "465");  
 		props.put("mail.smtp.socketFactory.port", "465");  
