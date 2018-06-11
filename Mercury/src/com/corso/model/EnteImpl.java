@@ -172,7 +172,7 @@ public class EnteImpl implements EnteUtility {
 				result = true;
 			}
 		} catch (SQLException a) {
-			a.printStackTrace();
+			a.printStackTrace(); 
 		}
 
 		return result;
