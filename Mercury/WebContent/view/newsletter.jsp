@@ -103,8 +103,8 @@
 															var json = JSON.parse(result);
 															$('#id_provincia').empty();
 															$('#id_comune').empty();
-															$('#id_provincia').append('<option value="null">seleziona</option>');
-															$('#id_comune').append('<option value="null">seleziona</option>');
+															$('#id_provincia').append('<option value=0>seleziona</option>');
+															$('#id_comune').append('<option value=0>seleziona</option>');
 															
 															var x1 =0;
 															var x2 = 0;
@@ -141,7 +141,7 @@
 															vCom.push(result);
 															var json = JSON.parse(result);
 															$('#id_comune').empty();
-															$('#id_comune').append('<option value="null">seleziona</option>');
+															$('#id_comune').append('<option value=0>seleziona</option>');
 												
 															var x1 =0;
 															var x2 = 0;
@@ -177,7 +177,7 @@
 	   	   
 	   	    <label><b><i>Regione :</i></b></label>    
 			<select id='id_regione' name="id_regione">
-					<option id='primoReg' value='null'>seleziona</option>
+			        <option value=0>seleziona</option>
 					<c:forEach var="j" items="${sessionScope.reg22}">
 						<option value="<c:out value="${j.id_regione}"></c:out>">
 							<c:out value="${j.nome_regione}"></c:out>
@@ -188,12 +188,12 @@
 			
 			<label><b><i>Provincia :</i></b></label>  
 			<select id="id_provincia" name="id_provincia">
-            <option  value='null'>seleziona</option>
+            <option value=0>seleziona</option>
 			</select>
 			
             <label><b><i>Comune :</i></b></label>           
 			<select id="id_comune" name="id_comune">
-            <option  value='null'>seleziona</option>
+            <option value=0>seleziona</option>
 			</select>
 			   
 

@@ -70,11 +70,18 @@ public class ControllerNewsletter extends HttpServlet {
 			break;
 
 		case "5":
-			if(request.getParameter("id_regione")!= null && request.getParameter("id_regione")!="null"){
+			if(Integer.parseInt(request.getParameter("id_regione"))!=0){
+
 				Luogo luogo = new Luogo();
 				luogo.setRegione(RegioneImpl.regioneByID(Integer.parseInt(request.getParameter("id_regione"))));
+				if(Integer.parseInt(request.getParameter("id_provincia"))!=0) {				
+					luogo.setProvincia(ProvinciaImpl.provinciaByID(Integer.parseInt(request.getParameter("id_provincia"))));
+					if(Integer.parseInt(request.getParameter("id_comune"))!=0) {		
+						luogo.setComune(ComuneImpl.comuneByID(Integer.parseInt(request.getParameter("id_comune"))));						
+					}				
+				}
 				luogo.setProvincia(ProvinciaImpl.provinciaByID(Integer.parseInt(request.getParameter("id_provincia"))));	
-				luogo.setComune(ComuneImpl.comuneByID(Integer.parseInt(request.getParameter("id_comune"))));
+				
 				
 				luoghi = (ArrayList<Luogo>) s.getAttribute("luoghi");
 				luoghi.add(luogo);
