@@ -88,13 +88,12 @@
 </center>
  
 	<div  id="vediStretto" class="col-sm-12">
-			<table class="table table-dark table-hover">
+			<table class="table table-dark table-hover" style="table-layout:fixed;">
 <thead>
 	<tr>
 		<th>Nome_Evento </th>
-		<th>Descrizione</th>
-		<th>Data_Inizio</th>
-		<th>Data_Fine__</th>
+		<th colspan="2">Descrizione</th>
+		<th>Data_inizio_fine</th>
 		<th>Status</th>
 		<th>Categoria</th>
 		<th>Comune</th>
@@ -106,9 +105,8 @@
 	<c:forEach var="j" items="${requestScope.eventi}"> 
 		<tr>
 			<td><c:out value="${j.nome_evento}"></c:out></td>
-			<td><c:out value="${j.descrizione}"></c:out></td>
-			<td><c:out value="${j.data_inizio}"></c:out></td>
-			<td><c:out value="${j.data_fine}"></c:out></td>
+			<td style="word-wrap:break-word" colspan="2"><c:out value="${j.descrizione}"></c:out></td>
+			<td><c:out value="${j.data_inizio} - ${j.data_fine}"></c:out></td>
 			<td><c:out value="${j.nome_status}"></c:out></td>
 			<td><c:out value="${j.nome_categoria}"></c:out></td>
 			<td><c:out value="${j.nome_comune}"></c:out></td>
@@ -118,8 +116,7 @@
 	</c:forEach>
 		</tbody>
 </table>
-	
-    </form>
+
 
 </body>
 </html>
