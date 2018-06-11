@@ -142,9 +142,11 @@ public class ControllerEnte extends HttpServlet {
 			Evento nuovoEvento = new Evento();
 						
 			Date dataFine =Date.valueOf(request.getParameter("dataFine"));
-			Date dataInizio =Date.valueOf(request.getParameter("dataInizio"));	
+			System.out.println("fine"+dataFine.toString());
+			Date dataInizio =Date.valueOf(request.getParameter("dataInizio"));
+			System.out.println("inizio"+dataInizio.toString());
 			
-			if(dataFine==null || (dataInizio.compareTo(dataFine)) > 0) {
+			if((dataInizio.compareTo(dataFine)) > 0) {
 				dataFine=dataInizio;
 			}
 		
@@ -165,7 +167,9 @@ public class ControllerEnte extends HttpServlet {
 			nuovoEvento.setDescrizione(descrizione);
 			nuovoEvento.setId_comune(Integer.parseInt(request.getParameter("id_comune")));
 			nuovoEvento.setData_inizio(dataInizio);  
-			nuovoEvento.setData_fine(dataFine);		
+			nuovoEvento.setData_fine(dataFine);	
+			System.out.println("fine"+dataFine.toString());
+			System.out.println("inizio"+dataInizio.toString());
 			nuovoEvento.setId_ente(this.id_ente);
 			nuovoEvento.setId_status(1);
 			
@@ -186,7 +190,7 @@ public class ControllerEnte extends HttpServlet {
 		  Date dataFine =Date.valueOf(request.getParameter("dataFine"));
 		  Date dataInizio =Date.valueOf(request.getParameter("dataInizio")); 
 		   
-		  if(dataFine==null || (dataInizio.compareTo(dataFine)) > 0) {
+		  if((dataInizio.compareTo(dataFine)) > 0) {
 				dataFine=dataInizio;
 			}
 		  
