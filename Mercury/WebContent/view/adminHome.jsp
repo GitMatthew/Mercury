@@ -46,7 +46,12 @@
 {
 %>
 
-  <h3 Style="text-align:center; color:White">Lista Eventi</h3>
+  <h3 Style="text-align:center; color:White">Lista Eventi</h3><br>
+  
+  <% if(session.getAttribute("notmod")!=null){ %>
+  <h5 Style="text-align:center; color:Red"><c:out value="${sessionScope.notmod}"/></h5>
+  <% }%>
+  
   <table style="width:100%;color:White;">
   <tr style="colro:White">
  		<th style="width:215px">Immagine</th> 
@@ -76,7 +81,7 @@
 }
 else
 { 
-	out.print("Nessun Evento in Attesa");
+	out.print("<font color='white'>Nessun Evento in Attesa</font>");
 }
 %>
 
