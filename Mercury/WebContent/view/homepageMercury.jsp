@@ -404,12 +404,12 @@
 												</td>
 												
 												
-											<td style="float: left;">
+											<td style="float: left; word-wrap:break-word;">
 												<h2 style="float: left;" class="card-title">
 													<c:out value="${j.nome_evento }"></c:out>
 												</h2> <br> <br>
 											<br>
-												<p class="card-text">
+												<p class="card-text" style="max-width:500px">
 													<c:out value="${j.descrizione }"></c:out>
 												</p> <a target="_blank" href="<c:out value="${j.url_sito_evento}"></c:out>"
 												class="card-link"> link evento</a> 

@@ -76,6 +76,7 @@ public class AdminImpl implements AdminUtility {
 				e = new Evento();
 				
 				e.setUrl_img_evento(rst.getString("url_img_evento"));
+				e.setUrl_sito_evento(rst.getString("url_sito_evento"));
 				e.setId_evento(rst.getInt("id_evento"));
 				e.setNome_evento(rst.getString("nome_evento"));
 				e.setDescrizione(rst.getString("descrizione"));
@@ -111,6 +112,7 @@ public class AdminImpl implements AdminUtility {
 			while (rst.next()) {
 				e = new Ente();
 
+				e.setUrl_sito_ente(rst.getString("url_sito_ente"));
 				e.setId_ente(rst.getInt("id_ente"));
 				e.setNome_ente(rst.getString("nome_ente"));
 				e.setDescrizione_ente(rst.getString("descrizione_ente"));
