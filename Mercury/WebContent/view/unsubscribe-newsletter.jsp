@@ -110,7 +110,7 @@
 									value="Disiscriviti"> <%String s = (String) session.getAttribute("stampa");%> 
 									    <%
 											if (s != null) {
-												out.println("<h4 style='text-align: center'><font color='red'>" + s + "</font></h4>");
+												out.println("<h3 style='text-align: center'><font color='red'>" + s + "</font></h3>");
 												s = "";
 											}
 										%>

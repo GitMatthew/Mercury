@@ -145,8 +145,9 @@ public class ControllerNewsletter extends HttpServlet {
 			break;
 
 		case "8":											//fase di disiscrizione e controllo al db
-			String email=request.getParameter("email");
 			String stampa;
+			stampa="";			
+			String email=request.getParameter("email");			
 			boolean esito=ip.unsubscribeNewsletter(email);
 
 			if(esito==true) {

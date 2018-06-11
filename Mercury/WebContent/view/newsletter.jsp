@@ -266,10 +266,12 @@
 							<p style="color: red; font-weight: bold;">${sessionScope.messaggio}</p>
 							<input type="hidden" name="n" value="7">
 							<p style="color: green; font-weight: bold;">${sessionScope.messaggio2}</p>
-							<p style="display: inline;">Inserisci la tua email:</p> <input
+							<p style="display: inline;">Inserisci la tua email:</p> <br> <input
 							type="text" name="mail" size="25"> 
+							<br><br>
 								<p style="display: inline;">Seleziona la cadenza:</p> <select
 								name="cadenza" style="margin: 10px">
+								<br><br>
 									<c:forEach var="j" items="${sessionScope.cadenze}">
 										<option value="${j.id_cadenza}"><c:out
 												value="${j.nome_cadenza }"></c:out></option>
