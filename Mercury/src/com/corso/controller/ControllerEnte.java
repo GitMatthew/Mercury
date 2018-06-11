@@ -395,7 +395,7 @@ public class ControllerEnte extends HttpServlet {
 			
         case "6":
         	session.invalidate();
-        	response.sendRedirect("view/homepageMercury.jsp"); 
+        	response.sendRedirect("/Mercury_Mercury/ControllerHomepage?da=0"); 
         	      	
 			break;
 
