@@ -175,7 +175,7 @@
 	<input type="hidden" name="n" value="5">
 	   	   
 	   	   
-	   	    <label><b><i>Regione :</i></b></label>    
+	   	    <label class="scrittabianca"><b><i>Regione :</i></b></label>    
 			<select id='id_regione' name="id_regione">
 			        <option value=0>seleziona</option>
 					<c:forEach var="j" items="${sessionScope.reg22}">
@@ -186,12 +186,12 @@
 
 			</select>		
 			
-			<label><b><i>Provincia :</i></b></label>  
+			<label class="scrittabianca"><b><i>Provincia :</i></b></label>  
 			<select id="id_provincia" name="id_provincia">
             <option value=0>seleziona</option>
 			</select>
 			
-            <label><b><i>Comune :</i></b></label>           
+            <label class="scrittabianca"><b><i>Comune :</i></b></label>           
 			<select id="id_comune" name="id_comune">
             <option value=0>seleziona</option>
 			</select>
