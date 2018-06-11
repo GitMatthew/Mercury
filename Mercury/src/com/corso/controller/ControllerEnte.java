@@ -78,10 +78,10 @@ public class ControllerEnte extends HttpServlet {
 		    			
 			String insertQry = "INSERT enti (nome_ente , psw_ente , telefono_ente , id_status , email_ente ,"
 			                  +"  user_ente , url_img_ente , descrizione_ente , url_sito_ente) "
-			                  +"values ( '"+request.getParameter("nome_ente").replace("'","\\'")+"' , '"+request.getParameter("psw_ente").replace("'","\\'")+"' , "
-			                  + "'"+request.getParameter("telefono_ente").replace("'","\\'")+"' , 1 , '"+request.getParameter("email_ente").replace("'","\\'")+"' , "
-			          		  + "'"+request.getParameter("user_ente").replace("'","\\'")+"' , '"+request.getParameter("url_img_ente").replace("'","\\'")+"' , "
-			          		  + "'"+request.getParameter("descrizione_ente").replace("'","\\'")+"' , '"+request.getParameter("url_sito_ente").replace("'","\\'")+"'  ) ";
+			                  +"values ( '"+request.getParameter("nome_ente").replace("'","\'")+"' , '"+request.getParameter("psw_ente").replace("'","\'")+"' , "
+			                  + "'"+request.getParameter("telefono_ente").replace("'","\'")+"' , 1 , '"+request.getParameter("email_ente").replace("'","\'")+"' , "
+			          		  + "'"+request.getParameter("user_ente").replace("'","\'")+"' , '"+request.getParameter("url_img_ente").replace("'","\'")+"' , "
+			          		  + "'"+request.getParameter("descrizione_ente").replace("'","\'")+"' , '"+request.getParameter("url_sito_ente").replace("'","\'")+"'  ) ";
 			
 			Connection conn = Dao.getConnection();	    
 		    
@@ -149,18 +149,18 @@ public class ControllerEnte extends HttpServlet {
 			}
 		
 			String descrizione="";
-			descrizione="Location : "+request.getParameter("indirizzo").replace("'","\\'") + " ~ " + request.getParameter("descrizione").replace("'","\\'");	
+			descrizione="Location : "+request.getParameter("indirizzo").replace("'","\'") + " ~ " + request.getParameter("descrizione").replace("'","\'");	
 			if(request.getParameter("urlImg")!=null) {
-				nuovoEvento.setUrl_img_evento(request.getParameter("urlImg").replace("'","\\'"));
+				nuovoEvento.setUrl_img_evento(request.getParameter("urlImg").replace("'","\'"));
 			} else {
 				nuovoEvento.setUrl_img_evento("");
 			}
 			if(request.getParameter("urlEvento")!=null) {
-				nuovoEvento.setUrl_sito_evento(request.getParameter("urlEvento").replace("'","\\'"));
+				nuovoEvento.setUrl_sito_evento(request.getParameter("urlEvento").replace("'","\'"));
 			} else {
 				nuovoEvento.setUrl_sito_evento("");
 			}		
-			nuovoEvento.setNome_evento(request.getParameter("nomeEvento").replace("'","\\'"));
+			nuovoEvento.setNome_evento(request.getParameter("nomeEvento").replace("'","\'"));
 			nuovoEvento.setId_categoria(Integer.parseInt(request.getParameter("id_categoria")));
 			nuovoEvento.setDescrizione(descrizione);
 			nuovoEvento.setId_comune(Integer.parseInt(request.getParameter("id_comune")));
@@ -201,10 +201,10 @@ public class ControllerEnte extends HttpServlet {
 			    } 
 		  
 		  
-		  String qry = "UPDATE eventi SET nome_evento = '"+request.getParameter("nomeEvento").replace("'","\\'")+"' , descrizione = '"+request.getParameter("descrizione").replace("'","\\'") +"' , " 
+		  String qry = "UPDATE eventi SET nome_evento = '"+request.getParameter("nomeEvento").replace("'","\'")+"' , descrizione = '"+request.getParameter("descrizione").replace("'","\'") +"' , " 
 		  		     + "data_inizio = '"+ dataInizio +"' , data_fine = '"+ dataFine +"' , id_status = 1 , id_comune = "+ request.getParameter("id_comune") +" , "
-		  		     + "id_categoria = "+ request.getParameter("id_categoria") +" , url_img_evento = '"+request.getParameter("url_img_evento").replace("'","\\'")+"' , " 
-		  		     + "url_sito_evento = '"+request.getParameter("url_sito_evento").replace("'","\\'")+"' WHERE id_evento = "+request.getParameter("id_evento") ;
+		  		     + "id_categoria = "+ request.getParameter("id_categoria") +" , url_img_evento = '"+request.getParameter("url_img_evento").replace("'","\'")+"' , " 
+		  		     + "url_sito_evento = '"+request.getParameter("url_sito_evento").replace("'","\'")+"' WHERE id_evento = "+request.getParameter("id_evento") ;
 		   
 		   Connection conn = Dao.getConnection();	     
 			    
@@ -228,10 +228,10 @@ public class ControllerEnte extends HttpServlet {
 	   //Gestisci account				
 	   } else if(session.getAttribute("from")=="accountEnte") {
 		   
-		   String qry = "UPDATE enti SET nome_ente = '"+request.getParameter("nome_ente").replace("'","\\'")+"' , psw_ente = '"+request.getParameter("psw_ente").replace("'","\\'")+"' , "
-				      + "telefono_ente = '"+request.getParameter("telefono_ente").replace("'","\\'")+"' , email_ente = '"+request.getParameter("email_ente").replace("'","\\'")+"' , "
-				      + "user_ente = '"+request.getParameter("user_ente").replace("'","\\'")+"' , url_img_ente = '"+request.getParameter("url_img_ente").replace("'","\\'")+" ' , "
-				      + "descrizione_ente = '"+request.getParameter("descrizione_ente").replace("'","\\'")+"' , url_sito_ente = '"+request.getParameter("url_sito_ente").replace("'","\\'")+"' "
+		   String qry = "UPDATE enti SET nome_ente = '"+request.getParameter("nome_ente").replace("'","\'")+"' , psw_ente = '"+request.getParameter("psw_ente").replace("'","\'")+"' , "
+				      + "telefono_ente = '"+request.getParameter("telefono_ente").replace("'","\'")+"' , email_ente = '"+request.getParameter("email_ente").replace("'","\'")+"' , "
+				      + "user_ente = '"+request.getParameter("user_ente").replace("'","\'")+"' , url_img_ente = '"+request.getParameter("url_img_ente").replace("'","\'")+" ' , "
+				      + "descrizione_ente = '"+request.getParameter("descrizione_ente").replace("'","\'")+"' , url_sito_ente = '"+request.getParameter("url_sito_ente").replace("'","\'")+"' "
 				      + "WHERE id_ente = "+ id_ente ;  		              
 		              
 		              Connection conn = Dao.getConnection();	    
