@@ -226,7 +226,7 @@
 				<h3>Lista iscrizione luoghi della Newsletter :</h3>
 				</td>
 				<td>
-				<h3>Concludi l'iscrizione alla Newsletter:</h3>
+				<h3>Concludi l'iscrizione alla Newsletter:</h3> 
 				</td>
 				</tr>
 				<tr><td width="50%">
