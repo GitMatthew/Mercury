@@ -103,7 +103,7 @@ public class ControllerAdmin extends HttpServlet {
 			response.sendRedirect("view/adminHome.jsp");	
 			
 		}
-		
+		 
 		if(prm.equals("mod_ev"))
 		{
 			HttpSession session = request.getSession();
