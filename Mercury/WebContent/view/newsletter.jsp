@@ -78,7 +78,7 @@
 			<% if(request.getAttribute("messaggio")!=null) { %>   	
             <h3 class="scrittabianca"><%=request.getAttribute("messaggio")%></h3>	
             <% } else {	%>	
-            <h3 class="scrittabianca">Benvenuto su Mercury !</h3> 
+            <h3 class="scrittabianca">Seleziona almeno un luogo per iscriverti !</h3> 
             <% } %>
 
 			<br>
@@ -169,7 +169,7 @@
 	<div align="center" class="row sticky-top banner01"
 		style="overflow: auto; padding: 10px; margin: 0px; min-width: 100%; max-width: 100%; background-color: rgba(128, 0, 0, 0.4);">
 
-        <c:if test="${requestScope.successo!=1}">
+        
         <c:if test="${requestScope.news != 2 }">
         <form method="get" action="../ControllerNewsletter">	
 	<input type="hidden" name="n" value="5">
@@ -203,11 +203,11 @@
 				
 		</form>	
 		</c:if>
-		</c:if>
+		
 		</div>
 		
 	
-		<c:if test="${requestScope.successo!=1}">			
+					
 		<div>
         
 		<form method="get" action="../ControllerNewsletter">			
@@ -256,6 +256,8 @@
 					<form method="get" action="../ControllerNewsletter">
 						<input type="hidden" name="n" value="7">
 							<p style="color: red; font-weight: bold;">${sessionScope.messaggio}</p>
+							<input type="hidden" name="n" value="7">
+							<p style="color: green; font-weight: bold;">${sessionScope.messaggio2}</p>
 							<p style="display: inline;">Inserisci la tua email:</p> <input
 							type="text" name="mail" size="25"> 
 								<p style="display: inline;">Seleziona la cadenza:</p> <select
@@ -280,36 +282,11 @@
 					</form>
 					</c:if>
 					<br></br>
-					</c:if>
-
-                    <c:if test="${requestScope.successo==1}">
-                    <div id="vediLargo" style="display: block;" class="col-sm-10">
-		
-		
-			       <table style="width: 100%;">
-			
-			       <h1>Iscrizione alla Newsletter completata!</h1>
-				       <div style="text-align: center; padding: 10px">
-					      <img src="images/email-newsletter.png"></img>
-				       </div>
-			       </div>
-					<br></br>
-                    
-                    </c:if>
-	
-	
+ 
 	</div>
 
 	<br>
 	<br>
-		
-		
-
-
-
-
-
-
 
         
 </body>

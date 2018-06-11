@@ -56,7 +56,7 @@ public class ControllerNewsletter extends HttpServlet {
 			HttpSession s0 = request.getSession();
 			s0.setAttribute("reg22", reg22);
 			
-			response.sendRedirect("view/newsletter.jsp");
+			response.sendRedirect("view/newsletter.jsp");			
 			break;
 			
 		
@@ -108,26 +108,30 @@ public class ControllerNewsletter extends HttpServlet {
 				listacategorie = request.getParameterValues("categorie");
 			}	
 			
-			ArrayList<Luogo> luoghiTre = (ArrayList<Luogo>) s.getAttribute("luoghi");		
-			
-			
-			
-			ip.subscribeNewsletter(mail,cadenza,luoghiTre,listacategorie);
-			String oggetto = "Benvenuto in Mercury";
-			String descrizione = "Gentile utente, grazie per esserti iscritto a Mercury.\n"
-					+ "Da oggi riceverai, in base alla cadenza scelta, tutti gli eventi scelti da te via email.\n"
-					+ "\n"
-					+ "\n"
-					+ "Senza impegno! - unsubscribe mail: http://localhost:8080/MercuryUmberto/view/unsubscribe-newsletter.jsp";
-			ip.sendMail(mail, oggetto, descrizione);
-			
+			ArrayList<Luogo> luoghiTre = (ArrayList<Luogo>) s.getAttribute("luoghi");			
+						
 			if(mail.equals("")||mail.equals(" ")) {
 				s.setAttribute("messaggio", "Attenzione! Email è un campo obbligatorio!");
-				response.sendRedirect("view/newsletter.jsp");
-			}else {
-				request.setAttribute("message", "Registrazione Riuscita !  Torna alla HOME.");
-				response.sendRedirect("/Mercury_Mercury/ControllerHomepage?da=0");
+				
+			} else {
+				s.setAttribute("messaggio2", "Registrazione Riuscita !  Torna alla HOME.");
+				
+				System.out.println("sono vivo");
+				ip.subscribeNewsletter(mail,cadenza,luoghiTre,listacategorie);
+				String oggetto = "Benvenuto in Mercury";
+				String descrizione = "Gentile utente, grazie per esserti iscritto a Mercury.\n"
+						+ "Da oggi riceverai, in base alla cadenza scelta, tutti gli eventi scelti da te via email.\n"
+						+ "\n"
+						+ "\n"
+						+ "Senza impegno! - unsubscribe mail: http://localhost:8080/MercuryUmberto/view/unsubscribe-newsletter.jsp";
+				
+				
+					ip.sendMail(mail, oggetto, descrizione);	
+				
+				
 			}
+			
+			response.sendRedirect("view/newsletter.jsp");
 			break;
 
 		case "8":											//fase di disiscrizione e controllo al db
