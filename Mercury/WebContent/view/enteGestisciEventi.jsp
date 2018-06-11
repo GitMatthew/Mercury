@@ -107,7 +107,7 @@
 		<tr>
 			<td><c:out value="${j.nome_evento}"></c:out></td>
 			<td><c:out value="${j.descrizione}"></c:out></td>
-			<td><c:out value="${j.data_fine}"></c:out></td>
+			<td><c:out value="${j.data_inizio}"></c:out></td>
 			<td><c:out value="${j.data_fine}"></c:out></td>
 			<td><c:out value="${j.nome_status}"></c:out></td>
 			<td><c:out value="${j.nome_categoria}"></c:out></td>
