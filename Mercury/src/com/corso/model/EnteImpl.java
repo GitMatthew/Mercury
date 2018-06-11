@@ -156,8 +156,8 @@ public class EnteImpl implements EnteUtility {
 					          +"values ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) ";
 			
 			PreparedStatement pst = c.prepareStatement(insertQry);
-			pst.setString(1, e.getNome_evento().replace("'","\\'"));     //nome_evento
-			pst.setString(2, e.getDescrizione().replace("'","\\'"));     //descrizione
+			pst.setString(1, e.getNome_evento());     //nome_evento
+			pst.setString(2, e.getDescrizione());     //descrizione
 			pst.setString(3, ""+e.getData_inizio());  //data_inizio
 			pst.setString(4, ""+e.getData_fine());    //data_fine
 			pst.setString(5, ""+e.getId_status());    //id_status
