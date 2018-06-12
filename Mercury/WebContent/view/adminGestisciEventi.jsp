@@ -46,6 +46,10 @@
 
  <h3 Style="text-align:center; color:White">Lista Eventi</h3>
  
+  <% if(session.getAttribute("notmod")!=null){ %>
+  <h5 Style="text-align:center; color:Red"><c:out value="${sessionScope.notmod}"/></h5>
+  <% }%>
+  
   <table style="width:100%;color:White">
   <tr style="color:White">
 		<th style="width:180px">Evento</th>
